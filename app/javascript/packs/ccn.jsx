@@ -1,23 +1,28 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
 import {makeStyles} from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-// import Checkout from "./Checkout";
-import Container from "@material-ui/core/Container";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
+import Welcome from "./pages/Welcome";
+import {AccountCircle} from "@material-ui/icons";
+import IconButton from "@material-ui/core/IconButton";
+import MenuItem from "@material-ui/core/MenuItem";
+import Menu from "@material-ui/core/Menu";
+import SignupStepper from "./pages/SignupStepper";
+import AddressForm from "./pages/AddressForm";
+import ProviderRequestForm from "./pages/ProviderRequestForm";
+import InstitutionForm from "./pages/InstitutionForm";
+import ProviderSignupReview from "./pages/ProviderSignupReview";
 
 const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(2),
   },
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
@@ -26,14 +31,20 @@ const useStyles = makeStyles(theme => ({
   heroButtons: {
     marginTop: theme.spacing(4),
   },
+  title: {
+    flexGrow: 1,
+  },
+  main: {
+    marginBottom: theme.spacing(3),
+  },
   layout: {
-    width: 'auto',
+    width: "auto",
     marginLeft: theme.spacing(2),
     marginRight: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
       width: 600,
-      marginLeft: 'auto',
-      marginRight: 'auto',
+      marginLeft: "auto",
+      marginRight: "auto",
     },
   },
 }));
@@ -41,12 +52,12 @@ const useStyles = makeStyles(theme => ({
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {"Copyright © "}
       <a color="inherit" href="https://covidcarenetwork.com">
         COVID Care Network
-      </a>{' '}
+      </a>{" "}
       {new Date().getFullYear()}
-      {'.'}
+      {"."}
     </Typography>
   );
 }
@@ -54,53 +65,87 @@ function Copyright() {
 function App() {
   const classes = useStyles();
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenu = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <React.Fragment>
+    <Router>
       <CssBaseline />
 
-      <AppBar position="absolute" color="default" className={classes.appBar}>
+      <AppBar position="static" color="default" className={classes.appBar}>
         <Toolbar>
-          <CameraIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            COVID Care Network
+          <Typography variant="h6" color="inherit" className={classes.title}>
+            <Link to="/">
+              COVID Care Network
+            </Link>
           </Typography>
+          {false && (
+            <div>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={open}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </div>
+          )}
         </Toolbar>
       </AppBar>
       <main className={classes.layout}>
-        {/*<Router>*/}
-        {/*  */}
-        {/*</Router>*/}
-
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Volunteer to support your Care Providers
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Something short and leading about the collection below—its contents, the creator, etc.
-              Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-              entirely.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Button variant="contained" color="primary">
-                    Main call to action
-                  </Button>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    Secondary action
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
+        <div className={classes.main}>
+          <Switch>
+            <Route path="/provider-signup">
+              <SignupStepper steps={[
+                { label: 'About You', component: <AddressForm /> },
+                { label: 'Institution', component: <InstitutionForm /> },
+                { label: 'Request', component: <ProviderRequestForm /> },
+                { label: 'Review', component: <ProviderSignupReview /> }
+              ]}/>
+            </Route>
+            <Route path="/volunteer-signup">
+              <SignupStepper steps={[
+                { label: 'Volunteer Info', component: <AddressForm /> },
+                { label: 'Review' }
+              ]}/>
+            </Route>
+            <Route path="/">
+              <Welcome />
+            </Route>
+          </Switch>
         </div>
 
         <Copyright />
       </main>
-    </React.Fragment>
+    </Router>
   );
 }
 
