@@ -29,26 +29,26 @@ export default function ProviderRequestForm() {
           <Select
             required
             labelId="type-select-label"
-            id="type"
-            name="type"
+            id="requestType"
+            name="requestType"
           >
-            <MenuItem value={10}>Childcare</MenuItem>
-            <MenuItem value={20}>Errands/Shopping</MenuItem>
-            <MenuItem value={30}>Housecleaning</MenuItem>
-            <MenuItem value={40}>Meal preparation</MenuItem>
-            <MenuItem value={50}>Laundry</MenuItem>
-            <MenuItem value={60}>Lodging</MenuItem>
-            <MenuItem value={70}>Supplies</MenuItem>
+            <MenuItem value='childcare'>Childcare</MenuItem>
+            <MenuItem value='shopping'>Errands/Shopping</MenuItem>
+            <MenuItem value='cleaning'>Housecleaning</MenuItem>
+            <MenuItem value='meals'>Meal preparation / delivery</MenuItem>
+            <MenuItem value='laundry'>Laundry</MenuItem>
+            <MenuItem value='lodging'>Lodging</MenuItem>
+            <MenuItem value='supplies'>Supplies</MenuItem>
           </Select>
         </Grid>
         <Grid item xs={12}>
-          <TextField required id="description" label="Describe your request" fullWidth />
+          <TextField required id="requestDescription" name="requestDescription" label="Describe your request" fullWidth />
           <FormHelperText>
             Be sure to include details like frequency, quantity, duration, etc.
           </FormHelperText>
         </Grid>
         <Grid item xs={12}>
-          <TextField required id="contact-info" label="How can volunteers contact you?" fullWidth />
+          <TextField required id="contactInfo" name="contactInfo" label="How can volunteers contact you?" fullWidth />
           <FormHelperText>
             This will be PUBLIC. We strongly recommend using something besides personal email or phone. Examples: Facebook Messenger ID, Twitter handle (if you've enabled DMs), create a free disposable email address using spamgourmet.com, boun.cr, or trashmail.com.
           </FormHelperText>

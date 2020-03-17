@@ -6,8 +6,12 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import {makeStyles} from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles(theme => ({
+  roleSelect: {
+    minWidth: 200
+  }
 }));
 
 export default function InstitutionForm() {
@@ -30,19 +34,26 @@ export default function InstitutionForm() {
           />
         </Grid>
         <Grid item xs={12}>
-          <InputLabel required id="role-select-label">Your Job Title / Role</InputLabel>
-          <Select
-            required
-            labelId="role-select-label"
-            id="role"
-            name="role"
-          >
-            <MenuItem value={10}>Physician, Nurse Practitioner, Physician Assistant</MenuItem>
-            <MenuItem value={20}>Nurse</MenuItem>
-            <MenuItem value={30}>Respiratory Therapist, Physical Therapist, Occupational Therapist, Speech Therapist</MenuItem>
-            <MenuItem value={40}>Medical assistant, patient care assistant, or other clinical staff</MenuItem>
-            <MenuItem value={50}>Admin/support staff or social worker</MenuItem>
-          </Select>
+          <FormControl>
+            <InputLabel required id="role-select-label">Your Job Title / Role</InputLabel>
+            <Select
+              required
+              labelId="role-select-label"
+              id="role"
+              name="role"
+              className={classes.roleSelect}
+              // value={age}
+              // onChange={handleChange}
+            >
+              <MenuItem value="physician">Physician, Nurse Practitioner, Physician Assistant</MenuItem>
+              <MenuItem value="nurse">Nurse</MenuItem>
+              <MenuItem value="therapist">Respiratory Therapist, Physical Therapist, Occupational Therapist, Speech Therapist</MenuItem>
+              <MenuItem value="assistant">Medical assistant, patient care assistant, or other clinical staff</MenuItem>
+              <MenuItem value="admin">Admin/support staff or social worker</MenuItem>
+            </Select>
+          </FormControl>
+
+
         </Grid>
       </Grid>
     </React.Fragment>

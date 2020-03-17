@@ -23,12 +23,6 @@ export default function ProviderSignupReview() {
       </Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Typography variant="h6" gutterBottom className={classes.title}>
-            You
-          </Typography>
-          <Typography gutterBottom>{user.firstName} {user.lastName}</Typography>
-        </Grid>
         <Grid item container direction="column" xs={12}>
           <Typography variant="h6" gutterBottom className={classes.title}>
             Your Request

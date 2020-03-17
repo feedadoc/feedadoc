@@ -1,8 +1,9 @@
-class CreateProfessionals < ActiveRecord::Migration[6.0]
+class CreateProviders < ActiveRecord::Migration[6.0]
   def change
-    create_table :professionals do |t|
-      t.string :name, null: false
-      t.string :job_title, null: false
+    create_table :providers do |t|
+      t.string :first_name, null: false
+      t.string :last_name
+      t.string :role, null: false
       t.string :facility, null: false
       t.string :neighborhood
       t.string :city, null: false

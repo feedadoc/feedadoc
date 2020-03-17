@@ -1,5 +1,5 @@
 module Types
   class MutationType < Types::BaseObject
-    field :create_professional, mutation: Mutations::CreateProfessional
+    field :create_provider_and_request, mutation: Mutations::CreateProviderAndRequest
   end
 end

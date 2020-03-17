@@ -15,9 +15,10 @@ ActiveRecord::Schema.define(version: 2020_03_16_204230) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "professionals", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "job_title", null: false
+  create_table "providers", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name"
+    t.string "role", null: false
     t.string "facility", null: false
     t.string "neighborhood"
     t.string "city", null: false
@@ -29,13 +30,13 @@ ActiveRecord::Schema.define(version: 2020_03_16_204230) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.bigint "professional_id", null: false
+    t.bigint "provider_id", null: false
     t.string "request_type", null: false
     t.text "description", null: false
     t.string "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["professional_id"], name: "index_requests_on_professional_id"
+    t.index ["provider_id"], name: "index_requests_on_provider_id"
   end
 
   create_table "responses", force: :cascade do |t|
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_204230) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "requests", "professionals"
+  add_foreign_key "requests", "providers"
   add_foreign_key "responses", "requests"
   add_foreign_key "responses", "volunteers"
 end
