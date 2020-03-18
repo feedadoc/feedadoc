@@ -25,6 +25,28 @@ const TOTAL_PROVIDERS = gql`
     providers {
       totalCount
     }
+
+    requests(filters: { status: new }, orderBy: { direction: ASC, sort: CITY }) {
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        cursor
+        node {
+          id
+          description
+          requestType
+          provider {
+            id, firstName
+            city, state, neighborhood
+            role, facility
+          }
+        }
+      }
+    }
   }
 `;
 

@@ -9,7 +9,7 @@ class Mutations::CreateProviderAndRequest < Mutations::BaseMutation
   argument :email, String, required: true
   argument :facility, String, required: true
   argument :role, String, required: true
-  argument :request_type, String, required: true
+  argument :request_type, Types::Enums::RequestTypeEnum, required: true
   argument :request_description, String, required: true
   argument :contact_info, String, required: true
 
