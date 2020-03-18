@@ -1,4 +1,4 @@
-class CovidCareNetworkSchema < GraphQL::Schema
+class FeedADocSchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 

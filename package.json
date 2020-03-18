@@ -1,5 +1,5 @@
 {
-  "name": "covid_care_network",
+  "name": "feedadoc",
   "private": true,
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",

@@ -58,8 +58,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <a color="inherit" href="https://covidcarenetwork.com">
-        COVID Care Network
+      <a color="inherit" href="https://www.feedadoc.com">
+        FeedADoc.com
       </a>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -92,7 +92,7 @@ function App() {
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.title}>
               <Link to="/" className={classes.headerLink}>
-                COVID Care Network
+                FeedADoc.com
               </Link>
             </Typography>
             {false && (

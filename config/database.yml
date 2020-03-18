@@ -1,8 +1,3 @@
-vagrant:
-  database: ccn_development
-  username: postgres
-  password:
-
 default: &default
   url: <%= ENV['DATABASE_URL'] %>
   adapter: postgresql
@@ -11,14 +6,14 @@ default: &default
 
 development: &development
   <<: *default
-  database: ccn_development
-  username: ccn
+  database: feedadoc_development
+  username: feedadoc
   password: password1
 
 test:
   <<: *default
-  database: ccn_test
-  username: ccn
+  database: feedadoc_test
+  username: feedadoc
   password: password1
 
 production:

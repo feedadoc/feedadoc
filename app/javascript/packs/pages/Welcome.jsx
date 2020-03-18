@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 export default function Welcome() {
   const classes = useStyles();
 
-  const email = 'covid' + 'carenetwork' + '@' + ['gmail', 'com'].join('.');
+  const email = 'feedadoc' + '@' + ['impossiblelabs', 'io'].join('.');
 
   return (
     <Paper className={classes.heroContent}>
