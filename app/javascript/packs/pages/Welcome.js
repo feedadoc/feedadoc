@@ -16,23 +16,25 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
   },
   heroButtons: {
-    marginTop: theme.spacing(4),
+    margin: theme.spacing(4),
   },
 }));
 
-const TOTAL_PROVIDERS = gql`
-  {
-    providers {
-      totalCount
-    }
-    volunteerCount
-  }
-`;
+// const TOTAL_PROVIDERS = gql`
+//   {
+//     providers {
+//       totalCount
+//     }
+//     volunteerCount
+//   }
+// `;
 
 export default function Welcome() {
   const classes = useStyles();
 
-  const { loading, error, data } = useQuery(TOTAL_PROVIDERS);
+  // const { loading, error, data } = useQuery(TOTAL_PROVIDERS);
+
+  const email = 'covid' + 'carenetwork' + '@' + ['gmail', 'com'].join('.');
 
   return (
     <Paper className={classes.heroContent}>
@@ -41,30 +43,29 @@ export default function Welcome() {
           Volunteer to support your Care Providers
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          Something short and leading about the collection below—its contents, the creator, etc.
-          Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-          entirely.
+          This website connects health care workers with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance or can provide it!
         </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
-              <Link to="/volunteer-signup">
-                <Button variant="contained" color="primary">
-                  Volunteers
-                  { data ? ` (${data.volunteerCount} and counting!)` : ''}
+              <Link to="/provider-signup">
+                <Button variant="outlined" color="primary">
+                  Providers, Post a Request
                 </Button>
               </Link>
             </Grid>
             <Grid item>
-              <Link to="/provider-signup">
-                <Button variant="outlined" color="primary">
-                  Providers
-                  { data ? ` (${data.providers.totalCount})` : ''}
+              <Link to="/volunteer-signup">
+                <Button variant="contained" color="primary">
+                  Volunteer, Browse Requests and Help Out
                 </Button>
               </Link>
             </Grid>
           </Grid>
         </div>
+        <Typography paragraph>
+          This site is created and maintained by volunteers. You can contact us by emailing <a href={'mailto:' + email}>{email}</a>.
+        </Typography>
       </Container>
     </Paper>
   );

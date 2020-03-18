@@ -17,7 +17,6 @@ import SignupStepper from "./pages/SignupStepper";
 import AddressForm from "./pages/AddressForm";
 import ProviderRequestForm from "./pages/ProviderRequestForm";
 import InstitutionForm from "./pages/InstitutionForm";
-import ProviderSignupReview from "./pages/ProviderSignupReview";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -49,6 +48,9 @@ const useStyles = makeStyles(theme => ({
       marginRight: "auto",
     },
   },
+  headerLink: {
+    textDecoration: 'none'
+  }
 }));
 
 function Copyright() {
@@ -88,7 +90,7 @@ function App() {
         <AppBar position="static" color="default" className={classes.appBar}>
           <Toolbar>
             <Typography variant="h6" color="inherit" className={classes.title}>
-              <Link to="/">
+              <Link to="/" className={classes.headerLink}>
                 COVID Care Network
               </Link>
             </Typography>
@@ -133,7 +135,6 @@ function App() {
                   { label: 'About You', component: AddressForm },
                   { label: 'Institution', component: InstitutionForm },
                   { label: 'Request', component: ProviderRequestForm },
-                  { label: 'Review', component: ProviderSignupReview }
                 ]}/>
               </Route>
               <Route path="/volunteer-signup">

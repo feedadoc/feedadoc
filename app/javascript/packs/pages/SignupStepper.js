@@ -139,7 +139,7 @@ export default function SignupStepper({ steps }) {
     <Paper className={classes.paper}>
       <React.Fragment>
         <Typography component="h1" variant="h4" align="center">
-          Signup
+          Post a Request
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map(({label}, index) => (
