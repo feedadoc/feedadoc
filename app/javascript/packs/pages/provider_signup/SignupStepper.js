@@ -127,14 +127,6 @@ export default function SignupStepper({ steps }) {
     );
   }
 
-  if (loading) {
-    return (
-      <Paper className={classes.paper}>
-        <Typography>Just a moment...</Typography>
-      </Paper>
-    );
-  }
-
   return (
     <Paper className={classes.paper}>
       <React.Fragment>
@@ -162,6 +154,7 @@ export default function SignupStepper({ steps }) {
                 color="primary"
                 onClick={handleNext}
                 className={classes.button}
+                disabled={loading}
               >
                 {activeStep === steps.length - 1 ? 'Signup' : 'Next'}
               </Button>

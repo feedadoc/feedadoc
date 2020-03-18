@@ -13,10 +13,11 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
-import SignupStepper from "./pages/SignupStepper";
-import AddressForm from "./pages/AddressForm";
-import ProviderRequestForm from "./pages/ProviderRequestForm";
-import InstitutionForm from "./pages/InstitutionForm";
+import SignupStepper from "./pages/provider_signup/SignupStepper";
+import AddressForm from "./pages/provider_signup/AddressForm";
+import ProviderRequestForm from "./pages/provider_signup/ProviderRequestForm";
+import InstitutionForm from "./pages/provider_signup/InstitutionForm";
+import BrowseRequests from "./pages/BrowseRequests";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -138,10 +139,7 @@ function App() {
                 ]}/>
               </Route>
               <Route path="/volunteer-signup">
-                <SignupStepper steps={[
-                  { label: 'Volunteer Info', component: <AddressForm /> },
-                  { label: 'Review' }
-                ]}/>
+                <BrowseRequests />
               </Route>
               <Route path="/">
                 <Welcome />

@@ -6,8 +6,6 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import {Link} from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 
 const useStyles = makeStyles(theme => ({
   heroContent: {
@@ -20,19 +18,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-// const TOTAL_PROVIDERS = gql`
-//   {
-//     providers {
-//       totalCount
-//     }
-//     volunteerCount
-//   }
-// `;
-
 export default function Welcome() {
   const classes = useStyles();
-
-  // const { loading, error, data } = useQuery(TOTAL_PROVIDERS);
 
   const email = 'covid' + 'carenetwork' + '@' + ['gmail', 'com'].join('.');
 
