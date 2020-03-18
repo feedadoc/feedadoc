@@ -37,7 +37,7 @@ export default function BrowseRequests() {
     <Paper className={classes.heroContent}>
       <Container maxWidth="sm">
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-          Care Providers in Need
+          { data ? `${data.providers.totalCount} ` : ''} Care Providers in Need
         </Typography>
       </Container>
     </Paper>
