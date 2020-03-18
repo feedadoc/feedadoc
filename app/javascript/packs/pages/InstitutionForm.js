@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function InstitutionForm() {
+export default function InstitutionForm({ facility, role, onChange }) {
   const classes = useStyles();
 
   return (
@@ -30,6 +30,8 @@ export default function InstitutionForm() {
             id="facility"
             name="facility"
             label="Your Medical Facility"
+            value={facility}
+            onChange={onChange}
             fullWidth
           />
         </Grid>
@@ -38,22 +40,22 @@ export default function InstitutionForm() {
             <InputLabel required id="role-select-label">Your Job Title / Role</InputLabel>
             <Select
               required
+              native
               labelId="role-select-label"
               id="role"
               name="role"
               className={classes.roleSelect}
-              // value={age}
-              // onChange={handleChange}
+              value={role}
+              onChange={onChange}
             >
-              <MenuItem value="physician">Physician, Nurse Practitioner, Physician Assistant</MenuItem>
-              <MenuItem value="nurse">Nurse</MenuItem>
-              <MenuItem value="therapist">Respiratory Therapist, Physical Therapist, Occupational Therapist, Speech Therapist</MenuItem>
-              <MenuItem value="assistant">Medical assistant, patient care assistant, or other clinical staff</MenuItem>
-              <MenuItem value="admin">Admin/support staff or social worker</MenuItem>
+              <option value="" />
+              <option value="physician">Physician, Nurse Practitioner, Physician Assistant</option>
+              <option value="nurse">Nurse</option>
+              <option value="therapist">Respiratory Therapist, Physical Therapist, Occupational Therapist, Speech Therapist</option>
+              <option value="assistant">Medical assistant, patient care assistant, or other clinical staff</option>
+              <option value="admin">Admin/support staff or social worker</option>
             </Select>
           </FormControl>
-
-
         </Grid>
       </Grid>
     </React.Fragment>

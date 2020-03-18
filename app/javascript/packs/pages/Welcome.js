@@ -6,6 +6,8 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import {Link} from "react-router-dom";
 import Paper from "@material-ui/core/Paper";
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 const useStyles = makeStyles(theme => ({
   heroContent: {
@@ -18,8 +20,19 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+const TOTAL_PROVIDERS = gql`
+  {
+    providers {
+      totalCount
+    }
+    volunteerCount
+  }
+`;
+
 export default function Welcome() {
   const classes = useStyles();
+
+  const { loading, error, data } = useQuery(TOTAL_PROVIDERS);
 
   return (
     <Paper className={classes.heroContent}>
@@ -38,6 +51,7 @@ export default function Welcome() {
               <Link to="/volunteer-signup">
                 <Button variant="contained" color="primary">
                   Volunteers
+                  { data ? ` (${data.volunteerCount} and counting!)` : ''}
                 </Button>
               </Link>
             </Grid>
@@ -45,6 +59,7 @@ export default function Welcome() {
               <Link to="/provider-signup">
                 <Button variant="outlined" color="primary">
                   Providers
+                  { data ? ` (${data.providers.totalCount})` : ''}
                 </Button>
               </Link>
             </Grid>

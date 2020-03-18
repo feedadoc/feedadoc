@@ -7,6 +7,7 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import {makeStyles} from "@material-ui/core/styles";
+import FormHelperText from "@material-ui/core/FormHelperText";
 
 const STATES = "AL AK AS AZ AR CA CO CT DE DC FM FL GA GU HI ID IL IN IA KS KY LA ME MH MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND MP OH OK OR PW PA PR RI SC SD TN TX UT VT VI VA WA WV WI WY".split(" ");
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AddressForm() {
+export default function AddressForm({ firstName, lastName, neighborhood, city, state, email, contactInfo, onChange }) {
   const classes = useStyles();
 
   return (
@@ -32,6 +33,8 @@ export default function AddressForm() {
             id="firstName"
             name="firstName"
             label="First name"
+            value={firstName}
+            onChange={onChange}
             fullWidth
           />
         </Grid>
@@ -40,14 +43,18 @@ export default function AddressForm() {
             id="lastName"
             name="lastName"
             label="Last name"
+            value={lastName}
+            onChange={onChange}
             fullWidth
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="address1"
+            id="neighborhood"
             name="neighborhood"
             label="Neighborhood"
+            value={neighborhood}
+            onChange={onChange}
             fullWidth
           />
         </Grid>
@@ -57,6 +64,8 @@ export default function AddressForm() {
             id="city"
             name="city"
             label="City"
+            value={city}
+            onChange={onChange}
             fullWidth
           />
         </Grid>
@@ -65,14 +74,16 @@ export default function AddressForm() {
             <InputLabel required id="state">State</InputLabel>
             <Select
               required
+              native
               labelId="state"
               id="state"
               name="state"
               className={classes.stateSelect}
-              // value={age}
-              // onChange={handleChange}
+              onChange={onChange}
+              value={state}
             >
-              {STATES.map(state => <MenuItem key={state} value={state} selected={false}>{state}</MenuItem>)}
+              <option value="" />
+              {STATES.map(s => <option key={s} value={s}>{s}</option>)}
             </Select>
           </FormControl>
         </Grid>
@@ -82,8 +93,24 @@ export default function AddressForm() {
             id="email"
             name="email"
             label="Email"
+            value={email}
+            onChange={onChange}
             fullWidth
           />
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="contactInfo"
+            name="contactInfo"
+            label="How can volunteers contact you?"
+            fullWidth
+            value={contactInfo}
+            onChange={onChange}
+          />
+          <FormHelperText>
+            This will be PUBLIC. We strongly recommend using something besides personal email or phone. Examples: Facebook Messenger ID, Twitter handle (if you've enabled DMs), create a free disposable email address using spamgourmet.com, boun.cr, or trashmail.com.
+          </FormHelperText>
         </Grid>
       </Grid>
     </React.Fragment>

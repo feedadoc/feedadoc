@@ -11,6 +11,8 @@ import {AccountCircle} from "@material-ui/icons";
 import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 import SignupStepper from "./pages/SignupStepper";
 import AddressForm from "./pages/AddressForm";
 import ProviderRequestForm from "./pages/ProviderRequestForm";
@@ -76,76 +78,80 @@ function App() {
     setAnchorEl(null);
   };
 
+  const client = new ApolloClient({});
+
   return (
-    <Router>
-      <CssBaseline />
+    <ApolloProvider client={client}>
+      <Router>
+        <CssBaseline />
 
-      <AppBar position="static" color="default" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="h6" color="inherit" className={classes.title}>
-            <Link to="/">
-              COVID Care Network
-            </Link>
-          </Typography>
-          {false && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
-              </Menu>
-            </div>
-          )}
-        </Toolbar>
-      </AppBar>
-      <main className={classes.layout}>
-        <div className={classes.main}>
-          <Switch>
-            <Route path="/provider-signup">
-              <SignupStepper steps={[
-                { label: 'About You', component: <AddressForm /> },
-                { label: 'Institution', component: <InstitutionForm /> },
-                { label: 'Request', component: <ProviderRequestForm /> },
-                { label: 'Review', component: <ProviderSignupReview /> }
-              ]}/>
-            </Route>
-            <Route path="/volunteer-signup">
-              <SignupStepper steps={[
-                { label: 'Volunteer Info', component: <AddressForm /> },
-                { label: 'Review' }
-              ]}/>
-            </Route>
-            <Route path="/">
-              <Welcome />
-            </Route>
-          </Switch>
-        </div>
+        <AppBar position="static" color="default" className={classes.appBar}>
+          <Toolbar>
+            <Typography variant="h6" color="inherit" className={classes.title}>
+              <Link to="/">
+                COVID Care Network
+              </Link>
+            </Typography>
+            {false && (
+              <div>
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleMenu}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Profile</MenuItem>
+                  <MenuItem onClick={handleClose}>Logout</MenuItem>
+                </Menu>
+              </div>
+            )}
+          </Toolbar>
+        </AppBar>
+        <main className={classes.layout}>
+          <div className={classes.main}>
+            <Switch>
+              <Route path="/provider-signup">
+                <SignupStepper steps={[
+                  { label: 'About You', component: AddressForm },
+                  { label: 'Institution', component: InstitutionForm },
+                  { label: 'Request', component: ProviderRequestForm },
+                  { label: 'Review', component: ProviderSignupReview }
+                ]}/>
+              </Route>
+              <Route path="/volunteer-signup">
+                <SignupStepper steps={[
+                  { label: 'Volunteer Info', component: <AddressForm /> },
+                  { label: 'Review' }
+                ]}/>
+              </Route>
+              <Route path="/">
+                <Welcome />
+              </Route>
+            </Switch>
+          </div>
 
-        <Copyright />
-      </main>
-    </Router>
+          <Copyright />
+        </main>
+      </Router>
+    </ApolloProvider>
   );
 }
 

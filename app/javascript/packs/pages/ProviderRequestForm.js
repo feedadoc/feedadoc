@@ -7,14 +7,18 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import {makeStyles} from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
 
 const useStyles = makeStyles(theme => ({
   firstEntry: {
     marginTop: theme.spacing(2),
+  },
+  typeSelect: {
+    minWidth: 200,
   }
 }));
 
-export default function ProviderRequestForm() {
+export default function ProviderRequestForm({ requestType, requestDescription, onChange }) {
   const classes = useStyles();
 
   return (
@@ -25,32 +29,41 @@ export default function ProviderRequestForm() {
 
       <Grid container spacing={3} className={classes.firstEntry}>
         <Grid item xs={12}>
-          <InputLabel required id="type-select-label">Type of Request</InputLabel>
-          <Select
-            required
-            labelId="type-select-label"
-            id="requestType"
-            name="requestType"
-          >
-            <MenuItem value='childcare'>Childcare</MenuItem>
-            <MenuItem value='shopping'>Errands/Shopping</MenuItem>
-            <MenuItem value='cleaning'>Housecleaning</MenuItem>
-            <MenuItem value='meals'>Meal preparation / delivery</MenuItem>
-            <MenuItem value='laundry'>Laundry</MenuItem>
-            <MenuItem value='lodging'>Lodging</MenuItem>
-            <MenuItem value='supplies'>Supplies</MenuItem>
-          </Select>
+          <FormControl>
+            <InputLabel required id="type-select-label">Type of Request</InputLabel>
+            <Select
+              required
+              native
+              labelId="type-select-label"
+              id="requestType"
+              name="requestType"
+              className={classes.typeSelect}
+              value={requestType}
+              onChange={onChange}
+            >
+              <option value='' />
+              <option value='childcare'>Childcare</option>
+              <option value='shopping'>Errands/Shopping</option>
+              <option value='cleaning'>Housecleaning</option>
+              <option value='meals'>Meal preparation / delivery</option>
+              <option value='laundry'>Laundry</option>
+              <option value='lodging'>Lodging</option>
+              <option value='supplies'>Supplies</option>
+            </Select>
+          </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField required id="requestDescription" name="requestDescription" label="Describe your request" fullWidth />
+          <TextField
+            required
+            id="requestDescription"
+            name="requestDescription"
+            label="Describe your request"
+            fullWidth
+            value={requestDescription}
+            onChange={onChange}
+          />
           <FormHelperText>
             Be sure to include details like frequency, quantity, duration, etc.
-          </FormHelperText>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField required id="contactInfo" name="contactInfo" label="How can volunteers contact you?" fullWidth />
-          <FormHelperText>
-            This will be PUBLIC. We strongly recommend using something besides personal email or phone. Examples: Facebook Messenger ID, Twitter handle (if you've enabled DMs), create a free disposable email address using spamgourmet.com, boun.cr, or trashmail.com.
           </FormHelperText>
         </Grid>
       </Grid>

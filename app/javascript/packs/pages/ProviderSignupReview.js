@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ProviderSignupReview() {
+export default function ProviderSignupReview({ firstName, lastName }) {
   const classes = useStyles();
   const user = {};
 
@@ -29,10 +29,10 @@ export default function ProviderSignupReview() {
           </Typography>
           <Grid container>
             <Grid item xs={6}>
-              <Typography gutterBottom>{user.firstName}</Typography>
+              <Typography gutterBottom>{firstName}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Typography gutterBottom>{user.lastName}</Typography>
+              <Typography gutterBottom>{lastName}</Typography>
             </Grid>
           </Grid>
         </Grid>

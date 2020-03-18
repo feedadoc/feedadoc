@@ -1,5 +1,7 @@
 module Types
   class QueryType < Types::BaseObject
+    include FilterHelpers
+
     field :providers,
           Types::Connections::ProviderConnection,
           connection: true,
@@ -8,9 +10,13 @@ module Types
       argument :filters, Types::ProviderFilter, required: false
       argument :order_by, Types::ProviderOrder, required: false
     end
+    def providers(filters: nil, order_by: nil)
+      ::Provider.where(where(filters)).order(order(order_by))
+    end
 
-    def providers
-      []
+    field :volunteer_count, Integer, null: false
+    def volunteer_count
+      ::Volunteer.count
     end
   end
 end
