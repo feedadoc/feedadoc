@@ -81,7 +81,20 @@ function App() {
     setAnchorEl(null);
   };
 
-  const client = new ApolloClient({});
+  const getCsrfToken = () => {
+    const csrf = document.querySelector('meta[name=csrf-token]');
+    return csrf ? csrf.getAttribute('content') : '';
+  }
+
+  const client = new ApolloClient({
+    request: (operation) => {
+      operation.setContext({
+        headers: {
+          X_CSRF_TOKEN: getCsrfToken(),
+        }
+      })
+    }
+  });
 
   return (
     <ApolloProvider client={client}>
