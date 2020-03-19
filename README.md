@@ -13,17 +13,22 @@ This website connects healthcare workers (docs, nurses, specialists, support sta
 * [Material UI](https://material-ui.com/)
 
 ## Development
+The below steps assume you've forked and cloned the repo to your local machine.
 
-1. Fork the repo.
-1. Clone your fork to your local machine.
+### With Docker
+1. `docker-compose up -d`
+2. `docker-compose run web rails db:migrate db:create`
+3. Visit http://localhost:3000
+
+### Running Ruby and Postgres locally
 1. Use `psql` to create a PG user called `feedadoc`. (We assume you have postgresql installed, on OS X you can use `brew` to install it or run [Postgres.app](https://postgresapp.com/).)
 
         CREATE USER feedadoc WITH SUPERUSER PASSWORD 'password1';
 
-1. Install Ruby v2.7.0 (see `.ruby-version`; also, we recommend [rvm](https://rvm.io/rvm/install) to manage ruby versions.)
-1. Run `bundle`
-1. Install Yarn (On OS X: `brew install yarn`)
-1. Run `yarn`
-1. Run `rails db:create db:migrate`
-1. In one Terminal window, run `bin/webpack-dev-server`. In a second window, run `rails s`.
-1. Visit http://localhost:3000
+2. Install Ruby v2.7.0 (see `.ruby-version`; also, we recommend [rvm](https://rvm.io/rvm/install) to manage ruby versions.)
+3. Run `bundle`
+4. Install Yarn (On OS X: `brew install yarn`)
+5. Run `yarn`
+6. Run `rails db:create db:migrate`
+7. In one Terminal window, run `bin/webpack-dev-server`. In a second window, run `rails s`.
+8. Visit http://localhost:3000
