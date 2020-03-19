@@ -1,0 +1,37 @@
+version: '3'
+services:
+  dev_db:
+    image: postgres:alpine
+    container_name: feedadoc_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: feedadoc_development
+      POSTGRES_USER: feedadoc
+      POSTGRES_PASSWORD: password1
+  web:
+    build: .
+    container_name: feedadoc_web
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    environment:
+      PGHOST: "dev_db"
+      WEBPACKER_DEV_SERVER_HOST: "webpacker"
+    volumes:
+      - ./public:/feedadoc/public
+      - .:/feedadoc
+    ports:
+      - "3000:3000"
+    depends_on:
+      - dev_db
+      - webpacker
+  webpacker:
+    build: .
+    command: ["bin/webpack-dev-server"]
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: "webpacker"
+    volumes:
+      - .:/feedadoc
+    ports:
+      - 3035:3035
