@@ -40,6 +40,7 @@ class Mutations::CreateProviderAndRequest < Mutations::BaseMutation
     if provider.valid? && request.valid?
       provider.save!
       request.save!
+      LinkCreator.create(request)
       {
         provider: provider,
         request: request,

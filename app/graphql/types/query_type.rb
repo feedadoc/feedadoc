@@ -40,5 +40,14 @@ module Types
 
       scope
     end
+
+    field :linked_token,
+          Types::LinkedTokenEntityUnionType,
+          null: false do
+      argument :token, String, required: true
+    end
+    def linked_token(args)
+      LinkedToken.find_by(token: args[:token]).entity
+    end
   end
 end

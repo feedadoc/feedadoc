@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  token: MyText
+  entity: one
+  entity_type: entity
+
+two:
+  token: MyText
+  entity: two
+  entity_type: entity

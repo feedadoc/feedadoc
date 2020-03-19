@@ -14,7 +14,7 @@ services:
   web:
     build: .
     container_name: feedadoc_web
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "bundle && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     environment:
       PGHOST: "dev_db"
       WEBPACKER_DEV_SERVER_HOST: "webpacker"

@@ -1,6 +1,6 @@
 class FeedADocSchema < GraphQL::Schema
-  mutation(Types::MutationType)
   query(Types::QueryType)
+  mutation(Types::MutationType)
 
   # Opt in to the new runtime (default in future graphql-ruby versions)
   use GraphQL::Execution::Interpreter
