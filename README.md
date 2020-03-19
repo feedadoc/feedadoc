@@ -4,6 +4,8 @@ This website connects healthcare workers (docs, nurses, specialists, support sta
 
 > This project is the upcoming rebuild of FeedADoc.com, which is currently using Google Sites.
 
+We'd love your help! Please [see the project for a prioritized list of issues (tasks)](https://github.com/cantino/feedadoc/projects/1).
+
 ## Tech Stack
 
 * [Rails](https://rubyonrails.org/)
