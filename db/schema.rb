@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_204230) do
+ActiveRecord::Schema.define(version: 2020_03_19_055350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "linked_tokens", force: :cascade do |t|
+    t.string "token", null: false
+    t.string "entity_type", null: false
+    t.bigint "entity_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["entity_type", "entity_id"], name: "index_linked_tokens_on_entity_type_and_entity_id"
+    t.index ["token", "entity_type", "entity_id"], name: "index_linked_tokens_on_token_and_entity_type_and_entity_id"
+    t.index ["token"], name: "index_linked_tokens_on_token", unique: true
+  end
 
   create_table "providers", force: :cascade do |t|
     t.string "first_name", null: false
