@@ -17,6 +17,10 @@ function console() {
   docker exec -it feedadoc_web rails c
 }
 
+function run() {
+  docker exec -i feedadoc_web $1
+}
+
 if [ "$1" == "start" ]; then
     start
 fi
@@ -28,4 +32,7 @@ if [ "$1" == "restart" ]; then
 fi
 if [ "$1" == "console" ]; then
     console
+fi
+if [ "$1" == "run" ]; then
+    run "$2"
 fi

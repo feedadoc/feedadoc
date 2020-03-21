@@ -34,3 +34,23 @@ The below steps assume you've forked and cloned the repo to your local machine.
 6. Run `rails db:create db:migrate`
 7. In one Terminal window, run `bin/webpack-dev-server`. In a second window, run `rails s`.
 8. Visit http://localhost:3000
+9. If working with emails, map localhost to `mailcatcher` in your `/etc/hosts` file.
+
+## Working with Docker
+Running Rails with Docker is slightly more nuanced than out of the box Rails. Depending on your system, you may run into permission issues if you try to `bundle` locally while running the server on Docker. As such, it's best to only issue commands through Docker. Here are some common commands:
+```bash
+# Start the server
+./scripts/local start
+
+# Stop the server 
+./scripts/local stop
+
+# Restart the server
+./scripts/local restart
+```
+
+And to run commands you'd typically run locally, like "rails generate":
+```
+./scripts/local run "rails generate ..."
+```
+
