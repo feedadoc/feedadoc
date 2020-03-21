@@ -1,0 +1,38 @@
+#!/bin/bash
+
+function start() {
+  docker exec -i feedadoc_web bundle exec rails s -p 3000 -b '0.0.0.0'
+}
+
+function stop() {
+  docker exec -i feedadoc_web kill $(cat tmp/pids/server.pid)  
+}
+
+function restart() {
+  stop
+  start
+}
+
+function console() {
+  docker exec -it feedadoc_web rails c
+}
+
+function run() {
+  docker exec -i feedadoc_web $1
+}
+
+if [ "$1" == "start" ]; then
+    start
+fi
+if [ "$1" == "stop" ]; then
+    stop
+fi
+if [ "$1" == "restart" ]; then
+    restart
+fi
+if [ "$1" == "console" ]; then
+    console
+fi
+if [ "$1" == "run" ]; then
+    run "$2"
+fi
