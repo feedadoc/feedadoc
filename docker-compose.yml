@@ -14,7 +14,7 @@ services:
   web:
     build: .
     container_name: feedadoc_web
-    command: bash -c "bundle && rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: tail -f /dev/null
     environment:
       PGHOST: "dev_db"
       WEBPACKER_DEV_SERVER_HOST: "webpacker"
@@ -35,3 +35,8 @@ services:
       - .:/feedadoc
     ports:
       - 3035:3035
+  mailcatcher:
+    image: rordi/docker-mailcatcher
+    container_name: mailcatcher
+    ports:
+      - 1080:1080
