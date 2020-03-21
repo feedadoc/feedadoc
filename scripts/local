@@ -21,6 +21,10 @@ function run() {
   docker exec -i feedadoc_web $1
 }
 
+function yarn() {
+  docker exec -i feedadoc_webpacker_1 yarn
+}
+
 if [ "$1" == "start" ]; then
     start
 fi
@@ -32,6 +36,9 @@ if [ "$1" == "restart" ]; then
 fi
 if [ "$1" == "console" ]; then
     console
+fi
+if [ "$1" == "yarn" ]; then
+    yarn
 fi
 if [ "$1" == "run" ]; then
     run "$2"
