@@ -1,6 +1,6 @@
 class LinkCreator
   class << self
-    def create(entity)
+    def create_token(entity)
       LinkedToken.create!(entity: entity)
     end
   end
