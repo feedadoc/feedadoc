@@ -28,7 +28,7 @@ The below steps assume you've forked and cloned the repo to your local machine.
         CREATE USER feedadoc WITH SUPERUSER PASSWORD 'password1';
 
 2. Install Ruby v2.7.0 (see `.ruby-version`; also, we recommend [rvm](https://rvm.io/rvm/install) to manage ruby versions.)
-3. Run `bundle`
+3. Run `bundle && bundle install`
 4. Install Yarn (On OS X: `brew install yarn`)
 5. Run `yarn`
 6. Run `rails db:create db:migrate`
