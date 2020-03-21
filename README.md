@@ -1,5 +1,7 @@
 # FeedADoc.com
 
+[![CircleCI](https://circleci.com/gh/cantino/feedadoc.svg?style=svg)](https://circleci.com/gh/cantino/feedadoc)
+
 This website connects healthcare workers (docs, nurses, specialists, support staff) with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance or can provide it!
 
 > This project is the upcoming rebuild of FeedADoc.com, which is currently using Google Sites.
