@@ -50,8 +50,8 @@ const providerRequestTypes = [
 ];
 
 export default function ProviderRequestForm({
-  requestTypes,
-  requestDescription,
+  requests,
+  description,
   onChange,
   setField
 }) {
@@ -74,15 +74,15 @@ export default function ProviderRequestForm({
                 key={type.value}
                 control={
                   <Checkbox
-                    checked={requestTypes.includes(type.value)}
+                    checked={requests.includes(type.value)}
                     onChange={e =>
                       e.target.checked
-                        ? setField("requestTypes")([
-                            ...requestTypes,
+                        ? setField("requests")([
+                            ...requests,
                             type.value
                           ])
-                        : setField("requestTypes")(
-                            requestTypes.filter(x => x !== type.value)
+                        : setField("requests")(
+                            requests.filter(x => x !== type.value)
                           )
                     }
                     name={type.value}
@@ -97,11 +97,11 @@ export default function ProviderRequestForm({
         <Grid item xs={12}>
           <TextField
             required
-            id="requestDescription"
-            name="requestDescription"
+            id="description"
+            name="description"
             label="Describe your request"
             fullWidth
-            value={requestDescription}
+            value={description}
             onChange={onChange}
           />
           <FormHelperText>

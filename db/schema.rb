@@ -36,27 +36,20 @@ ActiveRecord::Schema.define(version: 2020_03_19_055350) do
     t.string "state", null: false
     t.string "email", null: false
     t.string "contact_info", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "requests", force: :cascade do |t|
-    t.bigint "provider_id", null: false
-    t.string "request_type", null: false
+    t.jsonb "requests", default: [], null: false
     t.text "description", null: false
-    t.string "status", null: false
+    t.boolean "active", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["provider_id"], name: "index_requests_on_provider_id"
   end
 
   create_table "responses", force: :cascade do |t|
-    t.bigint "request_id", null: false
+    t.bigint "provider_id", null: false
     t.bigint "volunteer_id", null: false
     t.text "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["request_id"], name: "index_responses_on_request_id"
+    t.index ["provider_id"], name: "index_responses_on_provider_id"
     t.index ["volunteer_id"], name: "index_responses_on_volunteer_id"
   end
 
@@ -70,7 +63,6 @@ ActiveRecord::Schema.define(version: 2020_03_19_055350) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "requests", "providers"
-  add_foreign_key "responses", "requests"
+  add_foreign_key "responses", "providers"
   add_foreign_key "responses", "volunteers"
 end

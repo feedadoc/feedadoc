@@ -54,10 +54,10 @@ const CREATE_PROVIDER = gql`
     $contactInfo: String!
     $facility: String!
     $role: String!
-    $requestType: String!
-    $requestDescription: String!
+    $requests: [String!]!
+    $description: String!
   ) {
-    createProviderAndRequest(
+    createProvider(
       input: {
         firstName: $firstName
         lastName: $lastName
@@ -68,14 +68,12 @@ const CREATE_PROVIDER = gql`
         contactInfo: $contactInfo
         facility: $facility
         role: $role
-        requestTypes: $requestTypes
-        requestDescription: $requestDescription
+        requests: $requests
+        description: $description
       }
     ) {
       errors
-      provider {
-        id
-      }
+      provider { id }
     }
   }
 `;
@@ -94,8 +92,8 @@ export default function SignupStepper({ steps }) {
     contactInfo: "",
     facility: "",
     role: "",
-    requestTypes: [],
-    requestDescription: ""
+    requests: [],
+    description: ""
   });
 
   const [createProvider, { loading, data, error }] = useMutation(
@@ -107,7 +105,7 @@ export default function SignupStepper({ steps }) {
       createProvider({ variables })
         .then(({ errors: systemErrors = [], data }) => {
           const {
-            createProviderAndRequest: { provider, errors = [] }
+            createProvider: { provider, errors = [] }
           } = data;
           const allErrors = [...(errors || []), ...systemErrors].map(e =>
             e && e.message ? e.message : e

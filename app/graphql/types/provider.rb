@@ -7,14 +7,23 @@ module Types
     field :neighborhood, String, null: true
     field :city, String, null: false
     field :state, String, null: false
+    field :description, String, null: false
+    field :requests, [Types::Request], null: false
+    field :active, Boolean, null: false
   end
 
   class ProviderFilter < Types::BaseInputObject
     argument :id, ID, required: false
+    argument :state, String, required: false
+    argument :city, String, required: false
+    argument :active, Boolean, required: false
+    argument :role, String, required: false
   end
 
   class ProviderSort < Types::BaseEnum
     value("ID", "The Provider's ID", value: :id)
+    value("STATE", "The Provider's state", value: :state)
+    value("CITY", "The Provider's city", value: :city)
   end
 
   class ProviderOrder < Types::BaseInputObject

@@ -10,6 +10,9 @@ class CreateProviders < ActiveRecord::Migration[6.0]
       t.string :state, null: false
       t.string :email, null: false
       t.string :contact_info, null: false
+      t.jsonb :requests, null: false, default: []
+      t.text :description, null: false
+      t.boolean :active, null: false, default: true
 
       t.timestamps
     end
