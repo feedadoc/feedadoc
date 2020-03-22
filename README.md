@@ -22,7 +22,8 @@ The below steps assume you've forked and cloned the repo to your local machine.
 ### With Docker
 1. `docker-compose up -d`
 2. `docker-compose run web rails db:migrate db:create`
-3. Visit http://localhost:3000
+3. `./scripts/local start`
+4. Visit http://localhost:3000
 
 ### Running Ruby and Postgres locally
 1. Use `psql` to create a PG user called `feedadoc`. (We assume you have postgresql installed, on OS X you can use `brew` to install it or run [Postgres.app](https://postgresapp.com/).)
