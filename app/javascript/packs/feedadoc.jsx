@@ -17,6 +17,7 @@ import SignupStepper from "./pages/provider_signup/SignupStepper";
 import AddressForm from "./pages/provider_signup/AddressForm";
 import ProviderRequestForm from "./pages/provider_signup/ProviderRequestForm";
 import BrowseRequests from "./pages/BrowseRequests";
+import ProviderPage from './pages/ProviderPage';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -152,6 +153,7 @@ function App() {
               <Route path="/volunteer-signup">
                 <BrowseRequests />
               </Route>
+              <Route path="/providers/:id" component={ProviderPage}/>
               <Route path="/">
                 <Welcome />
               </Route>
