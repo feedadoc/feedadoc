@@ -8,7 +8,7 @@ module Types
       value("laundry")
       value("lodging")
       value("supplies")
-      value("petCare")
+      value("pets")
     end
   end
 end

@@ -49,7 +49,7 @@ const providerRequestTypes = [
   },
   {
     label: "Pet care",
-    value: "petCare"
+    value: "pets"
   }
 ];
 
