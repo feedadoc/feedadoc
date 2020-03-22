@@ -51,7 +51,6 @@ const CREATE_PROVIDER = gql`
     $city: String!
     $state: String!
     $email: String!
-    $contactInfo: String!
     $facility: String!
     $role: String!
     $requests: [String!]!
@@ -65,7 +64,6 @@ const CREATE_PROVIDER = gql`
         city: $city
         state: $state
         email: $email
-        contactInfo: $contactInfo
         facility: $facility
         role: $role
         requests: $requests
@@ -89,7 +87,6 @@ export default function SignupStepper({ steps }) {
     city: "",
     state: "",
     email: "",
-    contactInfo: "",
     facility: "",
     role: "",
     requests: [],

@@ -25,7 +25,6 @@ export default function AddressForm({
   city,
   state,
   email,
-  contactInfo,
   facility,
   role,
   onChange
@@ -160,23 +159,6 @@ export default function AddressForm({
             onChange={onChange}
             fullWidth
           />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="contactInfo"
-            name="contactInfo"
-            label="How can volunteers contact you?"
-            fullWidth
-            value={contactInfo}
-            onChange={onChange}
-          />
-          <FormHelperText>
-            This will be PUBLIC. We strongly recommend using something besides
-            personal email or phone. Examples: Facebook Messenger ID, Twitter
-            handle (if you've enabled DMs), create a free disposable email
-            address using spamgourmet.com, boun.cr, or trashmail.com.
-          </FormHelperText>
         </Grid>
       </Grid>
     </React.Fragment>

@@ -6,7 +6,6 @@ module Types
     field :first_name, String, null: false
     field :last_name, String, null: true
     field :email, String, null: false
-    field :contact_info, String, null: false
     field :role, String, null: false
     field :facility, String, null: false
     field :neighborhood, String, null: true
