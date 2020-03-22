@@ -62,51 +62,6 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12}>
           <TextField
-            required
-            id="facility"
-            name="facility"
-            label="Your Medical Facility"
-            value={facility}
-            onChange={onChange}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControl>
-            <InputLabel required id="role-select-label">
-              Your Job Title / Role
-            </InputLabel>
-            <Select
-              required
-              native
-              labelId="role-select-label"
-              id="role"
-              name="role"
-              className={classes.roleSelect}
-              value={role}
-              onChange={onChange}
-            >
-              <option value="" />
-              <option value="physician">
-                Physician, Nurse Practitioner, Physician Assistant
-              </option>
-              <option value="nurse">Nurse</option>
-              <option value="therapist">
-                Respiratory Therapist, Physical Therapist, Occupational
-                Therapist, Speech Therapist
-              </option>
-              <option value="assistant">
-                Medical assistant, patient care assistant, or other clinical
-                staff
-              </option>
-              <option value="admin">
-                Admin/support staff or social worker
-              </option>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
             id="neighborhood"
             name="neighborhood"
             label="Neighborhood"
@@ -147,6 +102,51 @@ export default function AddressForm({
                   {s}
                 </option>
               ))}
+            </Select>
+          </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            required
+            id="facility"
+            name="facility"
+            label="Your Medical Facility"
+            value={facility}
+            onChange={onChange}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl>
+            <InputLabel required id="role-select-label">
+              Your Job Title / Role
+            </InputLabel>
+            <Select
+              required
+              native
+              labelId="role-select-label"
+              id="role"
+              name="role"
+              className={classes.roleSelect}
+              value={role}
+              onChange={onChange}
+            >
+              <option value="" />
+              <option value="physician">
+                Physician, Nurse Practitioner, Physician Assistant
+              </option>
+              <option value="nurse">Nurse</option>
+              <option value="therapist">
+                Respiratory Therapist, Physical Therapist, Occupational
+                Therapist, Speech Therapist
+              </option>
+              <option value="assistant">
+                Medical assistant, patient care assistant, or other clinical
+                staff
+              </option>
+              <option value="admin">
+                Admin/support staff or social worker
+              </option>
             </Select>
           </FormControl>
         </Grid>
