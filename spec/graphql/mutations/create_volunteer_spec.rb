@@ -1,27 +1,29 @@
 require "rails_helper"
 
 describe Mutations::CreateVolunteer, type: :request do
-  MUTATION = <<~GRAPHQL
-    mutation CreateVolunteer($firstName: String!, $lastName: String,
-                             $neighborhood: String, $city: String!, $state: String!,
-                             $email: String!, $providerId: ID!) {
-      createVolunteer(input: {
-                              firstName: $firstName, lastName: $lastName,
-                              neighborhood: $neighborhood, city: $city, state: $state,
-                              email: $email, providerId: $providerId
-                            }) {
-        errors
-        volunteer { id, firstName, providers { edges { node { id, firstName } } } }
+  let(:mutation) {
+    <<~GRAPHQL
+      mutation CreateVolunteer($firstName: String!, $lastName: String,
+                               $neighborhood: String, $city: String!, $state: String!,
+                               $email: String!, $providerId: ID!) {
+        createVolunteer(input: {
+                                firstName: $firstName, lastName: $lastName,
+                                neighborhood: $neighborhood, city: $city, state: $state,
+                                email: $email, providerId: $providerId
+                              }) {
+          errors
+          volunteer { id, firstName, providers { edges { node { id, firstName } } } }
+        }
       }
-    }
-  GRAPHQL
+    GRAPHQL
+  }
 
   it "creates a Volunteer and sends an email" do
     provider = create(:provider)
 
     expect do
       expect do
-        post '/graphql', params: { query: MUTATION, variables: { firstName: 'bob', lastName: 'smith',
+        post '/graphql', params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
                                                                  neighborhood: 'sunset', city: 'sf', state: 'CA',
                                                                  email: 'bob@example.com', providerId: provider.id
         } }
