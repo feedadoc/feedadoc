@@ -41,8 +41,7 @@ class Mutations::CreateProviderAndRequest < Mutations::BaseMutation
       provider.save!
       request.save!
       linked_token = LinkCreator.create_token(request)
-      # TODO: Do we plan on using Action Job? If so, make async
-      ProviderMailer.with(linked_token: linked_token).request_created_email.deliver_now
+      ProviderMailer.with(linked_token: linked_token).request_created_email.deliver_later
       {
         provider: provider,
         request: request,
