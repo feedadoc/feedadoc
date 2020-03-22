@@ -46,6 +46,10 @@ const providerRequestTypes = [
   {
     label: "Supplies",
     value: "supplies"
+  },
+  {
+    label: "Pet care",
+    value: "petCare"
   }
 ];
 
