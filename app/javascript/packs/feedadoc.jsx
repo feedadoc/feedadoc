@@ -16,7 +16,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import SignupStepper from "./pages/provider_signup/SignupStepper";
 import AddressForm from "./pages/provider_signup/AddressForm";
 import ProviderRequestForm from "./pages/provider_signup/ProviderRequestForm";
-import InstitutionForm from "./pages/provider_signup/InstitutionForm";
 import BrowseRequests from "./pages/BrowseRequests";
 
 const useStyles = makeStyles(theme => ({
@@ -147,7 +146,6 @@ function App() {
               <Route path="/provider-signup">
                 <SignupStepper steps={[
                   { label: 'About You', component: AddressForm },
-                  { label: 'Institution', component: InstitutionForm },
                   { label: 'Request', component: ProviderRequestForm },
                 ]}/>
               </Route>
