@@ -13,7 +13,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   argument :description, String, required: true
   argument :requests, [String], required: true
 
-  field :provider, Types::Provider, null: true
+  field :provider, Types::FullProvider, null: true
   field :errors, [String], null: false
 
   def resolve(first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility:, role:, contact_info:, requests:, description:)

@@ -3,7 +3,8 @@ class Volunteer < ApplicationRecord
 
   has_many :responses
 
-  validates :name, :city, presence: true
+  validates :first_name, :city, presence: true
   validates :email, format: /@/
-  validates :state, inclusion: { in: STATES }
+  validates :state, inclusion: { in: Volunteer::STATES, message: "is not included in the list of valid states" }
+  validates_associated :responses
 end

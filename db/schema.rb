@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_19_055350) do
+ActiveRecord::Schema.define(version: 2020_03_22_161834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,21 +46,27 @@ ActiveRecord::Schema.define(version: 2020_03_19_055350) do
   create_table "responses", force: :cascade do |t|
     t.bigint "provider_id", null: false
     t.bigint "volunteer_id", null: false
-    t.text "status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "requests", null: false, array: true
+    t.text "description"
+    t.string "availabilities", null: false, array: true
+    t.string "phone"
+    t.string "social"
+    t.boolean "over_18", null: false
     t.index ["provider_id"], name: "index_responses_on_provider_id"
     t.index ["volunteer_id"], name: "index_responses_on_volunteer_id"
   end
 
   create_table "volunteers", force: :cascade do |t|
-    t.string "name", null: false
     t.string "email", null: false
     t.string "neighborhood"
     t.string "city", null: false
     t.string "state", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
   end
 
   add_foreign_key "responses", "providers"
