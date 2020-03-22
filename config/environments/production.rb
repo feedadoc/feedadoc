@@ -54,19 +54,19 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "feedadoc_production"
+  config.active_job.queue_adapter = :sucker_punch
 
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'feedadoc.com',
+    :domain => ENV['SENDGRID_DOMAIN'],
     :address => 'smtp.sendgrid.net',
-    :port => 465,
+    :port => '465',
     :authentication => :plain,
-    :enable_starttls_auto => true
+    :enable_starttls_auto => true,
+    :tls => true
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.

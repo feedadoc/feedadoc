@@ -81,18 +81,30 @@ jobs:
           command: |
             mkdir /tmp/test-results
             TESTFILES=$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
-            bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format progress
+            RUBYOPT='-W:no-deprecated -W:no-experimental' bundle exec rspec $TESTFILES --profile 10 --format RspecJunitFormatter --out /tmp/test-results/rspec.xml --format progress
       - store_test_results:
           path: /tmp/test-results
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+  staging-deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          force: true
+      - run:
+          command: "heroku run -a $HEROKU_APP_NAME rake db:migrate"
   optional-staging-deploy:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
-      - heroku/deploy-via-git
+      - heroku/deploy-via-git:
+          force: true
+      - run:
+          command: "heroku run -a $HEROKU_APP_NAME rake db:migrate"
 
 workflows:
   version: 2
@@ -102,7 +114,7 @@ workflows:
       - test:
           requires:
             - build
-      - heroku/deploy-via-git:
+      - staging-deploy:
           requires:
             - test
           filters:
