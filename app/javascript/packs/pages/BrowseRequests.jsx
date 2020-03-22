@@ -22,28 +22,25 @@ const useStyles = makeStyles(theme => ({
 
 const TOTAL_PROVIDERS = gql`
   {
-    providers {
+    providers(filters: { active: true }, orderBy: { direction: ASC, sort: CITY }) {
       totalCount
-    }
 
-    requests(filters: { status: new }, orderBy: { direction: ASC, sort: CITY }) {
       pageInfo {
         hasNextPage
         hasPreviousPage
         startCursor
         endCursor
       }
+
       edges {
         cursor
         node {
           id
           description
-          requestType
-          provider {
-            id, firstName
-            city, state, neighborhood
-            role, facility
-          }
+          requests { type, satisfied }
+          id, firstName
+          city, state, neighborhood
+          role, facility
         }
       }
     }

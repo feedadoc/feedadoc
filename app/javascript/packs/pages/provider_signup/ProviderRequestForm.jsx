@@ -1,23 +1,60 @@
-import React from 'react';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import InputLabel from "@material-ui/core/InputLabel";
-import Select from "@material-ui/core/Select";
-import {makeStyles} from "@material-ui/core/styles";
+import React from "react";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
+import Checkbox from "@material-ui/core/Checkbox";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import FormLabel from "@material-ui/core/FormLabel";
 
 const useStyles = makeStyles(theme => ({
   firstEntry: {
-    marginTop: theme.spacing(2),
+    marginTop: theme.spacing(2)
   },
   typeSelect: {
-    minWidth: 200,
+    minWidth: 200
   }
 }));
 
-export default function ProviderRequestForm({ requestType, requestDescription, onChange }) {
+const providerRequestTypes = [
+  {
+    label: "Childcare",
+    value: "childcare"
+  },
+  {
+    label: "Errands/Shopping",
+    value: "shopping"
+  },
+  {
+    label: "Housecleaning",
+    value: "cleaning"
+  },
+  {
+    label: "Meal preparation / delivery",
+    value: "meals"
+  },
+  {
+    label: "Laundry",
+    value: "laundry"
+  },
+  {
+    label: "Lodging",
+    value: "lodging"
+  },
+  {
+    label: "Supplies",
+    value: "supplies"
+  }
+];
+
+export default function ProviderRequestForm({
+  requests,
+  description,
+  onChange,
+  setField
+}) {
   const classes = useStyles();
 
   return (
@@ -29,36 +66,42 @@ export default function ProviderRequestForm({ requestType, requestDescription, o
       <Grid container spacing={3} className={classes.firstEntry}>
         <Grid item xs={12}>
           <FormControl>
-            <InputLabel required id="type-select-label">Type of Request</InputLabel>
-            <Select
-              required
-              native
-              labelId="type-select-label"
-              id="requestType"
-              name="requestType"
-              className={classes.typeSelect}
-              value={requestType}
-              onChange={onChange}
-            >
-              <option value='' />
-              <option value='childcare'>Childcare</option>
-              <option value='shopping'>Errands/Shopping</option>
-              <option value='cleaning'>Housecleaning</option>
-              <option value='meals'>Meal preparation / delivery</option>
-              <option value='laundry'>Laundry</option>
-              <option value='lodging'>Lodging</option>
-              <option value='supplies'>Supplies</option>
-            </Select>
+            <FormLabel required id="type-select-label">
+              What kinds of support do you need?
+            </FormLabel>
+            {providerRequestTypes.map(type => (
+              <FormControlLabel
+                key={type.value}
+                control={
+                  <Checkbox
+                    checked={requests.includes(type.value)}
+                    onChange={e =>
+                      e.target.checked
+                        ? setField("requests")([
+                            ...requests,
+                            type.value
+                          ])
+                        : setField("requests")(
+                            requests.filter(x => x !== type.value)
+                          )
+                    }
+                    name={type.value}
+                    color="primary"
+                  />
+                }
+                label={type.label}
+              />
+            ))}
           </FormControl>
         </Grid>
         <Grid item xs={12}>
           <TextField
             required
-            id="requestDescription"
-            name="requestDescription"
+            id="description"
+            name="description"
             label="Describe your request"
             fullWidth
-            value={requestDescription}
+            value={description}
             onChange={onChange}
           />
           <FormHelperText>
