@@ -1,7 +1,7 @@
 class Provider < ApplicationRecord
   REQUEST_TYPES = %w(childcare shopping cleaning meals laundry lodging supplies pets)
 
-  validates :first_name, :city, :role, :facility, :contact_info, :description, presence: true
+  validates :first_name, :city, :role, :facility, :description, presence: true
   validates :email, format: /@/
   validates :state, inclusion: { in: Volunteer::STATES, message: "is not included in the list of valid states" }
   validate :validate_requests

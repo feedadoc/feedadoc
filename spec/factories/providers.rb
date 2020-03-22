@@ -10,7 +10,6 @@ FactoryBot.define do
     sequence :email do |n|
       "person#{n}@example.com"
     end
-    contact_info { "Email me" }
     description { "I need help" }
     requests {
       [{ "type" => "childcare", "satisfied" => false },
