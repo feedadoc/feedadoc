@@ -22,7 +22,10 @@ const useStyles = makeStyles(theme => ({
 
 const TOTAL_PROVIDERS = gql`
   {
-    providers(filters: { active: true }, orderBy: { direction: ASC, sort: CITY }) {
+    providers(filters: {
+      active: true
+      updatedWithinDays: 15
+    }, orderBy: { direction: ASC, sort: CITY }) {
       totalCount
 
       pageInfo {
@@ -41,6 +44,7 @@ const TOTAL_PROVIDERS = gql`
           id, firstName
           city, state, neighborhood
           role, facility
+          updatedAt
         }
       }
     }
