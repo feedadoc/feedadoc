@@ -18,6 +18,9 @@ references:
       POSTGRES_DB: feedadoc_test
       POSTGRES_PASSWORD: "password1"
 
+orbs:
+  heroku: circleci/heroku@1.0.1 # Invoke the Heroku orb
+
 jobs:
   build:
     docker:
@@ -84,9 +87,12 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
-
-orbs:
-  heroku: circleci/heroku@1.0.1 # Invoke the Heroku orb
+  optional-staging-deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git
 
 workflows:
   version: 2
@@ -102,3 +108,10 @@ workflows:
           filters:
             branches:
               only: master
+      - optional-staging-deploy-approval:
+          type: approval
+          requires:
+            - test
+      - optional-staging-deploy:
+          requires:
+            - optional-staging-deploy-approval
