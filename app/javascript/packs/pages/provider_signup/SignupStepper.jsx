@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import {makeStyles} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-import {gql} from 'apollo-boost';
-import {useMutation} from '@apollo/react-hooks';
-import ErrorIcon from '@material-ui/icons/Error';
+import React from "react";
+import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { gql } from "apollo-boost";
+import { useMutation } from "@apollo/react-hooks";
+import ErrorIcon from "@material-ui/icons/Error";
 import Snackbar from "@material-ui/core/Snackbar";
 
 const useStyles = makeStyles(theme => ({
@@ -18,48 +18,64 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
-      padding: theme.spacing(3),
-    },
+      padding: theme.spacing(3)
+    }
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5),
+    padding: theme.spacing(3, 0, 5)
   },
   buttons: {
-    display: 'flex',
-    justifyContent: "flex-end",
+    display: "flex",
+    justifyContent: "flex-end"
   },
   button: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1),
+    marginLeft: theme.spacing(1)
   },
   error: {
     backgroundColor: theme.palette.error.main,
     color: theme.palette.error.contrastText,
     fill: theme.palette.error.contrastText,
-    padding: theme.spacing(1),
+    padding: theme.spacing(1)
   },
   step: {
-    cursor: 'pointer',
+    cursor: "pointer"
   }
 }));
 
 const CREATE_PROVIDER = gql`
-  mutation CreateProvider($firstName: String!, $lastName: String,
-                          $neighborhood: String, $city: String!, $state: String!,
-                          $email: String!, $contactInfo: String!,
-                          $facility: String!, $role: String!,
-                          $requestType: String!, $requestDescription: String!) {
-    createProviderAndRequest(input: {
-                                      firstName: $firstName,
-                                      lastName: $lastName,
-                                      neighborhood: $neighborhood, city: $city, state: $state,
-                                      email: $email, contactInfo: $contactInfo,
-                                      facility: $facility, role: $role,
-                                      requestType: $requestType, requestDescription: $requestDescription
-                                    }) {
+  mutation CreateProvider(
+    $firstName: String!
+    $lastName: String
+    $neighborhood: String
+    $city: String!
+    $state: String!
+    $email: String!
+    $contactInfo: String!
+    $facility: String!
+    $role: String!
+    $requestType: String!
+    $requestDescription: String!
+  ) {
+    createProviderAndRequest(
+      input: {
+        firstName: $firstName
+        lastName: $lastName
+        neighborhood: $neighborhood
+        city: $city
+        state: $state
+        email: $email
+        contactInfo: $contactInfo
+        facility: $facility
+        role: $role
+        requestTypes: $requestTypes
+        requestDescription: $requestDescription
+      }
+    ) {
       errors
-      provider { id }
-      request { id }
+      provider {
+        id
+      }
     }
   }
 `;
@@ -69,36 +85,44 @@ export default function SignupStepper({ steps }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [errors, setErrors] = React.useState(null);
   const [variables, setVariables] = React.useState({
-    firstName: '',
-    lastName: '',
-    neighborhood: '',
-    city: '',
-    state: '',
-    email: '',
-    contactInfo: '',
-    facility: '',
-    role: '',
-    requestType: '',
-    requestDescription: ''
+    firstName: "",
+    lastName: "",
+    neighborhood: "",
+    city: "",
+    state: "",
+    email: "",
+    contactInfo: "",
+    facility: "",
+    role: "",
+    requestTypes: [],
+    requestDescription: ""
   });
 
-  const [createProvider, { loading, data, error }] = useMutation(CREATE_PROVIDER);
+  const [createProvider, { loading, data, error }] = useMutation(
+    CREATE_PROVIDER
+  );
 
   const handleNext = () => {
     if (activeStep === steps.length - 1) {
-      createProvider({ variables }).then(({ errors: systemErrors = [], data }) => {
-        const { createProviderAndRequest: { provider, request, errors = [] } } = data;
-        const allErrors = [...(errors || []), ...systemErrors].map(e => e && e.message ? e.message : e);
-        if (errors.length) {
-          setErrors(errors);
-        } else {
-          setActiveStep(activeStep + 1);
-        }
-        console.log(data);
-        console.log([provider, request]);
-      }).catch((e) => {
-        setErrors([e.message]);
-      });
+      createProvider({ variables })
+        .then(({ errors: systemErrors = [], data }) => {
+          const {
+            createProviderAndRequest: { provider, errors = [] }
+          } = data;
+          const allErrors = [...(errors || []), ...systemErrors].map(e =>
+            e && e.message ? e.message : e
+          );
+          if (errors.length) {
+            setErrors(errors);
+          } else {
+            setActiveStep(activeStep + 1);
+          }
+          console.log(data);
+          console.log([provider]);
+        })
+        .catch(e => {
+          setErrors([e.message]);
+        });
     } else {
       setActiveStep(activeStep + 1);
     }
@@ -108,9 +132,11 @@ export default function SignupStepper({ steps }) {
     setActiveStep(activeStep - 1);
   };
 
-  const onChange = (e) => {
-    setVariables({...variables, [e.target.name]: e.target.value});
+  const setField = name => value => {
+    setVariables({ ...variables, [name]: value });
   };
+
+  const onChange = e => setField(e.target.name)(e.target.value);
 
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
@@ -134,7 +160,7 @@ export default function SignupStepper({ steps }) {
           Post a Request
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
-          {steps.map(({label}, index) => (
+          {steps.map(({ label }, index) => (
             <Step key={index} onClick={() => setActiveStep(index)}>
               <StepLabel className={classes.step}>{label}</StepLabel>
             </Step>
@@ -142,7 +168,11 @@ export default function SignupStepper({ steps }) {
         </Stepper>
         <React.Fragment>
           <React.Fragment>
-            <CurrentStep onChange={onChange} {...variables} />
+            <CurrentStep
+              onChange={onChange}
+              setField={setField}
+              {...variables}
+            />
             <div className={classes.buttons}>
               {activeStep !== 0 && (
                 <Button onClick={handleBack} className={classes.button}>
@@ -156,19 +186,19 @@ export default function SignupStepper({ steps }) {
                 className={classes.button}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? 'Signup' : 'Next'}
+                {activeStep === steps.length - 1 ? "Signup" : "Next"}
               </Button>
             </div>
           </React.Fragment>
         </React.Fragment>
       </React.Fragment>
-      {errors &&
+      {errors && (
         <Snackbar open={true} onClose={() => setErrors(null)}>
           <Paper className={classes.error}>
-            <ErrorIcon />{' '}{errors.join(" - ")}
+            <ErrorIcon /> {errors.join(" - ")}
           </Paper>
         </Snackbar>
-      }
+      )}
     </Paper>
   );
 }
