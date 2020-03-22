@@ -5,4 +5,11 @@ class ProviderMailer < ApplicationMailer
     @edit_url = HOST_AND_SCHEME + '/providers/' + params[:linked_token].token + '/edit'
     mail(to: @provider.email, subject: 'Your help request has been created.')
   end
+
+  def volunteer_response_email
+    @provider = params[:provider]
+    @volunteer = params[:volunteer]
+    @response = params[:response]
+    mail(to: @provider.email, subject: 'Your help request has been created.', reply_to: @volunteer.email)
+  end
 end
