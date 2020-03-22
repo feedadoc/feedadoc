@@ -1,4 +1,6 @@
 class Provider < ApplicationRecord
+  REQUEST_TYPES = %w(childcare shopping cleaning meals laundry lodging supplies pets)
+
   validates :first_name, :city, :role, :facility, :contact_info, :description, presence: true
   validates :email, format: /@/
   validates :state, inclusion: { in: Volunteer::STATES, message: "is not included in the list of valid states" }
@@ -10,6 +12,6 @@ class Provider < ApplicationRecord
   def validate_requests
     errors.add(:requests, "must be an Array of Requests") unless requests.is_a?(Array)
     errors.add(:base, "You must select at lease one request") unless requests.length > 0
-    errors.add(:requests, "must all have fields satisfied and a type") unless requests.all? { |r| r.has_key?("type") && r.has_key?("satisfied") }
+    errors.add(:requests, "must all have fields satisfied and have a valid type") unless requests.all? { |r| r.is_a?(Hash) && r["type"].in?(REQUEST_TYPES) && r.has_key?("satisfied") }
   end
 end

@@ -48,6 +48,12 @@ ActiveRecord::Schema.define(version: 2020_03_22_161834) do
     t.bigint "volunteer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "requests", null: false, array: true
+    t.text "description"
+    t.string "availabilities", null: false, array: true
+    t.string "phone"
+    t.string "social"
+    t.boolean "over_18", null: false
     t.index ["provider_id"], name: "index_responses_on_provider_id"
     t.index ["volunteer_id"], name: "index_responses_on_volunteer_id"
   end

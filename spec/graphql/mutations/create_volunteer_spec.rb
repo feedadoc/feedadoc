@@ -5,14 +5,20 @@ describe Mutations::CreateVolunteer, type: :request do
     <<~GRAPHQL
       mutation CreateVolunteer($firstName: String!, $lastName: String,
                                $neighborhood: String, $city: String!, $state: String!,
-                               $email: String!, $providerId: ID!) {
+                               $email: String!, $providerId: ID!, $requests: [String!]!,
+                               $description: String, $availabilities: [Availabilities!]!,
+                               $phone: String, $social: String, $over18: Boolean! 
+                              ) {
         createVolunteer(input: {
                                 firstName: $firstName, lastName: $lastName,
                                 neighborhood: $neighborhood, city: $city, state: $state,
-                                email: $email, providerId: $providerId
+                                email: $email,
+                                providerId: $providerId, requests: $requests,
+                                description: $description, availabilities: $availabilities,
+                                phone: $phone, social: $social, over18: $over18
                               }) {
           errors
-          volunteer { id, firstName, providers { edges { node { id, firstName } } } }
+          volunteer { id, firstName, responses { provider { id }, requests, availabilities } }
         }
       }
     GRAPHQL
@@ -23,20 +29,47 @@ describe Mutations::CreateVolunteer, type: :request do
 
     expect do
       expect do
-        post '/graphql', params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
-                                                                 neighborhood: 'sunset', city: 'sf', state: 'CA',
-                                                                 email: 'bob@example.com', providerId: provider.id
-        } }
+        post '/graphql',
+             params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
+                                                     neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                     email: 'bob@example.com', providerId: provider.id,
+                                                     requests: ["cleaning"], description: "foo",
+                                                     availabilities: %w(mid-day nights), phone: "123",
+                                                     social: "@twitter", over18: true
+                                                   }
+                     }.to_json,
+             headers: { "CONTENT_TYPE" => "application/json" }
       end.to change { Volunteer.count }.by(1)
     end.to have_enqueued_job(ActionMailer::MailDeliveryJob)
 
     json = JSON.parse(response.body)
-    expect(json['data']['createVolunteer']['volunteer']).to include(
-                                                            "firstName" => "bob"
-                                                          )
-    expect(json['data']['createVolunteer']['volunteer']['providers']['edges'].first['node']).to include(
-                                                                                                  "id" => provider.to_param,
-                                                                                                  "firstName" => provider.first_name
-                                                                                                )
+    expect(json['data']['createVolunteer']['volunteer']).to include("firstName" => "bob")
+    expect(json['data']['createVolunteer']['volunteer']['responses'].first).to include(
+                                                                                        "provider" => { "id" => provider.to_param },
+                                                                                        "requests" => ["cleaning"],
+                                                                                        "availabilities" => %w(mid-day nights)
+                                                                                      )
+  end
+
+  it "validates the request" do
+    provider = create(:provider)
+
+    expect do
+      expect do
+        post '/graphql',
+             params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
+                                                     neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                     email: 'bob@example.com', providerId: provider.id,
+                                                     requests: ["cleaning"], description: "foo",
+                                                     availabilities: %w(), phone: "123",
+                                                     social: "@twitter", over18: true
+             }
+             }.to_json,
+             headers: { "CONTENT_TYPE" => "application/json" }
+      end.to change { Volunteer.count }.by(0)
+    end.to_not have_enqueued_job(ActionMailer::MailDeliveryJob)
+
+    json = JSON.parse(response.body)
+    expect(json['data']['createVolunteer']['errors']).to include("You must select at least one availabilities")
   end
 end
