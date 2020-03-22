@@ -20,15 +20,17 @@ describe Mutations::CreateProvider, type: :request do
     }
   GRAPHQL
 
-  it "creates a Provider" do
+  it "creates a Provider and sends an email" do
     expect do
-      post '/graphql', params: { query: MUTATION, variables: { firstName: 'bob', lastName: 'smith',
-                                                               neighborhood: 'sunset', city: 'sf', state: 'CA',
-                                                               email: 'bob@example.com', contactInfo: 'internet',
-                                                               facility: 'ucsf', role: 'doctor',
-                                                               requests: %w(childcare cleaning), description: 'stuff'
-      } }
-    end.to change { Provider.count }.by(1)
+      expect do
+        post '/graphql', params: { query: MUTATION, variables: { firstName: 'bob', lastName: 'smith',
+                                                                 neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                                 email: 'bob@example.com', contactInfo: 'internet',
+                                                                 facility: 'ucsf', role: 'doctor',
+                                                                 requests: %w(childcare cleaning), description: 'stuff'
+        } }
+      end.to change { Provider.count }.by(1)
+    end.to have_enqueued_job(ActionMailer::MailDeliveryJob)
 
     json = JSON.parse(response.body)
     expect(json['data']['createProvider']['provider']).to include(
