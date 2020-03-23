@@ -148,7 +148,7 @@ const useTokenEntity = (token, entityType) => {
       [field]: value
     }))
   }
-console.log({savingError})
+
   const save = () => {
     setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING);
     saveEntity({ variables: { token, ...entity } }).then(({ errors: systemErrors = [], data }) => {
