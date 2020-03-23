@@ -27,7 +27,7 @@ class Mutations::UpdateProvider < Mutations::BaseMutation
     old_request_types = provider.requests.map { |request| request["type"] }.tally
     new_request_types = requests.tally
 
-    new_requests = Provider::REQUEST_TYPES.map { |type|
+    new_requests = Provider::REQUEST_TYPES.map { |type, _|
       if old_request_types[type] && !new_request_types[type]
         { "type" => type, "satisfied" => true }
       elsif old_request_types[type] || new_request_types[type]

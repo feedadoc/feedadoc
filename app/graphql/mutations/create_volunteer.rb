@@ -37,13 +37,14 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
       state: state,
       email: email
     )
-    volunteer.responses.build(provider: provider, requests: requests,
-                              description: description, availabilities: availabilities,
-                              phone: phone, social: social, over_18: over_18)
+    response = volunteer.responses.build(provider: provider, requests: requests,
+                                         description: description, availabilities: availabilities,
+                                         phone: phone, social: social, over_18: over_18)
 
     if volunteer.save
       linked_token = LinkCreator.create_token(volunteer)
       VolunteerMailer.with(linked_token: linked_token).response_created_email.deliver_later
+      ProviderMailer.with(provider: provider, volunteer: volunteer, response: response).volunteer_response_email.deliver_later
 
       {
         volunteer: volunteer,
