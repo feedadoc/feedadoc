@@ -98,7 +98,7 @@ const EditProvider = () => {
       {requestState === TOKEN_ENTITY_REQUEST_STATES.SAVING_ERROR && (
         <Snackbar open={true}>
           <Paper className={classes.error}>
-            <ErrorIcon /> There was an error saving your request.
+            <ErrorIcon /> {error}
           </Paper>
         </Snackbar>
       )}

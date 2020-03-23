@@ -14,7 +14,6 @@ const GET_ENTITY_BY_TOKEN = gql`
         state
         facility
         email
-        contactInfo
         role
         description
         requests {
@@ -36,7 +35,6 @@ const UPDATE_PROVIDER = gql`
     $city: String!
     $state: String!
     $email: String!
-    $contactInfo: String!
     $facility: String!
     $role: String!
     $requests: [String!]!
@@ -52,7 +50,6 @@ const UPDATE_PROVIDER = gql`
         city: $city
         state: $state
         email: $email
-        contactInfo: $contactInfo
         facility: $facility
         role: $role
         requests: $requests
@@ -70,7 +67,6 @@ const UPDATE_PROVIDER = gql`
         state
         facility
         email
-        contactInfo
         role
         description
         requests {
@@ -118,7 +114,7 @@ const useTokenEntity = (token, entityType) => {
   const { error, data } = useQuery(GET_ENTITY_BY_TOKEN, {
     variables: { token }
   });
-  const [saveEntity] = useMutation(entityMutation);
+  const [saveEntity, { error: savingError, data: saveData }] = useMutation(entityMutation);
   const [entity, setEntity] = useState();
   const [requestState, setRequestState] = useState(TOKEN_ENTITY_REQUEST_STATES.LOADING)
   const [isSaveSnackbarOpen, setSaveSnackbarOpen] = useState(true);
@@ -152,11 +148,11 @@ const useTokenEntity = (token, entityType) => {
       [field]: value
     }))
   }
-
+console.log({savingError})
   const save = () => {
     setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING);
     saveEntity({ variables: { token, ...entity } }).then(({ errors: systemErrors = [], data }) => {
-      if(systemErrors.length) {
+      if(systemErrors.length || data.updateProvider.errors.length) {
         setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING_ERROR);
       } else {
         setSaveSnackbarOpen(true);
@@ -169,8 +165,10 @@ const useTokenEntity = (token, entityType) => {
   }
 
   const acknowledgeSaveSnackbar = () => setSaveSnackbarOpen(false);
-
-  return [requestState, entity, error, setField, save, isSaveSnackbarOpen, acknowledgeSaveSnackbar];
+  if(saveData && saveData.updateProvider.errors.length) {
+    return [requestState, entity, saveData.updateProvider.errors.join('. '), setField, save, isSaveSnackbarOpen, acknowledgeSaveSnackbar];
+  }
+  return [requestState, entity, error || savingError, setField, save, isSaveSnackbarOpen, acknowledgeSaveSnackbar];
 };
 
 export default useTokenEntity;

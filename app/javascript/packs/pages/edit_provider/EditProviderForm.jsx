@@ -88,7 +88,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
           name="description"
           label="Describe your request"
           fullWidth
-          value={provider.description || ""}
+          value={provider.description}
           onChange={onChange}
         />
         <FormHelperText>
@@ -108,7 +108,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             id="firstName"
             name="firstName"
             label="First name"
-            value={provider.firstName || ""}
+            value={provider.firstName}
             onChange={onChange}
             fullWidth
           />
@@ -118,7 +118,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             id="lastName"
             name="lastName"
             label="Last name"
-            value={provider.lastName || ""}
+            value={provider.lastName}
             onChange={onChange}
             fullWidth
           />
@@ -128,7 +128,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             id="neighborhood"
             name="neighborhood"
             label="Neighborhood"
-            value={provider.neighborhood || ""}
+            value={provider.neighborhood}
             onChange={onChange}
             fullWidth
           />
@@ -139,7 +139,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             id="city"
             name="city"
             label="City"
-            value={provider.city || ""}
+            value={provider.city}
             onChange={onChange}
             fullWidth
           />
@@ -174,7 +174,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             id="facility"
             name="facility"
             label="Your Medical Facility"
-            value={provider.facility || ""}
+            value={provider.facility}
             onChange={onChange}
             fullWidth
           />
@@ -191,7 +191,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
               id="role"
               name="role"
               className={classes.roleSelect}
-              value={provider.role || ""}
+              value={provider.role}
               onChange={onChange}
             >
               <option value="" />
@@ -219,28 +219,10 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             id="email"
             name="email"
             label="Email"
-            value={provider.email || ""}
+            value={provider.email}
             onChange={onChange}
             fullWidth
           />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
-            id="contactInfo"
-            name="contactInfo"
-            label="How can volunteers contact you?"
-            fullWidth
-            value={provider.contactInfo || ""}
-            onChange={onChange}
-          />
-          <FormHelperText>
-            This will be PUBLIC. We strongly recommend using something
-            besides personal email or phone. Examples: Facebook Messenger
-            ID, Twitter handle (if you've enabled DMs), create a free
-            disposable email address using spamgourmet.com, boun.cr, or
-            trashmail.com.
-          </FormHelperText>
         </Grid>
         <Grid item xs={12}>
           <Button
