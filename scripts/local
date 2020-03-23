@@ -13,6 +13,15 @@ function restart() {
   start
 }
 
+function up() {
+  docker-compose up -d
+  start
+}
+
+function down() {
+  docker-compose down
+}
+
 function console() {
   docker exec -it feedadoc_web rails c
 }

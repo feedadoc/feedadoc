@@ -8,6 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
+import providerRequestTypes from '../../data/providerRequestTypes';
 
 const useStyles = makeStyles(theme => ({
   firstEntry: {
@@ -18,44 +19,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const providerRequestTypes = [
-  {
-    label: "Childcare",
-    value: "childcare"
-  },
-  {
-    label: "Errands/Shopping",
-    value: "shopping"
-  },
-  {
-    label: "Housecleaning",
-    value: "cleaning"
-  },
-  {
-    label: "Meal preparation / delivery",
-    value: "meals"
-  },
-  {
-    label: "Laundry",
-    value: "laundry"
-  },
-  {
-    label: "Lodging",
-    value: "lodging"
-  },
-  {
-    label: "Supplies",
-    value: "supplies"
-  },
-  {
-    label: "Pet care",
-    value: "pets"
-  }
-];
-
 export default function ProviderRequestForm({
-  requests,
-  description,
   onChange,
   setField
 }) {

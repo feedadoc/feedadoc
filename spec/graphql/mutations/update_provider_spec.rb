@@ -8,14 +8,15 @@ describe Mutations::UpdateProvider, type: :request do
                               $neighborhood: String, $city: String!, $state: String!,
                               $email: String!, $contactInfo: String!,
                               $facility: String!, $role: String!,
-                              $requests: [String!]!, $description: String!) {
+                              $requests: [String!]!, $description: String!, $active: Boolean!) {
         updateProvider(input: {
                                 token: $token,
                                 firstName: $firstName, lastName: $lastName,
                                 neighborhood: $neighborhood, city: $city, state: $state,
                                 email: $email, contactInfo: $contactInfo,
                                 facility: $facility, role: $role,
-                                requests: $requests, description: $description
+                                requests: $requests, description: $description,
+                                active: $active
                               }) {
           errors
           provider { id, firstName, lastName, requests { type, satisfied } }
@@ -34,7 +35,8 @@ describe Mutations::UpdateProvider, type: :request do
                                                  neighborhood: 'sunset', city: 'sf', state: 'CA',
                                                  email: 'bob@example.com', contactInfo: 'internet',
                                                  facility: 'ucsf', role: 'doctor',
-                                                 requests: %w(childcare pets), description: 'stuff'
+                                                 requests: %w(childcare pets), description: 'stuff',
+                                                 active: true
                                                },
                  }.to_json,
          headers: { "CONTENT_TYPE" => "application/json" }
