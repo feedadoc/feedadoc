@@ -10,6 +10,7 @@ module Types
     field :description, String, null: false
     field :requests, [Types::Request], null: false
     field :active, Boolean, null: false
+    field :updated_at, String, null: false
   end
 
   class ProviderFilter < Types::BaseInputObject
@@ -18,6 +19,7 @@ module Types
     argument :city, String, required: false
     argument :active, Boolean, required: false
     argument :role, String, required: false
+    argument :updated_within_days, Int, required: false
   end
 
   class ProviderSort < Types::BaseEnum
