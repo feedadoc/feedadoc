@@ -154,7 +154,7 @@ function App() {
               <Route path="/volunteer-signup">
                 <BrowseRequests />
               </Route>
-              <Route path="/provider/:token/edit">
+              <Route path="/providers/:token/edit">
                 <EditProvider />
               </Route>
               <Route path="/providers/:id" component={ProviderPage}/>

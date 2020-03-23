@@ -8,7 +8,7 @@ describe("editing a provider", () => {
   it("renders without crashing", () => {
     const { getByText } = render(
       <MockedProvider mocks={[]} addTypename={false}>
-        <MemoryRouter initialEntries={["/provider/token/edit"]}>
+        <MemoryRouter initialEntries={["/providers/token/edit"]}>
           <EditProvider />
         </MemoryRouter>
       </MockedProvider>
