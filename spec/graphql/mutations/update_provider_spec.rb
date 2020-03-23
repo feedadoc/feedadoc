@@ -6,14 +6,13 @@ describe Mutations::UpdateProvider, type: :request do
       mutation UpdateProvider($token: String!,
                               $firstName: String!, $lastName: String,
                               $neighborhood: String, $city: String!, $state: String!,
-                              $email: String!, $contactInfo: String!,
-                              $facility: String!, $role: String!,
+                              $email: String!, $facility: String!, $role: String!,
                               $requests: [String!]!, $description: String!, $active: Boolean!) {
         updateProvider(input: {
                                 token: $token,
                                 firstName: $firstName, lastName: $lastName,
                                 neighborhood: $neighborhood, city: $city, state: $state,
-                                email: $email, contactInfo: $contactInfo,
+                                email: $email,
                                 facility: $facility, role: $role,
                                 requests: $requests, description: $description,
                                 active: $active
@@ -33,8 +32,7 @@ describe Mutations::UpdateProvider, type: :request do
          params: { query: mutation, variables: { token: linked_token.token,
                                                  firstName: 'bob', lastName: 'smith',
                                                  neighborhood: 'sunset', city: 'sf', state: 'CA',
-                                                 email: 'bob@example.com', contactInfo: 'internet',
-                                                 facility: 'ucsf', role: 'doctor',
+                                                 email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
                                                  requests: %w(childcare pets), description: 'stuff',
                                                  active: true
                                                },

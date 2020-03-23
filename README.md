@@ -39,6 +39,10 @@ The below steps assume you've forked and cloned the repo to your local machine.
 8. Visit http://localhost:3000
 9. If working with emails, map localhost to `mailcatcher` in your `/etc/hosts` file.
 
+### GraphiQL
+
+Visit http://localhost:3000/graphiql to access the in-browser GraphQL IDE.
+
 ## Working with Docker
 Running Rails with Docker is slightly more nuanced than out of the box Rails. Depending on your system, you may run into permission issues if you try to `bundle` locally while running the server on Docker. As such, it's best to only issue commands through Docker. Here are some common commands:
 ```bash

@@ -5,14 +5,12 @@ describe Mutations::CreateProvider, type: :request do
     <<~GRAPHQL
       mutation CreateProvider($firstName: String!, $lastName: String,
                           $neighborhood: String, $city: String!, $state: String!,
-                          $email: String!, $contactInfo: String!,
-                          $facility: String!, $role: String!,
+                          $email: String!, $facility: String!, $role: String!,
                           $requests: [String!]!, $description: String!) {
         createProvider(input: {
                                 firstName: $firstName, lastName: $lastName,
                                 neighborhood: $neighborhood, city: $city, state: $state,
-                                email: $email, contactInfo: $contactInfo,
-                                facility: $facility, role: $role,
+                                email: $email, facility: $facility, role: $role,
                                 requests: $requests, description: $description
                               }) {
           errors
@@ -28,8 +26,7 @@ describe Mutations::CreateProvider, type: :request do
         post '/graphql',
              params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
                                                      neighborhood: 'sunset', city: 'sf', state: 'CA',
-                                                     email: 'bob@example.com', contactInfo: 'internet',
-                                                     facility: 'ucsf', role: 'doctor',
+                                                     email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
                                                      requests: %w(childcare cleaning), description: 'stuff'
                                                    },
                      }.to_json,
