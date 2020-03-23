@@ -20,6 +20,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ProviderRequestForm({
+  requests,
+  description,
   onChange,
   setField
 }) {

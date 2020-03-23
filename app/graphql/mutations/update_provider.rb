@@ -10,14 +10,14 @@ class Mutations::UpdateProvider < Mutations::BaseMutation
   argument :email, String, required: true
   argument :facility, String, required: true
   argument :role, String, required: true
-  argument :description, String, required: true
   argument :active, Boolean, required: true
+  argument :description, String, required: true
   argument :requests, [String], required: true
 
   field :provider, Types::FullProvider, null: true
   field :errors, [String], null: false
 
-  def resolve(token:, first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility:, role::, requests:, description:, active:)
+  def resolve(token:, first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility:, role:, requests:, description:, active:)
     provider = LinkedToken.find_by(token: token).entity
 
     if provider.nil? || !provider.is_a?(Provider)
