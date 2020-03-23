@@ -1,5 +1,13 @@
 import React from "react";
-import { makeStyles, Typography, List, ListItem, ListItemText, Grid, Container } from "@material-ui/core";
+import {
+  makeStyles,
+  Typography,
+  Button,
+  List,
+  ListItem,
+  Grid,
+  Container
+} from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -32,15 +40,21 @@ const useStyles = makeStyles(theme => ({
   description: {
     color: "#747474",
     fontWeight: 100
+  },
+  button: {
+    marginTop: theme.spacing(6),
+    borderRadius: "25px",
+    color: "white",
+    backgroundColor: "#0f2e32"
   }
 }));
 
 const GET_PROVIDER = gql`
-  query Provider($id: ID) {
-    providers(filters: { id: $id }, orderBy: { direction: ASC, sort: CITY }) {
+  query Provider($id: ID!) {
+    provider(id: $id) {
       edges {
         node {
-          id,
+          id
           firstName
           city,
           state,
@@ -65,8 +79,8 @@ export default function ProviderPage(props) {
     variables: { id },
   });
 
-  if (loading || error || data.providers.edges.length === 0) return null;
-  const { firstName, city, state, neighborhood, role, facility, description, requests } = data.providers.edges[0].node
+  if (loading || error || data.provider.edges.length === 0) return null;
+  const { firstName, city, state, neighborhood, role, facility, description, requests } = data.provider.edges[0].node
 
   return (
     <Paper className={classes.heroContent}>
@@ -93,9 +107,9 @@ export default function ProviderPage(props) {
           "No needs at this time."
           :
           <List>
-            {requests.map((request) => {
+            {requests.map((request, index) => {
               return (
-                <ListItem className={classes.listItem}>
+                <ListItem className={classes.listItem} key={index}>
                   {request.satisfied ? `${request.type} - completed` : request.type}
                 </ListItem>
               )
@@ -110,6 +124,9 @@ export default function ProviderPage(props) {
             {description}
           </Typography>
         </Container>
+        <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
+          Offer Help
+        </Button>
       </Container>
     </Paper>
   );

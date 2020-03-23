@@ -18,6 +18,9 @@ import AddressForm from "./pages/provider_signup/AddressForm";
 import ProviderRequestForm from "./pages/provider_signup/ProviderRequestForm";
 import BrowseRequests from "./pages/BrowseRequests";
 import ProviderPage from './pages/ProviderPage';
+import OfferForm from "./pages/volunteer_signup/OfferForm";
+import VolunteerAddressForm from "./pages/volunteer_signup/VolunteerAddressForm";
+import VolunteerStepper from "./pages/volunteer_signup/VolunteerStepper";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -150,6 +153,15 @@ function App() {
                   { label: 'Request', component: ProviderRequestForm },
                 ]}/>
               </Route>
+              <Route
+                path="/volunteer-signup"
+                render={(props) => (
+                  <VolunteerStepper {...props} steps={[
+                    { label: 'Offer Help', component: OfferForm },
+                    { label: 'About You', component: VolunteerAddressForm },
+                  ]}/>
+                )}
+              />
               <Route path="/volunteer-signup">
                 <BrowseRequests />
               </Route>

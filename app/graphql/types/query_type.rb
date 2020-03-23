@@ -20,6 +20,16 @@ module Types
       scope
     end
 
+    field :provider,
+        Types::Connections::ProviderConnection,
+        connection: true,
+        null: false do
+      argument :id, ID, required: true
+    end
+    def provider(args)
+      ::Provider.where(id: args[:id].to_i)
+    end
+
     field :linked_token,
           Types::LinkedTokenEntityUnionType,
           null: false do

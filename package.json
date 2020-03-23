@@ -13,6 +13,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "graphql": "^14.6.0",
     "prop-types": "^15.7.2",
+    "query-string": "^6.11.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2"
