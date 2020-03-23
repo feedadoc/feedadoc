@@ -7,13 +7,15 @@ describe Mutations::UpdateProvider, type: :request do
                               $firstName: String!, $lastName: String,
                               $neighborhood: String, $city: String!, $state: String!,
                               $email: String!, $facility: String!, $role: String!,
-                              $requests: [String!]!, $description: String!) {
+                              $requests: [String!]!, $description: String!, $active: Boolean!) {
         updateProvider(input: {
                                 token: $token,
                                 firstName: $firstName, lastName: $lastName,
                                 neighborhood: $neighborhood, city: $city, state: $state,
-                                email: $email, facility: $facility, role: $role,
-                                requests: $requests, description: $description
+                                email: $email,
+                                facility: $facility, role: $role,
+                                requests: $requests, description: $description,
+                                active: $active
                               }) {
           errors
           provider { id, firstName, lastName, requests { type, satisfied } }
@@ -31,7 +33,8 @@ describe Mutations::UpdateProvider, type: :request do
                                                  firstName: 'bob', lastName: 'smith',
                                                  neighborhood: 'sunset', city: 'sf', state: 'CA',
                                                  email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
-                                                 requests: %w(childcare pets), description: 'stuff'
+                                                 requests: %w(childcare pets), description: 'stuff',
+                                                 active: true
                                                },
                  }.to_json,
          headers: { "CONTENT_TYPE" => "application/json" }

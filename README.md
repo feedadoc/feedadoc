@@ -37,7 +37,7 @@ The below steps assume you've forked and cloned the repo to your local machine.
 6. Run `rails db:create db:migrate`
 7. In one Terminal window, run `bin/webpack-dev-server`. In a second window, run `rails s`.
 8. Visit http://localhost:3000
-9. If working with emails, map localhost to `mailcatcher` in your `/etc/hosts` file.
+9. If working with emails, map localhost to `mailcatcher` in your `/etc/hosts` file and run `gem install --no-document mailcatcher && mailcatcher` in another window.
 
 ### GraphiQL
 

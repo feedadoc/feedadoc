@@ -40,7 +40,7 @@ describe Mutations::CreateVolunteer, type: :request do
                      }.to_json,
              headers: { "CONTENT_TYPE" => "application/json" }
       end.to change { Volunteer.count }.by(1)
-    end.to have_enqueued_job(ActionMailer::MailDeliveryJob)
+    end.to have_enqueued_job(ActionMailer::MailDeliveryJob).exactly(2).times
 
     json = JSON.parse(response.body)
     expect(json['data']['createVolunteer']['volunteer']).to include("firstName" => "bob")

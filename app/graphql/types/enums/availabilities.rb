@@ -5,6 +5,7 @@ module Types
       value("mid-day")
       value("evenings")
       value("nights")
+      value("weekends")
     end
   end
 end

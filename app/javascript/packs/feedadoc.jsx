@@ -21,6 +21,7 @@ import ProviderPage from './pages/ProviderPage';
 import OfferForm from "./pages/volunteer_signup/OfferForm";
 import VolunteerAddressForm from "./pages/volunteer_signup/VolunteerAddressForm";
 import VolunteerStepper from "./pages/volunteer_signup/VolunteerStepper";
+import EditProvider from "./pages/edit_provider/EditProvider";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -164,6 +165,9 @@ function App() {
               />
               <Route path="/volunteer-signup">
                 <BrowseRequests />
+              </Route>
+              <Route path="/providers/:token/edit">
+                <EditProvider />
               </Route>
               <Route path="/providers/:id" component={ProviderPage}/>
               <Route path="/">

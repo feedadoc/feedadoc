@@ -1,0 +1,31 @@
+<h1 style="margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left;" align="left"><%= @provider.first_name %>, a volunteer named <%= @volunteer.full_name %> has responded to your help request!</h1>
+
+<p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">
+  <%= @volunteer.first_name %> has offered to help with
+  <%= @response.requests.map { |request| Provider::REQUEST_TYPES[request].downcase }.to_sentence %>.
+</p>
+
+<p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">
+  They are available <%= @response.availabilities.to_sentence %>.
+
+  <% if @response.description.present? %>
+    Here is what they wrote:
+    <p>
+      <%= @response.description %>
+    </p>
+  <% end %>
+</p>
+
+<% if @response.phone.present? %>
+  <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">
+    Phone: <%= @response.phone %>
+  </p>
+<% end %>
+
+<% if @response.social.present? %>
+  <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">
+    Social account: <%= @response.social %>
+  </p>
+<% end %>
+
+<p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">You can reply to this email (or send them a note at <a href="mailto:<%= @volunteer.email %>"><%= @volunteer.email %></a>) to start a conversation with <%= @volunteer.first_name %> about your needs. When your request is met, please update the request using the link that we originally sent you.</p>
