@@ -138,7 +138,7 @@ export default function VolunteerStepper({ steps, location }) {
 
   const handleNext = () => {
     if (activeStep === steps.length - 1 && variables.over18 === false) {
-      setErrors(["You must be over 18 years old to volunteer."])
+      setErrors(["You must be over 18 years old to volunteer."]);
     }
     else if (activeStep === steps.length - 1) {
       createVolunteer({ variables: { ...variables, providerId: parseInt(queryId) }})
@@ -216,6 +216,7 @@ export default function VolunteerStepper({ steps, location }) {
             <CurrentStep
               onChange={onChange}
               setField={setField}
+              provider={provider}
               {...variables}
             />
             <div className={classes.buttons}>
