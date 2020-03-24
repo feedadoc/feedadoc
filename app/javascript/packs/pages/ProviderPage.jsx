@@ -20,6 +20,10 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(8, 2),
     textAlign: "center"
   },
+  complete: {
+    color: "black",
+    fontWeight: "bold",
+  },
   heroButtons: {
     margin: theme.spacing(4),
   },
@@ -36,6 +40,9 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     padding: 0,
     fontSize: "1.25rem"
+  },
+  faded: {
+    opacity: 0.4,
   },
   description: {
     color: "#747474",
@@ -60,6 +67,7 @@ const GET_PROVIDER = gql`
       role,
       facility,
       description,
+      active
       requests {
         type,
         satisfied
@@ -76,7 +84,7 @@ export default function ProviderPage(props) {
   });
 
   if (loading || error || !data.provider) return null;
-  const { firstName, city, state, neighborhood, role, facility, description, requests } = data.provider;
+  const { firstName, city, state, neighborhood, role, facility, description, requests, active } = data.provider;
 
   return (
     <Paper className={classes.heroContent}>
@@ -105,8 +113,8 @@ export default function ProviderPage(props) {
           <List>
             {requests.map((request, index) => {
               return (
-                <ListItem className={classes.listItem} key={index}>
-                  {request.satisfied ? `${request.type} - completed` : request.type}
+                <ListItem className={[classes.listItem, request.satisfied ? classes.faded : ""].join(" ")} key={index}>
+                  {request.satisfied ? `${request.type} - satisfied` : request.type}
                 </ListItem>
               )
             })}
@@ -120,9 +128,15 @@ export default function ProviderPage(props) {
             {description}
           </Typography>
         </Container>
-        <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
-          Offer Help
-        </Button>
+        { active ? (
+          <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
+            Offer Help
+          </Button>
+        ) : (
+          <Typography component="h1" align="center" className={classes.complete} gutterBottom>
+            The provider has marked this request as complete.
+          </Typography>
+        )}
       </Container>
     </Paper>
   );
