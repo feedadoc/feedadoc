@@ -22,6 +22,7 @@ import OfferForm from "./pages/volunteer_signup/OfferForm";
 import VolunteerAddressForm from "./pages/volunteer_signup/VolunteerAddressForm";
 import VolunteerStepper from "./pages/volunteer_signup/VolunteerStepper";
 import EditProvider from "./pages/edit_provider/EditProvider";
+import VolunteerSignupPlaceholder from "./pages/VolunteerSignupPlaceholder";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -153,6 +154,10 @@ function App() {
                   { label: 'About You', component: AddressForm },
                   { label: 'Request', component: ProviderRequestForm },
                 ]}/>
+              </Route>
+              <Route path="/volunteer-form">
+                {/*This is here until we have a directory to browse.*/}
+                <VolunteerSignupPlaceholder />
               </Route>
               <Route
                 path="/volunteer-signup"

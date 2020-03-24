@@ -20,14 +20,11 @@ module Types
       scope
     end
 
-    field :provider,
-        Types::Connections::ProviderConnection,
-        connection: true,
-        null: false do
+    field :provider, Types::Provider, null: false do
       argument :id, ID, required: true
     end
-    def provider(args)
-      ::Provider.where(id: args[:id].to_i)
+    def provider(id:)
+      ::Provider.find(id)
     end
 
     field :linked_token,

@@ -56,7 +56,7 @@ const providerRequestTypes = [
   }
 ];
 
-const availabilityOptions = ["mornings", "mid-day", "evenings", "nights"];
+const availabilityOptions = ["mornings", "mid-day", "evenings", "nights", "weekends"];
 
 export default function OfferForm({
   firstName,
