@@ -10,6 +10,6 @@ class ProviderMailer < ApplicationMailer
     @provider = params[:provider]
     @volunteer = params[:volunteer]
     @response = params[:response]
-    mail(to: @provider.email, subject: 'Your help request has been created.', reply_to: @volunteer.email)
+    mail(to: @provider.email, subject: @volunteer.full_name + " has offered to help", reply_to: @volunteer.email)
   end
 end
