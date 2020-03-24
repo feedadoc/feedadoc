@@ -52,21 +52,17 @@ const useStyles = makeStyles(theme => ({
 const GET_PROVIDER = gql`
   query Provider($id: ID!) {
     provider(id: $id) {
-      edges {
-        node {
-          id
-          firstName
-          city,
-          state,
-          neighborhood
-          role,
-          facility,
-          description,
-          requests {
-            type,
-            satisfied
-          }
-        }
+      id
+      firstName
+      city,
+      state,
+      neighborhood
+      role,
+      facility,
+      description,
+      requests {
+        type,
+        satisfied
       }
     }
   }
@@ -74,13 +70,13 @@ const GET_PROVIDER = gql`
 
 export default function ProviderPage(props) {
   const classes = useStyles();
-  const { match: { params: { id } } } = props
+  const { match: { params: { id } } } = props;
   const { loading, error, data } = useQuery(GET_PROVIDER, {
     variables: { id },
   });
 
-  if (loading || error || data.provider.edges.length === 0) return null;
-  const { firstName, city, state, neighborhood, role, facility, description, requests } = data.provider.edges[0].node
+  if (loading || error || !data.provider) return null;
+  const { firstName, city, state, neighborhood, role, facility, description, requests } = data.provider;
 
   return (
     <Paper className={classes.heroContent}>
