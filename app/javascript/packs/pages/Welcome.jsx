@@ -36,18 +36,18 @@ export default function Welcome() {
           <Grid container spacing={2} justify="center">
             <Grid item>
               <Link to="/provider-signup">
-                <Button variant="outlined" color="primary">
+                <Button variant="contained" color="primary">
                   Providers, Post a Request
                 </Button>
               </Link>
             </Grid>
-            {/*<Grid item>*/}
-            {/*  <Link to="/volunteer-signup">*/}
-            {/*    <Button variant="contained" color="primary">*/}
-            {/*      Volunteer, Browse Requests and Help Out*/}
-            {/*    </Button>*/}
-            {/*  </Link>*/}
-            {/*</Grid>*/}
+            <Grid item>
+              <Link to="/volunteer-form">
+                <Button variant="outlined" color="primary">
+                  Volunteer, Sign up to Help Out
+                </Button>
+              </Link>
+            </Grid>
           </Grid>
         </div>
         <Typography paragraph>
