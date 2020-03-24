@@ -168,7 +168,7 @@ function App() {
                   ]}/>
                 )}
               />
-              <Route path="/volunteer-signup">
+              <Route path="/browse">
                 <BrowseRequests />
               </Route>
               <Route path="/providers/:token/edit">
