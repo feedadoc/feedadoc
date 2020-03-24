@@ -30,7 +30,7 @@ export default function Welcome() {
           Volunteer to support your Care Providers
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          This website connects health care workers with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance or can provide it!
+          This website connects health care workers with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance!
         </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
@@ -41,13 +41,13 @@ export default function Welcome() {
                 </Button>
               </Link>
             </Grid>
-            <Grid item>
-              <Link to="/volunteer-signup">
-                <Button variant="contained" color="primary">
-                  Volunteer, Browse Requests and Help Out
-                </Button>
-              </Link>
-            </Grid>
+            {/*<Grid item>*/}
+            {/*  <Link to="/volunteer-signup">*/}
+            {/*    <Button variant="contained" color="primary">*/}
+            {/*      Volunteer, Browse Requests and Help Out*/}
+            {/*    </Button>*/}
+            {/*  </Link>*/}
+            {/*</Grid>*/}
           </Grid>
         </div>
         <Typography paragraph>
