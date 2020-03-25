@@ -20,8 +20,13 @@ const useStyles = makeStyles(theme => ({
   },
   requestHeaderTitle: {
     color: theme.palette.secondary.main,
+    fontSize: "20px",
+    letterSpacing: "0.5px",
     marginBottom: theme.spacing(2),
     textTransform: "uppercase",
+  },
+  name: {
+    fontSize: "48px",
   },
   requestContent: {
     backgroundColor: theme.palette.background.paper,
@@ -37,8 +42,15 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(4),
   },
   role: {
+    color: "#00000099",
+    fontSize: "24px",
     fontWeight: 100,
-    textTransform: "uppercase",
+    textTransform: "capitalize",
+  },
+  facility: {
+    color: "#00000099",
+    fontWeight: 100,
+    letterSpacing: "0.25px",
   },
   sectionHeaders: {
     fontSize: "1.75rem",
@@ -72,6 +84,10 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
     fontWeight: "bold",
     textDecoration: "none",
+  },
+  footer: {
+    fontSize: "20px",
+    padding: theme.spacing(6, 1),
   }
 }));
 
@@ -108,22 +124,21 @@ export default function ProviderPage(props) {
   return (
     <>
       <Box className={classes.requestHeader}>
-        <Typography component="h1" variant="h6" align="center" className={classes.providerHeaderTitle}>
+        <Typography component="h1" variant="h6" align="center" className={classes.requestHeaderTitle}>
           Volunteer To Help
         </Typography>
-        <Typography align="center" variant="h1" component="h2">
+        <Typography align="center" variant="h1" component="h2" className={classes.name}>
           {firstName}
         </Typography>
       </Box>
-      <Paper className={classes.requestContent}>
-        <Container maxWidth="sm">
+        <Container maxWidth="sm" className={classes.requestContent}>
           <Typography component="h3" variant="h6" align="center" gutterBottom>
             {neighborhood ? `${neighborhood} / ${city}, ${state}` : `${city}, ${state}`}
           </Typography>
           <Typography component="h3" variant="h6" align="center" gutterBottom className={classes.role}>
             {role}
           </Typography>
-          <Typography component="h3" variant="h6" align="center" gutterBottom style={{fontWeight: 100}}>
+          <Typography component="h3" variant="h6" align="center" className={classes.facility}>
             {facility}
           </Typography>
           <Typography component="h4" variant="h5" align="center" gutterBottom className={classes.sectionHeaders}>
@@ -158,10 +173,17 @@ export default function ProviderPage(props) {
             </Typography>
           )}
         </Container>
-      </Paper>
       <Box className={classes.requestHeader}>
         <Typography component="p" variant="h6" align="center">
           Find more care providers to help <Link to="/browse" className={classes.browseLink}>here.</Link>
+        </Typography>
+      </Box>
+      <Box className={classes.footer}>
+        <Typography component="p" align="center" gutterBottom>
+          <b>Need help editing or removing a request?</b>
+        </Typography>
+        <Typography component="p" align="center" gutterBottom>
+          Please email <a href="mailto:covidcarenetwork@gmail.com">covidcarenetwork@gmail.com</a> to report requests that should be updated or removed.
         </Typography>
       </Box>
     </>
