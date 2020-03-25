@@ -16,9 +16,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('xs')]: {
       marginTop: '-5px'
     },
-    '& > *:not([class*="active"])': {
-      color: theme.palette.text.primary,
-    },
 
     '& > [href="/"]': {
       [theme.breakpoints.down('xs')]: {
@@ -48,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   active: {
-    color: theme.palette.primary.main,
+    color: `${theme.palette.primary.main} !important`,
     borderBottomColor: theme.palette.primary.main
   }
 }));
