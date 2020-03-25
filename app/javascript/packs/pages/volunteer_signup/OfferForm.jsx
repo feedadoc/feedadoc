@@ -56,7 +56,7 @@ const providerRequestTypes = [
   }
 ];
 
-const availabilityOptions = ["mornings", "mid-day", "evenings", "nights"];
+const availabilityOptions = ["mornings", "mid-day", "evenings", "nights", "weekends"];
 
 export default function OfferForm({
   firstName,
@@ -65,7 +65,8 @@ export default function OfferForm({
   availabilities,
   description,
   onChange,
-  setField
+  setField,
+  provider
 }) {
   const classes = useStyles();
 
@@ -98,29 +99,36 @@ export default function OfferForm({
             <FormLabel required id="type-select-label">
               What can you help with?
             </FormLabel>
-            {providerRequestTypes.map(type => (
-              <FormControlLabel
-                key={type.value}
-                control={
-                  <Checkbox
-                    checked={requests.includes(type.value)}
-                    onChange={e =>
-                      e.target.checked
-                        ? setField("requests")([
-                            ...requests,
-                            type.value
-                          ])
-                        : setField("requests")(
-                            requests.filter(x => x !== type.value)
-                          )
-                    }
-                    name={type.value}
-                    color="primary"
-                  />
-                }
-                label={type.label}
-              />
-            ))}
+            {provider && provider.requests.map(request => {
+              if (request.satisfied) return null;
+
+              const requestObj = providerRequestTypes.find(x => x.value === request.type);
+              if (!requestObj) return null;
+
+              return (
+                <FormControlLabel
+                  key={requestObj.value}
+                  control={
+                    <Checkbox
+                      checked={requests.includes(requestObj.value)}
+                      onChange={e =>
+                        e.target.checked
+                          ? setField("requests")([
+                              ...requests,
+                              requestObj.value
+                            ])
+                          : setField("requests")(
+                              requests.filter(x => x !== requestObj.value)
+                            )
+                      }
+                      name={requestObj.value}
+                      color="primary"
+                    />
+                  }
+                  label={requestObj.label}
+                />
+              )
+            })}
           </FormControl>
         </Grid>
         <Grid item xs={12}>

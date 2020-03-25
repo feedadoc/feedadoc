@@ -92,15 +92,11 @@ const CREATE_VOLUNTEER = gql`
 const GET_PROVIDER = gql`
   query Provider($id: ID!) {
     provider(id: $id) {
-      edges {
-        node {
-          id
-          firstName
-          requests {
-            type,
-            satisfied
-          }
-        }
+      id
+      firstName
+      requests {
+        type,
+        satisfied
       }
     }
   }
@@ -132,8 +128,8 @@ export default function VolunteerStepper({ steps, location }) {
     variables: { id: parseInt(queryId) },
   });
 
-  if (providerResult && providerResult.data && providerResult.data.provider.edges.length !== 0) {
-    provider = providerResult.data.provider.edges[0].node;
+  if (providerResult && providerResult.data && providerResult.data.provider) {
+    provider = providerResult.data.provider;
   }
 
   const [createVolunteer, { loading, data, error }] = useMutation(
@@ -142,7 +138,7 @@ export default function VolunteerStepper({ steps, location }) {
 
   const handleNext = () => {
     if (activeStep === steps.length - 1 && variables.over18 === false) {
-      setErrors(["You must be over 18 years old to volunteer."])
+      setErrors(["You must be over 18 years old to volunteer."]);
     }
     else if (activeStep === steps.length - 1) {
       createVolunteer({ variables: { ...variables, providerId: parseInt(queryId) }})
@@ -185,10 +181,10 @@ export default function VolunteerStepper({ steps, location }) {
     return (
       <Paper className={classes.paper}>
         <Typography variant="h5" gutterBottom>
-          Thank you for signing up.
+          Thank you so much for volunteering!
         </Typography>
         <Typography variant="subtitle1">
-          We have emailed you your account information.
+          You should hear back from the medical provider soon.
         </Typography>
       </Paper>
     );
@@ -220,6 +216,7 @@ export default function VolunteerStepper({ steps, location }) {
             <CurrentStep
               onChange={onChange}
               setField={setField}
+              provider={provider}
               {...variables}
             />
             <div className={classes.buttons}>

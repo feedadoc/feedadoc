@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import {MuiThemeProvider, makeStyles} from '@material-ui/core/styles';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from '@apollo/react-hooks';
 import SignupStepper from './pages/provider_signup/SignupStepper';
@@ -71,7 +71,7 @@ function App() {
                     />
                   )}
                 />
-                <Route path="/volunteer-signup">
+                <Route path="/browse">
                   <BrowseRequests />
                 </Route>
                 <Route path="/providers/:token/edit">
