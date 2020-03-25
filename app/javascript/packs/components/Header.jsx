@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     [theme.breakpoints.down('sm')]: {
-      maxWidth: '140px',
+      maxWidth: '30vw',
       '& > svg': {
         maxWidth: '100%',
       }

@@ -13,10 +13,6 @@ const useStyles = makeStyles(theme => ({
         marginLeft: theme.spacing(2),
       }
     },
-    [theme.breakpoints.down('xs')]: {
-      marginTop: '-5px'
-    },
-
     '& > [href="/"]': {
       [theme.breakpoints.down('xs')]: {
         display: 'none',
@@ -31,7 +27,7 @@ const useStyles = makeStyles(theme => ({
       letterSpacing: '1px',
       fontWeight: 'bold',
       [theme.breakpoints.down('xs')]: {
-        fontSize: '12px',
+        fontSize: '0.6rem'
       },
       '& > *:active': {
         color: theme.palette.primary,
