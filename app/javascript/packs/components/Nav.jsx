@@ -58,7 +58,7 @@ export default function Links() {
 
   return (
     <Box className={classes.root}>
-      <NavLink to="/" activeClassName={classes.active}>
+      <NavLink to="/" exact activeClassName={classes.active}>
         Home
       </NavLink>
       <NavLink to="/browse" activeClassName={classes.active}>

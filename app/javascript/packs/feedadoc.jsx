@@ -11,6 +11,7 @@ import ProviderRequestForm from './pages/provider_signup/ProviderRequestForm';
 import BrowseRequests from './pages/BrowseRequests';
 import ProviderPage from './pages/ProviderPage';
 import OfferForm from './pages/volunteer_signup/OfferForm';
+import Container from "@material-ui/core/Container";
 import VolunteerAddressForm from './pages/volunteer_signup/VolunteerAddressForm';
 import VolunteerStepper from './pages/volunteer_signup/VolunteerStepper';
 import EditProvider from './pages/edit_provider/EditProvider';
@@ -52,30 +53,40 @@ function App() {
             <div className={classes.main}>
               <Switch>
                 <Route path="/provider-signup">
-                  <SignupStepper
-                    steps={[
-                      {label: 'About You', component: AddressForm},
-                      {label: 'Request', component: ProviderRequestForm},
-                    ]}
-                  />
+                  <Container maxWidth="md">
+                    <SignupStepper
+                      steps={[
+                        {label: 'About You', component: AddressForm},
+                        {label: 'Request', component: ProviderRequestForm},
+                      ]}
+                    />
+                  </Container>
                 </Route>
                 <Route
                   path="/volunteer-signup"
                   render={props => (
-                    <VolunteerStepper
-                      {...props}
-                      steps={[
-                        {label: 'Offer Help', component: OfferForm},
-                        {label: 'About You', component: VolunteerAddressForm},
-                      ]}
-                    />
+                    <>
+                    <Container maxWidth="md">
+                      <VolunteerStepper
+                        {...props}
+                        steps={[
+                          {label: 'Offer Help', component: OfferForm},
+                          {label: 'About You', component: VolunteerAddressForm},
+                        ]}
+                      />
+                    </Container>
+                    </>
                   )}
                 />
                 <Route path="/browse">
-                  <BrowseRequests />
+                  <Container maxWidth="md">
+                    <BrowseRequests />
+                  </Container>
                 </Route>
                 <Route path="/providers/:token/edit">
-                  <EditProvider />
+                  <Container maxWidth="md">
+                    <EditProvider />
+                  </Container>
                 </Route>
                 <Route path="/providers/:id" component={ProviderPage} />
                 <Route path="/">

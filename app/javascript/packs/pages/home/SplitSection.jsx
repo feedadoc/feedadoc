@@ -5,7 +5,7 @@ import DoctorsPassingBy from '../../components/illustrations/DoctorsPassingBy';
 import Volunteers from '../../components/illustrations/Volunteers';
 import Typography from '@material-ui/core/Typography';
 import Button from "@material-ui/core/Fab";
-import Link from '@material-ui/core/Link';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -66,7 +66,7 @@ const SplitSection = () => {
           >
             Make requests for meals, supplies, or anything else you need. Share a link with your friends and family.
           </Typography>
-          <Button className={classes.actionButton} size="large" variant="contained" color="primary" elevation={0} component={Link}>Request Help</Button>
+          <Link to="/provider-signup"><Button className={classes.actionButton} size="large" variant="contained" color="primary" elevation={0}>Request Help</Button></Link>
         </Box>
       </Box>
       <Box bgcolor={'secondary.800'} display="flex">
@@ -88,7 +88,7 @@ const SplitSection = () => {
           >
             Offer your support to local doctors, nurses, and hospital workers in your community. You choose who and how to help.
           </Typography>
-          <Button className={classes.actionButton} size="large" variant="contained" color="secondary" elevation={0} component={Link}>Volunteer Now</Button>
+          <Link to="/browse"><Button className={classes.actionButton} size="large" variant="contained" color="secondary" elevation={0}>Volunteer Now</Button></Link>
         </Box>
       </Box>
     </Box>
