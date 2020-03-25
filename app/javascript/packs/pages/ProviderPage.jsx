@@ -111,6 +111,8 @@ const GET_PROVIDER = gql`
   }
 `;
 
+const supportEmail = "support@feedadoc.zendesk.com";
+
 export default function ProviderPage(props) {
   const classes = useStyles();
   const { match: { params: { id } } } = props;
@@ -173,17 +175,20 @@ export default function ProviderPage(props) {
             </Typography>
           )}
         </Container>
-      <Box className={classes.requestHeader}>
+      {/* 
+        @NOTE: Hiding this link until after MVP release
+       */}
+      {/* <Box className={classes.requestHeader}>
         <Typography component="p" variant="h6" align="center">
           Find more care providers to help <Link to="/browse" className={classes.browseLink}>here.</Link>
         </Typography>
-      </Box>
+      </Box> */}
       <Box className={classes.footer}>
         <Typography component="p" align="center" gutterBottom>
           <b>Need help editing or removing a request?</b>
         </Typography>
         <Typography component="p" align="center" gutterBottom>
-          Please email <a href="mailto:covidcarenetwork@gmail.com">covidcarenetwork@gmail.com</a> to report requests that should be updated or removed.
+          Please email <a href={`mailto:${supportEmail}`}>{supportEmail}</a> to report requests that should be updated or removed.
         </Typography>
       </Box>
     </>
