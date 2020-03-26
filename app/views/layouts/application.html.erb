@@ -20,12 +20,12 @@
       <% end %>
       <meta property="og:description" content="View and respond to this request for help from a COVID-19 care provider." />
       <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link-Provider_Request.jpg" %>" />
-      <meta property="og:url" content="<%= request.protocol + request.host + request.path %>" />
+      <meta property="og:url" content="<%= request.original_url %>" />
     <% elsif request.path == '/'  %>
       <meta property="og:title" content="Feed a Doc: Care providers need our help to fight COVID-19" />
       <meta property="og:description" content="Volunteer to help a doctor, nurse, or medical worker on the front lines of the COVID-19 pandemic. Care providers: Post a request and share it with your friends!" />
       <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link_Default.jpg" %>" />
-      <meta property="og:url" content="<%= request.protocol + request.protocol + request.host %>" />
+      <meta property="og:url" content="<%= request.original_url %>" />
       <meta property=”og:type” content=”webpage” />
     <% end %>
   </head>
