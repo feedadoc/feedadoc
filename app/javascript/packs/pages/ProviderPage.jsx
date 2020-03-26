@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   requestContent: {
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(4, 0),
+    padding: theme.spacing(4, 2),
     marginBottom: theme.spacing(3),
     textAlign: "center"
   },
@@ -85,7 +85,7 @@ const useStyles = makeStyles(theme => ({
   },
   footer: {
     fontSize: "20px",
-    padding: theme.spacing(6, 1),
+    padding: theme.spacing(0, 1, 6, 1),
   },
   successHeader: {
     marginBottom: theme.spacing(3),
@@ -128,11 +128,11 @@ export default function ProviderPage({ location, match }) {
   if (loading || error || !data.provider) return null;
   const { firstName, city, state, neighborhood, role, facility, description, requests, active } = data.provider;
 
-  const renderSuccessMsg = search.includes('success')
+  const isConfirmation = search.includes('success')
 
   return (
     <>
-      {renderSuccessMsg ? (
+      {isConfirmation ? (
         <>
           <Container maxWidth="sm">
             <Typography align="center" component="p" variant="h2" className={classes.successHeader}>
@@ -192,11 +192,12 @@ export default function ProviderPage({ location, match }) {
         <Typography component="p" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.description}>
           {description}
         </Typography>
-        { active ? (
+        {(!isConfirmation && active) && (
           <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
             Offer Help
           </Button>
-        ) : (
+        )}
+        {(!isConfirmation && !active) && (
           <Typography component="h1" align="center" className={classes.complete} gutterBottom>
             The provider has marked this request as complete.
           </Typography>
