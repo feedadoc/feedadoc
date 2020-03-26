@@ -2,22 +2,34 @@ import React from "react";
 import {
   makeStyles,
   Typography,
+  Box,
   Button,
   List,
   ListItem,
-  Grid,
   Container
 } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
 const useStyles = makeStyles(theme => ({
-  heroContent: {
+  requestHeader: {
+    backgroundColor: "#E3EAED",
+    padding: theme.spacing(2, 0),
+  },
+  requestHeaderTitle: {
+    color: theme.palette.secondary.main,
+    fontSize: "20px",
+    letterSpacing: "0.5px",
+    marginBottom: theme.spacing(2),
+    textTransform: "uppercase",
+  },
+  name: {
+    fontSize: "48px",
+  },
+  requestContent: {
     backgroundColor: theme.palette.background.paper,
-    marginTop: theme.spacing(3),
+    padding: theme.spacing(4, 0),
     marginBottom: theme.spacing(3),
-    padding: theme.spacing(8, 2),
     textAlign: "center"
   },
   complete: {
@@ -27,33 +39,60 @@ const useStyles = makeStyles(theme => ({
   heroButtons: {
     margin: theme.spacing(4),
   },
-  heading: {
-    fontSize: "2rem",
-    marginTop: theme.spacing(4)
+  role: {
+    color: "#00000099",
+    fontSize: "24px",
+    fontWeight: 100,
+    textTransform: "capitalize",
+  },
+  facility: {
+    color: "#00000099",
+    fontWeight: 100,
+    letterSpacing: "0.25px",
   },
   sectionHeaders: {
+    fontSize: "1.75rem",
+    fontWeight: 600,
     marginTop: theme.spacing(6),
-    fontWeight: 500,
-    fontSize: "1.75rem"
+    textTransform: "uppercase",
   },
   listItem: {
     justifyContent: "center",
     padding: 0,
-    fontSize: "1.25rem"
+    fontSize: "1.25rem",
+    textTransform: "capitalize",
   },
   faded: {
     opacity: 0.4,
   },
   description: {
-    color: "#747474",
     fontWeight: 100
   },
   button: {
-    marginTop: theme.spacing(6),
+    backgroundColor: "#545B8E",
     borderRadius: "25px",
     color: "white",
-    backgroundColor: "#0f2e32"
-  }
+    fontSize: "20px",
+    fontWeight: 600,
+    letterSpacing: "0.5px",
+    marginTop: theme.spacing(6),
+    textTransform: "none",
+  },
+  browseLink: {
+    color: theme.palette.text.primary,
+    fontWeight: "bold",
+    textDecoration: "none",
+  },
+  footer: {
+    fontSize: "20px",
+    padding: theme.spacing(6, 1),
+  },
+  successHeader: {
+    marginBottom: theme.spacing(3),
+  },
+  successCopy: {
+    marginBottom: theme.spacing(4),
+  },
 }));
 
 const GET_PROVIDER = gql`
@@ -76,6 +115,8 @@ const GET_PROVIDER = gql`
   }
 `;
 
+const supportEmail = "support@feedadoc.zendesk.com";
+
 export default function ProviderPage({ location, match }) {
   const classes = useStyles();
   const { params: { id } } = match;
@@ -90,24 +131,46 @@ export default function ProviderPage({ location, match }) {
   const renderSuccessMsg = search.includes('success')
 
   return (
-    <Paper className={classes.heroContent}>
-      <Container maxWidth="sm">
-        <Typography component="h1" variant="subtitle1" align="center" color="textSecondary" gutterBottom>
-          Provider Request
-        </Typography>
-        <Typography component="h2" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.heading}>
-          {firstName}
-        </Typography>
-        <Typography component="h3" variant="h6" align="center" color="textPrimary" gutterBottom>
+    <>
+      {renderSuccessMsg ? (
+        <>
+          <Container maxWidth="sm">
+            <Typography align="center" component="p" variant="h2" className={classes.successHeader}>
+              Your request has been submitted.
+            </Typography>
+            <Typography component="p" align="center" className={classes.successCopy}>
+              We have sent you a confirmation email, which you can use to modify or delete your request at any time.
+              Your request will also appear on a public directory and will expire automatically after 14 days.
+            </Typography>
+            <Typography component="p" align="center" className={classes.successCopy}>
+              Thank you for your service!
+            </Typography>
+          </Container>
+          <Container maxWidth="md">
+            <hr />
+          </Container>
+        </>
+      ) : (
+        <Box className={classes.requestHeader}>
+          <Typography component="h1" variant="h6" align="center" className={classes.requestHeaderTitle}>
+            Volunteer To Help
+            </Typography>
+          <Typography align="center" variant="h1" component="h2" className={classes.name}>
+            {firstName}
+          </Typography>
+        </Box>
+      )}
+      <Container maxWidth="sm" className={classes.requestContent}>
+        <Typography component="h3" variant="h6" align="center" gutterBottom>
           {neighborhood ? `${neighborhood} / ${city}, ${state}` : `${city}, ${state}`}
         </Typography>
-        <Typography component="h3" variant="h6" align="center" color="textPrimary" gutterBottom style={{fontWeight: 100}}>
+        <Typography component="h3" variant="h6" align="center" gutterBottom className={classes.role}>
           {role}
         </Typography>
-        <Typography component="h3" variant="h6" align="center" color="textPrimary" gutterBottom style={{fontWeight: 100}}>
+        <Typography component="h3" variant="h6" align="center" className={classes.facility}>
           {facility}
         </Typography>
-        <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom className={classes.sectionHeaders}>
+        <Typography component="h4" variant="h5" align="center" gutterBottom className={classes.sectionHeaders}>
           Needs
         </Typography>
         { requests.length === 0 ?
@@ -126,11 +189,9 @@ export default function ProviderPage({ location, match }) {
         <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom className={classes.sectionHeaders}>
           Details
         </Typography>
-        <Container>
-          <Typography component="p" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.description}>
-            {description}
-          </Typography>
-        </Container>
+        <Typography component="p" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.description}>
+          {description}
+        </Typography>
         { active ? (
           <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
             Offer Help
@@ -141,6 +202,23 @@ export default function ProviderPage({ location, match }) {
           </Typography>
         )}
       </Container>
-    </Paper>
+
+      {/* 
+        @NOTE: Hiding this link until after MVP release
+       */}
+      {/* <Box className={classes.requestHeader}>
+        <Typography component="p" variant="h6" align="center">
+          Find more care providers to help <Link to="/browse" className={classes.browseLink}>here.</Link>
+        </Typography>
+      </Box> */}
+      <Box className={classes.footer}>
+        <Typography component="p" align="center" gutterBottom>
+          <b>Need help editing or removing a request?</b>
+        </Typography>
+        <Typography component="p" align="center" gutterBottom>
+          Please email <a href={`mailto:${supportEmail}`}>{supportEmail}</a> to report requests that should be updated or removed.
+        </Typography>
+      </Box>
+    </>
   );
 }

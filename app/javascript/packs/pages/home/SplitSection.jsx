@@ -37,10 +37,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   actionButton: {
+    boxShadow: 'none',
     fontSize: '20px',
+    lineHeight: '28px',
     padding: '10px 20px',
-    boxShadow: 'none'
-  }
+  },
+  buttonLink: {
+    textDecoration: 'none',
+  },
 }));
 
 const SplitSection = () => {
@@ -66,7 +70,11 @@ const SplitSection = () => {
           >
             Make requests for meals, supplies, or anything else you need. Share a link with your friends and family.
           </Typography>
-          <Link to="/provider-signup"><Button className={classes.actionButton} size="large" variant="contained" color="primary" elevation={0}>Request Help</Button></Link>
+          <Link to="/provider-signup" className={classes.buttonLink}>
+            <Button className={classes.actionButton} size="large" variant="contained" color="primary" elevation={0}>
+              Request Help
+            </Button>
+          </Link>
         </Box>
       </Box>
       <Box bgcolor={'secondary.800'} display="flex">
@@ -88,7 +96,11 @@ const SplitSection = () => {
           >
             Offer your support to local doctors, nurses, and hospital workers in your community. You choose who and how to help.
           </Typography>
-          <Link to="/browse"><Button className={classes.actionButton} size="large" variant="contained" color="secondary" elevation={0}>Volunteer Now</Button></Link>
+          <Link to="/browse" className={classes.buttonLink}>
+            <Button className={classes.actionButton} size="large" variant="contained" color="secondary" elevation={0}>
+              Volunteer Now
+            </Button>
+          </Link>
         </Box>
       </Box>
     </Box>
