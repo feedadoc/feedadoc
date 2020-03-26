@@ -11,6 +11,23 @@
     <%= javascript_pack_tag 'application' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <% if request.path.include?('providers/') %>
+      <% provider_id = request.path.scan(/providers\/(\d+)/i).flatten.first %>
+      <% if provider_id && (provider = Provider.find_by(id: provider_id)) %>
+        <meta property="og:title" content="Request for support from <%= provider.first_name %> -- Feed a Doc" />
+      <% else %>
+        <meta property="og:title" content="Request for support from a provider -- Feed a Doc" />
+      <% end %>
+      <meta property="og:description" content="View and respond to this request for help from a COVID-19 care provider." />
+      <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link-Provider_Request.jpg" %>" />
+      <meta property="og:url" content="<%= request.protocol + request.host + request.path %>" />
+    <% elsif request.path == '/'  %>
+      <meta property="og:title" content="Feed a Doc: Care providers need our help to fight COVID-19" />
+      <meta property="og:description" content="Volunteer to help a doctor, nurse, or medical worker on the front lines of the COVID-19 pandemic. Care providers: Post a request and share it with your friends!" />
+      <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link_Default.jpg" %>" />
+      <meta property="og:url" content="<%= request.protocol + request.protocol + request.host %>" />
+      <meta property=”og:type” content=”webpage” />
+    <% end %>
   </head>
 
   <body>
