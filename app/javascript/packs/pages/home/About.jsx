@@ -43,7 +43,7 @@ const contributors = [
     src: 'https://placehold.it/400x400',
   },
   {
-    name: 'Chandler Molson',
+    name: 'Chandler Moisen',
     role: 'Engineering',
     src: 'https://placehold.it/400x400',
   },
