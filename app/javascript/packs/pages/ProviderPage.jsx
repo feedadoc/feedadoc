@@ -76,15 +76,18 @@ const GET_PROVIDER = gql`
   }
 `;
 
-export default function ProviderPage(props) {
+export default function ProviderPage({ location, match }) {
   const classes = useStyles();
-  const { match: { params: { id } } } = props;
+  const { params: { id } } = match;
+  const { search } = location;
   const { loading, error, data } = useQuery(GET_PROVIDER, {
     variables: { id },
   });
 
   if (loading || error || !data.provider) return null;
   const { firstName, city, state, neighborhood, role, facility, description, requests, active } = data.provider;
+
+  const renderSuccessMsg = search.includes('success')
 
   return (
     <Paper className={classes.heroContent}>

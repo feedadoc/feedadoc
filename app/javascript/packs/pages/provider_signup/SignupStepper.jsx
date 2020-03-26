@@ -138,7 +138,7 @@ export default function SignupStepper({ steps }) {
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
   if (redirectId) {
-    return <Redirect to={`/providers/${redirectId}?success=true`} />
+    return <Redirect to={`/providers/${redirectId}?success`} />
   }
 
   return (
