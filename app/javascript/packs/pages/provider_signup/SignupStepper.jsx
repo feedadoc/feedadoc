@@ -109,8 +109,6 @@ export default function SignupStepper({ steps }) {
           const allErrors = [...(errors || []), ...systemErrors].map(e =>
             e && e.message ? e.message : e
           );
-          console.log(data);
-          console.log([provider]);
           if (errors.length) {
             setErrors(errors);
           } else {
