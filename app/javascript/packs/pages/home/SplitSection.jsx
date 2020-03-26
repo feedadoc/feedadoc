@@ -11,12 +11,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     '& > *': {
       width: "100%",
-      paddingTop: '80px',
-      paddingBottom: '80px',
+      alignSelf: 'center',
       justifyContent: "center",
       [theme.breakpoints.up('md')]: {
         width: "50%",
-        minHeight: '600px'
+        minHeight: '650px'
       },
     },
     '& > *:first-child': {
@@ -52,7 +51,7 @@ const SplitSection = () => {
   return (
     <Box p={0} m={0} display="flex"  className={classes.root}  alignItems="center">
       <Box bgcolor={'secondary.500'} display="flex">
-        <Box style={{maxWidth: '500px', textAlign: 'center'}}>
+        <Box alignSelf="center" style={{maxWidth: '500px', textAlign: 'center'}}>
           <DoctorsPassingBy />
           <Typography
             component="h2"
@@ -78,7 +77,7 @@ const SplitSection = () => {
         </Box>
       </Box>
       <Box bgcolor={'secondary.800'} display="flex">
-        <Box style={{maxWidth: '500px', paddingTop: '15px', textAlign: 'center'}}>
+        <Box alignSelf="center" style={{maxWidth: '500px', paddingTop: '15px', textAlign: 'center'}}>
           <Volunteers />
           <Typography
             component="h2"

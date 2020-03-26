@@ -29,13 +29,11 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.down('xs')]: {
         fontSize: '0.6rem'
       },
-      '& > *:active': {
-        color: theme.palette.primary,
-      },
-      '& > *:hover': {
-        color: theme.palette.primary,
+      '&:visited': {
+        color: theme.palette.text.primary
       },
       '&:hover': {
+        color: theme.palette.primary,
         borderBottomColor: theme.palette.primary.main
       }
     },

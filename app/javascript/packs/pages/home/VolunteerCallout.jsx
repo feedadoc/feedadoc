@@ -27,7 +27,6 @@ const VolunteerCallout = () => (
         component="p"
         variant="h2"
         align="center"
-        color="default"
         style={{marginTop: '20px'}}
       >
         Share with friends, family, Facebook, and NextDoor to make sure every care
