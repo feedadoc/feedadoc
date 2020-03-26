@@ -25,7 +25,6 @@ const Hero = () => (
           component="p"
           variant="h2"
           align="center"
-          color="default"
         >
           Volunteer your time or request support for meals, childcare, errands,
           and more during the COVID-19 pandemic.
