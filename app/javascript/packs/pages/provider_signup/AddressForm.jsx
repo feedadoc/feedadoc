@@ -6,7 +6,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import STATES from '../../data/states';
 
 const useStyles = makeStyles(theme => ({

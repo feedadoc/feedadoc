@@ -16,6 +16,7 @@ import VolunteerAddressForm from './pages/volunteer_signup/VolunteerAddressForm'
 import VolunteerStepper from './pages/volunteer_signup/VolunteerStepper';
 import EditProvider from './pages/edit_provider/EditProvider';
 import Header from './components/Header';
+import ScrollToTopOnMount from "./components/ScrollToTopOnMount";
 import theme from './theme';
 import Home from './pages/home/Home';
 
@@ -54,6 +55,7 @@ function App() {
               <Switch>
                 <Route path="/provider-signup">
                   <Container maxWidth="md">
+                    <ScrollToTopOnMount />
                     <SignupStepper
                       steps={[
                         {label: 'About You', component: AddressForm},
@@ -67,6 +69,7 @@ function App() {
                   render={props => (
                     <>
                     <Container maxWidth="md">
+                      <ScrollToTopOnMount />
                       <VolunteerStepper
                         {...props}
                         steps={[
@@ -80,6 +83,7 @@ function App() {
                 />
                 <Route path="/browse">
                   <Container maxWidth="md">
+                    <ScrollToTopOnMount />
                     <BrowseRequests />
                   </Container>
                 </Route>
@@ -90,6 +94,7 @@ function App() {
                 </Route>
                 <Route path="/providers/:id" component={ProviderPage} />
                 <Route path="/">
+                  <ScrollToTopOnMount />
                   <Home />
                 </Route>
               </Switch>

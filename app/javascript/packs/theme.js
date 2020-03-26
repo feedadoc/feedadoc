@@ -1,6 +1,11 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+  props: {
+    MuiPaper: {
+      elevation: 0,
+    },
+  },
   typography: {
     fontFamily: 'Poppins, sans-serif',
     fontWeight: 400,

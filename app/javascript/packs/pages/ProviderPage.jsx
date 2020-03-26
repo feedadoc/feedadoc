@@ -8,10 +8,8 @@ import {
   ListItem,
   Container
 } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
-import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   requestHeader: {
