@@ -181,7 +181,7 @@ export default function SignupStepper({ steps }) {
                 className={classes.button}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? "Signup" : "Next"}
+                {activeStep === steps.length - 1 ? "Sign Up" : "Next"}
               </Button>
             </div>
           </React.Fragment>
