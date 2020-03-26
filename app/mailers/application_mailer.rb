@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@feedadoc.com'
+  default from: 'Feed a Doc <no-reply@feedadoc.com>'
   layout 'mailer'
 end
