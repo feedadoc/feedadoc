@@ -86,7 +86,13 @@ const useStyles = makeStyles(theme => ({
   footer: {
     fontSize: "20px",
     padding: theme.spacing(6, 1),
-  }
+  },
+  successHeader: {
+    marginBottom: theme.spacing(3),
+  },
+  successCopy: {
+    marginBottom: theme.spacing(4),
+  },
 }));
 
 const GET_PROVIDER = gql`
@@ -111,9 +117,10 @@ const GET_PROVIDER = gql`
 
 const supportEmail = "support@feedadoc.zendesk.com";
 
-export default function ProviderPage(props) {
+export default function ProviderPage({ location, match }) {
   const classes = useStyles();
-  const { match: { params: { id } } } = props;
+  const { params: { id } } = match;
+  const { search } = location;
   const { loading, error, data } = useQuery(GET_PROVIDER, {
     variables: { id },
   });
@@ -121,58 +128,81 @@ export default function ProviderPage(props) {
   if (loading || error || !data.provider) return null;
   const { firstName, city, state, neighborhood, role, facility, description, requests, active } = data.provider;
 
+  const renderSuccessMsg = search.includes('success')
+
   return (
     <>
-      <Box className={classes.requestHeader}>
-        <Typography component="h1" variant="h6" align="center" className={classes.requestHeaderTitle}>
-          Volunteer To Help
-        </Typography>
-        <Typography align="center" variant="h1" component="h2" className={classes.name}>
-          {firstName}
-        </Typography>
-      </Box>
-        <Container maxWidth="sm" className={classes.requestContent}>
-          <Typography component="h3" variant="h6" align="center" gutterBottom>
-            {neighborhood ? `${neighborhood} / ${city}, ${state}` : `${city}, ${state}`}
-          </Typography>
-          <Typography component="h3" variant="h6" align="center" gutterBottom className={classes.role}>
-            {role}
-          </Typography>
-          <Typography component="h3" variant="h6" align="center" className={classes.facility}>
-            {facility}
-          </Typography>
-          <Typography component="h4" variant="h5" align="center" gutterBottom className={classes.sectionHeaders}>
-            Needs
-          </Typography>
-          { requests.length === 0 ?
-            "No needs at this time."
-            :
-            <List>
-              {requests.map((request, index) => {
-                return (
-                  <ListItem className={[classes.listItem, request.satisfied ? classes.faded : ""].join(" ")} key={index}>
-                    {request.satisfied ? `${request.type} - satisfied` : request.type}
-                  </ListItem>
-                )
-              })}
-            </List>
-          }
-          <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom className={classes.sectionHeaders}>
-            Details
-          </Typography>
-          <Typography component="p" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.description}>
-            {description}
-          </Typography>
-          { active ? (
-            <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
-              Offer Help
-            </Button>
-          ) : (
-            <Typography component="h1" align="center" className={classes.complete} gutterBottom>
-              The provider has marked this request as complete.
+      {renderSuccessMsg ? (
+        <>
+          <Container maxWidth="sm">
+            <Typography align="center" component="p" variant="h2" className={classes.successHeader}>
+              Your request has been submitted.
             </Typography>
-          )}
-        </Container>
+            <Typography component="p" align="center" className={classes.successCopy}>
+              We have sent you a confirmation email, which you can use to modify or delete your request at any time.
+              Your request will also appear on a public directory and will expire automatically after 14 days.
+            </Typography>
+            <Typography component="p" align="center" className={classes.successCopy}>
+              Thank you for your service!
+            </Typography>
+          </Container>
+          <Container maxWidth="md">
+            <hr />
+          </Container>
+        </>
+      ) : (
+        <Box className={classes.requestHeader}>
+          <Typography component="h1" variant="h6" align="center" className={classes.requestHeaderTitle}>
+            Volunteer To Help
+            </Typography>
+          <Typography align="center" variant="h1" component="h2" className={classes.name}>
+            {firstName}
+          </Typography>
+        </Box>
+      )}
+      <Container maxWidth="sm" className={classes.requestContent}>
+        <Typography component="h3" variant="h6" align="center" gutterBottom>
+          {neighborhood ? `${neighborhood} / ${city}, ${state}` : `${city}, ${state}`}
+        </Typography>
+        <Typography component="h3" variant="h6" align="center" gutterBottom className={classes.role}>
+          {role}
+        </Typography>
+        <Typography component="h3" variant="h6" align="center" className={classes.facility}>
+          {facility}
+        </Typography>
+        <Typography component="h4" variant="h5" align="center" gutterBottom className={classes.sectionHeaders}>
+          Needs
+        </Typography>
+        { requests.length === 0 ?
+          "No needs at this time."
+          :
+          <List>
+            {requests.map((request, index) => {
+              return (
+                <ListItem className={[classes.listItem, request.satisfied ? classes.faded : ""].join(" ")} key={index}>
+                  {request.satisfied ? `${request.type} - satisfied` : request.type}
+                </ListItem>
+              )
+            })}
+          </List>
+        }
+        <Typography component="h4" variant="h5" align="center" color="textPrimary" gutterBottom className={classes.sectionHeaders}>
+          Details
+        </Typography>
+        <Typography component="p" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.description}>
+          {description}
+        </Typography>
+        { active ? (
+          <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
+            Offer Help
+          </Button>
+        ) : (
+          <Typography component="h1" align="center" className={classes.complete} gutterBottom>
+            The provider has marked this request as complete.
+          </Typography>
+        )}
+      </Container>
+
       {/* 
         @NOTE: Hiding this link until after MVP release
        */}

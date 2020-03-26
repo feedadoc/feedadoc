@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Redirect } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -78,9 +79,9 @@ const CREATE_PROVIDER = gql`
 
 export default function SignupStepper({ steps }) {
   const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const [errors, setErrors] = React.useState(null);
-  const [variables, setVariables] = React.useState({
+  const [activeStep, setActiveStep] = useState(0);
+  const [errors, setErrors] = useState(null);
+  const [variables, setVariables] = useState({
     firstName: "",
     lastName: "",
     neighborhood: "",
@@ -92,6 +93,7 @@ export default function SignupStepper({ steps }) {
     requests: [],
     description: ""
   });
+  const [redirectId, setRedirectId] = useState();
 
   const [createProvider, { loading, data, error }] = useMutation(
     CREATE_PROVIDER
@@ -110,10 +112,8 @@ export default function SignupStepper({ steps }) {
           if (errors.length) {
             setErrors(errors);
           } else {
-            setActiveStep(activeStep + 1);
+            setRedirectId(provider.id)
           }
-          console.log(data);
-          console.log([provider]);
         })
         .catch(e => {
           setErrors([e.message]);
@@ -135,17 +135,8 @@ export default function SignupStepper({ steps }) {
 
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
-  if (activeStep === steps.length) {
-    return (
-      <Paper className={classes.paper}>
-        <Typography variant="h5" gutterBottom>
-          Thank you for signing up.
-        </Typography>
-        <Typography variant="subtitle1">
-          We have emailed you your account information.
-        </Typography>
-      </Paper>
-    );
+  if (redirectId) {
+    return <Redirect to={`/providers/${redirectId}?success`} />
   }
 
   return (
@@ -181,7 +172,7 @@ export default function SignupStepper({ steps }) {
                 className={classes.button}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? "Sign Up" : "Next"}
+                {activeStep === steps.length - 1 ? 'Save' : 'Next'}
               </Button>
             </div>
           </React.Fragment>

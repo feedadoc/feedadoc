@@ -232,7 +232,7 @@ export default function VolunteerStepper({ steps, location }) {
                 className={classes.button}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? "Signup" : "Next"}
+                {activeStep === steps.length - 1 ? 'Volunteer' : 'Next'}
               </Button>
             </div>
           </React.Fragment>
