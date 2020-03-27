@@ -18,7 +18,13 @@ const useStyles = makeStyles(theme => ({
   },
   requestTypes: {
     marginTop: theme.spacing(2)
-  }
+  },
+  availabilityQuestionLabel: {
+    marginBottom: theme.spacing(3)
+  },
+  availabilityCheckboxLabel: {
+    textTransform: "capitalize"
+  },
 }));
 
 const providerRequestTypes = [
@@ -147,7 +153,11 @@ export default function OfferForm({
         </Grid>
         <Grid item xs={12}>
           <FormControl>
-            <FormLabel required id="type-select-label">
+            <FormLabel
+              required
+              className={classes.availabilityQuestionLabel}
+              id="type-select-label"
+            >
               When are you generally available?
             </FormLabel>
             {availabilityOptions.map(option => (
@@ -170,6 +180,7 @@ export default function OfferForm({
                     color="primary"
                   />
                 }
+                className={classes.availabilityCheckboxLabel}
                 label={option}
               />
             ))}
