@@ -24,6 +24,7 @@ gem "graphql"
 gem "graphiql-rails"
 gem "sucker_punch"
 gem "sentry-raven"
+gem "postmark-rails"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
