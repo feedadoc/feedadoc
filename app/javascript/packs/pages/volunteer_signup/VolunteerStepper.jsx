@@ -16,6 +16,7 @@ import queryString from 'query-string';
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(10),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
