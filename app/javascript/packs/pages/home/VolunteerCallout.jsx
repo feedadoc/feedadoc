@@ -20,39 +20,37 @@ const VolunteerCallout = () => (
         align="center"
         color="primary"
       >
-        Help us build an army of local volunteers to support our front line of
-        defense against the COVID-19 pandemic.
+        Help us make sure every care provider gets the support they need to fight COVID-19
       </Typography>
       <Typography
         component="p"
         variant="h2"
         align="center"
-        style={{marginTop: '20px'}}
+        style={{ marginTop: '20px' }}
       >
-        Share with friends, family, Facebook, and NextDoor to make sure every care
-        provider gets the support they need.
+        Share #FeedaDoc with family, friends, and on social media to help spread the word.
       </Typography>
     </Container>
-    <Container maxWidth='xs' style={{marginTop: "40px"}}>
-      <Grid container spacing={4}>        
+    <Container maxWidth='xs' style={{ marginTop: "40px" }}>
+      <Grid container spacing={4}>
         <Grid item xs={12} sm={1}>
           {/* Intentionally empty to create an even number of columns */}
-        </Grid> 
+        </Grid>
         <Grid item xs={4} sm={2}>
           <Link href=""><FacebookIcon /></Link>
-        </Grid> 
+        </Grid>
         <Grid item xs={4} sm={2}>
           <Link href=""><TwitterIcon /></Link>
-        </Grid> 
+        </Grid>
         <Grid item xs={4} sm={2}>
           <Link href=""><InstagramIcon /></Link>
-        </Grid> 
+        </Grid>
         <Grid item xs={4} sm={2}>
           <Link href=""><LinkedInIcon /></Link>
-        </Grid> 
+        </Grid>
         <Grid item xs={4} sm={2}>
           <Link href=""><EmailIcon /></Link>
-        </Grid> 
+        </Grid>
         <Grid item xs={12} sm={1}>
           {/* Intentionally empty to create an even number of columns */}
         </Grid>
