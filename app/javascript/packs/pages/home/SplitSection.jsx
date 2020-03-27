@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
       alignSelf: 'center',
       justifyContent: "center",
+      padding: theme.spacing(4, 2),
       [theme.breakpoints.up('md')]: {
         width: "50%",
         minHeight: '650px'
@@ -28,7 +29,12 @@ const useStyles = makeStyles(theme => ({
       [theme.breakpoints.up('md')]: {
         paddingLeft: '80px',
         justifyContent: "flex-start"
-      }
+      },
+      '& > *:first-child': {
+        [theme.breakpoints.up('md')]: {
+          paddingTop: '15px'
+        }
+      },
     },
     flexDirection: 'column',
     [theme.breakpoints.up('md')]: {
@@ -77,7 +83,7 @@ const SplitSection = () => {
         </Box>
       </Box>
       <Box bgcolor={'secondary.800'} display="flex">
-        <Box alignSelf="center" style={{maxWidth: '500px', paddingTop: '15px', textAlign: 'center'}}>
+        <Box alignSelf="center" style={{maxWidth: '500px', textAlign: 'center'}}>
           <Volunteers />
           <Typography
             component="h2"
