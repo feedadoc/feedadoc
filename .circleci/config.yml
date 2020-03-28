@@ -136,9 +136,11 @@ workflows:
           type: approval
           requires:
             - test
+          filters:
+            branches:
+              only: master
       - optional-production-deploy:
           requires:
-            - test
             - optional-production-deploy-approval
           filters:
             branches:
@@ -147,6 +149,12 @@ workflows:
           type: approval
           requires:
             - test
+          filters:
+            branches:
+              ignore: master
       - optional-staging-deploy:
           requires:
             - optional-staging-deploy-approval
+          filters:
+            branches:
+              ignore: master
