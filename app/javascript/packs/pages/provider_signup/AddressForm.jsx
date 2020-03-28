@@ -78,7 +78,7 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl>
-            <InputLabel required id="state">
+            <InputLabel htmlFor="state" required id="state">
               State
             </InputLabel>
             <Select
@@ -113,7 +113,7 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12}>
           <FormControl>
-            <InputLabel required id="role-select-label">
+            <InputLabel required htmlFor="role" id="role-select-label">
               Your Job Title / Role
             </InputLabel>
             <Select
