@@ -1,39 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import {MuiThemeProvider, makeStyles} from '@material-ui/core/styles';
-import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from '@apollo/react-hooks';
-import SignupStepper from './pages/provider_signup/SignupStepper';
-import AddressForm from './pages/provider_signup/AddressForm';
-import ProviderRequestForm from './pages/provider_signup/ProviderRequestForm';
-import BrowseRequests from './pages/BrowseRequests';
-import ProviderPage from './pages/ProviderPage';
-import OfferForm from './pages/volunteer_signup/OfferForm';
+import React from "react";
+import ReactDOM from "react-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { MuiThemeProvider, makeStyles } from "@material-ui/core/styles";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "@apollo/react-hooks";
+import SignupStepper from "./pages/provider_signup/SignupStepper";
+import AddressForm from "./pages/provider_signup/AddressForm";
+import ProviderRequestForm from "./pages/provider_signup/ProviderRequestForm";
+import BrowseRequests from "./pages/BrowseRequests";
+import ProviderPage from "./pages/ProviderPage";
+import OfferForm from "./pages/volunteer_signup/OfferForm";
 import Container from "@material-ui/core/Container";
-import VolunteerAddressForm from './pages/volunteer_signup/VolunteerAddressForm';
-import VolunteerStepper from './pages/volunteer_signup/VolunteerStepper';
-import EditProvider from './pages/edit_provider/EditProvider';
-import Header from './components/Header';
+import VolunteerAddressForm from "./pages/volunteer_signup/VolunteerAddressForm";
+import VolunteerStepper from "./pages/volunteer_signup/VolunteerStepper";
+import EditProvider from "./pages/edit_provider/EditProvider";
+import Header from "./components/Header";
 import ScrollToTopOnMount from "./components/ScrollToTopOnMount";
-import theme from './theme';
-import Home from './pages/home/Home';
+import theme from "./theme";
+import Home from "./pages/home/Home";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   layout: {
-    width: '100%',
-    overflowX: 'hidden' // @TODO: Figure out where mysterious overflow is coming from
+    width: "100%",
+    overflowX: "hidden", // @TODO: Figure out where mysterious overflow is coming from
   },
 }));
 
 const getCsrfToken = () => {
-  const csrf = document.querySelector('meta[name=csrf-token]');
-  return csrf ? csrf.getAttribute('content') : '';
+  const csrf = document.querySelector("meta[name=csrf-token]");
+  return csrf ? csrf.getAttribute("content") : "";
 };
 
 const client = new ApolloClient({
-  request: operation => {
+  request: (operation) => {
     operation.setContext({
       headers: {
         X_CSRF_TOKEN: getCsrfToken(),
@@ -58,26 +58,29 @@ function App() {
                     <ScrollToTopOnMount />
                     <SignupStepper
                       steps={[
-                        {label: 'About You', component: AddressForm},
-                        {label: 'Request', component: ProviderRequestForm},
+                        { label: "About You", component: AddressForm },
+                        { label: "Request", component: ProviderRequestForm },
                       ]}
                     />
                   </Container>
                 </Route>
                 <Route
                   path="/volunteer-signup"
-                  render={props => (
+                  render={(props) => (
                     <>
-                    <Container maxWidth="md">
-                      <ScrollToTopOnMount />
-                      <VolunteerStepper
-                        {...props}
-                        steps={[
-                          {label: 'Offer Help', component: OfferForm},
-                          {label: 'About You', component: VolunteerAddressForm},
-                        ]}
-                      />
-                    </Container>
+                      <Container maxWidth="md">
+                        <ScrollToTopOnMount />
+                        <VolunteerStepper
+                          {...props}
+                          steps={[
+                            { label: "Offer Help", component: OfferForm },
+                            {
+                              label: "About You",
+                              component: VolunteerAddressForm,
+                            },
+                          ]}
+                        />
+                      </Container>
                     </>
                   )}
                 />
@@ -106,4 +109,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'));
+ReactDOM.render(<App />, document.querySelector("#app"));
