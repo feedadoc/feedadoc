@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import PropTypes from "prop-types";
+import AddressForm from './AddressForm';
+import ProviderRequestForm from './ProviderRequestForm';
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
@@ -8,7 +10,7 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { gql } from "apollo-boost";
+import {  CREATE_PROVIDER } from '../../queries/createProvider';
 import { useMutation } from "@apollo/react-hooks";
 import ErrorIcon from "@material-ui/icons/Error";
 import Snackbar from "@material-ui/core/Snackbar";
@@ -45,40 +47,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CREATE_PROVIDER = gql`
-  mutation CreateProvider(
-    $firstName: String!
-    $lastName: String
-    $neighborhood: String
-    $city: String!
-    $state: String!
-    $email: String!
-    $facility: String!
-    $role: String!
-    $requests: [String!]!
-    $description: String!
-  ) {
-    createProvider(
-      input: {
-        firstName: $firstName
-        lastName: $lastName
-        neighborhood: $neighborhood
-        city: $city
-        state: $state
-        email: $email
-        facility: $facility
-        role: $role
-        requests: $requests
-        description: $description
-      }
-    ) {
-      errors
-      provider { id }
-    }
-  }
-`;
+const steps = [
+  {label: 'Request', component: ProviderRequestForm},
+  {label: 'About You', component: AddressForm},
+]
 
-export default function SignupStepper({ steps }) {
+export default function SignupStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState(null);
@@ -193,3 +167,4 @@ export default function SignupStepper({ steps }) {
 SignupStepper.propTypes = {
   steps: PropTypes.array
 };
+ 

@@ -6,8 +6,6 @@ import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from '@apollo/react-hooks';
 import SignupStepper from './pages/provider_signup/SignupStepper';
-import AddressForm from './pages/provider_signup/AddressForm';
-import ProviderRequestForm from './pages/provider_signup/ProviderRequestForm';
 import BrowseRequests from './pages/BrowseRequests';
 import ProviderPage from './pages/ProviderPage';
 import OfferForm from './pages/volunteer_signup/OfferForm';
@@ -56,12 +54,7 @@ function App() {
                 <Route path="/provider-signup">
                   <Container maxWidth="md">
                     <ScrollToTopOnMount />
-                    <SignupStepper
-                      steps={[
-                        {label: 'About You', component: AddressForm},
-                        {label: 'Request', component: ProviderRequestForm},
-                      ]}
-                    />
+                    <SignupStepper />
                   </Container>
                 </Route>
                 <Route
