@@ -35,24 +35,18 @@ const VolunteerCallout = () => (
     </Container>
     <Container maxWidth='xs' style={{marginTop: "40px"}}>
       <Grid container spacing={4}>        
-        <Grid item xs={12} sm={1}>
-          {/* Intentionally empty to create an even number of columns */}
-        </Grid> 
-        <Grid item xs={4} sm={2}>
+        <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.FACEBOOK_LINK}><FacebookIcon /></Link>
         </Grid> 
-        <Grid item xs={4} sm={2}>
+        <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.TWITTER_LINK}><TwitterIcon /></Link>
         </Grid> 
-        <Grid item xs={4} sm={2}>
+        <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.LINKEDIN_LINK}><LinkedInIcon /></Link>
         </Grid> 
-        <Grid item xs={4} sm={2}>
+        <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.EMAIL_LINK}><EmailIcon /></Link>
         </Grid> 
-        <Grid item xs={12} sm={1}>
-          {/* Intentionally empty to create an even number of columns */}
-        </Grid>
       </Grid>
     </Container>
   </Box>
