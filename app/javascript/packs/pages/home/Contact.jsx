@@ -1,8 +1,13 @@
-import React from 'react';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
-import BoldLink from '../../components/BoldLink';
+import React from "react";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import BoldLink from "../../components/BoldLink";
+import {
+  SUPPORT_EMAIL,
+  CONTACT_US_EMAIL,
+  DONATION_EMAIL,
+} from "../../data/contactEmails";
 
 const Contact = () => (
   <Box
@@ -13,12 +18,12 @@ const Contact = () => (
     py={10}
     flexDirection="column"
   >
-    <Container maxWidth='md'>
+    <Container maxWidth="md">
       <Typography
         component="h2"
         variant="h1"
         align="center"
-        style={{marginBottom: '40px'}}
+        style={{ marginBottom: "40px" }}
       >
         Contact
       </Typography>
@@ -26,30 +31,38 @@ const Contact = () => (
         component="p"
         variant="h6"
         align="center"
-        style={{marginBottom: '20px'}}
+        style={{ marginBottom: "20px" }}
       >
-        <strong>Providers and Volunteers</strong>: Contact us at <BoldLink color="inherit" href="support@feedadoc.zendesk.com">support@feedadoc.zendesk.com</BoldLink> for
-        support requests and feature suggestions.
+        <strong>Providers and Volunteers</strong>: Contact us at{" "}
+        <BoldLink color="inherit" href={`mailto:${SUPPORT_EMAIL}`}>
+          {SUPPORT_EMAIL}
+        </BoldLink>{" "}
+        for support requests and feature suggestions.
       </Typography>
       <Typography
         component="p"
         variant="h6"
         align="center"
-        style={{marginBottom: '20px'}}
+        style={{ marginBottom: "20px" }}
       >
-        <strong>Media Inquiries</strong>: You can reach
-        us at <BoldLink color="inherit" href="feedadoc@impossiblelabs.io">feedadoc@impossiblelabs.io</BoldLink>. Please include your publication name,
-        contact info, and deadline (if any). 
+        <strong>Media Inquiries</strong>: You can reach us at{" "}
+        <BoldLink color="inherit" href={`mailto:${CONTACT_US_EMAIL}`}>
+          {CONTACT_US_EMAIL}
+        </BoldLink>
+        . Please include your publication name, contact info, and deadline (if
+        any).
       </Typography>
-      <Typography
-        component="p"
-        variant="h6"
-        align="center"
-      >
-        <strong>Funders</strong>: We are currently seeking
-        funding to accelerate our roadmap. Please email us at{' '}
-        <BoldLink color="inherit" href="feedadoc@impossiblelabs.io">feedadoc@impossiblelabs.io</BoldLink>. Individiuals can also support us via Paypal at{' '}
-        <BoldLink color="inherit" href="accounts@impossiblelabs.io">accounts@impossiblelabs.io</BoldLink> (not deductible for tax purposes).
+      <Typography component="p" variant="h6" align="center">
+        <strong>Funders</strong>: We are currently seeking funding to accelerate
+        our roadmap. Please email us at{" "}
+        <BoldLink color="inherit" href={`mailto:${CONTACT_US_EMAIL}`}>
+          {CONTACT_US_EMAIL}
+        </BoldLink>
+        . Individiuals can also support us via Paypal at{" "}
+        <BoldLink color="inherit" href={`mailto:${DONATION_EMAIL}`}>
+          {DONATION_EMAIL}
+        </BoldLink>{" "}
+        (not deductible for tax purposes).
       </Typography>
     </Container>
   </Box>

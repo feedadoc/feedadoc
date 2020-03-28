@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Redirect } from 'react-router-dom';
+import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
+import AddressForm from "./AddressForm";
+import ProviderRequestForm from "./ProviderRequestForm";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Stepper from "@material-ui/core/Stepper";
@@ -8,77 +10,49 @@ import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import { gql } from "apollo-boost";
+import { CREATE_PROVIDER } from "../../queries/createProvider";
 import { useMutation } from "@apollo/react-hooks";
 import ErrorIcon from "@material-ui/icons/Error";
 import Snackbar from "@material-ui/core/Snackbar";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(10),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
-      padding: theme.spacing(3)
-    }
+      padding: theme.spacing(3),
+    },
   },
   stepper: {
-    padding: theme.spacing(3, 0, 5)
+    padding: theme.spacing(3, 0, 5),
   },
   buttons: {
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   button: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
   },
   error: {
     backgroundColor: theme.palette.error.main,
     color: theme.palette.error.contrastText,
     fill: theme.palette.error.contrastText,
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
   },
   step: {
-    cursor: "pointer"
-  }
+    cursor: "pointer",
+  },
 }));
 
-const CREATE_PROVIDER = gql`
-  mutation CreateProvider(
-    $firstName: String!
-    $lastName: String
-    $neighborhood: String
-    $city: String!
-    $state: String!
-    $email: String!
-    $facility: String!
-    $role: String!
-    $requests: [String!]!
-    $description: String!
-  ) {
-    createProvider(
-      input: {
-        firstName: $firstName
-        lastName: $lastName
-        neighborhood: $neighborhood
-        city: $city
-        state: $state
-        email: $email
-        facility: $facility
-        role: $role
-        requests: $requests
-        description: $description
-      }
-    ) {
-      errors
-      provider { id }
-    }
-  }
-`;
+const steps = [
+  { label: "Request", component: ProviderRequestForm },
+  { label: "About You", component: AddressForm },
+];
 
-export default function SignupStepper({ steps }) {
+export default function SignupStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = useState(0);
   const [errors, setErrors] = useState(null);
@@ -92,7 +66,7 @@ export default function SignupStepper({ steps }) {
     facility: "",
     role: "",
     requests: [],
-    description: ""
+    description: "",
   });
   const [redirectId, setRedirectId] = useState();
 
@@ -105,18 +79,18 @@ export default function SignupStepper({ steps }) {
       createProvider({ variables })
         .then(({ errors: systemErrors = [], data }) => {
           const {
-            createProvider: { provider, errors = [] }
+            createProvider: { provider, errors = [] },
           } = data;
-          const allErrors = [...(errors || []), ...systemErrors].map(e =>
+          const allErrors = [...(errors || []), ...systemErrors].map((e) =>
             e && e.message ? e.message : e
           );
           if (errors.length) {
             setErrors(errors);
           } else {
-            setRedirectId(provider.id)
+            setRedirectId(provider.id);
           }
         })
-        .catch(e => {
+        .catch((e) => {
           setErrors([e.message]);
         });
     } else {
@@ -128,11 +102,11 @@ export default function SignupStepper({ steps }) {
     setActiveStep(activeStep - 1);
   };
 
-  const setField = name => value => {
+  const setField = (name) => (value) => {
     setVariables({ ...variables, [name]: value });
   };
 
-  const onChange = e => setField(e.target.name)(e.target.value);
+  const onChange = (e) => setField(e.target.name)(e.target.value);
 
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
@@ -147,7 +121,7 @@ export default function SignupStepper({ steps }) {
           },
         }}
       />
-    )
+    );
   }
 
   return (
@@ -183,7 +157,7 @@ export default function SignupStepper({ steps }) {
                 className={classes.button}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? 'Save' : 'Next'}
+                {activeStep === steps.length - 1 ? "Save" : "Next"}
               </Button>
             </div>
           </React.Fragment>
@@ -201,5 +175,5 @@ export default function SignupStepper({ steps }) {
 }
 
 SignupStepper.propTypes = {
-  steps: PropTypes.array
+  steps: PropTypes.array,
 };
