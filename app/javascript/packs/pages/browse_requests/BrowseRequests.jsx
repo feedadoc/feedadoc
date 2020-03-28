@@ -83,12 +83,10 @@ const TOTAL_PROVIDERS = gql`
           neighborhood
           city
           state
+          responseCount
           requests {
             type
             satisfied
-          }
-          responses {
-            totalCount
           }
         }
       }

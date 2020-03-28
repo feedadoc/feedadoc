@@ -57,7 +57,7 @@ export default function ProviderList({
                   city,
                   state,
                   requests,
-                  responses,
+                  responseCount,
                 },
               },
               index
@@ -105,7 +105,7 @@ export default function ProviderList({
                         </Typography>
                       </Grid>
                       <Grid item xs={6} spacing={2}>
-                        <Typography>{responses.totalCount} Offers</Typography>
+                        <Typography>{responseCount} Offers</Typography>
                       </Grid>
                     </Grid>
                   </Link>

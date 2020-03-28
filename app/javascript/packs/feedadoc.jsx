@@ -7,6 +7,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import SignupStepper from "./pages/provider_signup/SignupStepper";
 import BrowseRequests from "./pages/browse_requests/BrowseRequests";
+import VolunteerSignupPlaceholder from "./pages/VolunteerSignupPlaceholder";
 import ProviderPage from "./pages/ProviderPage";
 import OfferForm from "./pages/volunteer_signup/OfferForm";
 import Container from "@material-ui/core/Container";
@@ -77,10 +78,16 @@ function App() {
                     </>
                   )}
                 />
-                <Route path="/browse">
+                <Route path="/browse-new">
                   <Container maxWidth="md">
                     <ScrollToTopOnMount />
                     <BrowseRequests />
+                  </Container>
+                </Route>
+                <Route path="/browse">
+                  <Container maxWidth="md">
+                    <ScrollToTopOnMount />
+                    <VolunteerSignupPlaceholder />
                   </Container>
                 </Route>
                 <Route path="/providers/:token/edit">

@@ -9,10 +9,15 @@ module Types
     field :state, String, null: false
     field :description, String, null: false
     field :requests, [Types::Request], null: false
-    field :responses, Types::Connections::ResponseConnection, connection: true, null: true
     field :active, Boolean, null: false
     field :updated_at, String, null: false
+    field :response_count, Integer, null: false
+
+    def response_count
+      object.responses.count
+    end
   end
+
 
   class ProviderFilter < Types::BaseInputObject
     argument :id, ID, required: false
