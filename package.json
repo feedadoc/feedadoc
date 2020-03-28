@@ -37,8 +37,15 @@
     "@testing-library/react": "^10.0.1",
     "babel-jest": "^25.1.0",
     "figma-theme": "^1.0.0-3",
+    "husky": "^4.2.3",
     "jest": "^25.1.0",
+    "pretty-quick": "^2.0.1",
     "regenerator-runtime": "^0.13.5",
     "webpack-dev-server": "^3.10.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
