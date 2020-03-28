@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
+import { SUPPORT_EMAIL } from "../data/contactEmails";
 
 const useStyles = makeStyles(theme => ({
   requestHeader: {
@@ -115,8 +116,6 @@ const GET_PROVIDER = gql`
   }
 `;
 
-const supportEmail = "support@feedadoc.zendesk.com";
-
 export default function ProviderPage({ location, match }) {
   const classes = useStyles();
   const { params: { id } } = match;
@@ -217,7 +216,7 @@ export default function ProviderPage({ location, match }) {
           <b>Need help editing or removing a request?</b>
         </Typography>
         <Typography component="p" align="center" gutterBottom>
-          Please email <a href={`mailto:${supportEmail}`}>{supportEmail}</a> to report requests that should be updated or removed.
+          Please email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> to report requests that should be updated or removed.
         </Typography>
       </Box>
     </>
