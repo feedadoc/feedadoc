@@ -20,17 +20,15 @@ const VolunteerCallout = () => (
         align="center"
         color="primary"
       >
-        Help us build an army of local volunteers to support our front line of
-        defense against the COVID-19 pandemic.
+        Help us make sure every care provider gets the support they need to fight COVID-19
       </Typography>
       <Typography
         component="p"
         variant="h2"
         align="center"
-        style={{marginTop: '20px'}}
+        style={{ marginTop: '20px' }}
       >
-        Share with friends, family, Facebook, and NextDoor to make sure every care
-        provider gets the support they need.
+        Share #FeedaDoc with family, friends, and on social media to help spread the word.
       </Typography>
     </Container>
     <Container maxWidth='xs' style={{marginTop: "40px"}}>
