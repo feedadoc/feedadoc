@@ -9,6 +9,7 @@ module Types
     field :state, String, null: false
     field :description, String, null: false
     field :requests, [Types::Request], null: false
+    field :responses, Types::Connections::ResponseConnection, connection: true, null: true
     field :active, Boolean, null: false
     field :updated_at, String, null: false
   end
@@ -20,6 +21,7 @@ module Types
     argument :active, Boolean, required: false
     argument :role, String, required: false
     argument :updated_within_days, Int, required: false
+    argument :active_requests, Boolean, required: false
   end
 
   class ProviderSort < Types::BaseEnum

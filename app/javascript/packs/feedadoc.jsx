@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import SignupStepper from "./pages/provider_signup/SignupStepper";
-import BrowseRequests from "./pages/BrowseRequests";
+import BrowseRequests from "./pages/browse_requests/BrowseRequests";
 import ProviderPage from "./pages/ProviderPage";
 import OfferForm from "./pages/volunteer_signup/OfferForm";
 import Container from "@material-ui/core/Container";
