@@ -1,11 +1,11 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import DoctorsPassingBy from '../../components/illustrations/DoctorsPassingBy';
 import Volunteers from '../../components/illustrations/Volunteers';
 import Typography from '@material-ui/core/Typography';
 import Button from "@material-ui/core/Fab";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -55,23 +55,23 @@ const useStyles = makeStyles(theme => ({
 const SplitSection = () => {
   const classes = useStyles();
   return (
-    <Box p={0} m={0} display="flex"  className={classes.root}  alignItems="center">
+    <Box p={0} m={0} display="flex" className={classes.root} alignItems="center">
       <Box bgcolor={'secondary.500'} display="flex">
-        <Box alignSelf="center" style={{maxWidth: '500px', textAlign: 'center'}}>
+        <Box alignSelf="center" style={{ maxWidth: '500px', textAlign: 'center' }}>
           <DoctorsPassingBy />
           <Typography
             component="h2"
             variant="h1"
             align="center"
             color="primary"
-            style={{marginBottom: '20px', marginTop: '20px', textTransform: 'uppercase'}}
+            style={{ marginBottom: '20px', marginTop: '20px', textTransform: 'uppercase' }}
           >
             Care Providers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            style={{marginBottom: '40px'}}
+            style={{ marginBottom: '40px' }}
           >
             Make requests for meals, supplies, or anything else you need. Share a link with your friends and family.
           </Typography>
@@ -83,23 +83,23 @@ const SplitSection = () => {
         </Box>
       </Box>
       <Box bgcolor={'secondary.800'} display="flex">
-        <Box alignSelf="center" style={{maxWidth: '500px', textAlign: 'center'}}>
+        <Box alignSelf="center" style={{ maxWidth: '500px', textAlign: 'center' }}>
           <Volunteers />
           <Typography
             component="h2"
             variant="h1"
             color="secondary"
             align="center"
-            style={{marginBottom: '20px', marginTop: '20px', textTransform: 'uppercase'}}
+            style={{ marginBottom: '20px', marginTop: '20px', textTransform: 'uppercase' }}
           >
             Volunteers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            style={{marginBottom: '40px'}}
+            style={{ marginBottom: '40px' }}
           >
-            Offer your support to local doctors, nurses, and hospital workers in your community. You choose who and how to help.
+            Offer your support to local doctors, nurses, and hospital workers. You choose who and how to help.
           </Typography>
           <Link to="/browse" className={classes.buttonLink}>
             <Button className={classes.actionButton} size="large" variant="contained" color="secondary" elevation={0}>
