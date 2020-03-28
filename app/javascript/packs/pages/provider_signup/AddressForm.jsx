@@ -6,12 +6,12 @@ import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
-import STATES from '../../data/states';
+import STATES from "../../data/states";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   stateSelect: {
-    minWidth: 100
-  }
+    minWidth: 100,
+  },
 }));
 
 export default function AddressForm({
@@ -23,7 +23,7 @@ export default function AddressForm({
   email,
   facility,
   role,
-  onChange
+  onChange,
 }) {
   const classes = useStyles();
 
@@ -92,7 +92,7 @@ export default function AddressForm({
               value={state}
             >
               <option value="" />
-              {STATES.map(s => (
+              {STATES.map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>

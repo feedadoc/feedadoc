@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  render,
-  act,
-  cleanup,
-} from "@testing-library/react";
+import { render, act, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import SignupStepper from "pages/provider_signup/SignupStepper";
 import { MockedProvider, wait } from "@apollo/react-testing";

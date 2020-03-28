@@ -28,7 +28,9 @@ export const CREATE_PROVIDER = gql`
       }
     ) {
       errors
-      provider { id }
+      provider {
+        id
+      }
     }
   }
 `;
