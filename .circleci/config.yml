@@ -136,17 +136,29 @@ workflows:
           type: approval
           requires:
             - test
+          filters:
+            branches:
+              only: master
+          context: Deployers
       - optional-production-deploy:
           requires:
-            - test
             - optional-production-deploy-approval
           filters:
             branches:
               only: master
+          context: Deployers
       - optional-staging-deploy-approval:
           type: approval
           requires:
             - test
+          filters:
+            branches:
+              ignore: master
+          context: Deployers
       - optional-staging-deploy:
           requires:
             - optional-staging-deploy-approval
+          filters:
+            branches:
+              ignore: master
+          context: Deployers
