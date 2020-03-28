@@ -117,10 +117,15 @@ const GET_PROVIDER = gql`
 
 const supportEmail = "support@feedadoc.zendesk.com";
 
-export default function ProviderPage({ location, match }) {
+export default function ProviderPage(props) {
+  const { location, match } = props
   const classes = useStyles();
   const { params: { id } } = match;
-  const { search } = location;
+  const {
+    state: {
+      providerCreation,
+    } = {},
+  } = location;
   const { loading, error, data } = useQuery(GET_PROVIDER, {
     variables: { id },
   });
@@ -128,11 +133,9 @@ export default function ProviderPage({ location, match }) {
   if (loading || error || !data.provider) return null;
   const { firstName, city, state, neighborhood, role, facility, description, requests, active } = data.provider;
 
-  const isConfirmation = search.includes('success')
-
   return (
     <>
-      {isConfirmation ? (
+      {providerCreation ? (
         <>
           <Container maxWidth="sm">
             <Typography align="center" component="p" variant="h2" className={classes.successHeader}>
@@ -192,12 +195,12 @@ export default function ProviderPage({ location, match }) {
         <Typography component="p" variant="h6" align="center" color="textPrimary" gutterBottom className={classes.description}>
           {description}
         </Typography>
-        {(!isConfirmation && active) && (
+        {(!providerCreation && active) && (
           <Button variant="contained" className={classes.button} href={`/volunteer-signup?provider=${id}`}>
             Offer Help
           </Button>
         )}
-        {(!isConfirmation && !active) && (
+        {(!providerCreation && !active) && (
           <Typography component="h1" align="center" className={classes.complete} gutterBottom>
             The provider has marked this request as complete.
           </Typography>

@@ -137,7 +137,17 @@ export default function SignupStepper({ steps }) {
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
   if (redirectId) {
-    return <Redirect to={`/providers/${redirectId}?success`} />
+    return (
+      <Redirect
+        push
+        to={{
+          pathname: `/providers/${redirectId}`,
+          state: {
+            providerCreation: true,
+          },
+        }}
+      />
+    )
   }
 
   return (
