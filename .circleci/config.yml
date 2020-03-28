@@ -93,18 +93,30 @@ jobs:
       - checkout
       - heroku/install
       - heroku/deploy-via-git:
+          app-name: feedadoc-staging
           force: true
       - run:
-          command: "heroku run -a $HEROKU_APP_NAME rake db:migrate"
+          command: "heroku run -a feedadoc-staging rake db:migrate"
+  optional-production-deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: feedadoc
+          force: true
+      - run:
+          command: "heroku run -a feedadoc rake db:migrate"
   optional-staging-deploy:
     executor: heroku/default
     steps:
       - checkout
       - heroku/install
       - heroku/deploy-via-git:
+          app-name: feedadoc-staging
           force: true
       - run:
-          command: "heroku run -a $HEROKU_APP_NAME rake db:migrate"
+          command: "heroku run -a feedadoc-staging rake db:migrate"
 
 workflows:
   version: 2
@@ -117,6 +129,17 @@ workflows:
       - staging-deploy:
           requires:
             - test
+          filters:
+            branches:
+              only: master
+      - optional-production-deploy-approval:
+          type: approval
+          requires:
+            - test
+      - optional-production-deploy:
+          requires:
+            - test
+            - optional-production-deploy-approval
           filters:
             branches:
               only: master
