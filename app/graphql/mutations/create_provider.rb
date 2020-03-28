@@ -26,6 +26,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
       facility: facility,
       role: role,
       description: description,
+      ip: context[:remote_ip],
       requests: requests.map { |type| { type: type, satisfied: false } }
     )
 
