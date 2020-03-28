@@ -11,6 +11,7 @@
     <%= javascript_pack_tag 'application' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <% if request.path.include?('providers/') %>
       <% provider_id = request.path.scan(/providers\/(\d+)/i).flatten.first %>
       <% if provider_id && (provider = Provider.find_by(id: provider_id)) %>
