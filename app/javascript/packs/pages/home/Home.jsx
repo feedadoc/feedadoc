@@ -1,11 +1,10 @@
-import React from 'react';
-import SplitSection from './SplitSection';
-import Hero from './Hero';
-import VolunteerCallout from './VolunteerCallout';
-import HelpCallout from './HelpCallout';
-import About from './About';
-import Contributors from './Contributors';
-import Contact from './Contact';
+import React from "react";
+import SplitSection from "./SplitSection";
+import Hero from "./Hero";
+import VolunteerCallout from "./VolunteerCallout";
+import HelpCallout from "./HelpCallout";
+import About from "./About";
+import Contributors from "./Contributors";
 
 const Home = () => (
   <>
@@ -15,7 +14,6 @@ const Home = () => (
     <HelpCallout />
     <About />
     <Contributors />
-    <Contact />
   </>
 );
 
