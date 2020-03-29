@@ -16,9 +16,9 @@ class Provider < ApplicationRecord
   validates :state, inclusion: { in: Volunteer::STATES, message: "is not included in the list of valid states" }
   validate :validate_requests
 
-  has_many :responses
+  has_many :responses, dependent: :destroy
   has_many :volunteers, through: :responses
-  has_one :linked_token, as: :entity
+  has_one :linked_token, as: :entity, dependent: :destroy
 
   def validate_requests
     errors.add(:requests, "must be an Array of Requests") unless requests.is_a?(Array)
