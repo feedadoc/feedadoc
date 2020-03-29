@@ -28,6 +28,7 @@ export const CREATE_PROVIDER = gql`
       }
     ) {
       errors
+      editLink
       provider {
         id
       }

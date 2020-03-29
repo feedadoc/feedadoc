@@ -27,7 +27,7 @@ const contributors = [
     src: ChandlerMoisen,
   },
   {
-    name: "Kate Pennachio",
+    name: "Katie Pennachio",
     role: "Engineering",
     src: KatiePennachio,
   },
