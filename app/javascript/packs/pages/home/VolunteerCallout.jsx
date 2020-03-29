@@ -29,8 +29,8 @@ const VolunteerCallout = () => (
         align="center"
         style={{ marginTop: "20px" }}
       >
-        Share #FeedaDoc with family, friends, and on social media to help spread
-        the word.
+        Share #HospitalHero with family, friends, and on social media to help
+        spread the word.
       </Typography>
     </Container>
     <Container maxWidth="xs" style={{ marginTop: "40px" }}>
