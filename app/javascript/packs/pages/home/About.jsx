@@ -1,67 +1,67 @@
-import React from 'react';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
-import BoldLink from '../../components/BoldLink';
-import {makeStyles} from "@material-ui/core/styles";
-import Container from '@material-ui/core/Container';
-import AndrewCantino from '../../images/andrew-cantino.jpg'
-import ChandlerMoisen from '../../images/chandler-moisen.png'
-import KatiePennachio from '../../images/katie-pennachio.jpg'
-import KeithWeissglass from '../../images/keith-weissglass.jpg'
-import KellyNeuner from '../../images/kelly-neuner.jpg'
-import PurinPhanichphant from '../../images/purin-phanichphant.jpg'
-import SarahHarrison from '../../images/sarah-harrison.jpg'
-import TylerUntisz from '../../images/tyler-untisz.jpg'
+import React from "react";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import Avatar from "@material-ui/core/Avatar";
+import BoldLink from "../../components/BoldLink";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import AndrewCantino from "../../images/andrew-cantino.jpg";
+import ChandlerMoisen from "../../images/chandler-moisen.png";
+import KatiePennachio from "../../images/katie-pennachio.jpg";
+import KeithWeissglass from "../../images/keith-weissglass.jpg";
+import KellyNeuner from "../../images/kelly-neuner.jpg";
+import PurinPhanichphant from "../../images/purin-phanichphant.jpg";
+import SarahHarrison from "../../images/sarah-harrison.jpg";
+import TylerUntisz from "../../images/tyler-untisz.jpg";
 
 const contributors = [
   {
-    name: 'Andrew Cantino',
-    role: 'Engineering',
+    name: "Andrew Cantino",
+    role: "Engineering",
     src: AndrewCantino,
   },
   {
-    name: 'Chandler Moisen',
-    role: 'Engineering',
+    name: "Chandler Moisen",
+    role: "Engineering",
     src: ChandlerMoisen,
   },
   {
-    name: 'Kate Pennachio',
-    role: 'Engineering',
+    name: "Kate Pennachio",
+    role: "Engineering",
     src: KatiePennachio,
   },
   {
-    name: 'Keith Weissglass',
-    role: 'Product/Marketing',
+    name: "Keith Weissglass",
+    role: "Product/Marketing",
     src: KeithWeissglass,
   },
   {
-    name: 'Kelly Neuner',
-    role: 'UX Design',
+    name: "Kelly Neuner",
+    role: "UX Design",
     src: KellyNeuner,
   },
   {
-    name: 'Purin Phanichphant',
-    role: 'Design',
+    name: "Purin Phanichphant",
+    role: "Design",
     src: PurinPhanichphant,
   },
   {
-    name: 'Sarah Harrison',
-    role: 'Product Management',
+    name: "Sarah Harrison",
+    role: "Product Management",
     src: SarahHarrison,
   },
   {
-    name: 'Tyler Untisz',
-    role: 'Engineering',
+    name: "Tyler Untisz",
+    role: "Engineering",
     src: TylerUntisz,
   },
-]
+];
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex',
-    '& > *': {
+    display: "flex",
+    "& > *": {
       margin: theme.spacing(1),
     },
   },
@@ -71,7 +71,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Contributor = ({name, role, src}) => {
+const Contributor = ({ name, role, src }) => {
   const classes = useStyles();
   return (
     <>
@@ -80,11 +80,11 @@ const Contributor = ({name, role, src}) => {
         component="p"
         variant="h6"
         style={{
-          marginBottom: '10px',
-          marginTop: '10px',
-          fontWeight: 'bold',
-          textTransform: 'uppercase',
-          letterSpacing: '0.25px',
+          marginBottom: "10px",
+          marginTop: "10px",
+          fontWeight: "bold",
+          textTransform: "uppercase",
+          letterSpacing: "0.25px",
         }}
         align="center"
         color="text.paperContrast"
@@ -97,14 +97,14 @@ const Contributor = ({name, role, src}) => {
         align="center"
         color="text.paperContrast"
         style={{
-          fontWeight: 'bold'
+          fontWeight: "bold",
         }}
       >
         {role}
       </Typography>
     </>
   );
-}
+};
 
 const About = () => (
   <Box display="flex" alignItems="center" py={10} flexDirection="column">
@@ -113,10 +113,10 @@ const About = () => (
       variant="h1"
       p="10"
       style={{
-        maxWidth: '850px',
-        width: '100%',
-        marginTop: '20px',
-        marginBottom: '20px',
+        maxWidth: "850px",
+        width: "100%",
+        marginTop: "20px",
+        marginBottom: "20px",
       }}
       align="center"
       color="primary"
@@ -127,15 +127,21 @@ const About = () => (
       component="p"
       variant="h5"
       align="center"
-      style={{maxWidth: '800px', width: '100%', marginBottom: '40px'}}
+      style={{ maxWidth: "800px", width: "100%", marginBottom: "40px" }}
     >
-      Feed A Doc is being built by a team of volunteers through <BoldLink color="textPrimary" href="https://covidaccelerator.com/">COVID
-      Accelerator</BoldLink>, a project of <BoldLink color="textPrimary" href="https://impossiblelabs.io">Impossible Labs</BoldLink>.
+      HospitalHero is being built by a team of volunteers through{" "}
+      <BoldLink color="textPrimary" href="https://covidaccelerator.com/">
+        COVID Accelerator
+      </BoldLink>
+      , a project of{" "}
+      <BoldLink color="textPrimary" href="https://impossiblelabs.io">
+        Impossible Labs
+      </BoldLink>
+      .
     </Typography>
-    <Container maxWidth='lg'>
-    <Grid container spacing={3} style={{marginTop: '20px'}}>
-      {
-        contributors.map(c => (
+    <Container maxWidth="lg">
+      <Grid container spacing={3} style={{ marginTop: "20px" }}>
+        {contributors.map((c) => (
           <Grid item xs={12} sm={4} md={3} key={c.name}>
             <Box
               display="flex"
@@ -147,9 +153,9 @@ const About = () => (
               <Contributor name={c.name} role={c.role} src={c.src} />
             </Box>
           </Grid>
-        ))
-      }
-    </Grid></Container>
+        ))}
+      </Grid>
+    </Container>
   </Box>
 );
 

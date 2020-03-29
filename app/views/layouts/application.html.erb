@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width"/>
 
-    <title>Feed A Doc</title>
+    <title>HospitalHero</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -15,15 +15,15 @@
     <% if request.path.include?('providers/') %>
       <% provider_id = request.path.scan(/providers\/(\d+)/i).flatten.first %>
       <% if provider_id && (provider = Provider.find_by(id: provider_id)) %>
-        <meta property="og:title" content="Request for support from <%= provider.first_name %> -- Feed a Doc" />
+        <meta property="og:title" content="Request for support from <%= provider.first_name %> -- HospitalHero" />
       <% else %>
-        <meta property="og:title" content="Request for support from a provider -- Feed a Doc" />
+        <meta property="og:title" content="Request for support from a provider -- HospitalHero" />
       <% end %>
       <meta property="og:description" content="View and respond to this request for help from a COVID-19 care provider." />
       <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link-Provider_Request.jpg" %>" />
       <meta property="og:url" content="<%= request.original_url %>" />
     <% elsif request.path == '/'  %>
-      <meta property="og:title" content="Feed a Doc: Care providers need our help to fight COVID-19" />
+      <meta property="og:title" content="HospitalHero: Care providers need our help to fight COVID-19" />
       <meta property="og:description" content="Volunteer to help a doctor, nurse, or medical worker on the front lines of the COVID-19 pandemic. Care providers: Post a request and share it with your friends!" />
       <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link_Default.jpg" %>" />
       <meta property="og:url" content="<%= request.original_url %>" />
