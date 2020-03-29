@@ -221,7 +221,7 @@ export default function VolunteerStepper({ steps, location }) {
           align="center"
           className={classes.details}
         >
-          {`Your offer to help will be emailed to ${provider.firstName} and they will respond if they still need help. Thank you for volunteering!`}
+          {`The information you provide on this page will be shared with ${provider.firstName}, and they will respond if they still need help. Thank you for volunteering!`}
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map(({ label }, index) => (
