@@ -17,7 +17,7 @@ const Hero = () => (
     <Container maxWidth="md">
       <Box mt={4}>
         <Typography component="p" variant="h2" align="center">
-          Volunteer your time or request support for meals, childcare, errands,
+          Volunteer your time or request support for meals, pet care, errands,
           and more during the COVID-19 pandemic.
         </Typography>
       </Box>

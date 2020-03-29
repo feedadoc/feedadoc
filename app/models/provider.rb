@@ -1,6 +1,6 @@
 class Provider < ApplicationRecord
   REQUEST_TYPES = {
-    "childcare" => "Childcare",
+    "childcare" => "Childcare", # backwards comparability
     "shopping" => "Errands/Shopping",
     "cleaning" => "Housecleaning",
     "meals" => "Meals",
