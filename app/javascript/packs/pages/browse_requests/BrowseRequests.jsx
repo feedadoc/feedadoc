@@ -56,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  volunteerLink: {
+    color: "black",
+    fontWeight: "bold",
+  },
 }));
 
 const TOTAL_PROVIDERS = gql`
@@ -135,6 +139,14 @@ export default function BrowseRequests() {
             gutterBottom
           >
             Help a Care Provider
+          </Typography>
+          <Typography>
+            Enter your city in the search box to browse nearby requests. Don't
+            see anything near you?<span>&nbsp;</span>
+            <Link className={classes.volunteerLink} to={"/volunteer/signup"}>
+              Sign up
+            </Link>
+            <span>&nbsp;</span>and we'll notify you when there's a match!
           </Typography>
         </Container>
       </Paper>
