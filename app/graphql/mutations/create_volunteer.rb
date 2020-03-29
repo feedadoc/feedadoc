@@ -35,7 +35,8 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
       neighborhood: neighborhood,
       city: city,
       state: state,
-      email: email
+      email: email,
+      ip: context[:remote_ip]
     )
     response = volunteer.responses.build(provider: provider, requests: requests,
                                          description: description, availabilities: availabilities,
