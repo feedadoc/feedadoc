@@ -79,26 +79,16 @@ const Contributor = ({ name, role, src }) => {
       <Typography
         component="p"
         variant="h6"
-        style={{
-          marginBottom: "10px",
-          marginTop: "10px",
-          fontWeight: "bold",
-          textTransform: "uppercase",
-          letterSpacing: "0.25px",
-        }}
-        align="center"
         color="text.paperContrast"
+        className="about-avatar-name"
       >
         {name}
       </Typography>
       <Typography
         component="p"
         variant="body"
-        align="center"
         color="text.paperContrast"
-        style={{
-          fontWeight: "bold",
-        }}
+        className="about-avatar-role"
       >
         {role}
       </Typography>
@@ -112,23 +102,12 @@ const About = () => (
       component="h2"
       variant="h1"
       p="10"
-      style={{
-        maxWidth: "850px",
-        width: "100%",
-        marginTop: "20px",
-        marginBottom: "20px",
-      }}
-      align="center"
       color="primary"
+      className="about-title"
     >
       About Us
     </Typography>
-    <Typography
-      component="p"
-      variant="h5"
-      align="center"
-      style={{ maxWidth: "800px", width: "100%", marginBottom: "40px" }}
-    >
+    <Typography component="p" variant="h5" className="about-text">
       HospitalHero is being built by a team of volunteers through{" "}
       <BoldLink color="textPrimary" href="https://covidaccelerator.com/">
         COVID Accelerator
@@ -140,7 +119,7 @@ const About = () => (
       .
     </Typography>
     <Container maxWidth="lg">
-      <Grid container spacing={3} style={{ marginTop: "20px" }}>
+      <Grid container spacing={3} className="about-grid">
         {contributors.map((c) => (
           <Grid item xs={12} sm={4} md={3} key={c.name}>
             <Box

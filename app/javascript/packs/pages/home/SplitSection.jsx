@@ -63,28 +63,20 @@ const SplitSection = () => {
       alignItems="center"
     >
       <Box bgcolor={"secondary.500"} display="flex">
-        <Box
-          alignSelf="center"
-          style={{ maxWidth: "500px", textAlign: "center" }}
-        >
+        <Box className="split-section-content">
           <DoctorsPassingBy />
           <Typography
             component="h2"
             variant="h1"
-            align="center"
             color="primary"
-            style={{
-              marginBottom: "20px",
-              marginTop: "20px",
-              textTransform: "uppercase",
-            }}
+            className="split-section-content-title"
           >
             Care Providers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            style={{ marginBottom: "40px" }}
+            className="split-section-content-text"
           >
             Make requests for meals, supplies, or anything else you need. Share
             a link with your friends and family.
@@ -103,28 +95,21 @@ const SplitSection = () => {
         </Box>
       </Box>
       <Box bgcolor={"secondary.800"} display="flex">
-        <Box
-          alignSelf="center"
-          style={{ maxWidth: "500px", textAlign: "center" }}
-        >
+        <Box className="split-section-content">
           <Volunteers />
           <Typography
             component="h2"
             variant="h1"
             color="secondary"
             align="center"
-            style={{
-              marginBottom: "20px",
-              marginTop: "20px",
-              textTransform: "uppercase",
-            }}
+            className="split-section-content-title"
           >
             Volunteers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            style={{ marginBottom: "40px" }}
+            className="split-section-content-text"
           >
             Offer your support to local doctors, nurses, and hospital workers.
             You choose who and how to help.

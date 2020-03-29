@@ -19,9 +19,8 @@ const HelpCallout = () => (
     <Typography
       component="h2"
       variant="h1"
-      align="center"
-      style={{ maxWidth: "800px", width: "100%", marginBottom: "40px" }}
       color="text.white"
+      className="help-callout-title"
     >
       Why we need your help
     </Typography>
@@ -38,9 +37,8 @@ const HelpCallout = () => (
             <Typography
               component="p"
               variant="h6"
-              align="center"
-              style={{ marginTop: "20px" }}
               color="text.white"
+              className="help-callout-text"
             >
               COVID-19 will overwhelm hospitals with critically-ill patients
             </Typography>
@@ -57,9 +55,8 @@ const HelpCallout = () => (
             <Typography
               component="p"
               variant="h6"
-              align="center"
-              style={{ marginTop: "20px" }}
               color="text.white"
+              className="help-callout-text"
             >
               Care providers will be working long hours in brutal conditions
             </Typography>
@@ -77,9 +74,8 @@ const HelpCallout = () => (
             <Typography
               component="p"
               variant="h6"
-              align="center"
-              style={{ marginTop: "20px" }}
               color="text.white"
+              className="help-callout-text"
             >
               We can help them stay healthy and focused on saving lives
             </Typography>

@@ -27,13 +27,13 @@ const VolunteerCallout = () => (
         component="p"
         variant="h2"
         align="center"
-        style={{ marginTop: "20px" }}
+        className="volunteer-callout-text"
       >
         Share #HospitalHero with family, friends, and on social media to help
         spread the word.
       </Typography>
     </Container>
-    <Container maxWidth="xs" style={{ marginTop: "40px" }}>
+    <Container maxWidth="xs" className="social-media-icons">
       <Grid container spacing={4}>
         <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.FACEBOOK_LINK}>
