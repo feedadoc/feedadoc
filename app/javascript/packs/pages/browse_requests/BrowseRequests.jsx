@@ -134,7 +134,7 @@ export default function BrowseRequests() {
             color="textPrimary"
             gutterBottom
           >
-            Help a Care Provider
+            Help a Healthcare Worker
           </Typography>
         </Container>
       </Paper>

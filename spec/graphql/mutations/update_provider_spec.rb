@@ -33,7 +33,7 @@ describe Mutations::UpdateProvider, type: :request do
                                                  firstName: 'bob', lastName: 'smith',
                                                  neighborhood: 'sunset', city: 'sf', state: 'CA',
                                                  email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
-                                                 requests: %w(childcare pets), description: 'stuff',
+                                                 requests: %w(pets supplies), description: 'stuff',
                                                  active: true
                                                },
                  }.to_json,
@@ -43,8 +43,8 @@ describe Mutations::UpdateProvider, type: :request do
     expect(json['data']['updateProvider']['provider']).to include(
                                                             "firstName" => "bob",
                                                             "lastName" => "smith",
-                                                            "requests" => [{ "type" => "childcare", "satisfied" => false },
-                                                                           { "type" => "cleaning", "satisfied" => true },
+                                                            "requests" => [{ "type" => "cleaning", "satisfied" => true },
+                                                                           { "type" => "supplies", "satisfied" => false },
                                                                            { "type" => "pets", "satisfied" => false }]
                                                           )
   end
