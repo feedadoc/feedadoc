@@ -18,6 +18,7 @@ import Header from "./components/Header";
 import ScrollToTopOnMount from "./components/ScrollToTopOnMount";
 import theme from "./theme";
 import Home from "./pages/home/Home";
+import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -103,6 +104,7 @@ function App() {
               </Switch>
             </div>
           </main>
+          <Footer />
         </Router>
       </ApolloProvider>
     </MuiThemeProvider>
