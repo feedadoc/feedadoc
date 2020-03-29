@@ -10,6 +10,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ProviderList from "./ProviderList";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
+import { useLocation } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -105,6 +106,9 @@ export default function BrowseRequests() {
   const [startCursor, setStartCursor] = React.useState("");
   const [searchValue, setSearchValue] = React.useState("");
 
+  const { search } = useLocation();
+  const isSuccess = search.includes("success=true");
+
   const { loading, error, data } = useQuery(TOTAL_PROVIDERS, {
     variables: {
       after: pageType === "forward" ? endCursor : "",
@@ -130,6 +134,16 @@ export default function BrowseRequests() {
   return (
     <Box mb={6}>
       <Paper className={classes.heroContent}>
+        {isSuccess && (
+          <Box mb={4} textAlign="center">
+            <Typography variant="h5" gutterBottom style={{ color: "#d50000" }}>
+              Thank you so much for volunteering!
+            </Typography>
+            <Typography variant="subtitle1" style={{ color: "#d50000" }}>
+              You should hear back from the medical provider soon.
+            </Typography>
+          </Box>
+        )}
         <Container maxWidth="sm">
           <Typography
             component="h1"
