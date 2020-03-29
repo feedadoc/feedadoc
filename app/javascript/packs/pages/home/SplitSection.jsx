@@ -71,7 +71,7 @@ const SplitSection = () => {
             color="primary"
             className="split-section-content-title"
           >
-            Care Providers
+            Healthcare Workers
           </Typography>
           <Typography
             component="p"

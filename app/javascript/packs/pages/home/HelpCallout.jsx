@@ -58,7 +58,7 @@ const HelpCallout = () => (
               color="text.white"
               className="help-callout-text"
             >
-              Care providers will be working long hours in brutal conditions
+              Healthcare workers will be working long hours in brutal conditions
             </Typography>
           </Box>
         </Grid>

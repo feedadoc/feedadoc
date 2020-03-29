@@ -27,7 +27,7 @@ describe Mutations::CreateProvider, type: :request do
              params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
                                                      neighborhood: 'sunset', city: 'sf', state: 'CA',
                                                      email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
-                                                     requests: %w(childcare cleaning), description: 'stuff'
+                                                     requests: %w(pets cleaning), description: 'stuff'
                                                    },
                      }.to_json,
              headers: { "CONTENT_TYPE" => "application/json" }
@@ -37,7 +37,7 @@ describe Mutations::CreateProvider, type: :request do
     json = JSON.parse(response.body)
     expect(json['data']['createProvider']['provider']).to include(
                                                             "firstName" => "bob",
-                                                            "requests" => [{ "type" => "childcare", "satisfied" => false },
+                                                            "requests" => [{ "type" => "pets", "satisfied" => false },
                                                                            { "type" => "cleaning", "satisfied" => false }]
                                                           )
   end

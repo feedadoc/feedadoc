@@ -19,15 +19,15 @@
       <% else %>
         <meta property="og:title" content="Request for support from a provider -- HospitalHero" />
       <% end %>
-      <meta property="og:description" content="View and respond to this request for help from a COVID-19 care provider." />
+      <meta property="og:description" content="View and respond to this request on HospitalHero" />
       <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link-Provider_Request.jpg" %>" />
       <meta property="og:url" content="<%= request.original_url %>" />
     <% elsif request.path == '/'  %>
-      <meta property="og:title" content="HospitalHero: Care providers need our help to fight COVID-19" />
-      <meta property="og:description" content="Volunteer to help a doctor, nurse, or medical worker on the front lines of the COVID-19 pandemic. Care providers: Post a request and share it with your friends!" />
+      <meta property="og:title" content="HospitalHero: Healthcare workers need our help to fight COVID-19" />
+      <meta property="og:description" content="Let's help doctors, nurses, and other healthcare workers with basic needs so they can stay focused on saving lives. Post a request or volunteer on HospitalHero." />
       <meta property="og:image" content="<%= image_url "/images/Facebook_Shared_Link_Default.jpg" %>" />
       <meta property="og:url" content="<%= request.original_url %>" />
-      <meta property=”og:type” content=”webpage” />
+      <meta property="og:type" content="webpage" />
     <% end %>
     <script>
     (function () {
