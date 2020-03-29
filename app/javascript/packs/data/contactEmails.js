@@ -1,7 +1,5 @@
-const SUPPORT_EMAIL = "support@feedadoc.zendesk.com";
+const SUPPORT_EMAIL = ["support", "hospitalhero.zendesk.com"].join("@");
 
-const CONTACT_US_EMAIL = "feedadoc@impossiblelabs.io";
+const CONTACT_EMAIL = ["hello", "hospitalhero.care"].join("@");
 
-const DONATION_EMAIL = "accounts@impossiblelabs.io";
-
-export { SUPPORT_EMAIL, CONTACT_US_EMAIL, DONATION_EMAIL };
+export { SUPPORT_EMAIL, CONTACT_EMAIL };

@@ -176,7 +176,7 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
         {renderStep(
           "2",
           "We'll send you an email",
-          "Check your email for a message from Feed a Doc. This email includes your Sharing Link and a Private Link for editing/removing your request. (If you don't see the email, check your spam folder.)"
+          "Check your email for a message from HospitalHero. This email includes your Sharing Link and a Private Link for editing/removing your request. (If you don't see the email, check your spam folder.)"
         )}
         {renderStep(
           "3",
