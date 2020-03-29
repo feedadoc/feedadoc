@@ -79,16 +79,16 @@ function App() {
                     </>
                   )}
                 />
-                <Route path="/browse-new">
-                  <Container maxWidth="md">
-                    <ScrollToTopOnMount />
-                    <BrowseRequests />
-                  </Container>
-                </Route>
-                <Route path="/browse">
+                <Route path="/volunteer/signup">
                   <Container maxWidth="md">
                     <ScrollToTopOnMount />
                     <VolunteerSignupPlaceholder />
+                  </Container>
+                </Route>
+                <Route path="/volunteer">
+                  <Container maxWidth="md">
+                    <ScrollToTopOnMount />
+                    <BrowseRequests />
                   </Container>
                 </Route>
                 <Route path="/providers/:token/edit">
