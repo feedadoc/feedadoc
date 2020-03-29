@@ -64,7 +64,7 @@ describe("when provider is signing up", () => {
         city: "New York",
         state: "NY",
         email: "test@ing.com",
-        facility: "NY Central",
+        facility: "",
         role: "nurse",
         requests: ["childcare"],
         description: "test",
@@ -94,10 +94,6 @@ describe("when provider is signing up", () => {
         createMutationArgs.firstName
       );
       userEvent.type(getByLabelText(/City/), createMutationArgs.city);
-      userEvent.type(
-        getByLabelText(/Your Medical Facility/),
-        createMutationArgs.facility
-      );
       userEvent.selectOptions(getByLabelText(/Your Job Title \/ Role/), [
         createMutationArgs.role,
       ]);

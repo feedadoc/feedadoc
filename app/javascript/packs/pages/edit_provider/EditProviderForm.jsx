@@ -15,6 +15,9 @@ import providerRequestTypes from "../../data/providerRequestTypes";
 import Button from "@material-ui/core/Button";
 import Switch from "@material-ui/core/Switch";
 import { TOKEN_ENTITY_REQUEST_STATES } from "../../hooks/useTokenEntity";
+import StyledFormLabel from "../../components/forms/StyledFormLabel";
+import StyledTextField from "../../components/forms/StyledTextField";
+import StyledInputLabel from "../../components/forms/StyledInputLabel";
 
 const useStyles = makeStyles((theme) => ({
   mediumSpacing: {
@@ -37,9 +40,9 @@ const EditProviderForm = ({
     <>
       <Grid item xs={12} className={classes.mediumSpacing}>
         <FormControl>
-          <FormLabel required id="type-select-label">
+          <StyledFormLabel required id="type-select-label">
             Request visibility
-          </FormLabel>
+          </StyledFormLabel>
           <FormControlLabel
             control={
               <Switch
@@ -57,9 +60,9 @@ const EditProviderForm = ({
       </Grid>
       <Grid item xs={12} className={classes.mediumSpacing}>
         <FormControl>
-          <FormLabel required id="type-select-label">
+          <StyledFormLabel required id="type-select-label">
             What kinds of support do you need?
-          </FormLabel>
+          </StyledFormLabel>
           {providerRequestTypes.map((type) => (
             <FormControlLabel
               key={type.value}
@@ -83,7 +86,7 @@ const EditProviderForm = ({
         </FormControl>
       </Grid>
       <Grid item xs={12} className={classes.mediumSpacing}>
-        <TextField
+        <StyledTextField
           required
           id="description"
           name="description"
@@ -105,7 +108,7 @@ const EditProviderForm = ({
 
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="firstName"
             name="firstName"
@@ -116,7 +119,7 @@ const EditProviderForm = ({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             id="lastName"
             name="lastName"
             label="Last name"
@@ -126,7 +129,7 @@ const EditProviderForm = ({
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             id="neighborhood"
             name="neighborhood"
             label="Neighborhood"
@@ -136,7 +139,7 @@ const EditProviderForm = ({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="city"
             name="city"
@@ -148,9 +151,9 @@ const EditProviderForm = ({
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl>
-            <InputLabel required id="state">
+            <StyledInputLabel required id="state">
               State
-            </InputLabel>
+            </StyledInputLabel>
             <Select
               required
               native
@@ -171,7 +174,7 @@ const EditProviderForm = ({
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             required
             id="facility"
             name="facility"
@@ -183,9 +186,9 @@ const EditProviderForm = ({
         </Grid>
         <Grid item xs={12}>
           <FormControl>
-            <InputLabel required id="role-select-label">
+            <StyledInputLabel required id="role-select-label">
               Your Job Title / Role
-            </InputLabel>
+            </StyledInputLabel>
             <Select
               required
               native
@@ -216,7 +219,7 @@ const EditProviderForm = ({
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             required
             id="email"
             name="email"

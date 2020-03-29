@@ -2,12 +2,12 @@ import React from "react";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
+import StyledFormLabel from "../../components/forms/StyledFormLabel";
+import StyledTextField from "../../components/forms/StyledTextField";
 import providerRequestTypes from "../../data/providerRequestTypes";
 
 const useStyles = makeStyles((theme) => ({
@@ -36,9 +36,9 @@ export default function ProviderRequestForm({
       <Grid container spacing={3} className={classes.firstEntry}>
         <Grid item xs={12}>
           <FormControl>
-            <FormLabel required id="type-select-label">
+            <StyledFormLabel required id="type-select-label">
               What kinds of support do you need?
-            </FormLabel>
+            </StyledFormLabel>
             {providerRequestTypes.map((type) => (
               <FormControlLabel
                 key={type.value}
@@ -62,10 +62,13 @@ export default function ProviderRequestForm({
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
+            multiline
             required
             id="description"
             name="description"
+            variant="outlined"
+            rows={5}
             label="Describe your request"
             fullWidth
             value={description}

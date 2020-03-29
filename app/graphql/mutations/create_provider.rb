@@ -7,7 +7,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   argument :city, String, required: true
   argument :state, String, required: true
   argument :email, String, required: true
-  argument :facility, String, required: true
+  argument :facility, String, required: false
   argument :role, String, required: true
   argument :description, String, required: true
   argument :requests, [String], required: true
@@ -15,7 +15,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   field :provider, Types::FullProvider, null: true
   field :errors, [String], null: false
 
-  def resolve(first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility:, role:, requests:, description:)
+  def resolve(first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility: "", role:, requests:, description:)
     provider = Provider.new(
       first_name: first_name,
       last_name: last_name,
