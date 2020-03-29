@@ -152,7 +152,7 @@ export default function BrowseRequests() {
             color="textPrimary"
             gutterBottom
           >
-            Help a Care Provider
+            Help a Healthcare Worker
           </Typography>
           <Typography>
             Enter your city in the search box to browse nearby requests. Don't

@@ -12,7 +12,7 @@ FactoryBot.define do
     end
     description { "I need help" }
     requests {
-      [{ "type" => "childcare", "satisfied" => false },
+      [{ "type" => "pets", "satisfied" => false },
        { "type" => "cleaning", "satisfied" => false }]
     }
     active { true }

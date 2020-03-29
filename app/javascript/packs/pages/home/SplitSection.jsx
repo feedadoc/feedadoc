@@ -79,7 +79,7 @@ const SplitSection = () => {
               textTransform: "uppercase",
             }}
           >
-            Care Providers
+            Healthcare Workers
           </Typography>
           <Typography
             component="p"

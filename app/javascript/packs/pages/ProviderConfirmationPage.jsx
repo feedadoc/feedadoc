@@ -181,7 +181,7 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
         {renderStep(
           "3",
           "You'll get an email from a volunteer",
-          "When someone responds to your request, you'll receive an email with their offer. Use your best judgement when deciding which offers to take."
+          "When someone responds to your request, you'll receive an email with their offer. Use your best judgment when deciding which offers to take."
         )}
         {renderStep(
           "4",

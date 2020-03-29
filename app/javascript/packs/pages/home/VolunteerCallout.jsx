@@ -20,7 +20,7 @@ const VolunteerCallout = () => (
         align="center"
         color="primary"
       >
-        Help us make sure every care provider gets the support they need to
+        Help us make sure every healthcare worker gets the support they need to
         fight COVID-19
       </Typography>
       <Typography

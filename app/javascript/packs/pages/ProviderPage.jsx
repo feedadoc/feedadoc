@@ -184,7 +184,7 @@ export default function ProviderPage({ location, match }) {
               gutterBottom
               className={classes.role}
             >
-              {roleLookup[role] || "Care Provider"}
+              {roleLookup[role] || "Healthcare Worker"}
             </Typography>
             <Typography
               component="h3"
@@ -270,7 +270,7 @@ export default function ProviderPage({ location, match }) {
          */}
           {/* <Box className={classes.requestHeader}>
           <Typography component="p" variant="h6" align="center">
-            Find more care providers to help <Link to="/volunteer" className={classes.browseLink}>here.</Link>
+            Find more healthcare workers to help <Link to="/volunteer" className={classes.browseLink}>here.</Link>
           </Typography>
         </Box> */}
           <Box className={classes.footer}>

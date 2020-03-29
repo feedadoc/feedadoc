@@ -32,7 +32,7 @@ export default function Welcome() {
           color="textPrimary"
           gutterBottom
         >
-          Volunteer to support your Care Providers
+          Volunteer to support your Healthcare Workers
         </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
           This website connects health care workers with volunteers who can
