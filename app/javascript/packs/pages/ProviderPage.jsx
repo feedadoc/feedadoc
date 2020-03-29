@@ -135,6 +135,15 @@ export default function ProviderPage({ location, match }) {
     active,
   } = data.provider;
 
+  const roleLookup = {
+    physician: "Doctor / NP / PA",
+    nurse: "Nurse",
+    therapist: "RT / PT / OT / ST / Nutrition",
+    assistant: "Patient Care Assistant / MA",
+    social: "Social Worker / Chaplain",
+    admin: "Admin / Support Staff",
+  };
+
   return (
     <>
       {providerCreation ? (
@@ -175,7 +184,7 @@ export default function ProviderPage({ location, match }) {
               gutterBottom
               className={classes.role}
             >
-              {role}
+              {roleLookup[role] || "Care Provider"}
             </Typography>
             <Typography
               component="h3"
