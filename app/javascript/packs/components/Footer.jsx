@@ -28,19 +28,23 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <footer className={classes.root}>
-      <Link href="mailto:hello@hospitalhero.care" className={classes.link}>
+      <Link
+        target="_blank"
+        href="mailto:hello@hospitalhero.care"
+        className={classes.link}
+      >
         Contact Us
       </Link>
-      <Link href="/cookie-policy" className={classes.link}>
+      <Link target="_blank" href="/cookie-policy" className={classes.link}>
         Cookie Policy
       </Link>
-      <Link href="/privacy-policy" className={classes.link}>
+      <Link target="_blank" href="/privacy-policy" className={classes.link}>
         Privacy Policy
       </Link>
-      <Link href="/terms-of-use" className={classes.link}>
+      <Link target="_blank" href="/terms-of-use" className={classes.link}>
         Terms of Use
       </Link>
-      <Link href="/disclaimer" className={classes.link}>
+      <Link target="_blank" href="/disclaimer" className={classes.link}>
         Disclaimer
       </Link>
       &copy; 2020 Impossible Labs Inc.
