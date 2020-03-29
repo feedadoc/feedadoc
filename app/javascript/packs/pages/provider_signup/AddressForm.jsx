@@ -1,12 +1,12 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
+import StyledInputLabel from "../../components/forms/StyledInputLabel";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
 import STATES from "../../data/states";
+import StyledTextField from "../../components/forms/StyledTextField";
 
 const useStyles = makeStyles((theme) => ({
   stateSelect: {
@@ -35,7 +35,7 @@ export default function AddressForm({
 
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="firstName"
             name="firstName"
@@ -46,7 +46,7 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             id="lastName"
             name="lastName"
             label="Last name"
@@ -56,7 +56,7 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             id="neighborhood"
             name="neighborhood"
             label="Neighborhood"
@@ -66,7 +66,7 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="city"
             name="city"
@@ -78,9 +78,9 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl>
-            <InputLabel htmlFor="state" required id="state">
+            <StyledInputLabel htmlFor="state" required id="state">
               State
-            </InputLabel>
+            </StyledInputLabel>
             <Select
               required
               native
@@ -101,21 +101,10 @@ export default function AddressForm({
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
-            required
-            id="facility"
-            name="facility"
-            label="Your Medical Facility"
-            value={facility}
-            onChange={onChange}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12}>
           <FormControl>
-            <InputLabel required htmlFor="role" id="role-select-label">
+            <StyledInputLabel required htmlFor="role" id="role-select-label">
               Your Job Title / Role
-            </InputLabel>
+            </StyledInputLabel>
             <Select
               required
               native
@@ -146,7 +135,7 @@ export default function AddressForm({
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             required
             id="email"
             name="email"

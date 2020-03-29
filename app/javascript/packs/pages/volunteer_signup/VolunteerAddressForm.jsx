@@ -1,24 +1,24 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
+import StyledFormLabel from "../../components/forms/StyledFormLabel";
+import StyledTextField from "../../components/forms/StyledTextField";
+import StyledInputLabel from "../../components/forms/StyledInputLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const STATES = "AL AK AS AZ AR CA CO CT DE DC FM FL GA GU HI ID IL IN IA KS KY LA ME MH MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND MP OH OK OR PW PA PR RI SC SD TN TX UT VT VI VA WA WV WI WY".split(
   " "
 );
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   stateSelect: {
-    minWidth: 100
-  }
+    minWidth: 100,
+  },
 }));
 
 export default function VolunteerAddressForm({
@@ -32,7 +32,7 @@ export default function VolunteerAddressForm({
   social,
   onChange,
   setField,
-  over18
+  over18,
 }) {
   const classes = useStyles();
   return (
@@ -44,27 +44,27 @@ export default function VolunteerAddressForm({
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <FormControl>
-            <FormLabel required id="type-select-label">
+            <StyledFormLabel required id="type-select-label">
               I am over 18 years old.
-            </FormLabel>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={over18}
-                    onChange={e =>
-                      e.target.checked
-                        ? setField("over18")(true)
-                        : setField("over18")(false)
-                      }
-                    name="over18"
-                    color="primary"
-                  />
-                }
-              />
+            </StyledFormLabel>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={over18}
+                  onChange={(e) =>
+                    e.target.checked
+                      ? setField("over18")(true)
+                      : setField("over18")(false)
+                  }
+                  name="over18"
+                  color="primary"
+                />
+              }
+            />
           </FormControl>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="firstName"
             name="firstName"
@@ -75,7 +75,7 @@ export default function VolunteerAddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             id="lastName"
             name="lastName"
             label="Last name"
@@ -85,7 +85,7 @@ export default function VolunteerAddressForm({
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             id="neighborhood"
             name="neighborhood"
             label="Neighborhood"
@@ -95,7 +95,7 @@ export default function VolunteerAddressForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="city"
             name="city"
@@ -107,9 +107,9 @@ export default function VolunteerAddressForm({
         </Grid>
         <Grid item xs={12} sm={6}>
           <FormControl>
-            <InputLabel required id="state">
+            <StyledInputLabel htmlFor="state" required id="state">
               State
-            </InputLabel>
+            </StyledInputLabel>
             <Select
               required
               native
@@ -121,7 +121,7 @@ export default function VolunteerAddressForm({
               value={state}
             >
               <option value="" />
-              {STATES.map(s => (
+              {STATES.map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>
@@ -130,7 +130,7 @@ export default function VolunteerAddressForm({
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             required
             id="email"
             name="email"
@@ -141,17 +141,17 @@ export default function VolunteerAddressForm({
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             id="phone"
             name="phone"
-            label="Phone number (Optional)"
+            label="Phone number"
             fullWidth
             value={phone}
             onChange={onChange}
           />
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             id="social"
             name="social"
             label="Link to a social media profile"

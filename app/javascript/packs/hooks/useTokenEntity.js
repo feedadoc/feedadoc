@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 
@@ -35,7 +35,7 @@ const UPDATE_PROVIDER = gql`
     $city: String!
     $state: String!
     $email: String!
-    $facility: String!
+    $facility: String
     $role: String!
     $requests: [String!]!
     $description: String!
@@ -79,7 +79,7 @@ const UPDATE_PROVIDER = gql`
   }
 `;
 
-const getMutationByEntityType = entityType => {
+const getMutationByEntityType = (entityType) => {
   switch (entityType) {
     case "Provider":
       return UPDATE_PROVIDER;
@@ -90,13 +90,13 @@ const getMutationByEntityType = entityType => {
   }
 };
 
-const LOADING = 'LOADING';
-const LOADED = 'LOADED';
-const SAVING = 'SAVING';
-const IDLE = 'IDLE';
-const LOADING_ERROR = 'LOADING_ERROR';
-const SAVING_ERROR = 'SAVING_ERROR';
-const SAVING_SUCCESS = 'SAVING_SUCCESS'
+const LOADING = "LOADING";
+const LOADED = "LOADED";
+const SAVING = "SAVING";
+const IDLE = "IDLE";
+const LOADING_ERROR = "LOADING_ERROR";
+const SAVING_ERROR = "SAVING_ERROR";
+const SAVING_SUCCESS = "SAVING_SUCCESS";
 export const TOKEN_ENTITY_REQUEST_STATES = {
   LOADING,
   LOADED,
@@ -105,18 +105,22 @@ export const TOKEN_ENTITY_REQUEST_STATES = {
   LOADING_ERROR,
   SAVING_ERROR,
   SAVING_SUCCESS,
-} 
+};
 
 // (token: string, entityType: 'Provider' | 'Volunteer') => [requestState, entity, error, setField, save, isSaveSnackbarOpen, acknowledgeSaveSnackbar]
 const useTokenEntity = (token, entityType) => {
   const entityMutation = getMutationByEntityType(entityType);
 
   const { error, data } = useQuery(GET_ENTITY_BY_TOKEN, {
-    variables: { token }
+    variables: { token },
   });
-  const [saveEntity, { error: savingError, data: saveData }] = useMutation(entityMutation);
+  const [saveEntity, { error: savingError, data: saveData }] = useMutation(
+    entityMutation
+  );
   const [entity, setEntity] = useState();
-  const [requestState, setRequestState] = useState(TOKEN_ENTITY_REQUEST_STATES.LOADING)
+  const [requestState, setRequestState] = useState(
+    TOKEN_ENTITY_REQUEST_STATES.LOADING
+  );
   const [isSaveSnackbarOpen, setSaveSnackbarOpen] = useState(true);
 
   if (!entity && data && requestState === TOKEN_ENTITY_REQUEST_STATES.LOADING) {
@@ -126,49 +130,69 @@ const useTokenEntity = (token, entityType) => {
       console.error(error);
       setRequestState(TOKEN_ENTITY_REQUEST_STATES.LOADING_ERROR);
     } else {
-      if(entityType === 'Provider') {
+      if (entityType === "Provider") {
         setEntity({
           ...linkedToken,
-          requests: linkedToken.requests.filter(x => !x.satisfied).map(x => x.type)
-        })
+          requests: linkedToken.requests
+            .filter((x) => !x.satisfied)
+            .map((x) => x.type),
+        });
       } else {
-        setEntity(linkedToken)
+        setEntity(linkedToken);
       }
       setRequestState(TOKEN_ENTITY_REQUEST_STATES.LOADED);
     }
   }
 
-  if(error && requestState === TOKEN_ENTITY_REQUEST_STATES.LOADING) {
+  if (error && requestState === TOKEN_ENTITY_REQUEST_STATES.LOADING) {
     setRequestState(TOKEN_ENTITY_REQUEST_STATES.LOADING_ERROR);
   }
 
-  const setField = field => value => {
-    setEntity(state => ({
+  const setField = (field) => (value) => {
+    setEntity((state) => ({
       ...state,
-      [field]: value
-    }))
-  }
+      [field]: value,
+    }));
+  };
 
   const save = () => {
     setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING);
-    saveEntity({ variables: { token, ...entity } }).then(({ errors: systemErrors = [], data }) => {
-      if(systemErrors.length || data.updateProvider.errors.length) {
+    saveEntity({ variables: { token, ...entity } })
+      .then(({ errors: systemErrors = [], data }) => {
+        if (systemErrors.length || data.updateProvider.errors.length) {
+          setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING_ERROR);
+        } else {
+          setSaveSnackbarOpen(true);
+          setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING_SUCCESS);
+        }
+      })
+      .catch((e) => {
+        console.error(e);
         setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING_ERROR);
-      } else {
-        setSaveSnackbarOpen(true);
-        setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING_SUCCESS);
-      }
-    }).catch(e => {
-      console.error(e);
-      setRequestState(TOKEN_ENTITY_REQUEST_STATES.SAVING_ERROR);
-    });
-  }
+      });
+  };
 
   const acknowledgeSaveSnackbar = () => setSaveSnackbarOpen(false);
-  if(saveData && saveData.updateProvider.errors.length) {
-    return [requestState, entity, saveData.updateProvider.errors.join('. '), setField, save, isSaveSnackbarOpen, acknowledgeSaveSnackbar];
+  if (saveData && saveData.updateProvider.errors.length) {
+    return [
+      requestState,
+      entity,
+      saveData.updateProvider.errors.join(". "),
+      setField,
+      save,
+      isSaveSnackbarOpen,
+      acknowledgeSaveSnackbar,
+    ];
   }
-  return [requestState, entity, error || savingError, setField, save, isSaveSnackbarOpen, acknowledgeSaveSnackbar];
+  return [
+    requestState,
+    entity,
+    error || savingError,
+    setField,
+    save,
+    isSaveSnackbarOpen,
+    acknowledgeSaveSnackbar,
+  ];
 };
 
 export default useTokenEntity;

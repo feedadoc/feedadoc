@@ -1,36 +1,40 @@
 const providerRequestTypes = [
   {
     label: "Childcare",
-    value: "childcare"
+    value: "childcare",
   },
   {
     label: "Errands/Shopping",
-    value: "shopping"
+    value: "shopping",
   },
   {
     label: "Housecleaning",
-    value: "cleaning"
+    value: "cleaning",
   },
   {
-    label: "Meal preparation / delivery",
-    value: "meals"
+    label: "Meals",
+    value: "meals",
   },
   {
     label: "Laundry",
-    value: "laundry"
+    value: "laundry",
   },
   {
     label: "Lodging",
-    value: "lodging"
+    value: "lodging",
   },
   {
-    label: "Supplies",
-    value: "supplies"
+    label: "Medical Supplies",
+    value: "supplies",
   },
   {
     label: "Pet care",
-    value: "pets"
-  }
+    value: "pets",
+  },
+  {
+    label: "Other",
+    value: "other",
+  },
 ];
 
 export default providerRequestTypes;

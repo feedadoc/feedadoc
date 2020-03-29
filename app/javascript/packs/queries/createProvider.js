@@ -8,7 +8,7 @@ export const CREATE_PROVIDER = gql`
     $city: String!
     $state: String!
     $email: String!
-    $facility: String!
+    $facility: String
     $role: String!
     $requests: [String!]!
     $description: String!

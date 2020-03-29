@@ -1,68 +1,39 @@
 import React from "react";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
+import providerRequestTypes from "../../data/providerRequestTypes";
+import StyledFormLabel from "../../components/forms/StyledFormLabel";
+import StyledTextField from "../../components/forms/StyledTextField";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   firstEntry: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   typeSelect: {
-    minWidth: 200
+    minWidth: 200,
   },
   requestTypes: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   availabilityQuestionLabel: {
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
   availabilityCheckboxLabel: {
-    textTransform: "capitalize"
+    textTransform: "capitalize",
   },
 }));
 
-const providerRequestTypes = [
-  {
-    label: "Childcare",
-    value: "childcare"
-  },
-  {
-    label: "Errands/Shopping",
-    value: "shopping"
-  },
-  {
-    label: "Housecleaning",
-    value: "cleaning"
-  },
-  {
-    label: "Meal preparation / delivery",
-    value: "meals"
-  },
-  {
-    label: "Laundry",
-    value: "laundry"
-  },
-  {
-    label: "Lodging",
-    value: "lodging"
-  },
-  {
-    label: "Supplies",
-    value: "supplies"
-  },
-  {
-    label: "Pet care",
-    value: "pets"
-  }
+const availabilityOptions = [
+  "mornings",
+  "mid-day",
+  "evenings",
+  "nights",
+  "weekends",
 ];
-
-const availabilityOptions = ["mornings", "mid-day", "evenings", "nights", "weekends"];
 
 export default function OfferForm({
   firstName,
@@ -72,7 +43,7 @@ export default function OfferForm({
   description,
   onChange,
   setField,
-  provider
+  provider,
 }) {
   const classes = useStyles();
 
@@ -80,7 +51,7 @@ export default function OfferForm({
     <React.Fragment>
       <Grid container spacing={3} className={classes.firstEntry}>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             required
             id="firstName"
             name="firstName"
@@ -91,7 +62,7 @@ export default function OfferForm({
           />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <TextField
+          <StyledTextField
             id="lastName"
             name="lastName"
             label="Last name"
@@ -102,43 +73,46 @@ export default function OfferForm({
         </Grid>
         <Grid item xs={12} className={classes.requestTypes}>
           <FormControl>
-            <FormLabel required id="type-select-label">
+            <StyledFormLabel required id="type-select-label">
               What can you help with?
-            </FormLabel>
-            {provider && provider.requests.map(request => {
-              if (request.satisfied) return null;
+            </StyledFormLabel>
+            {provider &&
+              provider.requests.map((request) => {
+                if (request.satisfied) return null;
 
-              const requestObj = providerRequestTypes.find(x => x.value === request.type);
-              if (!requestObj) return null;
+                const requestObj = providerRequestTypes.find(
+                  (x) => x.value === request.type
+                );
+                if (!requestObj) return null;
 
-              return (
-                <FormControlLabel
-                  key={requestObj.value}
-                  control={
-                    <Checkbox
-                      checked={requests.includes(requestObj.value)}
-                      onChange={e =>
-                        e.target.checked
-                          ? setField("requests")([
-                              ...requests,
-                              requestObj.value
-                            ])
-                          : setField("requests")(
-                              requests.filter(x => x !== requestObj.value)
-                            )
-                      }
-                      name={requestObj.value}
-                      color="primary"
-                    />
-                  }
-                  label={requestObj.label}
-                />
-              )
-            })}
+                return (
+                  <FormControlLabel
+                    key={requestObj.value}
+                    control={
+                      <Checkbox
+                        checked={requests.includes(requestObj.value)}
+                        onChange={(e) =>
+                          e.target.checked
+                            ? setField("requests")([
+                                ...requests,
+                                requestObj.value,
+                              ])
+                            : setField("requests")(
+                                requests.filter((x) => x !== requestObj.value)
+                              )
+                        }
+                        name={requestObj.value}
+                        color="primary"
+                      />
+                    }
+                    label={requestObj.label}
+                  />
+                );
+              })}
           </FormControl>
         </Grid>
         <Grid item xs={12}>
-          <TextField
+          <StyledTextField
             required
             id="description"
             name="description"
@@ -148,32 +122,33 @@ export default function OfferForm({
             onChange={onChange}
           />
           <FormHelperText>
-            Please be specific. How often can you help? Do you have any limitations?
+            Please be specific. How often can you help? Do you have any
+            limitations?
           </FormHelperText>
         </Grid>
         <Grid item xs={12}>
           <FormControl>
-            <FormLabel
+            <StyledFormLabel
               required
               className={classes.availabilityQuestionLabel}
               id="type-select-label"
             >
               When are you generally available?
-            </FormLabel>
-            {availabilityOptions.map(option => (
+            </StyledFormLabel>
+            {availabilityOptions.map((option) => (
               <FormControlLabel
                 key={option}
                 control={
                   <Checkbox
                     checked={availabilities.includes(option)}
-                    onChange={e =>
+                    onChange={(e) =>
                       e.target.checked
                         ? setField("availabilities")([
                             ...availabilities,
-                            option
+                            option,
                           ])
                         : setField("availabilities")(
-                            availabilities.filter(x => x !== option)
+                            availabilities.filter((x) => x !== option)
                           )
                     }
                     name={option}
