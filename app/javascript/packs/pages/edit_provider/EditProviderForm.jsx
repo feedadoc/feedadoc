@@ -88,6 +88,8 @@ const EditProviderForm = ({
       <Grid item xs={12} className={classes.mediumSpacing}>
         <StyledTextField
           required
+          multiline
+          variant="outlined"
           id="description"
           name="description"
           label="Describe your request"
