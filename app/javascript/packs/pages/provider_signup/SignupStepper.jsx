@@ -67,6 +67,7 @@ export default function SignupStepper() {
     role: "",
     requests: [],
     description: "",
+    address: null,
   });
   const [redirectId, setRedirectId] = useState();
 
@@ -103,7 +104,7 @@ export default function SignupStepper() {
   };
 
   const setField = (name) => (value) => {
-    setVariables({ ...variables, [name]: value });
+    setVariables((vars) => ({ ...vars, [name]: value }));
   };
 
   const onChange = (e) => setField(e.target.name)(e.target.value);

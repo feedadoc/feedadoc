@@ -5,8 +5,8 @@ import StyledInputLabel from "../../components/forms/StyledInputLabel";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
-import STATES from "../../data/states";
 import StyledTextField from "../../components/forms/StyledTextField";
+import LocationInput from "../../components/forms/LocationInput";
 
 const useStyles = makeStyles((theme) => ({
   stateSelect: {
@@ -21,12 +21,12 @@ export default function AddressForm({
   city,
   state,
   email,
-  facility,
   role,
   onChange,
+  setField,
+  address,
 }) {
   const classes = useStyles();
-
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -56,49 +56,28 @@ export default function AddressForm({
           />
         </Grid>
         <Grid item xs={12}>
-          <StyledTextField
-            id="neighborhood"
-            name="neighborhood"
-            label="Neighborhood"
-            value={neighborhood}
-            onChange={onChange}
-            fullWidth
+          <LocationInput
+            onChange={({ result, errors }) => {
+              setField("city")(
+                result.address_components.find((x) =>
+                  x.types.includes("locality")
+                ).long_name
+              );
+              setField("state")(
+                result.address_components.find((x) =>
+                  x.types.includes("administrative_area_level_1")
+                ).short_name
+              );
+              setField("neighborhood")(
+                result.address_components.find((x) =>
+                  x.types.includes("neighborhood")
+                ).long_name
+              );
+            }}
+            value={address}
+            setAddress={setField("address")}
+            inputProps={{ label: "Location", required: true }}
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <StyledTextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            value={city}
-            onChange={onChange}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormControl>
-            <StyledInputLabel htmlFor="state" required id="state">
-              State
-            </StyledInputLabel>
-            <Select
-              required
-              native
-              labelId="state"
-              id="state"
-              name="state"
-              className={classes.stateSelect}
-              onChange={onChange}
-              value={state}
-            >
-              <option value="" />
-              {STATES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </Select>
-          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <FormControl>
