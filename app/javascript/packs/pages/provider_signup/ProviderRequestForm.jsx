@@ -8,22 +8,22 @@ import FormControl from "@material-ui/core/FormControl";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormLabel from "@material-ui/core/FormLabel";
-import providerRequestTypes from '../../data/providerRequestTypes';
+import providerRequestTypes from "../../data/providerRequestTypes";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   firstEntry: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   typeSelect: {
-    minWidth: 200
-  }
+    minWidth: 200,
+  },
 }));
 
 export default function ProviderRequestForm({
   requests,
   description,
   onChange,
-  setField
+  setField,
 }) {
   const classes = useStyles();
 
@@ -39,20 +39,17 @@ export default function ProviderRequestForm({
             <FormLabel required id="type-select-label">
               What kinds of support do you need?
             </FormLabel>
-            {providerRequestTypes.map(type => (
+            {providerRequestTypes.map((type) => (
               <FormControlLabel
                 key={type.value}
                 control={
                   <Checkbox
                     checked={requests.includes(type.value)}
-                    onChange={e =>
+                    onChange={(e) =>
                       e.target.checked
-                        ? setField("requests")([
-                            ...requests,
-                            type.value
-                          ])
+                        ? setField("requests")([...requests, type.value])
                         : setField("requests")(
-                            requests.filter(x => x !== type.value)
+                            requests.filter((x) => x !== type.value)
                           )
                     }
                     name={type.value}
@@ -75,7 +72,9 @@ export default function ProviderRequestForm({
             onChange={onChange}
           />
           <FormHelperText>
-            Be sure to include details like frequency, quantity, duration, etc.
+            If possible, please include details such as days or times of week
+            you anticipate needing help, dietary restrictions, and anything else
+            a helper might need to know.
           </FormHelperText>
         </Grid>
       </Grid>

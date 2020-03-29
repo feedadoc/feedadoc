@@ -14,20 +14,24 @@ import STATES from "../../data/states";
 import providerRequestTypes from "../../data/providerRequestTypes";
 import Button from "@material-ui/core/Button";
 import Switch from "@material-ui/core/Switch";
-import  {
-  TOKEN_ENTITY_REQUEST_STATES
-} from "../../hooks/useTokenEntity";
+import { TOKEN_ENTITY_REQUEST_STATES } from "../../hooks/useTokenEntity";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   mediumSpacing: {
-    marginBottom: "30px"
+    marginBottom: "30px",
   },
   largeSpacing: {
-    marginBottom: "50px"
-  }
+    marginBottom: "50px",
+  },
 }));
 
-const EditProviderForm = ({provider, onChange, setField, requestState, saveProvider}) => {
+const EditProviderForm = ({
+  provider,
+  onChange,
+  setField,
+  requestState,
+  saveProvider,
+}) => {
   const classes = useStyles();
   return (
     <>
@@ -40,7 +44,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
             control={
               <Switch
                 checked={provider.active}
-                onChange={e => {
+                onChange={(e) => {
                   setField("active")(e.target.checked);
                 }}
                 name="active"
@@ -56,20 +60,17 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
           <FormLabel required id="type-select-label">
             What kinds of support do you need?
           </FormLabel>
-          {providerRequestTypes.map(type => (
+          {providerRequestTypes.map((type) => (
             <FormControlLabel
               key={type.value}
               control={
                 <Checkbox
                   checked={provider.requests.includes(type.value)}
-                  onChange={e =>
+                  onChange={(e) =>
                     e.target.checked
-                      ? setField("requests")([
-                          ...provider.requests,
-                          type.value
-                        ])
+                      ? setField("requests")([...provider.requests, type.value])
                       : setField("requests")(
-                          provider.requests.filter(x => x !== type.value)
+                          provider.requests.filter((x) => x !== type.value)
                         )
                   }
                   name={type.value}
@@ -92,8 +93,9 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
           onChange={onChange}
         />
         <FormHelperText>
-          Be sure to include details like frequency, quantity, duration,
-          etc.
+          If possible, please include details such as days or times of week you
+          anticipate needing help, dietary restrictions, and anything else a
+          helper might need to know.
         </FormHelperText>
       </Grid>
 
@@ -160,7 +162,7 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
               value={provider.state}
             >
               <option value="" />
-              {STATES.map(s => (
+              {STATES.map((s) => (
                 <option key={s} value={s}>
                   {s}
                 </option>
@@ -238,6 +240,6 @@ const EditProviderForm = ({provider, onChange, setField, requestState, saveProvi
         </Grid>
       </Grid>
     </>
-  )
-}
+  );
+};
 export default EditProviderForm;
