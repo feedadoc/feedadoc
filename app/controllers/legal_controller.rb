@@ -11,6 +11,6 @@ class LegalController < ApplicationController
   def disclaimer
   end
 
-  def terns_of_use
+  def terms_of_use
   end
 end
