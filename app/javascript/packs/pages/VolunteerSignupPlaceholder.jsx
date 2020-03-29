@@ -17,7 +17,7 @@ export default function VolunteerSignupPlaceholder() {
 
   return (
     <Paper className={classes.heroContent}>
-      {isSuccess && (
+      {isSuccess ? (
         <Box mb={4}>
           <Typography variant="h5" gutterBottom>
             Thank you so much for volunteering!
@@ -26,13 +26,14 @@ export default function VolunteerSignupPlaceholder() {
             You should hear back from the medical provider soon.
           </Typography>
         </Box>
+      ) : (
+        <div
+          dangerouslySetInnerHTML={{
+            __html:
+              '<script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shr3okipJzPefgm2X?backgroundColor=cyan" frameborder="0" onmousewheel="" width="100%" height="1603" style="background: transparent; border: 1px solid #ccc;"></iframe>',
+          }}
+        />
       )}
-      <div
-        dangerouslySetInnerHTML={{
-          __html:
-            '<script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shr3okipJzPefgm2X?backgroundColor=cyan" frameborder="0" onmousewheel="" width="100%" height="1603" style="background: transparent; border: 1px solid #ccc;"></iframe>',
-        }}
-      />
     </Paper>
   );
 }
