@@ -11,10 +11,25 @@ const theme = createMuiTheme({
     fontWeight: 400,
     h1: {
       fontWeight: 800,
-      fontSize: 36,
+      fontSize: "1.6rem",
+      "@media (min-width:600px)": {
+        fontSize: "2rem",
+      },
     },
     h2: {
-      fontSize: 24,
+      "@media (min-width:600px)": {
+        fontSize: "1.4rem",
+      },
+      fontSize: "1rem",
+    },
+    h3: {
+      fontWeight: "bold",
+      fontSize: "1.2rem",
+      letterSpacing: 0.5,
+      textTransform: "uppercase",
+      "@media (min-width:600px)": {
+        fontSize: "1.8rem",
+      },
     },
   },
   palette: {

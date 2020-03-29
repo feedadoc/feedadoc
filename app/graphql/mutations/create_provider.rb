@@ -13,6 +13,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   argument :requests, [String], required: true
 
   field :provider, Types::FullProvider, null: true
+  field :edit_link, String, null: true
   field :errors, [String], null: false
 
   def resolve(first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility: "", role:, requests:, description:)
@@ -35,11 +36,13 @@ class Mutations::CreateProvider < Mutations::BaseMutation
       ProviderMailer.with(linked_token: linked_token).request_created_email.deliver_later
       {
         provider: provider,
+        edit_link: "/providers/#{linked_token.token}/edit",
         errors: [],
       }
     else
       {
         provider: nil,
+        edit_link: nil,
         errors: provider.errors.full_messages
       }
     end
