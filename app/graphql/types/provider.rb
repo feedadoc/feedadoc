@@ -11,7 +11,13 @@ module Types
     field :requests, [Types::Request], null: false
     field :active, Boolean, null: false
     field :updated_at, String, null: false
+    field :response_count, Integer, null: false
+
+    def response_count
+      object.responses.count
+    end
   end
+
 
   class ProviderFilter < Types::BaseInputObject
     argument :id, ID, required: false
@@ -20,6 +26,7 @@ module Types
     argument :active, Boolean, required: false
     argument :role, String, required: false
     argument :updated_within_days, Int, required: false
+    argument :active_requests, Boolean, required: false
   end
 
   class ProviderSort < Types::BaseEnum
