@@ -9,7 +9,7 @@ const Hero = () => (
     <GatheredDoctors />
     <Container maxWidth="sm">
       <Box mt={4}>
-        <Typography component="h2" variant="h1" align="center" color="primary">
+        <Typography component="h1" variant="h1" align="center" color="primary">
           Healthcare workers need our help to fight COVID-19
         </Typography>
       </Box>
