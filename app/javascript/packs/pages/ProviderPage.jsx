@@ -164,7 +164,7 @@ export default function ProviderPage({ location, match }) {
         <Button
           variant="contained"
           className={classes.button}
-          href={`/browse-new`}
+          href={`/volunteer`}
         >
           Browse Requests
         </Button>
