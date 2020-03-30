@@ -11,6 +11,7 @@
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.2.2",
     "apollo-boost": "^0.4.7",
+    "autosuggest-highlight": "^3.1.1",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "graphql": "^14.6.0",
     "prop-types": "^15.7.2",

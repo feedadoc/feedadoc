@@ -61,13 +61,31 @@ describe("when provider is signing up", () => {
         firstName: "childcare",
         lastName: "",
         neighborhood: "",
-        city: "New York",
-        state: "NY",
+        city: "Denver",
+        state: "CO",
         email: "test@ing.com",
         facility: "",
         role: "nurse",
         requests: ["childcare"],
         description: "test",
+        address: {
+          description: "Denver, CO, USA",
+          id: "464b513e4fd9a3c7c3bd63d091ecc856aff12e2c",
+          matched_substrings: [{ length: 6, offset: 0 }],
+          place_id: "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+          reference: "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
+          structured_formatting: {
+            main_text: "Denver",
+            main_text_matched_substrings: [{ length: 6, offset: 0 }],
+            secondary_text: "CO, USA",
+          },
+          terms: [
+            { offset: 0, value: "Denver" },
+            { offset: 8, value: "CO" },
+            { offset: 12, value: "USA" },
+          ],
+          types: ["locality", "political", "geocode"],
+        },
       };
       const createMutationResult = {
         errors: [],
@@ -75,7 +93,7 @@ describe("when provider is signing up", () => {
           id: 1,
         },
       };
-      const { getByLabelText, getByText } = renderComponent({
+      const { getByLabelText, getByText, getAllByText } = renderComponent({
         createMutationArgs,
         createMutationResult,
       });
@@ -85,19 +103,18 @@ describe("when provider is signing up", () => {
         createMutationArgs.description
       );
       userEvent.click(getByText("Next"));
-      userEvent.selectOptions(
-        getByLabelText(/State/).nextSibling.firstChild,
-        createMutationArgs.state
-      );
       userEvent.type(
         getByLabelText(/First name/),
         createMutationArgs.firstName
       );
-      userEvent.type(getByLabelText(/City/), createMutationArgs.city);
+      userEvent.type(getByLabelText(/Location/), createMutationArgs.city);
       userEvent.selectOptions(getByLabelText(/Your Job Title \/ Role/), [
         createMutationArgs.role,
       ]);
       userEvent.type(getByLabelText(/Email/), createMutationArgs.email);
+      await act(async () => {
+        userEvent.click(getAllByText("Denver")[0]);
+      });
       await act(async () => {
         userEvent.click(getByText("Save"));
       });

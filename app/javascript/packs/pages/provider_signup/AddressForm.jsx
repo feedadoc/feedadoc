@@ -63,7 +63,6 @@ export default function AddressForm({
         <Grid item xs={12}>
           <LocationInput
             onChange={({ value, geocoded }) => {
-              console.log({ geocoded, value });
               setField("address")(value);
               setField("city")(getAddressLocality(geocoded).long_name);
               setField("state")(

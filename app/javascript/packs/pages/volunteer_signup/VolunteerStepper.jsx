@@ -11,45 +11,45 @@ import { gql } from "apollo-boost";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import ErrorIcon from "@material-ui/icons/Error";
 import Snackbar from "@material-ui/core/Snackbar";
-import queryString from 'query-string';
+import queryString from "query-string";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(10),
     padding: theme.spacing(2),
     [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
       marginTop: theme.spacing(6),
-      padding: theme.spacing(3)
-    }
+      padding: theme.spacing(3),
+    },
   },
   stepper: {
-    padding: theme.spacing(5, 0, 3)
+    padding: theme.spacing(5, 0, 3),
   },
   buttons: {
     display: "flex",
-    justifyContent: "flex-end"
+    justifyContent: "flex-end",
   },
   button: {
     marginTop: theme.spacing(3),
-    marginLeft: theme.spacing(1)
+    marginLeft: theme.spacing(1),
   },
   error: {
     backgroundColor: theme.palette.error.main,
     color: theme.palette.error.contrastText,
     fill: theme.palette.error.contrastText,
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
   },
   step: {
-    cursor: "pointer"
+    cursor: "pointer",
   },
   heading: {
-    margin: theme.spacing(2)
+    margin: theme.spacing(2),
   },
   details: {
     fontWeight: 100,
-    fontSize: "1rem"
-  }
+    fontSize: "1rem",
+  },
 }));
 
 const CREATE_VOLUNTEER = gql`
@@ -83,10 +83,21 @@ const CREATE_VOLUNTEER = gql`
         phone: $phone
         social: $social
         over18: $over18
-      }) {
-        errors
-        volunteer { id, firstName, responses { provider { id }, requests, availabilities } }
       }
+    ) {
+      errors
+      volunteer {
+        id
+        firstName
+        responses {
+          provider {
+            id
+          }
+          requests
+          availabilities
+        }
+      }
+    }
   }
 `;
 
@@ -96,7 +107,7 @@ const GET_PROVIDER = gql`
       id
       firstName
       requests {
-        type,
+        type
         satisfied
       }
     }
@@ -119,10 +130,10 @@ export default function VolunteerStepper({ steps, location }) {
     availabilities: [],
     phone: "",
     social: "",
-    over18: false
+    over18: false,
   });
 
-  const queryId = queryString.parse(location.search).provider
+  const queryId = queryString.parse(location.search).provider;
   let provider;
 
   const providerResult = useQuery(GET_PROVIDER, {
@@ -140,14 +151,15 @@ export default function VolunteerStepper({ steps, location }) {
   const handleNext = () => {
     if (activeStep === steps.length - 1 && variables.over18 === false) {
       setErrors(["You must be over 18 years old to volunteer."]);
-    }
-    else if (activeStep === steps.length - 1) {
-      createVolunteer({ variables: { ...variables, providerId: parseInt(queryId) }})
+    } else if (activeStep === steps.length - 1) {
+      createVolunteer({
+        variables: { ...variables, providerId: parseInt(queryId) },
+      })
         .then(({ errors: systemErrors = [], data }) => {
           const {
-            createVolunteer: { volunteer, errors = [] }
+            createVolunteer: { volunteer, errors = [] },
           } = data;
-          const allErrors = [...(errors || []), ...systemErrors].map(e =>
+          const allErrors = [...(errors || []), ...systemErrors].map((e) =>
             e && e.message ? e.message : e
           );
           if (errors.length) {
@@ -155,10 +167,8 @@ export default function VolunteerStepper({ steps, location }) {
           } else {
             setActiveStep(activeStep + 1);
           }
-          console.log(data);
-          console.log([provider]);
         })
-        .catch(e => {
+        .catch((e) => {
           setErrors([e.message]);
         });
     } else {
@@ -170,11 +180,11 @@ export default function VolunteerStepper({ steps, location }) {
     setActiveStep(activeStep - 1);
   };
 
-  const setField = name => value => {
+  const setField = (name) => (value) => {
     setVariables({ ...variables, [name]: value });
   };
 
-  const onChange = e => setField(e.target.name)(e.target.value);
+  const onChange = (e) => setField(e.target.name)(e.target.value);
 
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
@@ -196,13 +206,28 @@ export default function VolunteerStepper({ steps, location }) {
   return (
     <Paper className={classes.paper}>
       <React.Fragment>
-        <Typography component="h1" variant="h6" align="center" style={{fontWeight: 100}}>
+        <Typography
+          component="h1"
+          variant="h6"
+          align="center"
+          style={{ fontWeight: 100 }}
+        >
           Offer Help
         </Typography>
-        <Typography component="h2" variant="h5" align="center" className={classes.heading}>
+        <Typography
+          component="h2"
+          variant="h5"
+          align="center"
+          className={classes.heading}
+        >
           {`Respond to ${provider.firstName}'s request`}
         </Typography>
-        <Typography component="h3" variant="h6" align="center" className={classes.details}>
+        <Typography
+          component="h3"
+          variant="h6"
+          align="center"
+          className={classes.details}
+        >
           {`Your offer to help will be emailed to ${provider.firstName} and they will respond if they still need help. Thank you for volunteering!`}
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
@@ -233,7 +258,7 @@ export default function VolunteerStepper({ steps, location }) {
                 className={classes.button}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? 'Volunteer' : 'Next'}
+                {activeStep === steps.length - 1 ? "Volunteer" : "Next"}
               </Button>
             </div>
           </React.Fragment>
@@ -251,5 +276,5 @@ export default function VolunteerStepper({ steps, location }) {
 }
 
 VolunteerStepper.propTypes = {
-  steps: PropTypes.array
+  steps: PropTypes.array,
 };
