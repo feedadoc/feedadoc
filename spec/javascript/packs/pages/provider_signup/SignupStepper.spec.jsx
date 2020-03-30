@@ -58,7 +58,7 @@ describe("when provider is signing up", () => {
   describe("and the form is filled out", () => {
     it("displays success message", async () => {
       const createMutationArgs = {
-        firstName: "childcare",
+        firstName: "joe",
         lastName: "",
         neighborhood: "",
         city: "Denver",
@@ -66,7 +66,7 @@ describe("when provider is signing up", () => {
         email: "test@ing.com",
         facility: "",
         role: "nurse",
-        requests: ["childcare"],
+        requests: ["pets"],
         description: "test",
         address: {
           description: "Denver, CO, USA",
@@ -97,7 +97,7 @@ describe("when provider is signing up", () => {
         createMutationArgs,
         createMutationResult,
       });
-      userEvent.click(getByLabelText("Childcare"));
+      userEvent.click(getByLabelText("Pet care"));
       userEvent.type(
         getByLabelText(/Describe your request/),
         createMutationArgs.description

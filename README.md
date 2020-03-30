@@ -1,10 +1,10 @@
 # HospitalHero (previously known as Feed a Doc)
 
-[![CircleCI](https://circleci.com/gh/cantino/feedadoc.svg?style=svg)](https://circleci.com/gh/cantino/feedadoc)
+[![CircleCI](https://circleci.com/gh/feedadoc/feedadoc.svg?style=svg)](https://circleci.com/gh/feedadoc/feedadoc)
 
 HospitalHero connects healthcare workers (docs, nurses, specialists, support staff) with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance or can provide it!
 
-We'd love your help! Please [see the project for a prioritized list of issues (tasks)](https://github.com/cantino/feedadoc/projects/1).
+We'd love your help! Please [join us in Slack](https://docs.google.com/forms/d/e/1FAIpQLSeAXlls9dtfW8Eu6OBvfNT1J8nhOHJ4nC2QrryNlsVogRGsFA/viewform).
 
 ## Tech Stack
 

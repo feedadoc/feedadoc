@@ -70,6 +70,7 @@ export default function SignupStepper() {
     address: null,
   });
   const [redirectId, setRedirectId] = useState();
+  const [editLink, setEditLink] = useState();
 
   const [createProvider, { loading, data, error }] = useMutation(
     CREATE_PROVIDER
@@ -80,7 +81,7 @@ export default function SignupStepper() {
       createProvider({ variables })
         .then(({ errors: systemErrors = [], data }) => {
           const {
-            createProvider: { provider, errors = [] },
+            createProvider: { provider, editLink, errors = [] },
           } = data;
           const allErrors = [...(errors || []), ...systemErrors].map((e) =>
             e && e.message ? e.message : e
@@ -88,6 +89,7 @@ export default function SignupStepper() {
           if (errors.length) {
             setErrors(errors);
           } else {
+            setEditLink(editLink);
             setRedirectId(provider.id);
           }
         })
@@ -119,6 +121,7 @@ export default function SignupStepper() {
           pathname: `/providers/${redirectId}`,
           state: {
             providerCreation: true,
+            editLink: editLink,
           },
         }}
       />

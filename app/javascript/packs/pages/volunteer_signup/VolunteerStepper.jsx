@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
@@ -132,6 +133,7 @@ export default function VolunteerStepper({ steps, location }) {
     social: "",
     over18: false,
   });
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const queryId = queryString.parse(location.search).provider;
   let provider;
@@ -165,7 +167,7 @@ export default function VolunteerStepper({ steps, location }) {
           if (errors.length) {
             setErrors(errors);
           } else {
-            setActiveStep(activeStep + 1);
+            setIsSuccess(true);
           }
         })
         .catch((e) => {
@@ -188,17 +190,8 @@ export default function VolunteerStepper({ steps, location }) {
 
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
-  if (activeStep === steps.length) {
-    return (
-      <Paper className={classes.paper}>
-        <Typography variant="h5" gutterBottom>
-          Thank you so much for volunteering!
-        </Typography>
-        <Typography variant="subtitle1">
-          You should hear back from the medical provider soon.
-        </Typography>
-      </Paper>
-    );
+  if (isSuccess) {
+    return <Redirect push to="/volunteer?success=true" />;
   }
 
   if (!provider) return null;
@@ -228,7 +221,7 @@ export default function VolunteerStepper({ steps, location }) {
           align="center"
           className={classes.details}
         >
-          {`Your offer to help will be emailed to ${provider.firstName} and they will respond if they still need help. Thank you for volunteering!`}
+          {`The information you provide on this page will be shared with ${provider.firstName}, and they will respond if they still need help. Thank you for volunteering!`}
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map(({ label }, index) => (

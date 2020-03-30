@@ -1,9 +1,5 @@
 const providerRequestTypes = [
   {
-    label: "Childcare",
-    value: "childcare",
-  },
-  {
     label: "Errands/Shopping",
     value: "shopping",
   },

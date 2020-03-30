@@ -18,6 +18,7 @@ import Header from "./components/Header";
 import ScrollToTopOnMount from "./components/ScrollToTopOnMount";
 import theme from "./theme";
 import Home from "./pages/home/Home";
+import Footer from "./components/Footer";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -78,16 +79,16 @@ function App() {
                     </>
                   )}
                 />
-                <Route path="/browse-new">
-                  <Container maxWidth="md">
-                    <ScrollToTopOnMount />
-                    <BrowseRequests />
-                  </Container>
-                </Route>
-                <Route path="/browse">
+                <Route path="/volunteer/signup">
                   <Container maxWidth="md">
                     <ScrollToTopOnMount />
                     <VolunteerSignupPlaceholder />
+                  </Container>
+                </Route>
+                <Route path="/volunteer">
+                  <Container maxWidth="md">
+                    <ScrollToTopOnMount />
+                    <BrowseRequests />
                   </Container>
                 </Route>
                 <Route path="/providers/:token/edit">
@@ -103,6 +104,7 @@ function App() {
               </Switch>
             </div>
           </main>
+          <Footer />
         </Router>
       </ApolloProvider>
     </MuiThemeProvider>

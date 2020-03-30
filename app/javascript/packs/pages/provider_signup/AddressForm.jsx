@@ -93,23 +93,24 @@ export default function AddressForm({
               onChange={onChange}
             >
               <option value="" />
-              <option value="physician">
-                Physician, Nurse Practitioner, Physician Assistant
-              </option>
+              <option value="physician">Doctor, NP, PA</option>
               <option value="nurse">Nurse</option>
-              <option value="therapist">
-                Respiratory Therapist, Physical Therapist, Occupational
-                Therapist, Speech Therapist
-              </option>
-              <option value="assistant">
-                Medical assistant, patient care assistant, or other clinical
-                staff
-              </option>
-              <option value="admin">
-                Admin/support staff or social worker
-              </option>
+              <option value="therapist">RT, PT, OT, ST, Nutrition</option>
+              <option value="assistant">Patient care assistant, MA</option>
+              <option value="social">Social Worker, Chaplain</option>
+              <option value="admin">Admin/support staff</option>
             </Select>
           </FormControl>
+        </Grid>
+        <Grid item xs={12}>
+          <StyledTextField
+            id="facility"
+            name="facility"
+            label="Your Medical Facility"
+            value={facility}
+            onChange={onChange}
+            fullWidth
+          />
         </Grid>
         <Grid item xs={12}>
           <StyledTextField
