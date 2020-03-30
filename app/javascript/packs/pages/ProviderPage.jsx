@@ -90,6 +90,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     padding: theme.spacing(0, 1, 6, 1),
   },
+  expiredRequest: {
+    textAlign: "center",
+  },
+  expiredHeader: {
+    marginBottom: theme.spacing(3),
+  },
 }));
 
 const GET_PROVIDER = gql`
@@ -104,6 +110,7 @@ const GET_PROVIDER = gql`
       facility
       description
       active
+      createdAt
       requests {
         type
         satisfied
@@ -133,7 +140,37 @@ export default function ProviderPage({ location, match }) {
     description,
     requests,
     active,
+    createdAt,
   } = data.provider;
+
+  const FOURTEEN_DAYS = 1000 * 60 * 60 * 24 * 14;
+  let creationTime = Date.parse(createdAt);
+  let today = Date.now();
+
+  if (!active || today - creationTime > FOURTEEN_DAYS) {
+    return (
+      <Container maxWidth="sm" className={classes.expiredRequest}>
+        <Typography
+          align="center"
+          component="p"
+          variant="h2"
+          className={classes.expiredHeader}
+        >
+          This request has expired or been deleted.
+        </Typography>
+        <Typography align="center" component="p">
+          You can find someone else to help here:
+        </Typography>
+        <Button
+          variant="contained"
+          className={classes.button}
+          href={`/browse-new`}
+        >
+          Browse Requests
+        </Button>
+      </Container>
+    );
+  }
 
   const roleLookup = {
     physician: "Doctor / NP / PA",

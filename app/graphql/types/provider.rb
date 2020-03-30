@@ -11,6 +11,7 @@ module Types
     field :requests, [Types::Request], null: false
     field :active, Boolean, null: false
     field :updated_at, String, null: false
+    field :created_at, String, null: false
     field :response_count, Integer, null: false
 
     def response_count
