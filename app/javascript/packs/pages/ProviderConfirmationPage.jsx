@@ -169,9 +169,8 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
           className={classes.stepDetails}
           style={{ marginTop: theme.spacing(2) }}
         >
-          Your request will also appear on a public directory (coming soon)
-          where volunteers in your community can see it. Again, we'll hide your
-          contact info.
+          Your request will also appear on a public directory where volunteers
+          in your community can see it. Again, we'll hide your contact info.
         </Typography>
         {renderStep(
           "2",
