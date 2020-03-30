@@ -103,6 +103,7 @@ export default function LocationInput({ value, inputProps, onChange }) {
       options={options}
       autoComplete
       value={value}
+      disableClearable
       onChange={(_, value) => {
         geocoderService.current.geocode({ placeId: value.place_id }, function (
           results,
