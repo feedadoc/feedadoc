@@ -31,12 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LocationInput({
-  value,
-  setAddress,
-  inputProps,
-  onChange,
-}) {
+export default function LocationInput({ value, inputProps, onChange }) {
   const classes = useStyles();
   const [inputValue, setInputValue] = React.useState("");
   const [options, setOptions] = React.useState([]);
@@ -45,7 +40,7 @@ export default function LocationInput({
   if (typeof window !== "undefined" && !loaded.current) {
     if (!document.querySelector("#google-maps")) {
       loadScript(
-        `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`,
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyC91p5MR0B-sProwqXqStywWfAXOxOkcm8&libraries=places",
         document.querySelector("head"),
         "google-maps"
       );
@@ -61,7 +56,10 @@ export default function LocationInput({
   const fetch = React.useMemo(
     () =>
       throttle((request, callback) => {
-        autocompleteService.current.getPlacePredictions(request, callback);
+        autocompleteService.current.getPlacePredictions(
+          { ...request, sessionToken: autocompleteService.sessionToken },
+          callback
+        );
       }, 200),
     []
   );
@@ -70,7 +68,9 @@ export default function LocationInput({
     let active = true;
 
     if (!autocompleteService.current && window.google) {
+      const sessionToken = new google.maps.places.AutocompleteSessionToken();
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
+      autocompleteService.sessionToken = sessionToken;
       geocoderService.current = new google.maps.Geocoder();
     }
     if (!autocompleteService.current) {
@@ -103,20 +103,20 @@ export default function LocationInput({
       options={options}
       autoComplete
       value={value}
-      onChange={(_, result) => {
-        setAddress(result);
-        geocoderService.current.geocode({ placeId: result.place_id }, function (
+      onChange={(_, value) => {
+        geocoderService.current.geocode({ placeId: value.place_id }, function (
           results,
           status
         ) {
-          if (status === "OK") {
-            if (results[0]) {
-              onChange({ result: results[0], errors: [] });
-            } else {
-              onChange({ result: null, errors: [] });
-            }
-          } else {
-            onChange({ result: null, errors: [status] });
+          if (status !== "OK") {
+            return;
+          }
+
+          if (results[0]) {
+            onChange({
+              value,
+              geocoded: results[0],
+            });
           }
         });
       }}

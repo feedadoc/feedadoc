@@ -7,6 +7,11 @@ import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
 import StyledTextField from "../../components/forms/StyledTextField";
 import LocationInput from "../../components/forms/LocationInput";
+import {
+  getAddressNeighborhood,
+  getAddressLocality,
+  getAddressAdministrativeAreaLevel1,
+} from "../../helpers/address";
 
 const useStyles = makeStyles((theme) => ({
   stateSelect: {
@@ -57,25 +62,19 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12}>
           <LocationInput
-            onChange={({ result, errors }) => {
-              setField("city")(
-                result.address_components.find((x) =>
-                  x.types.includes("locality")
-                ).long_name
-              );
+            onChange={({ value, geocoded }) => {
+              console.log({ geocoded, value });
+              setField("address")(value);
+              setField("city")(getAddressLocality(geocoded).long_name);
               setField("state")(
-                result.address_components.find((x) =>
-                  x.types.includes("administrative_area_level_1")
-                ).short_name
+                getAddressAdministrativeAreaLevel1(geocoded).short_name
               );
-              setField("neighborhood")(
-                result.address_components.find((x) =>
-                  x.types.includes("neighborhood")
-                ).long_name
-              );
+              const neighborhood = getAddressNeighborhood(geocoded);
+              if (neighborhood) {
+                setField("neighborhood")(neighborhood.long_name);
+              }
             }}
             value={address}
-            setAddress={setField("address")}
             inputProps={{ label: "Location", required: true }}
           />
         </Grid>
