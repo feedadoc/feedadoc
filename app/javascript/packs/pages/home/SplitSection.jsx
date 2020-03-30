@@ -50,6 +50,20 @@ const useStyles = makeStyles((theme) => ({
   buttonLink: {
     textDecoration: "none",
   },
+  splitSectionContent: {
+    alignSelf: "center",
+    maxWidth: "500px",
+    textAlign: "center",
+  },
+  splitSectionText: {
+    marginBottom: "40px",
+  },
+  splitSectionTitle: {
+    marginTop: "20px",
+    marginBottom: "20px",
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
 }));
 
 const SplitSection = () => {
@@ -63,28 +77,20 @@ const SplitSection = () => {
       alignItems="center"
     >
       <Box bgcolor={"secondary.500"} display="flex">
-        <Box
-          alignSelf="center"
-          style={{ maxWidth: "500px", textAlign: "center" }}
-        >
+        <Box className={classes.splitSectionContent}>
           <DoctorsPassingBy />
           <Typography
             component="h2"
             variant="h1"
-            align="center"
             color="primary"
-            style={{
-              marginBottom: "20px",
-              marginTop: "20px",
-              textTransform: "uppercase",
-            }}
+            className={classes.splitSectionTitle}
           >
             Healthcare Workers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            style={{ marginBottom: "40px" }}
+            className={classes.splitSectionText}
           >
             Make requests for meals, supplies, or anything else you need. Share
             a link with your friends and family.
@@ -103,28 +109,21 @@ const SplitSection = () => {
         </Box>
       </Box>
       <Box bgcolor={"secondary.800"} display="flex">
-        <Box
-          alignSelf="center"
-          style={{ maxWidth: "500px", textAlign: "center" }}
-        >
+        <Box className={classes.splitSectionContent}>
           <Volunteers />
           <Typography
             component="h2"
             variant="h1"
             color="secondary"
             align="center"
-            style={{
-              marginBottom: "20px",
-              marginTop: "20px",
-              textTransform: "uppercase",
-            }}
+            className={classes.splitSectionTitle}
           >
             Volunteers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            style={{ marginBottom: "40px" }}
+            className={classes.splitSectionText}
           >
             Offer your support to local doctors, nurses, and hospital workers.
             You choose who and how to help.
