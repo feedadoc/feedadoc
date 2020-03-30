@@ -42,27 +42,6 @@ export default function VolunteerAddressForm({
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <FormControl>
-            <StyledFormLabel required id="type-select-label">
-              I am over 18 years old.
-            </StyledFormLabel>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={over18}
-                  onChange={(e) =>
-                    e.target.checked
-                      ? setField("over18")(true)
-                      : setField("over18")(false)
-                  }
-                  name="over18"
-                  color="primary"
-                />
-              }
-            />
-          </FormControl>
-        </Grid>
         <Grid item xs={12} sm={6}>
           <StyledTextField
             required
@@ -162,6 +141,27 @@ export default function VolunteerAddressForm({
           <FormHelperText>
             If you are responding to a public request, this is encouraged.
           </FormHelperText>
+        </Grid>
+        <Grid item xs={12}>
+          <FormControl>
+            <StyledFormLabel required id="type-select-label">
+              I am over 18 years old.
+            </StyledFormLabel>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={over18}
+                  onChange={(e) =>
+                    e.target.checked
+                      ? setField("over18")(true)
+                      : setField("over18")(false)
+                  }
+                  name="over18"
+                  color="primary"
+                />
+              }
+            />
+          </FormControl>
         </Grid>
       </Grid>
     </React.Fragment>
