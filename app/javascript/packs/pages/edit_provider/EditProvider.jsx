@@ -43,6 +43,10 @@ const useStyles = makeStyles((theme) => ({
   mediumSpacing: {
     marginBottom: "30px",
   },
+  loadingState: {
+    display: "flex",
+    justifyContent: "center",
+  },
 }));
 
 const EditProvider = () => {
@@ -74,7 +78,7 @@ const EditProvider = () => {
       </Typography>
 
       {requestState === TOKEN_ENTITY_REQUEST_STATES.LOADING ? (
-        <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className={classes.loadingState}>
           <CircularProgress />
         </div>
       ) : (
