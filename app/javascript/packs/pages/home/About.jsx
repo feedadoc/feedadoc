@@ -65,6 +65,32 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  aboutText: {
+    maxWidth: "800px",
+    width: "100%",
+    marginBottom: "40px",
+    textAlign: "center",
+  },
+  aboutTitle: {
+    maxWidth: "850px",
+    width: "100%",
+    marginTop: "20px",
+    marginBottom: "20px",
+    textAlign: "center",
+  },
+  aboutGrid: {
+    marginTop: "20px",
+  },
+  avatarName: {
+    marginBottom: "10px",
+    marginTop: "10px",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: "0.25px",
+  },
+  avatarRole: {
+    fontWeight: "bold",
+  },
   large: {
     width: theme.spacing(18),
     height: theme.spacing(18),
@@ -80,7 +106,7 @@ const Contributor = ({ name, role, src }) => {
         component="p"
         variant="h6"
         color="text.paperContrast"
-        className="about-avatar-name"
+        className={classes.avatarName}
       >
         {name}
       </Typography>
@@ -88,7 +114,7 @@ const Contributor = ({ name, role, src }) => {
         component="p"
         variant="body"
         color="text.paperContrast"
-        className="about-avatar-role"
+        className={classes.avatarRole}
       >
         {role}
       </Typography>
@@ -96,46 +122,49 @@ const Contributor = ({ name, role, src }) => {
   );
 };
 
-const About = () => (
-  <Box display="flex" alignItems="center" py={10} flexDirection="column">
-    <Typography
-      component="h2"
-      variant="h1"
-      p="10"
-      color="primary"
-      className="about-title"
-    >
-      About Us
-    </Typography>
-    <Typography component="p" variant="h5" className="about-text">
-      HospitalHero is being built by a team of volunteers through{" "}
-      <BoldLink color="textPrimary" href="https://covidaccelerator.com/">
-        COVID Accelerator
-      </BoldLink>
-      , a project of{" "}
-      <BoldLink color="textPrimary" href="https://impossiblelabs.io">
-        Impossible Labs
-      </BoldLink>
-      .
-    </Typography>
-    <Container maxWidth="lg">
-      <Grid container spacing={3} className="about-grid">
-        {contributors.map((c) => (
-          <Grid item xs={12} sm={4} md={3} key={c.name}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexDirection="column"
-              pb={2}
-            >
-              <Contributor name={c.name} role={c.role} src={c.src} />
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
-  </Box>
-);
+const About = () => {
+  const classes = useStyles();
+  return (
+    <Box display="flex" alignItems="center" py={10} flexDirection="column">
+      <Typography
+        component="h2"
+        variant="h1"
+        p="10"
+        color="primary"
+        className={classes.aboutTitle}
+      >
+        About Us
+      </Typography>
+      <Typography component="p" variant="h5" className={classes.aboutText}>
+        HospitalHero is being built by a team of volunteers through{" "}
+        <BoldLink color="textPrimary" href="https://covidaccelerator.com/">
+          COVID Accelerator
+        </BoldLink>
+        , a project of{" "}
+        <BoldLink color="textPrimary" href="https://impossiblelabs.io">
+          Impossible Labs
+        </BoldLink>
+        .
+      </Typography>
+      <Container maxWidth="lg">
+        <Grid container spacing={3} className={classes.aboutGrid}>
+          {contributors.map((c) => (
+            <Grid item xs={12} sm={4} md={3} key={c.name}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
+                pb={2}
+              >
+                <Contributor name={c.name} role={c.role} src={c.src} />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
 
 export default About;

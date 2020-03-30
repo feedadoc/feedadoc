@@ -50,6 +50,20 @@ const useStyles = makeStyles((theme) => ({
   buttonLink: {
     textDecoration: "none",
   },
+  splitSectionContent: {
+    alignSelf: "center",
+    maxWidth: "500px",
+    textAlign: "center",
+  },
+  splitSectionText: {
+    marginBottom: "40px",
+  },
+  splitSectionTitle: {
+    marginTop: "20px",
+    marginBottom: "20px",
+    textAlign: "center",
+    textTransform: "uppercase",
+  },
 }));
 
 const SplitSection = () => {
@@ -63,20 +77,20 @@ const SplitSection = () => {
       alignItems="center"
     >
       <Box bgcolor={"secondary.500"} display="flex">
-        <Box className="split-section-content">
+        <Box className={classes.splitSectionContent}>
           <DoctorsPassingBy />
           <Typography
             component="h2"
             variant="h1"
             color="primary"
-            className="split-section-content-title"
+            className={classes.splitSectionTitle}
           >
             Healthcare Workers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            className="split-section-content-text"
+            className={classes.splitSectionText}
           >
             Make requests for meals, supplies, or anything else you need. Share
             a link with your friends and family.
@@ -95,21 +109,21 @@ const SplitSection = () => {
         </Box>
       </Box>
       <Box bgcolor={"secondary.800"} display="flex">
-        <Box className="split-section-content">
+        <Box className={classes.splitSectionContent}>
           <Volunteers />
           <Typography
             component="h2"
             variant="h1"
             color="secondary"
             align="center"
-            className="split-section-content-title"
+            className={classes.splitSectionTitle}
           >
             Volunteers
           </Typography>
           <Typography
             component="p"
             variant="h2"
-            className="split-section-content-text"
+            className={classes.splitSectionText}
           >
             Offer your support to local doctors, nurses, and hospital workers.
             You choose who and how to help.
