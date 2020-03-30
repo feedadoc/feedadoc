@@ -105,7 +105,9 @@ export default function ProviderList({
                         </Typography>
                       </Grid>
                       <Grid item xs={6} spacing={2}>
-                        <Typography>{responseCount} Offers</Typography>
+                        <Typography>{`${responseCount} ${
+                          responseCount == 1 ? "Offer" : "Offers"
+                        }`}</Typography>
                       </Grid>
                     </Grid>
                   </Link>
