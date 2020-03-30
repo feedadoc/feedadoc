@@ -46,7 +46,7 @@ export default function Links() {
   return (
     <Box className={classes.root}>
       <NavLink
-        to="/browse"
+        to="/volunteer"
         className={classes.navItem}
         activeClassName={classes.active}
       >

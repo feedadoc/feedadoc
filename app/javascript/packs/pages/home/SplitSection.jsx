@@ -114,7 +114,7 @@ const SplitSection = () => {
             Offer your support to local doctors, nurses, and hospital workers.
             You choose who and how to help.
           </Typography>
-          <Link to="/browse" className={classes.buttonLink}>
+          <Link to="/volunteer" className={classes.buttonLink}>
             <Button
               className={classes.actionButton}
               size="large"

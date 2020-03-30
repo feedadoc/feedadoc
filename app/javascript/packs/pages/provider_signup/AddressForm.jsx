@@ -127,6 +127,16 @@ export default function AddressForm({
         </Grid>
         <Grid item xs={12}>
           <StyledTextField
+            id="facility"
+            name="facility"
+            label="Your Medical Facility"
+            value={facility}
+            onChange={onChange}
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <StyledTextField
             required
             id="email"
             name="email"
