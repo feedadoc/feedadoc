@@ -13,7 +13,6 @@
     "apollo-boost": "^0.4.7",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "graphql": "^14.6.0",
-    "mui-places-autocomplete": "^2.0.0",
     "prop-types": "^15.7.2",
     "query-string": "^6.11.1",
     "react": "^16.13.0",
