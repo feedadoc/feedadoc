@@ -28,6 +28,7 @@ export default function AddressForm({
   email,
   role,
   onChange,
+  facility,
   setField,
   address,
 }) {
