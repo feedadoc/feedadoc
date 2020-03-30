@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
   buttonContainer: {
     textAlign: "center",
   },
+  providerInfoText: {
+    color: "inherit",
+    textDecoration: "inherit",
+  },
 }));
 
 export default function ProviderList({
@@ -71,7 +75,7 @@ export default function ProviderList({
                 >
                   <Link
                     to={`/providers/${id}`}
-                    style={{ color: "inherit", textDecoration: "inherit" }}
+                    className={classes.providerInfoText}
                   >
                     <Grid container spacing={1}>
                       <Grid item xs={6} spacing={2}>

@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   stepDetails: {
+    marginTop: theme.spacing(2),
     padding: theme.spacing(2, 0),
   },
   circleContainer: {
@@ -167,7 +168,6 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
           align="center"
           variant="body1"
           className={classes.stepDetails}
-          style={{ marginTop: theme.spacing(2) }}
         >
           Your request will also appear on a public directory where volunteers
           in your community can see it. Again, we'll hide your contact info.

@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 100,
     fontSize: "1rem",
   },
+  formTitle: {
+    fontWeight: 100,
+  },
 }));
 
 const CREATE_VOLUNTEER = gql`
@@ -203,7 +206,7 @@ export default function VolunteerStepper({ steps, location }) {
           component="h1"
           variant="h6"
           align="center"
-          style={{ fontWeight: 100 }}
+          className={classes.formTitle}
         >
           Offer Help
         </Typography>
