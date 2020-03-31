@@ -99,9 +99,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Contributor = ({ name, role, src }) => {
   const classes = useStyles();
+  let altText = `headshot of ${name}`;
   return (
     <>
-      <Avatar src={src} className={classes.large} />
+      <Avatar alt={altText} src={src} className={classes.large} />
       <Typography
         component="p"
         variant="h6"
@@ -137,11 +138,19 @@ const About = () => {
       </Typography>
       <Typography component="p" variant="h5" className={classes.aboutText}>
         HospitalHero is being built by a team of volunteers through{" "}
-        <BoldLink color="textPrimary" href="https://covidaccelerator.com/">
+        <BoldLink
+          color="textPrimary"
+          href="https://covidaccelerator.com/"
+          underline="none"
+        >
           COVID Accelerator
         </BoldLink>
         , a project of{" "}
-        <BoldLink color="textPrimary" href="https://impossiblelabs.io">
+        <BoldLink
+          color="textPrimary"
+          href="https://impossiblelabs.io"
+          underline="none"
+        >
           Impossible Labs
         </BoldLink>
         .
