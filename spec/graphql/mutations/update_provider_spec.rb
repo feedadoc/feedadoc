@@ -5,13 +5,15 @@ describe Mutations::UpdateProvider, type: :request do
     <<~GRAPHQL
       mutation UpdateProvider($token: String!,
                               $firstName: String!, $lastName: String,
-                              $neighborhood: String, $city: String!, $state: String!,
+                              $neighborhood: String, $city: String!, $state: String!, $country: String!,
+                              $latitude: Float!, $longitude: Float!,
                               $email: String!, $facility: String!, $role: String!,
                               $requests: [String!]!, $description: String!, $active: Boolean!) {
         updateProvider(input: {
                                 token: $token,
                                 firstName: $firstName, lastName: $lastName,
-                                neighborhood: $neighborhood, city: $city, state: $state,
+                                neighborhood: $neighborhood, city: $city, state: $state, country: $country,
+                                latitude: $latitude, longitude: $longitude,
                                 email: $email,
                                 facility: $facility, role: $role,
                                 requests: $requests, description: $description,
@@ -31,7 +33,8 @@ describe Mutations::UpdateProvider, type: :request do
     post '/graphql',
          params: { query: mutation, variables: { token: linked_token.token,
                                                  firstName: 'bob', lastName: 'smith',
-                                                 neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                 neighborhood: 'sunset', city: 'sf', state: 'CA', country: 'USA',
+                                                 latitude: 123, longitude: 234,
                                                  email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
                                                  requests: %w(pets supplies), description: 'stuff',
                                                  active: true

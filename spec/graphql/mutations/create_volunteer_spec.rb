@@ -4,14 +4,16 @@ describe Mutations::CreateVolunteer, type: :request do
   let(:mutation) {
     <<~GRAPHQL
       mutation CreateVolunteer($firstName: String!, $lastName: String,
-                               $neighborhood: String, $city: String!, $state: String!,
+                               $neighborhood: String, $city: String!, $state: String!, $country: String!,
+                               $latitude: Float!, $longitude: Float!,
                                $email: String!, $providerId: ID!, $requests: [String!]!,
                                $description: String, $availabilities: [Availabilities!]!,
                                $phone: String, $social: String, $over18: Boolean! 
                               ) {
         createVolunteer(input: {
                                 firstName: $firstName, lastName: $lastName,
-                                neighborhood: $neighborhood, city: $city, state: $state,
+                                neighborhood: $neighborhood, city: $city, state: $state, country: $country,
+                                latitude: $latitude, longitude: $longitude,
                                 email: $email,
                                 providerId: $providerId, requests: $requests,
                                 description: $description, availabilities: $availabilities,
@@ -31,7 +33,8 @@ describe Mutations::CreateVolunteer, type: :request do
       expect do
         post '/graphql',
              params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
-                                                     neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                     neighborhood: 'sunset', city: 'sf', state: 'CA', country: 'USA',
+                                                     latitude: 123, longitude: 234,
                                                      email: 'bob@example.com', providerId: provider.id,
                                                      requests: ["cleaning"], description: "foo",
                                                      availabilities: %w(mid-day nights), phone: "123",
@@ -58,7 +61,8 @@ describe Mutations::CreateVolunteer, type: :request do
       expect do
         post '/graphql',
              params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
-                                                     neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                     neighborhood: 'sunset', city: 'sf', state: 'CA', country: 'USA',
+                                                     latitude: 123, longitude: 234,
                                                      email: 'bob@example.com', providerId: provider.id,
                                                      requests: ["cleaning"], description: "foo",
                                                      availabilities: %w(), phone: "123",
