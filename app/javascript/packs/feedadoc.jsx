@@ -19,6 +19,7 @@ import ScrollToTopOnMount from "./components/ScrollToTopOnMount";
 import theme from "./theme";
 import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
+import HowItWorks from "./pages/HowItWorksPage";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -97,6 +98,10 @@ function App() {
                   </Container>
                 </Route>
                 <Route path="/providers/:id" component={ProviderPage} />
+                <Route path="/how-it-works">
+                  <ScrollToTopOnMount />
+                  <HowItWorks />
+                </Route>
                 <Route path="/">
                   <ScrollToTopOnMount />
                   <Home />
