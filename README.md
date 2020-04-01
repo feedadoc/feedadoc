@@ -18,19 +18,9 @@ We'd love your help! Please [join us in Slack](https://docs.google.com/forms/d/e
 
 The below steps assume you've forked and cloned the repo to your local machine.
 
-### With Docker
-
-1. `docker-compose up -d`
-2. `docker-compose run web rails db:migrate db:create`
-3. `./scripts/local start`
-4. Visit http://localhost:3000
-
 ### Running Ruby and Postgres locally
 
-1.  Use `psql` to create a PG user called `feedadoc`. (We assume you have postgresql installed, on OS X you can use `brew` to install it or run [Postgres.app](https://postgresapp.com/).)
-
-        CREATE USER feedadoc WITH SUPERUSER PASSWORD 'password1';
-
+1.  Bootstrap postgres [with Docker](#running-postgres-with-docker) or [locally](#running-postgres-locally)
 2.  Install Ruby v2.7.0 (see `.ruby-version`; also, we recommend [rvm](https://rvm.io/rvm/install) to manage ruby versions.)
 3.  Run `bundle`
 4.  Install Yarn (On OS X: `brew install yarn`)
@@ -40,27 +30,23 @@ The below steps assume you've forked and cloned the repo to your local machine.
 8.  Visit http://localhost:3000
 9.  If working with emails, map localhost to `mailcatcher` in your `/etc/hosts` file and run `gem install --no-document mailcatcher && mailcatcher` in another window.
 
+### Running Postgres with Docker
+
+Install [Docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/)
+
+1. `docker-compose up -d`
+2. Prefix rails commands with the database url, like this: `export DATABASE_URL="postgresql://127.0.0.1/feedadoc_development?pool=5" && rails s`
+
+### Running Postgress Locally
+
+Install [Postgres](https://www.postgresql.org/download/) (on OS X you can use `brew` to install it or run [Postgres.app](https://postgresapp.com/)
+
+1. Use `psql` to create a PG user called `feedadoc`.
+
+```
+CREATE USER feedadoc WITH SUPERUSER PASSWORD 'password1';
+```
+
 ### GraphiQL
 
 Visit http://localhost:3000/graphiql to access the in-browser GraphQL IDE.
-
-## Working with Docker
-
-Running Rails with Docker is slightly more nuanced than out of the box Rails. Depending on your system, you may run into permission issues if you try to `bundle` locally while running the server on Docker. As such, it's best to only issue commands through Docker. Here are some common commands:
-
-```bash
-# Start the server
-./scripts/local start
-
-# Stop the server
-./scripts/local stop
-
-# Restart the server
-./scripts/local restart
-```
-
-And to run commands you'd typically run locally, like "rails generate":
-
-```
-./scripts/local run "rails generate ..."
-```

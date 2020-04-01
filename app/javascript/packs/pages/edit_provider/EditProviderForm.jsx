@@ -2,14 +2,11 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
-import InputLabel from "@material-ui/core/InputLabel";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormLabel from "@material-ui/core/FormLabel";
 import STATES from "../../data/states";
 import providerRequestTypes from "../../data/providerRequestTypes";
 import Button from "@material-ui/core/Button";
@@ -23,7 +20,9 @@ const useStyles = makeStyles((theme) => ({
   mediumSpacing: {
     marginBottom: "30px",
   },
-  largeSpacing: {
+  removeInfo: {
+    color: theme.palette.text.paperContrast,
+    fontSize: "14px",
     marginBottom: "50px",
   },
 }));
@@ -38,6 +37,10 @@ const EditProviderForm = ({
   const classes = useStyles();
   return (
     <>
+      <Typography className={classes.removeInfo} align="center">
+        (To remove your request, turn off the 'Published' switch below and then
+        click the 'Update My Request' button at the bottom of the page.)
+      </Typography>
       <Grid item xs={12} className={classes.mediumSpacing}>
         <FormControl>
           <StyledFormLabel required id="type-select-label">

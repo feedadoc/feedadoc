@@ -6,6 +6,10 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
   argument :neighborhood, String, required: false
   argument :city, String, required: true
   argument :state, String, required: true
+  argument :country, String, required: true
+  argument :address, String, required: true
+  argument :latitude, Float, required: true
+  argument :longitude, Float, required: true
   argument :email, String, required: true
   argument :provider_id, ID, required: true
   argument :requests, [Types::Enums::RequestTypeEnum], required: true
@@ -19,9 +23,10 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(first_name:, last_name: "",
-              neighborhood: "", city:, state:,
-              email:,
-              provider_id:, requests:, description: "",
+              neighborhood: "", city:, state:, country:, address:,
+              latitude:, longitude:,
+              email:, provider_id:,
+              requests:, description: "",
               availabilities:, phone: "", social: "", over_18:)
     provider = Provider.find_by(id: provider_id)
 
@@ -35,6 +40,10 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
       neighborhood: neighborhood,
       city: city,
       state: state,
+      country: country,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
       email: email,
       ip: context[:remote_ip]
     )

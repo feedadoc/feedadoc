@@ -43,9 +43,6 @@ const useStyles = makeStyles((theme) => ({
   mediumSpacing: {
     marginBottom: "30px",
   },
-  largeSpacing: {
-    marginBottom: "50px",
-  },
   loadingState: {
     display: "flex",
     justifyContent: "center",
@@ -75,7 +72,7 @@ const EditProvider = () => {
         variant="h4"
         align="center"
         color="textPrimary"
-        className={classes.largeSpacing}
+        className={classes.mediumSpacing}
       >
         Update your request
       </Typography>
@@ -101,7 +98,7 @@ const EditProvider = () => {
       )}
       {requestState === TOKEN_ENTITY_REQUEST_STATES.SAVING_SUCCESS && (
         <Snackbar
-          autoHideDuration={1500}
+          autoHideDuration={3000}
           open={isSaveSnackbarOpen}
           onClose={acknowledgeSaveSnackbar}
         >

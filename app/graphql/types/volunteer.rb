@@ -7,6 +7,7 @@ module Types
     field :neighborhood, String, null: true
     field :city, String, null: false
     field :state, String, null: false
+    field :country, String, null: false
     field :providers,
           Types::Connections::ProviderConnection,
           connection: true,

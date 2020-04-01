@@ -84,6 +84,7 @@ GEM
     faraday (1.0.0)
       multipart-post (>= 1.2, < 3)
     ffi (1.12.2)
+    geocoder (1.6.2)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     graphiql-rails (1.7.0)
@@ -239,6 +240,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   factory_bot_rails
+  geocoder
   graphiql-rails
   graphql
   jbuilder (~> 2.7)

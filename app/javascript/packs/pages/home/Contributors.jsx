@@ -25,6 +25,7 @@ const Contributors = () => {
         <BoldLink
           color="textPrimary"
           href="https://docs.google.com/forms/d/e/1FAIpQLSeAXlls9dtfW8Eu6OBvfNT1J8nhOHJ4nC2QrryNlsVogRGsFA/viewform"
+          underline="none"
         >
           Apply here to join
         </BoldLink>
