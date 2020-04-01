@@ -2,7 +2,7 @@ export const FACEBOOK_LINK =
   "https://www.facebook.com/sharer/sharer.php?u=https%3A//hospitalhero.care/";
 
 export const TWITTER_LINK =
-  "https://twitter.com/intent/tweet?text=Check%20out%20%40HospitalHero,%20a%20tool%20that%20matches%20hospital%20workers%20fighting%20%23COVID19%20with%20local%20volunteers%20who%20want%20to%20help.%20Please%20share%20with%20doctors,%20nurses,%20and%20all%20other%20hospital%20workers%20who%20would%20appreciate%20some%20extra%20support!%20https%3A//hospitalhero.care";
+  "https://twitter.com/intent/tweet?text=Check%20out%20%40HospitalHeroApp,%20a%20tool%20that%20makes%20it%20easy%20for%20%23COVID19%20doctors,%20nurses,%20and%20other%20%23hospitalheroes%20to%20request%20support.%20Volunteers%20can%20view%20requests%20(meals,%20medical%20equipment,%20lodging%20etc.)%20and%20respond.%20https%3A//hospitalhero.care";
 
 export const LINKEDIN_LINK =
   "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//hospitalhero.care/&title=HospitalHero%3A%20Care%20providers%20need%20our%20help%20to%20fight%20COVID-19&summary=Check%20out%20HospitalHero,%20a%20tool%20that%20matches%20hospital%20workers%20fighting%20%23COVID19%20with%20local%20volunteers%20who%20want%20to%20help.%20Please%20share%20with%20doctors,%20nurses,%20and%20all%20other%20hospital%20workers%20who%20would%20appreciate%20some%20extra%20support!%20https%3A//hospitalhero.care/&source=";
