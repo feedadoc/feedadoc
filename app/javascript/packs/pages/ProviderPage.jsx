@@ -176,6 +176,7 @@ export default function ProviderPage({ location, match }) {
     physician: "Doctor / NP / PA",
     nurse: "Nurse",
     therapist: "RT / PT / OT / ST / Nutrition",
+    paramedic: "EMT / paramedic",
     assistant: "Patient Care Assistant / MA",
     social: "Social Worker / Chaplain",
     admin: "Admin / Support Staff",

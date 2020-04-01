@@ -208,6 +208,7 @@ const EditProviderForm = ({
               <option value="physician">Doctor, NP, PA</option>
               <option value="nurse">Nurse</option>
               <option value="therapist">RT, PT, OT, ST, Nutrition</option>
+              <option value="paramedic">EMT / paramedic</option>
               <option value="assistant">Patient care assistant, MA</option>
               <option value="social">Social Worker, Chaplain</option>
               <option value="admin">Admin/support staff</option>
