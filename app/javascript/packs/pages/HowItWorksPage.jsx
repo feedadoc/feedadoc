@@ -109,7 +109,7 @@ const HowItWorks = () => {
       </Typography>
     </>
   );
-  let content = {
+  const content = {
     stepTwo: [
       "to a request they see on social media or on Hospital Hero's searchable directory.",
       "As a volunteer, your contact information is only shared with a provider when you respond to their request.",
