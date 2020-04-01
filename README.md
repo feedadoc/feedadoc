@@ -47,6 +47,12 @@ Install [Postgres](https://www.postgresql.org/download/) (on OS X you can use `b
 CREATE USER feedadoc WITH SUPERUSER PASSWORD 'password1';
 ```
 
+2. Set the database url manually or add this command to a file like `.bashrc`:
+
+```
+export DATABASE_URL="postgresql://localhost"
+```
+
 ### GraphiQL
 
 Visit http://localhost:3000/graphiql to access the in-browser GraphQL IDE.
