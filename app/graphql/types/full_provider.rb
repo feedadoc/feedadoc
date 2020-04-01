@@ -13,6 +13,8 @@ module Types
     field :state, String, null: false
     field :country, String, null: false
     field :address, String, null: false
+    field :latitude, Float, null: false
+    field :longitude, Float, null: false
     field :description, String, null: false
     field :requests, [Types::Request], null: false
     field :active, Boolean, null: false
