@@ -7,6 +7,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   argument :city, String, required: true
   argument :state, String, required: true
   argument :country, String, required: true
+  argument :address, String, required: true
   argument :latitude, Float, required: true
   argument :longitude, Float, required: true
   argument :email, String, required: true
@@ -20,7 +21,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(first_name:, last_name: "",
-              neighborhood: "", city:, state:, country:, latitude:, longitude:,
+              neighborhood: "", city:, state:, country:, address:, latitude:, longitude:,
               email:, facility: "", role:, requests:, description:)
     provider = Provider.new(
       first_name: first_name,
@@ -29,6 +30,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
       city: city,
       state: state,
       country: country,
+      address: address,
       latitude: latitude,
       longitude: longitude,
       email: email,

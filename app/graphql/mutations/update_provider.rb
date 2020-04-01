@@ -8,6 +8,7 @@ class Mutations::UpdateProvider < Mutations::BaseMutation
   argument :city, String, required: true
   argument :state, String, required: true
   argument :country, String, required: true
+  argument :address, String, required: true
   argument :latitude, Float, required: true
   argument :longitude, Float, required: true
   argument :email, String, required: true
@@ -21,7 +22,7 @@ class Mutations::UpdateProvider < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(token:, first_name:, last_name: "",
-              neighborhood: "", city:, state:, country:,
+              neighborhood: "", city:, state:, country:, address:,
               latitude:, longitude:,
               email:, facility: "", role:, requests:, description:, active:)
     provider = LinkedToken.find_by(token: token).entity
@@ -43,7 +44,7 @@ class Mutations::UpdateProvider < Mutations::BaseMutation
 
     result = provider.update(
       first_name: first_name, last_name: last_name,
-      neighborhood: neighborhood, city: city, state: state, country: country,
+      neighborhood: neighborhood, city: city, state: state, country: country, address: address,
       latitude: latitude, longitude: longitude,
       email: email, facility: facility, role: role,
       description: description, requests: new_requests,

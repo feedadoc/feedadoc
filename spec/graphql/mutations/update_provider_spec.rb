@@ -5,14 +5,14 @@ describe Mutations::UpdateProvider, type: :request do
     <<~GRAPHQL
       mutation UpdateProvider($token: String!,
                               $firstName: String!, $lastName: String,
-                              $neighborhood: String, $city: String!, $state: String!, $country: String!,
+                              $neighborhood: String, $city: String!, $state: String!, $country: String!, $address: String!,
                               $latitude: Float!, $longitude: Float!,
                               $email: String!, $facility: String!, $role: String!,
                               $requests: [String!]!, $description: String!, $active: Boolean!) {
         updateProvider(input: {
                                 token: $token,
                                 firstName: $firstName, lastName: $lastName,
-                                neighborhood: $neighborhood, city: $city, state: $state, country: $country,
+                                neighborhood: $neighborhood, city: $city, state: $state, country: $country, address: $address,
                                 latitude: $latitude, longitude: $longitude,
                                 email: $email,
                                 facility: $facility, role: $role,
@@ -34,6 +34,7 @@ describe Mutations::UpdateProvider, type: :request do
          params: { query: mutation, variables: { token: linked_token.token,
                                                  firstName: 'bob', lastName: 'smith',
                                                  neighborhood: 'sunset', city: 'sf', state: 'CA', country: 'USA',
+                                                 address: '123 fake st, sf, ca, usa',
                                                  latitude: 123, longitude: 234,
                                                  email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
                                                  requests: %w(pets supplies), description: 'stuff',

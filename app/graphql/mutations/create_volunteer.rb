@@ -7,6 +7,7 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
   argument :city, String, required: true
   argument :state, String, required: true
   argument :country, String, required: true
+  argument :address, String, required: true
   argument :latitude, Float, required: true
   argument :longitude, Float, required: true
   argument :email, String, required: true
@@ -22,7 +23,7 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
   field :errors, [String], null: false
 
   def resolve(first_name:, last_name: "",
-              neighborhood: "", city:, state:, country:,
+              neighborhood: "", city:, state:, country:, address:,
               latitude:, longitude:,
               email:, provider_id:,
               requests:, description: "",
@@ -40,6 +41,7 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
       city: city,
       state: state,
       country: country,
+      address: address,
       latitude: latitude,
       longitude: longitude,
       email: email,

@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_033343) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "ip"
     t.string "country", default: "United States", null: false
+    t.string "address"
     t.decimal "latitude"
     t.decimal "longitude"
     t.index ["latitude", "longitude"], name: "index_providers_on_latitude_and_longitude"
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_03_31_033343) do
     t.string "last_name", null: false
     t.string "ip"
     t.string "country", default: "United States", null: false
+    t.string "address"
     t.decimal "latitude"
     t.decimal "longitude"
     t.index ["latitude", "longitude"], name: "index_volunteers_on_latitude_and_longitude"
