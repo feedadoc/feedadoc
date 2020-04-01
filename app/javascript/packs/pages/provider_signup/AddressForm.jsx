@@ -10,6 +10,7 @@ import LocationInput from "../../components/forms/LocationInput";
 import {
   getAddressNeighborhood,
   getAddressLocality,
+  getAddressCountry,
   getAddressAdministrativeAreaLevel1,
 } from "../../helpers/address";
 
@@ -22,15 +23,13 @@ const useStyles = makeStyles((theme) => ({
 export default function AddressForm({
   firstName,
   lastName,
-  neighborhood,
-  city,
-  state,
   email,
   role,
   onChange,
   facility,
   setField,
-  address,
+  mapResult,
+  setMapResult,
 }) {
   const classes = useStyles();
   return (
@@ -64,8 +63,12 @@ export default function AddressForm({
         <Grid item xs={12}>
           <LocationInput
             onChange={({ value, geocoded }) => {
-              setField("address")(value);
+              setMapResult(value);
+              setField("address")(value.description);
+              setField("latitude")(geocoded.geometry.location.lat());
+              setField("longitude")(geocoded.geometry.location.lng());
               setField("city")(getAddressLocality(geocoded).long_name);
+              setField("country")(getAddressCountry(geocoded).long_name);
               setField("state")(
                 getAddressAdministrativeAreaLevel1(geocoded).short_name
               );
@@ -74,7 +77,7 @@ export default function AddressForm({
                 setField("neighborhood")(neighborhood.long_name);
               }
             }}
-            value={address}
+            value={mapResult}
             inputProps={{ label: "Location", required: true }}
           />
         </Grid>

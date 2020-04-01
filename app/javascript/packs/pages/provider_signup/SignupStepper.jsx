@@ -64,11 +64,13 @@ export default function SignupStepper() {
     state: "",
     email: "",
     facility: "",
+    country: "",
     role: "",
     requests: [],
     description: "",
-    address: null,
+    address: "",
   });
+  const [mapResult, setMapResult] = useState(null);
   const [redirectId, setRedirectId] = useState();
   const [editLink, setEditLink] = useState();
 
@@ -94,6 +96,7 @@ export default function SignupStepper() {
           }
         })
         .catch((e) => {
+          console.log(e);
           setErrors([e.message]);
         });
     } else {
@@ -146,6 +149,8 @@ export default function SignupStepper() {
             <CurrentStep
               onChange={onChange}
               setField={setField}
+              setMapResult={setMapResult}
+              mapResult={mapResult}
               {...variables}
             />
             <div className={classes.buttons}>

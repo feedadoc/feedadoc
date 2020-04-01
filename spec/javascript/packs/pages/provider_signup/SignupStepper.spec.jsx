@@ -64,28 +64,14 @@ describe("when provider is signing up", () => {
         city: "Denver",
         state: "CO",
         email: "test@ing.com",
+        country: "United States",
+        latitude: 123.45,
+        longitude: 123.45,
         facility: "",
         role: "nurse",
         requests: ["pets"],
         description: "test",
-        address: {
-          description: "Denver, CO, USA",
-          id: "464b513e4fd9a3c7c3bd63d091ecc856aff12e2c",
-          matched_substrings: [{ length: 6, offset: 0 }],
-          place_id: "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
-          reference: "ChIJzxcfI6qAa4cR1jaKJ_j0jhE",
-          structured_formatting: {
-            main_text: "Denver",
-            main_text_matched_substrings: [{ length: 6, offset: 0 }],
-            secondary_text: "CO, USA",
-          },
-          terms: [
-            { offset: 0, value: "Denver" },
-            { offset: 8, value: "CO" },
-            { offset: 12, value: "USA" },
-          ],
-          types: ["locality", "political", "geocode"],
-        },
+        address: "Denver, CO, USA",
       };
       const createMutationResult = {
         errors: [],

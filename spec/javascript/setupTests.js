@@ -113,7 +113,10 @@ const google = {
                     j: -104.6002959,
                   },
                 },
-                location: {},
+                location: {
+                  lat: () => 123.45,
+                  lng: () => 123.45,
+                },
                 location_type: "APPROXIMATE",
                 viewport: {
                   Za: {
