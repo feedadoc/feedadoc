@@ -11,6 +11,7 @@ import ProviderList from "./ProviderList";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useLocation } from "react-router-dom";
+import SocialDistanceNotice from "../../components/SocialDistanceNotice";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -63,6 +64,9 @@ const useStyles = makeStyles((theme) => ({
   },
   successText: {
     color: "#d50000",
+  },
+  socialDistanceNotice: {
+    marginTop: theme.spacing(3),
   },
 }));
 
@@ -192,6 +196,9 @@ export default function BrowseRequests() {
         onNext={pageNext}
         onPrevious={pagePrevious}
       />
+      <div className={classes.socialDistanceNotice}>
+        <SocialDistanceNotice />
+      </div>
     </Box>
   );
 }
