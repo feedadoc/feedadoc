@@ -37,22 +37,22 @@ const VolunteerCallout = () => (
       <Grid container spacing={4}>
         <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.FACEBOOK_LINK}>
-            <FacebookIcon />
+            <FacebookIcon source="homepage" />
           </Link>
         </Grid>
         <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.TWITTER_LINK}>
-            <TwitterIcon />
+            <TwitterIcon source="homepage" />
           </Link>
         </Grid>
         <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.LINKEDIN_LINK}>
-            <LinkedInIcon />
+            <LinkedInIcon source="homepage" />
           </Link>
         </Grid>
         <Grid container item xs={6} sm={3} justify="center">
           <Link href={socialMediaLinks.EMAIL_LINK}>
-            <EmailIcon />
+            <EmailIcon source="homepage" />
           </Link>
         </Grid>
       </Grid>
