@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Links() {
+export default function Links({ className }) {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <Box className={`${classes.root} ${className}`}>
       <NavLink
         to="/volunteer"
         className={classes.navItem}
