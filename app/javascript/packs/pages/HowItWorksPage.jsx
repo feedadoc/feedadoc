@@ -57,6 +57,20 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: "bold",
     lineHeight: "50px",
   },
+  embedContainer: {
+    position: "relative",
+    paddingBottom: "56.25%",
+    height: "0",
+    overflow: "hidden",
+    maxWidth: "100%",
+    "& > iframe, & > object, & > embed": {
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+    },
+  },
 }));
 
 const HowItWorks = () => {
@@ -149,14 +163,16 @@ const HowItWorks = () => {
         </Box>
       </Container>
       <Container maxWidth="md" className={classes.videoContainer}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/efbaQ5NPNKk?controls=0&modestbranding=1&rel=0"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <div className={classes.embedContainer}>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/efbaQ5NPNKk?controls=0&modestbranding=1&rel=0"
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
       </Container>
 
       <Container maxWidth="md">

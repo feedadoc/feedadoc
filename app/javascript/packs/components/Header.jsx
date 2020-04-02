@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Box from "@material-ui/core/Box";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
+import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 
 // prettier-ignore
 const Logo = () => (
@@ -20,32 +20,69 @@ const Logo = () => (
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
+    transform: "none !important",
     [theme.breakpoints.up("sm")]: {
       paddingLeft: "30px",
       paddingRight: "30px",
     },
   },
+  bar: {
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column",
+    },
+  },
   logo: {
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "30vw",
+      maxWidth: "60vw",
       "& > svg": {
         maxWidth: "100%",
       },
+    },
+  },
+  [theme.breakpoints.down("sm")]: {
+    sticky: {
+      "& > div > div": {
+        position: "fixed",
+        boxShadow: "0 0 2px 2px rgba(0,0,0,0.1)",
+        top: "0",
+        zIndex: "100",
+        padding: "20px 15px",
+        background: "white",
+      },
+      "& > div": {
+        marginTop: "90px",
+      },
+    },
+    hideLogo: {
+      display: "none",
     },
   },
 }));
 
 const Header = () => {
   const classes = useStyles();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headerDistance = -50;
+  useScrollPosition(({ currPos }) => {
+    setIsScrolled(currPos.y < headerDistance);
+  });
   return (
-    <AppBar elevation={0} position="static" className={classes.root}>
+    <AppBar
+      elevation={0}
+      position="static"
+      className={`${classes.root} ${isScrolled ? classes.sticky : ""}`}
+    >
       <Box
         p={2}
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        className={classes.bar}
       >
-        <Link className={classes.logo} to="/">
+        <Link
+          className={`${classes.logo} ${isScrolled ? classes.hideLogo : ""}`}
+          to="/"
+        >
           <Logo />
         </Link>
         <Nav />
