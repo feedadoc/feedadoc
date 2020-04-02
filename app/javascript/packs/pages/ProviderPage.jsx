@@ -212,7 +212,7 @@ export default function ProviderPage({ location, match }) {
           <Container maxWidth="sm" className={classes.requestContent}>
             <Typography component="h3" variant="h6" align="center" gutterBottom>
               {neighborhood
-                ? `${neighborhood} / ${city}, ${state}`
+                ? `${neighborhood}, ${city}, ${state}`
                 : `${city}, ${state}`}
             </Typography>
             <Typography
