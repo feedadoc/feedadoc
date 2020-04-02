@@ -133,10 +133,14 @@ export default function BrowseRequests() {
       <Paper className={classes.heroContent}>
         {isSuccess && (
           <Box mb={4} textAlign="center">
-            <Typography variant="h5" gutterBottom style={{ color: "#d50000" }}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              className={classes.successText}
+            >
               Thank you so much for volunteering!
             </Typography>
-            <Typography variant="subtitle1" style={{ color: "#d50000" }}>
+            <Typography variant="subtitle1" className={classes.successText}>
               You should hear back from the medical provider soon.
             </Typography>
           </Box>

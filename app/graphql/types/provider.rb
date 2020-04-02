@@ -7,10 +7,12 @@ module Types
     field :neighborhood, String, null: true
     field :city, String, null: false
     field :state, String, null: false
+    field :country, String, null: false
     field :description, String, null: false
     field :requests, [Types::Request], null: false
     field :active, Boolean, null: false
     field :updated_at, String, null: false
+    field :created_at, String, null: false
     field :response_count, Integer, null: false
 
     def response_count
@@ -23,6 +25,7 @@ module Types
     argument :id, ID, required: false
     argument :state, String, required: false
     argument :city, String, required: false
+    argument :country, String, required: false
     argument :active, Boolean, required: false
     argument :role, String, required: false
     argument :updated_within_days, Int, required: false
@@ -33,6 +36,7 @@ module Types
     value("ID", "The Provider's ID", value: :id)
     value("STATE", "The Provider's state", value: :state)
     value("CITY", "The Provider's city", value: :city)
+    value("COUNTRY", "The Provider's country", value: :country)
   end
 
   class ProviderOrder < Types::BaseInputObject

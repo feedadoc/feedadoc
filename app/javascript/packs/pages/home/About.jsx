@@ -65,6 +65,32 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
+  aboutText: {
+    maxWidth: "800px",
+    width: "100%",
+    marginBottom: "40px",
+    textAlign: "center",
+  },
+  aboutTitle: {
+    maxWidth: "850px",
+    width: "100%",
+    marginTop: "20px",
+    marginBottom: "20px",
+    textAlign: "center",
+  },
+  aboutGrid: {
+    marginTop: "20px",
+  },
+  avatarName: {
+    marginBottom: "10px",
+    marginTop: "10px",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: "0.25px",
+  },
+  avatarRole: {
+    fontWeight: "bold",
+  },
   large: {
     width: theme.spacing(18),
     height: theme.spacing(18),
@@ -73,32 +99,23 @@ const useStyles = makeStyles((theme) => ({
 
 const Contributor = ({ name, role, src }) => {
   const classes = useStyles();
+  let altText = `headshot of ${name}`;
   return (
     <>
-      <Avatar src={src} className={classes.large} />
+      <Avatar alt={altText} src={src} className={classes.large} />
       <Typography
         component="p"
         variant="h6"
-        style={{
-          marginBottom: "10px",
-          marginTop: "10px",
-          fontWeight: "bold",
-          textTransform: "uppercase",
-          letterSpacing: "0.25px",
-        }}
-        align="center"
         color="text.paperContrast"
+        className={classes.avatarName}
       >
         {name}
       </Typography>
       <Typography
         component="p"
         variant="body"
-        align="center"
         color="text.paperContrast"
-        style={{
-          fontWeight: "bold",
-        }}
+        className={classes.avatarRole}
       >
         {role}
       </Typography>
@@ -106,57 +123,57 @@ const Contributor = ({ name, role, src }) => {
   );
 };
 
-const About = () => (
-  <Box display="flex" alignItems="center" py={10} flexDirection="column">
-    <Typography
-      component="h2"
-      variant="h1"
-      p="10"
-      style={{
-        maxWidth: "850px",
-        width: "100%",
-        marginTop: "20px",
-        marginBottom: "20px",
-      }}
-      align="center"
-      color="primary"
-    >
-      About Us
-    </Typography>
-    <Typography
-      component="p"
-      variant="h5"
-      align="center"
-      style={{ maxWidth: "800px", width: "100%", marginBottom: "40px" }}
-    >
-      HospitalHero is being built by a team of volunteers through{" "}
-      <BoldLink color="textPrimary" href="https://covidaccelerator.com/">
-        COVID Accelerator
-      </BoldLink>
-      , a project of{" "}
-      <BoldLink color="textPrimary" href="https://impossiblelabs.io">
-        Impossible Labs
-      </BoldLink>
-      .
-    </Typography>
-    <Container maxWidth="lg">
-      <Grid container spacing={3} style={{ marginTop: "20px" }}>
-        {contributors.map((c) => (
-          <Grid item xs={12} sm={4} md={3} key={c.name}>
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexDirection="column"
-              pb={2}
-            >
-              <Contributor name={c.name} role={c.role} src={c.src} />
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
-  </Box>
-);
+const About = () => {
+  const classes = useStyles();
+  return (
+    <Box display="flex" alignItems="center" py={10} flexDirection="column">
+      <Typography
+        component="h2"
+        variant="h1"
+        p="10"
+        color="primary"
+        className={classes.aboutTitle}
+      >
+        About Us
+      </Typography>
+      <Typography component="p" variant="h5" className={classes.aboutText}>
+        HospitalHero is being built by a team of volunteers through{" "}
+        <BoldLink
+          color="textPrimary"
+          href="https://covidaccelerator.com/"
+          underline="none"
+        >
+          COVID Accelerator
+        </BoldLink>
+        , a project of{" "}
+        <BoldLink
+          color="textPrimary"
+          href="https://impossiblelabs.io"
+          underline="none"
+        >
+          Impossible Labs
+        </BoldLink>
+        .
+      </Typography>
+      <Container maxWidth="lg">
+        <Grid container spacing={3} className={classes.aboutGrid}>
+          {contributors.map((c) => (
+            <Grid item xs={12} sm={4} md={3} key={c.name}>
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                flexDirection="column"
+                pb={2}
+              >
+                <Contributor name={c.name} role={c.role} src={c.src} />
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </Box>
+  );
+};
 
 export default About;

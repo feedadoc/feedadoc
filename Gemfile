@@ -22,6 +22,7 @@ gem 'jbuilder', '~> 2.7'
 
 gem "graphql"
 gem "graphiql-rails"
+gem "geocoder", require: false
 gem "sucker_punch"
 gem "sentry-raven"
 gem "postmark-rails"

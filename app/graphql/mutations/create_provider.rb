@@ -6,6 +6,10 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   argument :neighborhood, String, required: false
   argument :city, String, required: true
   argument :state, String, required: true
+  argument :country, String, required: true
+  argument :address, String, required: true
+  argument :latitude, Float, required: true
+  argument :longitude, Float, required: true
   argument :email, String, required: true
   argument :facility, String, required: false
   argument :role, String, required: true
@@ -16,13 +20,19 @@ class Mutations::CreateProvider < Mutations::BaseMutation
   field :edit_link, String, null: true
   field :errors, [String], null: false
 
-  def resolve(first_name:, last_name: "", neighborhood: "", city:, state:, email:, facility: "", role:, requests:, description:)
+  def resolve(first_name:, last_name: "",
+              neighborhood: "", city:, state:, country:, address:, latitude:, longitude:,
+              email:, facility: "", role:, requests:, description:)
     provider = Provider.new(
       first_name: first_name,
       last_name: last_name,
       neighborhood: neighborhood,
       city: city,
       state: state,
+      country: country,
+      address: address,
+      latitude: latitude,
+      longitude: longitude,
       email: email,
       facility: facility,
       role: role,

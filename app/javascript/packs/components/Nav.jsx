@@ -59,6 +59,13 @@ export default function Links() {
       >
         Request Help
       </NavLink>
+      <NavLink
+        to="/how-it-works"
+        className={classes.navItem}
+        activeClassName={classes.active}
+      >
+        How It Works
+      </NavLink>
     </Box>
   );
 }

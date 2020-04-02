@@ -8,6 +8,16 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     padding: theme.spacing(2),
   },
+  belowPhoneMax: {
+    "@media (min-width:415px)": {
+      display: "none",
+    },
+  },
+  abovePhoneMax: {
+    "@media (max-width:414px)": {
+      display: "none",
+    },
+  },
 }));
 
 export default function VolunteerSignupPlaceholder() {
@@ -27,12 +37,22 @@ export default function VolunteerSignupPlaceholder() {
           </Typography>
         </Box>
       ) : (
-        <div
-          dangerouslySetInnerHTML={{
-            __html:
-              '<script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shr3okipJzPefgm2X?backgroundColor=cyan" frameborder="0" onmousewheel="" width="100%" height="1603" style="background: transparent; border: 1px solid #ccc;"></iframe>',
-          }}
-        />
+        <>
+          <div
+            className={classes.belowPhoneMax}
+            dangerouslySetInnerHTML={{
+              __html:
+                '<script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shr3okipJzPefgm2X?backgroundColor=cyan" frameborder="0" onmousewheel="" width="100%" height="1800" style="background: transparent; border: 1px solid #ccc;"></iframe>',
+            }}
+          />
+          <div
+            className={classes.abovePhoneMax}
+            dangerouslySetInnerHTML={{
+              __html:
+                '<script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script><iframe class="airtable-embed airtable-dynamic-height" src="https://airtable.com/embed/shr3okipJzPefgm2X?backgroundColor=cyan" frameborder="0" onmousewheel="" width="100%" height="1700" style="background: transparent; border: 1px solid #ccc;"></iframe>',
+            }}
+          />
+        </>
       )}
     </Paper>
   );
