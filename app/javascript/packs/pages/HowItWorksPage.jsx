@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
   },
   stepHeader: {
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(0),
   },
   stepDetails: {
     marginTop: theme.spacing(1),
@@ -104,7 +104,7 @@ const HowItWorks = () => {
         stays private.)
       </p>
       <Typography component="p" variant="caption" align="center">
-        This includes nurses, doctors, EMTs, admins, support staff, cleaning
+        *This includes nurses, doctors, EMTs, admins, support staff, cleaning
         staff, and anyone else who is helping during this crisis.
       </Typography>
     </>
@@ -209,14 +209,14 @@ const HowItWorks = () => {
           </Grid>
           <Hidden xsDown>
             <Grid item sm={4}>
-              <Expiration />
+              <RequestCompleted />
             </Grid>
           </Hidden>
         </Grid>
         <Grid container spacing={10} className={classes.stepContainer}>
           <Hidden xsDown>
             <Grid item sm={4}>
-              <RequestCompleted />
+              <Expiration />
             </Grid>
           </Hidden>
           <Grid item xs={12} sm={8}>
