@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
 import ProviderList from "./ProviderList";
+import VolunteerInstructions from "./VolunteerInstructions";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useLocation } from "react-router-dom";
@@ -56,10 +57,6 @@ const useStyles = makeStyles((theme) => ({
         width: "20ch",
       },
     },
-  },
-  volunteerLink: {
-    color: "black",
-    fontWeight: "bold",
   },
   successText: {
     color: "#d50000",
@@ -151,26 +148,8 @@ export default function BrowseRequests() {
             </Typography>
           </Box>
         )}
-        <Container maxWidth="sm">
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            Help a Healthcare Worker
-          </Typography>
-          <Typography>
-            Enter your city in the search box to browse nearby requests. Don't
-            see anything near you?<span>&nbsp;</span>
-            <Link className={classes.volunteerLink} to={"/volunteer/signup"}>
-              Sign up
-            </Link>
-            <span>&nbsp;</span>and we'll notify you when there's a match!
-          </Typography>
-        </Container>
       </Paper>
+      <VolunteerInstructions />
       <Container className={classes.search}>
         <div className={classes.searchIcon}>
           <SearchIcon />
