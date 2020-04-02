@@ -58,6 +58,9 @@ const useStyles = makeStyles((theme) => ({
       },
     },
   },
+  successText: {
+    color: "#d50000",
+  },
 }));
 
 const TOTAL_PROVIDERS = gql`
