@@ -151,7 +151,7 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
         {renderStep(
           "1",
           "Share this unique link",
-          "Share this unique link for your request with on social media. Friends can view your request and offer to help. (don't worry, your contact info will remain hidden)"
+          "Share this unique link for your request on social media. Friends can view your request and offer to help. (Don't worry, your contact info will remain hidden.)"
         )}
         <Typography
           align="center"
@@ -163,6 +163,7 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
         <Link
           className={classes.sharingLink}
           to={`/providers/${id}`}
+          target="_blank"
         >{`https://hospitalhero.care/providers/${id}`}</Link>
         <Typography
           align="center"
@@ -175,7 +176,7 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
         {renderStep(
           "2",
           "We'll send you an email",
-          "Check your email for a message from HospitalHero. This email includes your Sharing Link and a Private Link for editing/removing your request. (If you don't see the email, check your spam folder.)"
+          "Check your email for a message from HospitalHero. This email includes your Sharing Link and a Private Link for editing/removing your request. (If you don't see the email, please check your spam folder.)"
         )}
         {renderStep(
           "3",

@@ -60,8 +60,8 @@ export default function VolunteerInstructions() {
       </Typography>
       <Container className={classes.volunteerTextContainer}>
         <Typography className={classes.volunteerText}>
-          We’re currently building a roster of healthcare workers who are in
-          need of help and volunteers.{" "}
+          We’re currently building rosters of healthcare workers who are in need
+          of help and of volunteers.{" "}
           <strong>Please sign up as a volunteer now</strong> and we’ll notify
           you when new help requests are posted!
         </Typography>
