@@ -194,7 +194,7 @@ export default function VolunteerStepper({ steps, location }) {
   const CurrentStep = steps[activeStep] && steps[activeStep].component;
 
   if (isSuccess) {
-    return <Redirect push to="/volunteer?success=true" />;
+    return <Redirect push to="/volunteer/confirmation" />;
   }
 
   if (!provider) return null;
