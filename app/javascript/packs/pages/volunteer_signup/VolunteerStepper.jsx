@@ -63,6 +63,10 @@ const CREATE_VOLUNTEER = gql`
     $neighborhood: String
     $city: String!
     $state: String!
+    $country: String!
+    $latitude: Float!
+    $longitude: Float!
+    $address: String!
     $email: String!
     $providerId: ID!
     $requests: [String!]!
@@ -79,6 +83,10 @@ const CREATE_VOLUNTEER = gql`
         neighborhood: $neighborhood
         city: $city
         state: $state
+        country: $country
+        latitude: $latitude
+        longitude: $longitude
+        address: $address
         email: $email
         providerId: $providerId
         requests: $requests
@@ -128,6 +136,10 @@ export default function VolunteerStepper({ steps, location }) {
     neighborhood: "",
     city: "",
     state: "",
+    country: "",
+    latitude: "",
+    longitude: "",
+    address: null,
     email: "",
     requests: [],
     description: "",
@@ -136,6 +148,7 @@ export default function VolunteerStepper({ steps, location }) {
     social: "",
     over18: false,
   });
+  const [mapResult, setMapResult] = useState(null);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const queryId = queryString.parse(location.search).provider;
@@ -186,7 +199,7 @@ export default function VolunteerStepper({ steps, location }) {
   };
 
   const setField = (name) => (value) => {
-    setVariables({ ...variables, [name]: value });
+    setVariables((vars) => ({ ...vars, [name]: value }));
   };
 
   const onChange = (e) => setField(e.target.name)(e.target.value);
@@ -239,6 +252,8 @@ export default function VolunteerStepper({ steps, location }) {
               onChange={onChange}
               setField={setField}
               provider={provider}
+              setMapResult={setMapResult}
+              mapResult={mapResult}
               {...variables}
             />
             <div className={classes.buttons}>

@@ -96,7 +96,6 @@ export default function SignupStepper() {
           }
         })
         .catch((e) => {
-          console.log(e);
           setErrors([e.message]);
         });
     } else {

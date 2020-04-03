@@ -1,32 +1,26 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { makeStyles } from "@material-ui/core/styles";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import StyledFormLabel from "../../components/forms/StyledFormLabel";
 import StyledTextField from "../../components/forms/StyledTextField";
-import StyledInputLabel from "../../components/forms/StyledInputLabel";
+import LocationInput from "../../components/forms/LocationInput";
 import Checkbox from "@material-ui/core/Checkbox";
-
-const STATES = "AL AK AS AZ AR CA CO CT DE DC FM FL GA GU HI ID IL IN IA KS KY LA ME MH MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND MP OH OK OR PW PA PR RI SC SD TN TX UT VT VI VA WA WV WI WY".split(
-  " "
-);
-
-const useStyles = makeStyles((theme) => ({
-  stateSelect: {
-    minWidth: 100,
-  },
-}));
+import {
+  getAddressNeighborhood,
+  getAddressLocality,
+  getAddressCountry,
+  getAddressAdministrativeAreaLevel1,
+} from "../../helpers/address";
 
 export default function VolunteerAddressForm({
   firstName,
   lastName,
-  neighborhood,
-  city,
-  state,
+  mapResult,
+  setMapResult,
   email,
   phone,
   social,
@@ -34,7 +28,6 @@ export default function VolunteerAddressForm({
   setField,
   over18,
 }) {
-  const classes = useStyles();
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -63,50 +56,27 @@ export default function VolunteerAddressForm({
             fullWidth
           />
         </Grid>
+
         <Grid item xs={12}>
-          <StyledTextField
-            id="neighborhood"
-            name="neighborhood"
-            label="Neighborhood"
-            value={neighborhood}
-            onChange={onChange}
-            fullWidth
+          <LocationInput
+            onChange={({ value, geocoded }) => {
+              setMapResult(value);
+              setField("address")(value.description);
+              setField("latitude")(geocoded.geometry.location.lat());
+              setField("longitude")(geocoded.geometry.location.lng());
+              setField("city")(getAddressLocality(geocoded).long_name);
+              setField("country")(getAddressCountry(geocoded).long_name);
+              setField("state")(
+                getAddressAdministrativeAreaLevel1(geocoded).short_name
+              );
+              const neighborhood = getAddressNeighborhood(geocoded);
+              if (neighborhood) {
+                setField("neighborhood")(neighborhood.long_name);
+              }
+            }}
+            value={mapResult}
+            inputProps={{ label: "Location", required: true }}
           />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <StyledTextField
-            required
-            id="city"
-            name="city"
-            label="City"
-            value={city}
-            onChange={onChange}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormControl>
-            <StyledInputLabel htmlFor="state" required id="state">
-              State
-            </StyledInputLabel>
-            <Select
-              required
-              native
-              labelId="state"
-              id="state"
-              name="state"
-              className={classes.stateSelect}
-              onChange={onChange}
-              value={state}
-            >
-              <option value="" />
-              {STATES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </Select>
-          </FormControl>
         </Grid>
         <Grid item xs={12}>
           <StyledTextField
