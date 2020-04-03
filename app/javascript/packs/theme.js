@@ -57,6 +57,60 @@ const theme = createMuiTheme({
       secondary: "#DADADA",
     },
   },
+  props: {
+    MuiButton: {
+      disableElevation: true,
+      disableRipple: true,
+    },
+  },
+  buttons: {
+    // Used to give button text the proper underline thickness
+    text: {
+      lineHeight: "1.3",
+      borderBottom: "2px solid",
+      borderBottomColor: "transparent",
+    },
+    commonStyles: {
+      borderRadius: "25px",
+      fontSize: "20px",
+      letterSpacing: "0.5px",
+      padding: "14px 32px",
+    },
+    primary: {
+      backgroundColor: "#191847",
+      color: "white",
+      fontWeight: 600,
+      textTransform: "none",
+      "&:hover": {
+        backgroundColor: "#191847",
+      },
+      "&:hover div": {
+        borderBottomColor: "white",
+      },
+    },
+    medical: {
+      backgroundColor: "#d50000",
+      color: "white",
+      textTransform: "uppercase",
+      "&:hover": {
+        backgroundColor: "#c00000",
+      },
+      "&:hover div": {
+        borderBottomColor: "white",
+      },
+    },
+    volunteer: {
+      backgroundColor: "#1f28cf",
+      color: "white",
+      textTransform: "uppercase",
+      "&:hover": {
+        backgroundColor: "#1b22b1",
+      },
+      "&:hover div": {
+        borderBottomColor: "white",
+      },
+    },
+  },
 });
 
 export default theme;
