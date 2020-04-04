@@ -61,13 +61,17 @@ describe("when provider is signing up", () => {
         firstName: "joe",
         lastName: "",
         neighborhood: "",
-        city: "New York",
-        state: "NY",
+        city: "Denver",
+        state: "CO",
         email: "test@ing.com",
+        country: "United States",
+        latitude: 123.45,
+        longitude: 123.45,
         facility: "",
         role: "nurse",
         requests: ["pets"],
         description: "test",
+        address: "Denver, CO, USA",
       };
       const createMutationResult = {
         errors: [],
@@ -75,7 +79,7 @@ describe("when provider is signing up", () => {
           id: 1,
         },
       };
-      const { getByLabelText, getByText } = renderComponent({
+      const { getByLabelText, getByText, getAllByText } = renderComponent({
         createMutationArgs,
         createMutationResult,
       });
@@ -85,19 +89,18 @@ describe("when provider is signing up", () => {
         createMutationArgs.description
       );
       userEvent.click(getByText("Next"));
-      userEvent.selectOptions(
-        getByLabelText(/State/).nextSibling.firstChild,
-        createMutationArgs.state
-      );
       userEvent.type(
         getByLabelText(/First name/),
         createMutationArgs.firstName
       );
-      userEvent.type(getByLabelText(/City/), createMutationArgs.city);
+      userEvent.type(getByLabelText(/Location/), createMutationArgs.city);
       userEvent.selectOptions(getByLabelText(/Your Job Title \/ Role/), [
         createMutationArgs.role,
       ]);
       userEvent.type(getByLabelText(/Email/), createMutationArgs.email);
+      await act(async () => {
+        userEvent.click(getAllByText("Denver")[0]);
+      });
       await act(async () => {
         userEvent.click(getByText("Save"));
       });

@@ -5,8 +5,15 @@ import { NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "10px 0 !important",
+    paddingTop: "10px",
     marginBottom: "10px",
+    [theme.breakpoints.down("sm")]: {
+      justifyContent: "space-between",
+      display: "flex",
+      width: "100%",
+      position: "-webkit-sticky",
+      position: "sticky",
+    },
   },
   navItem: {
     textDecoration: "none",
@@ -40,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Links() {
+export default function Links({ className }) {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root}>
+    <Box className={`${classes.root} ${className}`}>
       <NavLink
         to="/volunteer"
         className={classes.navItem}

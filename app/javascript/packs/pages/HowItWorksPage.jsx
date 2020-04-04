@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(4),
   },
   stepHeader: {
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(0),
   },
   stepDetails: {
     marginTop: theme.spacing(1),
@@ -56,6 +56,20 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.6rem",
     fontWeight: "bold",
     lineHeight: "50px",
+  },
+  embedContainer: {
+    position: "relative",
+    paddingBottom: "56.25%",
+    height: "0",
+    overflow: "hidden",
+    maxWidth: "100%",
+    "& > iframe, & > object, & > embed": {
+      position: "absolute",
+      top: "0",
+      left: "0",
+      width: "100%",
+      height: "100%",
+    },
   },
 }));
 
@@ -104,7 +118,7 @@ const HowItWorks = () => {
         stays private.)
       </p>
       <Typography component="p" variant="caption" align="center">
-        This includes nurses, doctors, EMTs, admins, support staff, cleaning
+        *This includes nurses, doctors, EMTs, admins, support staff, cleaning
         staff, and anyone else who is helping during this crisis.
       </Typography>
     </>
@@ -149,14 +163,16 @@ const HowItWorks = () => {
         </Box>
       </Container>
       <Container maxWidth="md" className={classes.videoContainer}>
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/efbaQ5NPNKk?controls=0&modestbranding=1&rel=0"
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
+        <div className={classes.embedContainer}>
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/efbaQ5NPNKk?controls=0&modestbranding=1&rel=0"
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
       </Container>
 
       <Container maxWidth="md">
@@ -209,14 +225,14 @@ const HowItWorks = () => {
           </Grid>
           <Hidden xsDown>
             <Grid item sm={4}>
-              <Expiration />
+              <RequestCompleted />
             </Grid>
           </Hidden>
         </Grid>
         <Grid container spacing={10} className={classes.stepContainer}>
           <Hidden xsDown>
             <Grid item sm={4}>
-              <RequestCompleted />
+              <Expiration />
             </Grid>
           </Hidden>
           <Grid item xs={12} sm={8}>

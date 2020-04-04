@@ -4,12 +4,14 @@ describe Mutations::CreateProvider, type: :request do
   let(:mutation) {
     <<~GRAPHQL
       mutation CreateProvider($firstName: String!, $lastName: String,
-                          $neighborhood: String, $city: String!, $state: String!,
+                          $neighborhood: String, $city: String!, $state: String!, $country: String!, $address: String!,
+                          $latitude: Float!, $longitude: Float!,
                           $email: String!, $facility: String!, $role: String!,
                           $requests: [String!]!, $description: String!) {
         createProvider(input: {
                                 firstName: $firstName, lastName: $lastName,
-                                neighborhood: $neighborhood, city: $city, state: $state,
+                                neighborhood: $neighborhood, city: $city, state: $state, country: $country, address: $address,
+                                latitude: $latitude, longitude: $longitude,
                                 email: $email, facility: $facility, role: $role,
                                 requests: $requests, description: $description
                               }) {
@@ -25,7 +27,9 @@ describe Mutations::CreateProvider, type: :request do
       expect do
         post '/graphql',
              params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
-                                                     neighborhood: 'sunset', city: 'sf', state: 'CA',
+                                                     neighborhood: 'sunset', city: 'sf', state: 'CA', country: 'USA',
+                                                     address: '123 fake street, sf, ca',
+                                                     latitude: 123, longitude: 234,
                                                      email: 'bob@example.com', facility: 'ucsf', role: 'doctor',
                                                      requests: %w(pets cleaning), description: 'stuff'
                                                    },

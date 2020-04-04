@@ -12,6 +12,10 @@ const GET_ENTITY_BY_TOKEN = gql`
         neighborhood
         city
         state
+        country
+        latitude
+        address
+        longitude
         facility
         email
         role
@@ -35,10 +39,14 @@ const UPDATE_PROVIDER = gql`
     $city: String!
     $state: String!
     $email: String!
+    $country: String!
     $facility: String
     $role: String!
     $requests: [String!]!
     $description: String!
+    $latitude: Float!
+    $longitude: Float!
+    $address: String!
     $active: Boolean!
   ) {
     updateProvider(
@@ -49,12 +57,16 @@ const UPDATE_PROVIDER = gql`
         neighborhood: $neighborhood
         city: $city
         state: $state
+        country: $country
         email: $email
         facility: $facility
+        address: $address
         role: $role
         requests: $requests
         description: $description
         active: $active
+        latitude: $latitude
+        longitude: $longitude
       }
     ) {
       errors

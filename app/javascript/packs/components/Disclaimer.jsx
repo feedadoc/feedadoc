@@ -38,7 +38,7 @@ const Disclaimer = () => {
         className={classes.copy}
       >
         It's important for both parties to take responsibiliity for evaluating
-        which requests and offers to accept. Hospital Hero is run by volunteers
+        which requests and offers to accept. Hospital Hero is run by volunteers,
         and we're not able to evaluate or verify the accuracy of any
         request/offer.
       </Typography>

@@ -8,6 +8,8 @@ module Types
     field :neighborhood, String, null: true
     field :city, String, null: false
     field :state, String, null: false
+    field :country, String, null: false
+    field :address, String, null: false
     field :email, String, null: false
     field :responses, [Types::Response], null: false
   end
