@@ -1,7 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Container";
+import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,15 +10,16 @@ const useStyles = makeStyles((theme) => ({
   },
   heading: {
     color: theme.palette.primary.main,
-    fontSize: "1.1rem",
-    fontWeight: "bold",
-    letterSpacing: "0.1rem",
-    paddingTop: theme.spacing(2),
+    fontWeight: "600",
+    letterSpacing: theme.spacing(0.03),
+    paddingTop: theme.spacing(3),
+    paddingBottom: theme.spacing(3),
   },
   message: {
-    fontSize: "1.2rem",
     lineHeight: "1.5rem",
     paddingBottom: theme.spacing(2),
+    paddingLeft: theme.spacing(8),
+    paddingRight: theme.spacing(8),
   },
   cdcLink: {
     color: theme.palette.text.primary,
@@ -28,30 +30,33 @@ const useStyles = makeStyles((theme) => ({
 const SocialDistanceNotice = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
-      <Typography align="center" component="h3" className={classes.heading}>
-        NOTICE FOR VOLUNTEERS
-      </Typography>
+    <Container maxWidth="lg">
+      <Box className={classes.root}>
+        <Typography align="center" variant="body1" className={classes.heading}>
+          NOTICE FOR VOLUNTEERS
+        </Typography>
 
-      <Typography align="center" component="p" className={classes.message}>
-        <b>
-          Please follow all COVID-19 guidance from federal, state, and local
-          officials.
+        <Typography align="center" variant="body1" className={classes.message}>
+          <b>
+            Please follow all COVID-19 guidance from federal, state, and local
+            officials.
+            <br />
+          </b>
+          Make sure to maintain social/physical distancing and safety guidelines
+          when fulfilling
           <br />
-        </b>
-        Make sure to maintain social/physical distancing and safety guidelines
-        when fulfilling requests.<span>&nbsp;</span>
-        To learn more, visit the<span>&nbsp;</span>
-        <a
-          target="_blank"
-          href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html"
-          className={classes.cdcLink}
-        >
-          CDC.gov
-        </a>
-        <span>&nbsp;</span>resource page.
-      </Typography>
-    </Box>
+          requests. To learn more, visit the{" "}
+          <a
+            target="_blank"
+            href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html"
+            className={classes.cdcLink}
+          >
+            CDC.gov
+          </a>{" "}
+          resource page.
+        </Typography>
+      </Box>
+    </Container>
   );
 };
 

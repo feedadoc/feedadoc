@@ -66,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
     color: "#d50000",
   },
   socialDistanceNotice: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(6),
   },
 }));
 
@@ -196,9 +196,9 @@ export default function BrowseRequests() {
         onNext={pageNext}
         onPrevious={pagePrevious}
       />
-      <div className={classes.socialDistanceNotice}>
+      <Box mt={6}>
         <SocialDistanceNotice />
-      </div>
+      </Box>
     </Box>
   );
 }
