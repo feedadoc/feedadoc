@@ -63,18 +63,22 @@ const theme = createMuiTheme({
       disableRipple: true,
     },
   },
+  overrides: {
+    MuiButton: {
+      root: {
+        borderRadius: "25px",
+        fontSize: "20px",
+        letterSpacing: "0.5px",
+        padding: "14px 32px",
+      },
+    },
+  },
   buttons: {
     // Used to give button text the proper underline thickness
     text: {
       lineHeight: "1.3",
       borderBottom: "2px solid",
       borderBottomColor: "transparent",
-    },
-    commonStyles: {
-      borderRadius: "25px",
-      fontSize: "20px",
-      letterSpacing: "0.5px",
-      padding: "14px 32px",
     },
     primary: {
       backgroundColor: "#191847",

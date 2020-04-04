@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginTop: theme.spacing(6),
-    ...theme.buttons.commonStyles,
     ...theme.buttons.medical,
   },
   buttonText: {

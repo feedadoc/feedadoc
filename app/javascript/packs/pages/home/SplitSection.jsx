@@ -42,11 +42,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   requestButton: {
-    ...theme.buttons.commonStyles,
     ...theme.buttons.medical,
   },
   volunteerButton: {
-    ...theme.buttons.commonStyles,
     ...theme.buttons.volunteer,
   },
   buttonText: {
@@ -103,7 +101,6 @@ const SplitSection = () => {
           <Link to="/provider-signup" className={classes.buttonLink}>
             <Button
               className={classes.requestButton}
-              size="large"
               variant="contained"
               elevation={0}
             >
@@ -135,7 +132,6 @@ const SplitSection = () => {
           <Link to="/volunteer" className={classes.buttonLink}>
             <Button
               className={classes.volunteerButton}
-              size="large"
               variant="contained"
               elevation={0}
             >
