@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import VolunteerAndDoctor from "../components/illustrations/VolunteerAndDoctor";
 import BoldLink from "../components/BoldLink";
+import SocialMediaGrid from "../components/SocialMediaGrid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,9 +16,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     textAlign: "center",
   },
-  thankyouMessage: {
+  semiBoldMessage: {
     fontWeight: 600,
-    fontStyle: "normal",
   },
   regularMessage: {
     fontSize: "1.5rem",
@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   shareMessage: {
     letterSpacing: "0.03rem",
     textTransform: "uppercase",
+  },
+  socialMediaIcons: {
+    marginTop: theme.spacing(7.6),
   },
 }));
 
@@ -38,7 +41,7 @@ const VolunteerConfirmation = () => {
             component="h1"
             variant="h1"
             color="primary"
-            className={classes.thankyouMessage}
+            className={classes.semiBoldMessage}
           >
             Thank you for volunteering!
           </Typography>
@@ -80,6 +83,16 @@ const VolunteerConfirmation = () => {
           </Typography>
         </Box>
       </Container>
+
+      <Container maxWidth="xs" className={classes.socialMediaIcons}>
+        <SocialMediaGrid />
+      </Container>
+
+      <Box mt={6}>
+        <Typography variant="h1" className={classes.semiBoldMessage}>
+          We appreciate your help!
+        </Typography>
+      </Box>
     </Box>
   );
 };
