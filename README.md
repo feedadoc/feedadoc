@@ -47,11 +47,7 @@ Install [Postgres](https://www.postgresql.org/download/) (on OS X you can use `b
 CREATE USER feedadoc WITH SUPERUSER PASSWORD 'password1';
 ```
 
-2. Set the database url manually or add this command to a file like `.bashrc`:
-
-```
-export DATABASE_URL="postgresql://localhost"
-```
+2. Follow step 2 in the `Running Postgres with Docker` section
 
 ### GraphiQL
 
