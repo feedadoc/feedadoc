@@ -1,5 +1,13 @@
 <h1 style="margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left;" align="left"><%= @volunteer.first_name %>, your help response has been created. Thank you!</h1>
 <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">You should hear back from the medical provider soon to coordinate.</p>
+<p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">Here is a public link to the help request that you volunteered to help with:</p>
+<table align='center' style='text-align:center'>
+  <tr>
+    <td align='center' style='text-align:center'>
+<p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;"><strong><a href="<%= @request_url %>"><%= @request_url %></a></strong></p>
+    </td>
+  </tr>
+</table>
 <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">We truly appreciate your help. Please reach out to us if you have any  suggestions.</p>
 <p style="font-size: 16px; line-height: 1.625; color: #51545E; margin: .4em 0 1.1875em;">Best,
 <br />The HospitalHero Team</p>
