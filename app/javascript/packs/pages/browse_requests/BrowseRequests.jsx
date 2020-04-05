@@ -62,9 +62,6 @@ const useStyles = makeStyles((theme) => ({
   successText: {
     color: "#d50000",
   },
-  socialDistanceNotice: {
-    marginTop: theme.spacing(6),
-  },
 }));
 
 const TOTAL_PROVIDERS = gql`
