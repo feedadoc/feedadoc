@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "14px",
     marginBottom: "50px",
   },
+  formLabel: {
+    paddingBottom: "24px",
+    fontWeight: 500,
+  },
 }));
 
 const EditProviderForm = ({
@@ -63,7 +67,11 @@ const EditProviderForm = ({
       </Grid>
       <Grid item xs={12} className={classes.mediumSpacing}>
         <FormControl>
-          <StyledFormLabel required id="type-select-label">
+          <StyledFormLabel
+            required
+            id="type-select-label"
+            className={classes.formLabel}
+          >
             What kinds of support do you need?
           </StyledFormLabel>
           {providerRequestTypes.map((type) => (

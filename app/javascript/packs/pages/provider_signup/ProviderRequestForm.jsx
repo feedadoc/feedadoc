@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   typeSelect: {
     minWidth: 200,
   },
+  formLabel: {
+    paddingBottom: "24px",
+    fontWeight: 500,
+  },
 }));
 
 export default function ProviderRequestForm({
@@ -36,7 +40,11 @@ export default function ProviderRequestForm({
       <Grid container spacing={3} className={classes.firstEntry}>
         <Grid item xs={12}>
           <FormControl>
-            <StyledFormLabel required id="type-select-label">
+            <StyledFormLabel
+              required
+              id="type-select-label"
+              className={classes.formLabel}
+            >
               What kinds of support do you need?
             </StyledFormLabel>
             {providerRequestTypes.map((type) => (
