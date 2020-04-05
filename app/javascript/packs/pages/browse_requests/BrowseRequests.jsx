@@ -64,9 +64,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const TOTAL_PROVIDERS = gql`
-  query Providers($after: String, $before: String, $city: String) {
+  query Providers(
+    $first: Int
+    $after: String
+    $last: Int
+    $before: String
+    $city: String
+  ) {
     providers(
+      first: $first
       after: $after
+      last: $last
       before: $before
       filters: { active: true, activeRequests: true, city: $city }
       orderBy: { direction: ASC, sort: CITY }
@@ -108,11 +116,14 @@ export default function BrowseRequests() {
 
   const { search } = useLocation();
   const isSuccess = search.includes("success=true");
+  const resultsPerPage = 6;
 
   const { loading, error, data } = useQuery(TOTAL_PROVIDERS, {
     variables: {
-      after: pageType === "forward" ? endCursor : "",
-      before: pageType === "back" ? startCursor : "",
+      first: pageType === "forward" ? resultsPerPage : null,
+      after: pageType === "forward" ? endCursor : null,
+      last: pageType === "back" ? resultsPerPage : null,
+      before: pageType === "back" ? startCursor : null,
       city: searchValue,
     },
   });
