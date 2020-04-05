@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   message: {
     lineHeight: "1.5rem",
-    paddingBottom: theme.spacing(2),
+    paddingBottom: theme.spacing(3),
     paddingLeft: theme.spacing(8),
     paddingRight: theme.spacing(8),
   },
