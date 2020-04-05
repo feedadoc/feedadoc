@@ -36,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
   },
+  details: {
+    fontWeight: 100,
+    fontSize: "1rem",
+    marginTop: theme.spacing(1),
+  },
   error: {
     backgroundColor: theme.palette.error.main,
     color: theme.palette.error.contrastText,
@@ -135,6 +140,14 @@ export default function SignupStepper() {
       <React.Fragment>
         <Typography component="h1" variant="h4" align="center">
           Post a Request
+        </Typography>
+        <Typography
+          component="h3"
+          variant="h6"
+          align="center"
+          className={classes.details}
+        >
+          {`Your first name, city, role, and facility (optional) will be visible on our volunteer page. We will never publish your email address, last name, or exact location.`}
         </Typography>
         <Stepper activeStep={activeStep} className={classes.stepper}>
           {steps.map(({ label }, index) => (
