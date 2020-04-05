@@ -46,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "20px",
     lineHeight: "28px",
     padding: "10px 20px",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
   buttonLink: {
     textDecoration: "none",

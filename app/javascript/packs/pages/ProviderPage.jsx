@@ -80,6 +80,9 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: "0.5px",
     marginTop: theme.spacing(6),
     textTransform: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
   browseLink: {
     color: theme.palette.text.primary,

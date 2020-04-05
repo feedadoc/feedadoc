@@ -75,11 +75,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   sharingLink: {
-    color: theme.palette.primary.main,
+    color: "black",
     fontSize: "1rem",
     fontWeight: "bold",
     [theme.breakpoints.up("sm")]: {
       fontSize: "1.8rem",
+    },
+    "&:hover": {
+      color: theme.palette.primary.main,
     },
   },
   linkContainer: {
@@ -95,6 +98,9 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     fontSize: "1rem",
     fontWeight: "bold",
+    "&:hover": {
+      color: theme.palette.primary.main,
+    },
   },
 }));
 

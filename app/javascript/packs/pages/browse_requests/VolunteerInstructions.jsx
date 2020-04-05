@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px 24px",
     margin: theme.spacing(4, 0),
     boxShadow: "none",
+    "&:hover": {
+      textDecoration: "underline",
+    },
   },
   volunteerText: {
     fontSize: "18px",

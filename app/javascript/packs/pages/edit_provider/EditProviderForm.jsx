@@ -17,6 +17,11 @@ import StyledTextField from "../../components/forms/StyledTextField";
 import StyledInputLabel from "../../components/forms/StyledInputLabel";
 
 const useStyles = makeStyles((theme) => ({
+  button: {
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
   mediumSpacing: {
     marginBottom: "30px",
   },
@@ -237,6 +242,7 @@ const EditProviderForm = ({
         <Grid item xs={12}>
           <Button
             variant="contained"
+            className={classes.button}
             color="primary"
             onClick={() => {
               saveProvider(provider);
