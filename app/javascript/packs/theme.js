@@ -97,7 +97,7 @@ const theme = createMuiTheme({
       color: "#9e9e9e",
       textTransform: "uppercase",
       "&:hover": {
-        backgroundColor: "#white",
+        backgroundColor: "white",
       },
       "&:hover div": {
         borderBottomColor: "#9e9e9e",

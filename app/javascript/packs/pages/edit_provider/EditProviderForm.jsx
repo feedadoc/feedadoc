@@ -244,7 +244,6 @@ const EditProviderForm = ({
           <Button
             variant="contained"
             className={classes.button}
-            color="primary"
             onClick={() => {
               saveProvider(provider);
             }}
