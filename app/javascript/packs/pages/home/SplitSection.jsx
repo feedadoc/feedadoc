@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import DoctorsPassingBy from "../../components/illustrations/DoctorsPassingBy";
 import Volunteers from "../../components/illustrations/Volunteers";
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Fab";
+import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -41,11 +41,14 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
     },
   },
-  actionButton: {
-    boxShadow: "none",
-    fontSize: "20px",
-    lineHeight: "28px",
-    padding: "10px 20px",
+  requestButton: {
+    ...theme.buttons.medical,
+  },
+  volunteerButton: {
+    ...theme.buttons.volunteer,
+  },
+  buttonText: {
+    ...theme.buttons.text,
   },
   buttonLink: {
     textDecoration: "none",
@@ -97,13 +100,11 @@ const SplitSection = () => {
           </Typography>
           <Link to="/provider-signup" className={classes.buttonLink}>
             <Button
-              className={classes.actionButton}
-              size="large"
+              className={classes.requestButton}
               variant="contained"
-              color="primary"
               elevation={0}
             >
-              Request Help
+              <div className={classes.buttonText}>Request Help</div>
             </Button>
           </Link>
         </Box>
@@ -130,13 +131,11 @@ const SplitSection = () => {
           </Typography>
           <Link to="/volunteer" className={classes.buttonLink}>
             <Button
-              className={classes.actionButton}
-              size="large"
+              className={classes.volunteerButton}
               variant="contained"
-              color="secondary"
               elevation={0}
             >
-              Volunteer Now
+              <div className={classes.buttonText}>Volunteer Now</div>
             </Button>
           </Link>
         </Box>
