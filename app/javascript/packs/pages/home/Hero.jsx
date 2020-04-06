@@ -11,17 +11,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   button: {
-    backgroundColor: "#545B8E",
-    borderRadius: "25px",
-    color: "white",
-    fontSize: "20px",
-    fontWeight: 600,
-    letterSpacing: "0.5px",
     marginTop: theme.spacing(6),
-    textTransform: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
+    ...theme.buttons.medical,
+  },
+  buttonText: {
+    ...theme.buttons.text,
   },
 }));
 
@@ -54,7 +48,7 @@ const Hero = () => {
               className={classes.button}
               href={`/how-it-works`}
             >
-              Learn More
+              <div className={classes.buttonText}>Learn More</div>
             </Button>
           </Box>
         </Box>

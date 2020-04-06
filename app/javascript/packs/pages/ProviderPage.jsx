@@ -72,17 +72,11 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 100,
   },
   button: {
-    backgroundColor: "#545B8E",
-    borderRadius: "25px",
-    color: "white",
-    fontSize: "20px",
-    fontWeight: 600,
-    letterSpacing: "0.5px",
     marginTop: theme.spacing(6),
-    textTransform: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
+    ...theme.buttons.primary,
+  },
+  buttonText: {
+    ...theme.buttons.text,
   },
   browseLink: {
     color: theme.palette.text.primary,
@@ -291,7 +285,7 @@ export default function ProviderPage({ location, match }) {
                 className={classes.button}
                 href={`/volunteer-signup?provider=${id}`}
               >
-                Offer Help
+                <div className={classes.buttonText}>Offer Help</div>
               </Button>
             )}
             {!providerCreation && !active && (
