@@ -15,9 +15,7 @@ const useStyles = makeStyles((theme) => ({
   emailLink: {
     color: "inherit",
     textDecoration: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
+    ...theme.links.tertiary,
   },
 }));
 

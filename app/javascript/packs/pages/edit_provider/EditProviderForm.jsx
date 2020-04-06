@@ -18,9 +18,10 @@ import StyledInputLabel from "../../components/forms/StyledInputLabel";
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    "&:hover": {
-      textDecoration: "underline",
-    },
+    ...theme.buttons.medical,
+  },
+  buttonText: {
+    ...theme.buttons.text,
   },
   mediumSpacing: {
     marginBottom: "30px",
@@ -249,7 +250,7 @@ const EditProviderForm = ({
             }}
             disabled={requestState === TOKEN_ENTITY_REQUEST_STATES.SAVING}
           >
-            Update my request
+            <div className={classes.buttonText}>Update my request</div>
           </Button>
         </Grid>
       </Grid>

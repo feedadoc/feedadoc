@@ -92,6 +92,17 @@ const theme = createMuiTheme({
         borderBottomColor: "white",
       },
     },
+    secondary: {
+      backgroundColor: "white",
+      color: "#9e9e9e",
+      textTransform: "uppercase",
+      "&:hover": {
+        backgroundColor: "#white",
+      },
+      "&:hover div": {
+        borderBottomColor: "#9e9e9e",
+      },
+    },
     medical: {
       backgroundColor: "#d50000",
       color: "white",
@@ -112,6 +123,21 @@ const theme = createMuiTheme({
       },
       "&:hover div": {
         borderBottomColor: "white",
+      },
+    },
+  },
+  links: {
+    tertiary: {
+      "&:hover": {
+        textDecoration: "underline",
+      },
+    },
+    textLink: {
+      color: "black",
+      fontSize: "1rem",
+      fontWeight: "bold",
+      "&:hover": {
+        color: "#d50000",
       },
     },
   },

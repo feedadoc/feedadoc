@@ -17,18 +17,16 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(10),
   },
   volunteerButton: {
-    color: "white",
-    backgroundColor: theme.palette.primary.main,
     borderRadius: "25px",
-    textTransform: "none",
     fontSize: "18px",
     fontWeight: 600,
     padding: "6px 24px",
     margin: theme.spacing(4, 0),
     boxShadow: "none",
-    "&:hover": {
-      textDecoration: "underline",
-    },
+    ...theme.buttons.medical,
+  },
+  volunteerButtonText: {
+    ...theme.buttons.text,
   },
   volunteerText: {
     fontSize: "18px",
@@ -73,10 +71,9 @@ export default function VolunteerInstructions() {
             className={classes.volunteerButton}
             size="large"
             variant="contained"
-            color="primary"
             elevation={0}
           >
-            Sign Up Now
+            <div className={classes.volunteerButtonText}>Sign Up Now</div>
           </Button>
         </ReactLink>
         <Typography className={classes.share}>Share</Typography>
