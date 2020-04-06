@@ -17,6 +17,12 @@ import StyledTextField from "../../components/forms/StyledTextField";
 import StyledInputLabel from "../../components/forms/StyledInputLabel";
 
 const useStyles = makeStyles((theme) => ({
+  button: {
+    ...theme.buttons.medical,
+  },
+  buttonText: {
+    ...theme.buttons.text,
+  },
   mediumSpacing: {
     marginBottom: "30px",
   },
@@ -237,13 +243,13 @@ const EditProviderForm = ({
         <Grid item xs={12}>
           <Button
             variant="contained"
-            color="primary"
+            className={classes.button}
             onClick={() => {
               saveProvider(provider);
             }}
             disabled={requestState === TOKEN_ENTITY_REQUEST_STATES.SAVING}
           >
-            Update my request
+            <div className={classes.buttonText}>Update my request</div>
           </Button>
         </Grid>
       </Grid>

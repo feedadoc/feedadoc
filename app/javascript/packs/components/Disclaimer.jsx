@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   emailLink: {
     color: "inherit",
     textDecoration: "none",
+    ...theme.links.tertiary,
   },
 }));
 

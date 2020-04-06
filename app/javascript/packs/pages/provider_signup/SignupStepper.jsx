@@ -32,9 +32,18 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
-  button: {
+  backButton: {
     marginTop: theme.spacing(3),
     marginLeft: theme.spacing(1),
+    ...theme.buttons.secondary,
+  },
+  forwardButton: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+    ...theme.buttons.medical,
+  },
+  buttonText: {
+    ...theme.buttons.text,
   },
   details: {
     fontWeight: 100,
@@ -167,18 +176,23 @@ export default function SignupStepper() {
             />
             <div className={classes.buttons}>
               {activeStep !== 0 && (
-                <Button onClick={handleBack} className={classes.button}>
-                  Back
+                <Button
+                  variant="contained"
+                  onClick={handleBack}
+                  className={classes.backButton}
+                >
+                  <div className={classes.buttonText}>Back</div>
                 </Button>
               )}
               <Button
                 variant="contained"
-                color="primary"
                 onClick={handleNext}
-                className={classes.button}
+                className={classes.forwardButton}
                 disabled={loading}
               >
-                {activeStep === steps.length - 1 ? "Save" : "Next"}
+                <div className={classes.buttonText}>
+                  {activeStep === steps.length - 1 ? "Save" : "Next"}
+                </div>
               </Button>
             </div>
           </React.Fragment>
