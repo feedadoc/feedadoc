@@ -34,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.primary,
       borderBottomColor: theme.palette.primary.main,
     },
+    "&:not(:last-child)": {
+      marginRight: "1.5rem",
+    },
     "&:nth-of-type(1n+1)": {
       marginLeft: theme.spacing(4),
       [theme.breakpoints.down("sm")]: {
