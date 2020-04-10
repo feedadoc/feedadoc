@@ -48,7 +48,7 @@ export default function ProviderList({
 }) {
   const classes = useStyles();
   return (
-    <Paper>
+    <div>
       <Container>
         <Box>
           {providers.map(
@@ -131,6 +131,6 @@ export default function ProviderList({
           <Button onClick={() => onNext(pageInfo.endCursor)}>Next Page</Button>
         )}
       </Container>
-    </Paper>
+    </div>
   );
 }
