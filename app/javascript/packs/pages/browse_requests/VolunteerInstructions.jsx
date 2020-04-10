@@ -51,12 +51,7 @@ export default function VolunteerInstructions() {
   const classes = useStyles();
   return (
     <Container maxWidth="lg" className={classes.volunteerContainer}>
-      <Typography
-        component="h1"
-        align="center"
-        color="textPrimary"
-        gutterBottom
-      >
+      <Typography component="h1" align="center" color="textPrimary">
         Volunteer Now
       </Typography>
       <Container className={classes.volunteerTextContainer}>

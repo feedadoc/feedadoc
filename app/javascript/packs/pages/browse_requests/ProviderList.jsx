@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
@@ -38,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
     textDecoration: "inherit",
   },
+  firstName: {
+    fontWeight: "bold",
+  },
 }));
 
 export default function ProviderList({
@@ -48,7 +50,7 @@ export default function ProviderList({
 }) {
   const classes = useStyles();
   return (
-    <div>
+    <Box>
       <Container>
         <Box>
           {providers.map(
@@ -66,20 +68,19 @@ export default function ProviderList({
               },
               index
             ) => {
-              const className = index % 2 == 0 ? "background" : "";
               return (
                 <Box
                   key={index}
                   p={2}
-                  className={index % 2 == 0 && classes.background}
+                  className={index % 2 == 0 ? classes.background : undefined}
                 >
                   <Link
                     to={`/providers/${id}`}
                     className={classes.providerInfoText}
                   >
-                    <Grid container spacing={1}>
-                      <Grid item xs={6} spacing={2}>
-                        <Typography component="th" scope="row">
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Typography className={classes.firstName} scope="row">
                           {firstName}
                         </Typography>
                         {neighborhood ? (
@@ -108,7 +109,7 @@ export default function ProviderList({
                           })}
                         </Typography>
                       </Grid>
-                      <Grid item xs={6} spacing={2}>
+                      <Grid item xs={6}>
                         <Typography>{`${responseCount} ${
                           responseCount == 1 ? "Offer" : "Offers"
                         }`}</Typography>
@@ -131,6 +132,6 @@ export default function ProviderList({
           <Button onClick={() => onNext(pageInfo.endCursor)}>Next Page</Button>
         )}
       </Container>
-    </div>
+    </Box>
   );
 }
