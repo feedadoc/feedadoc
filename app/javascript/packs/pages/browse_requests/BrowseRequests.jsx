@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Container";
-import Paper from "@material-ui/core/Paper";
 import Box from "@material-ui/core/Box";
 import InputBase from "@material-ui/core/InputBase";
 import SearchIcon from "@material-ui/icons/Search";
@@ -143,23 +142,19 @@ export default function BrowseRequests() {
   };
 
   return (
-    <Box mb={6}>
-      <Paper className={classes.heroContent}>
-        {isSuccess && (
+    <Box mb={6} mt={10}>
+      {isSuccess && (
+        <Container className={classes.heroContent}>
           <Box mb={4} textAlign="center">
-            <Typography
-              variant="h5"
-              gutterBottom
-              className={classes.successText}
-            >
+            <Typography variant="h5" className={classes.successText}>
               Thank you so much for volunteering!
             </Typography>
             <Typography variant="subtitle1" className={classes.successText}>
               You should hear back from the medical provider soon.
             </Typography>
           </Box>
-        )}
-      </Paper>
+        </Container>
+      )}
       <VolunteerInstructions />
       <Container className={classes.search}>
         <div className={classes.searchIcon}>
