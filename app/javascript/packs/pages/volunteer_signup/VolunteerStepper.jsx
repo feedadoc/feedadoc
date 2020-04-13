@@ -14,6 +14,8 @@ import ErrorIcon from "@material-ui/icons/Error";
 import Snackbar from "@material-ui/core/Snackbar";
 import queryString from "query-string";
 
+import { errorMessage } from "../../constants";
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(3),
@@ -196,7 +198,7 @@ export default function VolunteerStepper({ steps, location }) {
           }
         })
         .catch((e) => {
-          setErrors([e.message]);
+          setErrors([errorMessage.missingLocation]);
         });
     } else {
       setActiveStep(activeStep + 1);
