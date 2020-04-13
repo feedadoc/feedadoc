@@ -11,9 +11,8 @@ class Provider < ApplicationRecord
     "other" => "Other"
   }
 
-  validates :first_name, :city, :role, :description, presence: true
+  validates :first_name, :address, :role, :description, presence: true
   validates :email, format: /@/
-  validates :state, inclusion: { in: Volunteer::STATES, message: "is not included in the list of valid states" }
   validate :validate_requests
 
   has_many :responses, dependent: :destroy

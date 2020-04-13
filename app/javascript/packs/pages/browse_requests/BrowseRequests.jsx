@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   successText: {
     color: "#d50000",
+    fontSize: 24,
   },
 }));
 
