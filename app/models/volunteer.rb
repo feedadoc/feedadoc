@@ -4,9 +4,8 @@ class Volunteer < ApplicationRecord
   has_many :responses, dependent: :destroy
   has_one :linked_token, as: :entity, dependent: :destroy
 
-  validates :first_name, :city, presence: true
+  validates :first_name, :address, presence: true
   validates :email, format: /@/
-  validates :state, inclusion: { in: Volunteer::STATES, message: "is not included in the list of valid states" }
   validates_associated :responses
 
   def full_name

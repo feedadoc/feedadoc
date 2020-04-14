@@ -7,6 +7,10 @@ FactoryBot.define do
     neighborhood { "Sunset" }
     city { "San Francisco" }
     state { "CA" }
+    address { "123 fake st" }
+    country { "usa" }
+    latitude { 0.0 }
+    longitude { 0.0 }
     sequence :email do |n|
       "person#{n}@example.com"
     end

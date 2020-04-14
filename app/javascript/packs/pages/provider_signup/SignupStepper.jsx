@@ -83,6 +83,8 @@ export default function SignupStepper() {
     requests: [],
     description: "",
     address: "",
+    latitude: 0.0,
+    longitude: 0.0,
   });
   const [mapResult, setMapResult] = useState(null);
   const [redirectId, setRedirectId] = useState();
