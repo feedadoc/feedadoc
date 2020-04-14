@@ -40,13 +40,10 @@ const SocialDistanceNotice = () => {
         <Typography align="center" variant="body1" className={classes.message}>
           <b>
             Please follow all COVID-19 guidance from federal, state, and local
-            officials.
-            <br />
+            officials.{" "}
           </b>
           Make sure to maintain social/physical distancing and safety guidelines
-          when fulfilling
-          <br />
-          requests. To learn more, visit the{" "}
+          when fulfilling requests. To learn more, visit the{" "}
           <a
             target="_blank"
             href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/prevention.html"
