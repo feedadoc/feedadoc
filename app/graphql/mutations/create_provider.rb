@@ -43,7 +43,7 @@ class Mutations::CreateProvider < Mutations::BaseMutation
 
     if provider.save
       linked_token = LinkCreator.create_token(provider)
-      ProviderMailer.with(linked_token: linked_token).request_created_email.deliver_later
+      ProviderNotifications.send_provider_created_notifications(linked_token)
       {
         provider: provider,
         edit_link: "/providers/#{linked_token.token}/edit",
