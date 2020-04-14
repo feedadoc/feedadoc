@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: theme.spacing(0.03),
     paddingTop: theme.spacing(3),
     paddingBottom: theme.spacing(3),
+    textTransform: "uppercase",
   },
   message: {
     lineHeight: "1.5rem",
@@ -33,7 +34,7 @@ const SocialDistanceNotice = () => {
     <Container maxWidth="lg">
       <Box className={classes.root}>
         <Typography align="center" variant="body1" className={classes.heading}>
-          NOTICE FOR VOLUNTEERS
+          Notice for volunteers
         </Typography>
 
         <Typography align="center" variant="body1" className={classes.message}>
