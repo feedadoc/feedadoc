@@ -82,6 +82,7 @@ function App() {
                   )}
                 />
                 <Route path="/volunteer/confirmation">
+                  <ScrollToTopOnMount />
                   <VolunteerConfirmation />
                 </Route>
                 <Route path="/volunteer/signup">
