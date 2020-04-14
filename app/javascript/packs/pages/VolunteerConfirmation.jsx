@@ -9,14 +9,6 @@ import SocialMediaGrid from "../components/SocialMediaGrid";
 import SocialDistanceNotice from "../components/SocialDistanceNotice";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    alignItems: "center",
-    paddingTop: theme.spacing(5),
-    paddingBottom: theme.spacing(10),
-    flexDirection: "column",
-    textAlign: "center",
-  },
   semiBoldMessage: {
     fontWeight: 600,
   },
@@ -35,7 +27,14 @@ const useStyles = makeStyles((theme) => ({
 const VolunteerConfirmation = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
+    <Box
+      display="flex"
+      alignItems="center"
+      flexDirection="column"
+      textAlign="center"
+      paddingTop={5}
+      paddingBottom={10}
+    >
       <Container maxWidth="sm">
         <Box my={5}>
           <Typography
