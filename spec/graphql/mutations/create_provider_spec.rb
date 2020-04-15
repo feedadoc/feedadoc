@@ -23,8 +23,8 @@ describe Mutations::CreateProvider, type: :request do
   }
 
   it "creates a Provider and sends an email" do
+    expect(ProviderNotifications).to receive(:send_provider_created_notifications)
     expect do
-      expect do
         post '/graphql',
              params: { query: mutation, variables: { firstName: 'bob', lastName: 'smith',
                                                      neighborhood: 'sunset', city: 'sf', state: 'CA', country: 'USA',
@@ -36,7 +36,6 @@ describe Mutations::CreateProvider, type: :request do
                      }.to_json,
              headers: { "CONTENT_TYPE" => "application/json" }
       end.to change { Provider.count }.by(1)
-    end.to have_enqueued_job(ActionMailer::MailDeliveryJob)
 
     json = JSON.parse(response.body)
     expect(json['data']['createProvider']['provider']).to include(
