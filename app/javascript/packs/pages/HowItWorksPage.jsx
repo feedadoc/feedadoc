@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   stepHeader: {
     marginBottom: theme.spacing(0),
+    textTransform: "none",
   },
   stepDetails: {
     marginTop: theme.spacing(1),
@@ -193,7 +194,7 @@ const HowItWorks = () => {
         </Grid>
         <Grid container spacing={10} className={classes.stepContainer}>
           <Grid item xs={12} sm={8}>
-            {renderStep("2", "Volunteers Respond", content.stepTwo)}
+            {renderStep("2", "Volunteers respond", content.stepTwo)}
           </Grid>
           <Hidden xsDown>
             <Grid item sm={4}>
@@ -210,7 +211,7 @@ const HowItWorks = () => {
           <Grid item xs={12} sm={8}>
             {renderStep(
               "3",
-              "Healthcare Workers Receive an Email",
+              "Healthcare workers receive an email",
               content.stepThree
             )}
           </Grid>
@@ -219,7 +220,7 @@ const HowItWorks = () => {
           <Grid item xs={12} sm={8}>
             {renderStep(
               "4",
-              "Once Your Request is Fulfilled",
+              "Once your request is fulfilled",
               content.stepFour
             )}
           </Grid>
@@ -236,7 +237,7 @@ const HowItWorks = () => {
             </Grid>
           </Hidden>
           <Grid item xs={12} sm={8}>
-            {renderStep("5", "Requests Expire", content.stepFive)}
+            {renderStep("5", "Requests expire", content.stepFive)}
           </Grid>
         </Grid>
       </Container>
