@@ -24,4 +24,8 @@ class Provider < ApplicationRecord
     errors.add(:base, "You must select at lease one request") unless requests.length > 0
     errors.add(:requests, "must all have fields satisfied and have a valid type") unless requests.all? { |r| r.is_a?(Hash) && REQUEST_TYPES[r["type"]] && r.has_key?("satisfied") }
   end
+
+  def full_name
+    [first_name, last_name].select(&:present?).join(' ')
+  end
 end
