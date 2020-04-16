@@ -20,6 +20,7 @@ import theme from "./theme";
 import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
 import HowItWorks from "./pages/HowItWorksPage";
+import VolunteerConfirmation from "./pages/VolunteerConfirmation";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -80,6 +81,10 @@ function App() {
                     </>
                   )}
                 />
+                <Route path="/volunteer/confirmation">
+                  <ScrollToTopOnMount />
+                  <VolunteerConfirmation />
+                </Route>
                 <Route path="/volunteer/signup">
                   <Container maxWidth="md">
                     <ScrollToTopOnMount />

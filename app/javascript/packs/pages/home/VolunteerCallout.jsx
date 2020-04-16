@@ -1,15 +1,9 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import LinkedInIcon from "../../components/icons/LinkedIn";
-import FacebookIcon from "../../components/icons/Facebook";
-import EmailIcon from "../../components/icons/Email";
-import TwitterIcon from "../../components/icons/Twitter";
 import { makeStyles } from "@material-ui/core/styles";
-import * as socialMediaLinks from "../../data/socialMediaLinks";
+import SocialMediaGrid from "../../components/SocialMediaGrid";
 
 const useStyles = makeStyles((theme) => ({
   volunteerCalloutText: {
@@ -47,28 +41,7 @@ const VolunteerCallout = () => {
         </Typography>
       </Container>
       <Container maxWidth="xs" className={classes.socialMediaIcons}>
-        <Grid container spacing={4}>
-          <Grid container item xs={6} sm={3} justify="center">
-            <Link href={socialMediaLinks.FACEBOOK_LINK}>
-              <FacebookIcon source="homepage" />
-            </Link>
-          </Grid>
-          <Grid container item xs={6} sm={3} justify="center">
-            <Link href={socialMediaLinks.TWITTER_LINK}>
-              <TwitterIcon source="homepage" />
-            </Link>
-          </Grid>
-          <Grid container item xs={6} sm={3} justify="center">
-            <Link href={socialMediaLinks.LINKEDIN_LINK}>
-              <LinkedInIcon source="homepage" />
-            </Link>
-          </Grid>
-          <Grid container item xs={6} sm={3} justify="center">
-            <Link href={socialMediaLinks.EMAIL_LINK}>
-              <EmailIcon source="homepage" />
-            </Link>
-          </Grid>
-        </Grid>
+        <SocialMediaGrid />
       </Container>
     </Box>
   );

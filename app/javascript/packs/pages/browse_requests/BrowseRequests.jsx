@@ -11,6 +11,7 @@ import VolunteerInstructions from "./VolunteerInstructions";
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import { useLocation } from "react-router-dom";
+import SocialDistanceNotice from "../../components/SocialDistanceNotice";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -178,6 +179,9 @@ export default function BrowseRequests() {
         onNext={pageNext}
         onPrevious={pagePrevious}
       />
+      <Box mt={6}>
+        <SocialDistanceNotice />
+      </Box>
     </Box>
   );
 }
