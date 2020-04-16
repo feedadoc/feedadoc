@@ -34,6 +34,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { address: 'mailcatcher', port: 1025, domain: 'mailcatcher' }
+  config.action_mailer.asset_host = 'http://localhost:3000'
+  config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
