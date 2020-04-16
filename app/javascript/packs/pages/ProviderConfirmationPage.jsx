@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "1.4rem",
     fontWeight: "bold",
     padding: theme.spacing(2),
+    textTransform: "uppercase",
     [theme.breakpoints.up("sm")]: {
       fontSize: "1.6rem",
     },
@@ -146,15 +147,20 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
         </Typography>
         {renderStep(
           "1",
-          "Share this unique link",
-          "Share this unique link for your request on social media. Friends can view your request and offer to help. (Don't worry, your contact info will remain hidden.)"
+          "HospitalHero is on the case",
+          "Our dispatchers will search our database of volunteers to find potential matches. As soon as we find someone who can help, we'll let you know. Your contact info will remain private unless you decide to share it."
+        )}
+        {renderStep(
+          "2",
+          "Share your request with friends",
+          "The best person to help may be someone you already know! Share this unique link on social media to let friends know how they can support you. They can view your request and send direct offers to help. (Again, your contact info will remain hidden.)"
         )}
         <Typography
           align="center"
           variant="body1"
           className={classes.sharingLinkText}
         >
-          MY SHARING LINK:
+          Your sharing link:
         </Typography>
         <Link
           className={classes.sharingLink}
@@ -170,19 +176,9 @@ export default function ProviderConfirmationPage({ provider, editLink }) {
           in your community can see it. Again, we'll hide your contact info.
         </Typography>
         {renderStep(
-          "2",
-          "We'll send you an email",
-          "Check your email for a message from HospitalHero. This email includes your Sharing Link and a Private Link for editing/removing your request. (If you don't see the email, please check your spam folder.)"
-        )}
-        {renderStep(
           "3",
-          "You'll get an email from a volunteer",
-          "When someone responds to your request, you'll receive an email with their offer. Use your best judgment when deciding which offers to take."
-        )}
-        {renderStep(
-          "4",
-          "Your request will expire after 14 days",
-          "Your request will expire automatically after 14 days. We'll give you a chance to renew it before that happens."
+          "Manage your request",
+          "We sent you an email with your Sharing Link and a Private Link for editing/unpublishing your request. If you don't see the email, please check your spam folder."
         )}
         <Container maxWidth="sm">
           <Typography
