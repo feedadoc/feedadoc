@@ -29,6 +29,7 @@ describe Mutations::CreateVolunteer, type: :request do
   it "creates a Volunteer and sends an email" do
     provider = create(:provider)
 
+    expect(ProviderNotifications).to receive(:send_volunteer_response_created_notifications)
     expect do
       expect do
         post '/graphql',
@@ -44,7 +45,7 @@ describe Mutations::CreateVolunteer, type: :request do
                      }.to_json,
              headers: { "CONTENT_TYPE" => "application/json" }
       end.to change { Volunteer.count }.by(1)
-    end.to have_enqueued_job(ActionMailer::MailDeliveryJob).exactly(2).times
+    end.to have_enqueued_job(ActionMailer::MailDeliveryJob).once
 
     json = JSON.parse(response.body)
     expect(json['data']['createVolunteer']['volunteer']).to include("firstName" => "bob")

@@ -11,4 +11,20 @@ describe ProviderNotifications do
         'InternalMailer', 'request_created_email', 'deliver_now', any_args
     )
   end
+
+  describe ".send_volunteer_response_created_notifications" do
+    it "sends emails regarding a volunteer response being created to the provider and help desk" do
+      provider = Provider.new(id: 1)
+      volunteer = Volunteer.new(id: 1)
+      response = Response.new(id: 1)
+
+      expect {
+        ProviderNotifications.send_volunteer_response_created_notifications(provider, volunteer, response)
+      }.to have_enqueued_job.on_queue("mailers").with(
+          "ProviderMailer", "volunteer_response_email", "deliver_now", any_args
+      ).and have_enqueued_job.on_queue('mailers').with(
+        'InternalMailer', 'volunteer_response_email', 'deliver_now', any_args
+      )
+    end
+  end
 end
