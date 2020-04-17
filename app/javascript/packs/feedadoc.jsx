@@ -21,6 +21,7 @@ import Home from "./pages/home/Home";
 import Footer from "./components/Footer";
 import HowItWorks from "./pages/HowItWorksPage";
 import VolunteerConfirmation from "./pages/VolunteerConfirmation";
+import ProviderLandingPage from "./pages/ProviderLandingPage";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -96,6 +97,9 @@ function App() {
                     <ScrollToTopOnMount />
                     <BrowseRequests />
                   </Container>
+                </Route>
+                <Route path="/providers">
+                  <ProviderLandingPage />
                 </Route>
                 <Route path="/providers/:token/edit">
                   <Container maxWidth="md">

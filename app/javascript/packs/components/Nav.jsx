@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     "&:nth-of-type(1n+1)": {
       marginLeft: theme.spacing(4),
       [theme.breakpoints.down("sm")]: {
-        marginLeft: theme.spacing(1),
+        marginLeft: "0",
       },
     },
   },
