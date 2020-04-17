@@ -1,5 +1,5 @@
 class InternalMailer < ApplicationMailer
-  INTERNAL_EMAIL = 'hello@hospitalhero.care'
+  INTERNAL_EMAIL = 'hospitalheroticket@gmail.com'
   def request_created_email
     @provider = params[:linked_token].entity
     @request_url = HOST_AND_SCHEME + '/providers/' + @provider.to_param
