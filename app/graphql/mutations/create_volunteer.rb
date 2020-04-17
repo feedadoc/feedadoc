@@ -54,7 +54,7 @@ class Mutations::CreateVolunteer < Mutations::BaseMutation
     if volunteer.save
       linked_token = LinkCreator.create_token(volunteer)
       VolunteerMailer.with(linked_token: linked_token, provider: provider).response_created_email.deliver_later
-      ProviderMailer.with(provider: provider, volunteer: volunteer, response: response).volunteer_response_email.deliver_later
+      ProviderNotifications.send_volunteer_response_created_notifications(provider, volunteer, response)
 
       {
         volunteer: volunteer,
