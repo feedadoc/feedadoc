@@ -63,7 +63,7 @@ export default function Links({ className }) {
         Volunteer
       </NavLink>
       <NavLink
-        to="/provider-signup"
+        to="/providers"
         className={classes.navItem}
         activeClassName={classes.active}
       >

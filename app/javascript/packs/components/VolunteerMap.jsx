@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
 
 const mapOptions = {
   styles: mapStyles,
+  gestureHandling: "cooperative",
+  zoomControl: false,
 };
 
 const getZoomByWindowWidth = (windowWidth) => {
