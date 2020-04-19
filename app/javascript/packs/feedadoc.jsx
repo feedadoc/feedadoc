@@ -93,10 +93,8 @@ function App() {
                   </Container>
                 </Route>
                 <Route path="/volunteer">
-                  <Container maxWidth="md">
-                    <ScrollToTopOnMount />
-                    <VolunteerInstructions />
-                  </Container>
+                  <ScrollToTopOnMount />
+                  <VolunteerInstructions />
                 </Route>
                 <Route path="/providers/:token/edit">
                   <Container maxWidth="md">

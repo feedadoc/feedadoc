@@ -14,6 +14,7 @@ import Lodging from "../../components/illustrations/Lodging";
 import Meals from "../../components/illustrations/Meals";
 import PetCare from "../../components/illustrations/PetCare";
 import DoctorAndVolunteer from "../../components/illustrations/DoctorAndVolunteer";
+import VolunteerMap from "../../components/VolunteerMap";
 
 const SIGNUP_PATH = "/volunteer/signup";
 const volunteerBlue = "#1F28CF"; // TODO: Didn't find this color in the MUI theme
@@ -58,6 +59,10 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: 0.25,
     textAlign: "center",
     padding: 28,
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "40px",
+      lineHeight: "52px",
+    },
   },
   volunteerTitleLink: {
     textDecoration: "none",
@@ -92,7 +97,7 @@ const useStyles = makeStyles((theme) => ({
     margin: `0 ${theme.spacing(1)}px 0 0`,
     [theme.breakpoints.down("sm")]: {
       display: "block",
-      margin: 0, //`${theme.spacing(4)}px 0 0`,
+      margin: 0,
     },
   },
   promoText: {
@@ -113,12 +118,14 @@ export default function VolunteerInstructions() {
 
   return (
     <>
-      <Container maxWidth="lg" className={classes.upperVolunteerContainer}>
+      <Container maxWidth="md" className={classes.upperVolunteerContainer}>
         <Grid container alignItems="flex-end">
           <Grid item xs={12} md={6}>
             <Typography variant="h1" className={classes.volunteerTitleText}>
               <NavLink className={classes.volunteerTitleLink} to={SIGNUP_PATH}>
-                Offer Help Now
+                Offer Help
+                <br />
+                Now
               </NavLink>
             </Typography>
           </Grid>
@@ -156,7 +163,7 @@ export default function VolunteerInstructions() {
             </Typography>
           </Box>
         </Hidden>
-        <Box className={classes.alignCenter} mt={4} mb={4}>
+        <Box className={classes.alignCenter} mt={4} pb={6}>
           <Button
             className={classes.button}
             variant="contained"
@@ -166,9 +173,14 @@ export default function VolunteerInstructions() {
             <div className={classes.buttonText}>Offer Help</div>
           </Button>
         </Box>
+        <Box pt={6} mb={1} className={classes.alignCenter}>
+          <Hidden smDown>
+            <Typography variant="h5">CURRENT COUNT</Typography>
+          </Hidden>
+        </Box>
       </Container>
-      {/* Map component goes here */}
-      <Container maxWidth="lg" className={classes.volunteerContainer}>
+      <VolunteerMap />
+      <Container maxWidth="md" className={classes.volunteerContainer}>
         {promoLines.map(({ titleText, smallerText }) => (
           <Grid
             container
