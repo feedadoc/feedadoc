@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
 import SignupStepper from "./pages/provider_signup/SignupStepper";
-import BrowseRequests from "./pages/browse_requests/BrowseRequests";
+import VolunteerInstructions from "./pages/browse_requests/VolunteerInstructions";
 import VolunteerSignupPlaceholder from "./pages/VolunteerSignupPlaceholder";
 import ProviderPage from "./pages/ProviderPage";
 import OfferForm from "./pages/volunteer_signup/OfferForm";
@@ -93,10 +93,8 @@ function App() {
                   </Container>
                 </Route>
                 <Route path="/volunteer">
-                  <Container maxWidth="md">
-                    <ScrollToTopOnMount />
-                    <BrowseRequests />
-                  </Container>
+                  <ScrollToTopOnMount />
+                  <VolunteerInstructions />
                 </Route>
                 <Route path="/providers/:token/edit">
                   <Container maxWidth="md">
