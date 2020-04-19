@@ -31,6 +31,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const placesIsDefined = () => {
+  return google && google.maps && google.maps.places;
+};
+
 export default function LocationInput({ value, inputProps, onChange }) {
   const classes = useStyles();
   const [inputValue, setInputValue] = React.useState("");
@@ -38,7 +42,7 @@ export default function LocationInput({ value, inputProps, onChange }) {
   const loaded = React.useRef(false);
 
   if (typeof window !== "undefined" && !loaded.current) {
-    if (!document.querySelector("#google-maps")) {
+    if (!document.querySelector("#google-maps") && !placesIsDefined()) {
       loadScript(
         "https://maps.googleapis.com/maps/api/js?key=AIzaSyC91p5MR0B-sProwqXqStywWfAXOxOkcm8&libraries=places",
         document.querySelector("head"),

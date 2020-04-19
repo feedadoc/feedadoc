@@ -53,7 +53,10 @@ const VolunteerMap = ({ center }) => {
   return (
     <Box width="100%" className={classes.mapWrapper}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyC91p5MR0B-sProwqXqStywWfAXOxOkcm8" }}
+        bootstrapURLKeys={{
+          key: "AIzaSyC91p5MR0B-sProwqXqStywWfAXOxOkcm8",
+          libraries: "places",
+        }}
         defaultCenter={center}
         defaultZoom={getZoomByWindowWidth(windowWidth)}
         options={mapOptions}
