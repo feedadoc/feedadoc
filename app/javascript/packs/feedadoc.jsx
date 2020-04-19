@@ -98,9 +98,6 @@ function App() {
                     <BrowseRequests />
                   </Container>
                 </Route>
-                <Route path="/providers">
-                  <ProviderLandingPage />
-                </Route>
                 <Route path="/providers/:token/edit">
                   <Container maxWidth="md">
                     <EditProvider />
@@ -110,6 +107,9 @@ function App() {
                 <Route path="/how-it-works">
                   <ScrollToTopOnMount />
                   <HowItWorks />
+                </Route>
+                <Route path="/providers">
+                  <ProviderLandingPage />
                 </Route>
                 <Route path="/">
                   <ScrollToTopOnMount />
