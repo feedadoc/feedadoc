@@ -98,7 +98,7 @@ const SplitSection = () => {
             Make requests for meals, supplies, or anything else you need. Share
             a link with your friends and family.
           </Typography>
-          <Link to="/provider-signup" className={classes.buttonLink}>
+          <Link to="/providers" className={classes.buttonLink}>
             <Button
               className={classes.requestButton}
               variant="contained"
