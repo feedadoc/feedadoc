@@ -10,7 +10,7 @@ const DoctorsPassingBy = () => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <title>
-        Illustration of two medical care proviers walking towards each other
+        Illustration of two medical care providers walking towards each other
       </title>
       <path
         fillRule="evenodd"

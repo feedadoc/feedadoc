@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
-import DoctorsPassingBy from "../../components/illustrations/DoctorsPassingBy";
+import HospitalStaff from "../../components/illustrations/HospitalStaff";
 import Volunteers from "../../components/illustrations/Volunteers";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
@@ -81,7 +81,7 @@ const SplitSection = () => {
     >
       <Box bgcolor={"secondary.500"} display="flex">
         <Box className={classes.splitSectionContent}>
-          <DoctorsPassingBy />
+          <HospitalStaff />
           <Typography
             component="h2"
             variant="h1"

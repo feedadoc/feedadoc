@@ -3,6 +3,10 @@ import React from "react";
 function HospitalStaff() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 468 236">
+      <title>
+        Illustration of two medical care providers and a cleaning crew worker
+        walking towards each other
+      </title>
       <path
         fill="#784931"
         fillRule="evenodd"
