@@ -108,6 +108,7 @@ function App() {
                 </Route>
                 <Route path="/providers">
                   <ProviderLandingPage />
+                  <ScrollToTopOnMount />
                 </Route>
                 <Route path="/">
                   <ScrollToTopOnMount />

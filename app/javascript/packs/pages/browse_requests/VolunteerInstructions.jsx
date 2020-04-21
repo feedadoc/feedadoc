@@ -15,20 +15,15 @@ import Meals from "../../components/illustrations/Meals";
 import PetCare from "../../components/illustrations/PetCare";
 import DoctorAndVolunteer from "../../components/illustrations/DoctorAndVolunteer";
 import VolunteerMap from "../../components/VolunteerMap";
+import VolunteerPromoLines from "../../components/VolunteerPromoLines";
 
 const SIGNUP_PATH = "/volunteer/signup";
-const volunteerBlue = "#1F28CF"; // TODO: Didn't find this color in the MUI theme
 const offerTypes = [
   { OfferComponent: Errands, offerText: "Errands" },
   { OfferComponent: Meals, offerText: "Meals" },
   { OfferComponent: PetCare, offerText: "Pet Care" },
   { OfferComponent: Lodging, offerText: "Lodging" },
   { OfferComponent: BusinessDonations, offerText: "Business Donations" },
-];
-const promoLines = [
-  { titleText: "300+", smallerText: "volunteers" },
-  { titleText: "48", smallerText: "states" },
-  { titleText: "5", smallerText: "countries" },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -52,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: theme.spacing(10),
   },
   volunteerTitleText: {
-    color: volunteerBlue,
+    color: theme.palette.secondary.main,
     fontSize: "56px",
     fontWeight: "bold",
     lineHeight: "67px",
@@ -68,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     "&:visited": {
       textDecoration: "none",
-      color: volunteerBlue,
+      color: theme.palette.secondary.main,
     },
   },
   volunteerInfoText: {
@@ -79,37 +74,6 @@ const useStyles = makeStyles((theme) => ({
   offerGridItem: {
     textAlign: "center",
     marginBottom: theme.spacing(3),
-  },
-  promoLineContainer: {
-    paddingTop: theme.spacing(4),
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(2),
-    },
-  },
-  promoTitleText: {
-    color: volunteerBlue,
-    fontSize: 56,
-    fontWeight: "bold",
-    lineHeight: "67px",
-    letterSpacing: 0.25,
-    textAlign: "center",
-    display: "inline",
-    margin: `0 ${theme.spacing(1)}px 0 0`,
-    [theme.breakpoints.down("sm")]: {
-      display: "block",
-      margin: 0,
-    },
-  },
-  promoText: {
-    fontSize: 32,
-    textAlign: "center",
-    [theme.breakpoints.down("xs")]: {
-      width: "100%",
-    },
-  },
-  andGrowingText: {
-    fontSize: 32,
-    textAlign: "center",
   },
 }));
 
@@ -181,21 +145,7 @@ export default function VolunteerInstructions() {
       </Container>
       <VolunteerMap />
       <Container maxWidth="md" className={classes.volunteerContainer}>
-        {promoLines.map(({ titleText, smallerText }) => (
-          <Grid
-            container
-            justify="center"
-            alignItems="center"
-            className={classes.promoLineContainer}
-            key={`${titleText}_${smallerText}`.replace(/\s/g, "_")}
-          >
-            <p className={classes.promoTitleText}>{titleText}</p>
-            <span className={classes.promoText}>{smallerText}</span>
-          </Grid>
-        ))}
-        <Typography variant="body1" className={classes.andGrowingText}>
-          ...and growing
-        </Typography>
+        <VolunteerPromoLines />
         <Hidden smDown>
           <Box mt={4} mb={4} className={classes.alignCenter}>
             <Typography variant="body1">
