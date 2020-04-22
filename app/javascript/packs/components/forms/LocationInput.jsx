@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const placesIsDefined = () => {
-  return google && google.maps && google.maps.places;
+  return window.google && window.google.maps && window.google.maps.places;
 };
 
 export default function LocationInput({ value, inputProps, onChange }) {
