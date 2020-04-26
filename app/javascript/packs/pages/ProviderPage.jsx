@@ -140,11 +140,11 @@ export default function ProviderPage({ location, match }) {
     createdAt,
   } = data.provider;
 
-  const FOURTEEN_DAYS = 1000 * 60 * 60 * 24 * 14;
+  const SIXTY_DAYS = 1000 * 60 * 60 * 24 * 60;
   let creationTime = Date.parse(createdAt);
   let today = Date.now();
 
-  if (!active || today - creationTime > FOURTEEN_DAYS) {
+  if (!active || today - creationTime > SIXTY_DAYS) {
     return (
       <Container maxWidth="sm" className={classes.expiredRequest}>
         <Typography

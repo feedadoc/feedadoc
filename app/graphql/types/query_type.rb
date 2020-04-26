@@ -17,10 +17,7 @@ module Types
       scope = ::Provider.where(where(filters)).order(order(order_by))
 
       if active_requests
-        scope = scope.where("updated_at > ?", 14.days.ago)
-      end
-
-      if active_requests
+        scope = scope.where("updated_at > ?", 60.days.ago)
         scope = scope.where("requests @> ?", '[{"satisfied": false}]')
       end
 

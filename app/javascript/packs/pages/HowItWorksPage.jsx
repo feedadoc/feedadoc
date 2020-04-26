@@ -136,7 +136,7 @@ const HowItWorks = () => {
       "healthcare workers can update or remove it at any time using the private link in your original confirmation email.",
     ],
     stepFive: [
-      "automatically after 14 days. Care providers will receive an email before this happens with an option to extend the request.",
+      "automatically after 60 days. Care providers will receive an email before this happens with an option to extend the request.",
     ],
   };
 

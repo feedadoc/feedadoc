@@ -10,7 +10,7 @@ const Expiration = () => {
       viewBox="0 0 257 224"
     >
       <title>
-        An icon of a gray calendar showing 14 days are left before a request
+        An icon of a gray calendar showing 60 days are left before a request
         expires
       </title>
       <rect width="256.37" height="224" fill="#E3E3E9" rx="5.179"></rect>
