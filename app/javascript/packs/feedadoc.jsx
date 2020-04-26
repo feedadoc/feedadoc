@@ -22,6 +22,7 @@ import Footer from "./components/Footer";
 import HowItWorks from "./pages/HowItWorksPage";
 import VolunteerConfirmation from "./pages/VolunteerConfirmation";
 import ProviderLandingPage from "./pages/ProviderLandingPage";
+import BrowseRequests from "./pages/browse_requests/BrowseRequests";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -108,6 +109,10 @@ function App() {
                 </Route>
                 <Route path="/providers">
                   <ProviderLandingPage />
+                  <ScrollToTopOnMount />
+                </Route>
+                <Route path="/all-providers">
+                  <BrowseRequests />
                   <ScrollToTopOnMount />
                 </Route>
                 <Route path="/">
