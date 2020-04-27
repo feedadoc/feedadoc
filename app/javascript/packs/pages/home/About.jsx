@@ -6,8 +6,13 @@ import Avatar from "@material-ui/core/Avatar";
 import BoldLink from "../../components/BoldLink";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import AmitGattani from "../../images/amit-gattani.png";
+import AmySorto from "../../images/amy-sorto.png";
 import AndrewCantino from "../../images/andrew-cantino.jpg";
 import ChandlerMoisen from "../../images/chandler-moisen.png";
+import DanielStudent from "../../images/daniel-student.png";
+import GraceWickerson from "../../images/grace-wickerson.png";
+import JiaxuanLi from "../../images/jiaxuan-li.png";
 import KatiePennachio from "../../images/katie-pennachio.jpg";
 import KeithWeissglass from "../../images/keith-weissglass.jpg";
 import KellyNeuner from "../../images/kelly-neuner.jpg";
@@ -17,6 +22,16 @@ import TylerUntisz from "../../images/tyler-untisz.jpg";
 
 const contributors = [
   {
+    name: "Amit Gattani",
+    role: "Outreach",
+    src: AmitGattani,
+  },
+  {
+    name: "Amy Sorto",
+    role: "Engineering",
+    src: AmySorto,
+  },
+  {
     name: "Andrew Cantino",
     role: "Engineering",
     src: AndrewCantino,
@@ -25,6 +40,21 @@ const contributors = [
     name: "Chandler Moisen",
     role: "Engineering",
     src: ChandlerMoisen,
+  },
+  {
+    name: "Daniel Student",
+    role: "Customer Engagement & Success",
+    src: DanielStudent,
+  },
+  {
+    name: "Grace Wickerson",
+    role: "Partnerships",
+    src: GraceWickerson,
+  },
+  {
+    name: "Jiaxuan Li",
+    role: "Account Management & Partnerships",
+    src: JiaxuanLi,
   },
   {
     name: "Katie Pennachio",
@@ -164,6 +194,7 @@ const About = () => {
                 alignItems="center"
                 justifyContent="center"
                 flexDirection="column"
+                textAlign="center"
                 pb={2}
               >
                 <Contributor name={c.name} role={c.role} src={c.src} />
