@@ -5,7 +5,7 @@ module Types
     field :providers,
           Types::Connections::ProviderConnection,
           connection: true,
-          max_page_size: 6,
+          max_page_size: 20,
           null: false do
       argument :filters, Types::ProviderFilter, required: false
       argument :order_by, Types::ProviderOrder, required: false
