@@ -115,6 +115,10 @@ function App() {
                   <BrowseRequests />
                   <ScrollToTopOnMount />
                 </Route>
+                <Route path="/browse-providers">
+                  <BrowseRequests minimal />
+                  <ScrollToTopOnMount />
+                </Route>
                 <Route path="/">
                   <ScrollToTopOnMount />
                   <Home />

@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
     marginLeft: 0,
+    marginBottom: "1rem",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
@@ -108,7 +109,7 @@ const TOTAL_PROVIDERS = gql`
   }
 `;
 
-export default function BrowseRequests() {
+export default function BrowseRequests({ minimal = false }) {
   const classes = useStyles();
   const [pageType, setPageType] = React.useState("forward");
   const [endCursor, setEndCursor] = React.useState("");
@@ -117,7 +118,7 @@ export default function BrowseRequests() {
 
   const { search } = useLocation();
   const isSuccess = search.includes("success=true");
-  const resultsPerPage = 6;
+  const resultsPerPage = 20;
 
   const { loading, error, data } = useQuery(TOTAL_PROVIDERS, {
     variables: {
@@ -157,21 +158,23 @@ export default function BrowseRequests() {
           </Box>
         </Container>
       )}
-      <VolunteerInstructions />
-      <Container className={classes.search}>
-        <div className={classes.searchIcon}>
-          <SearchIcon />
-        </div>
-        <InputBase
-          placeholder="Search by city..."
-          classes={{
-            root: classes.inputRoot,
-            input: classes.inputInput,
-          }}
-          inputProps={{ "aria-label": "search by city" }}
-          value={searchValue}
-          onChange={changeSearchValue}
-        />
+      {!minimal && <VolunteerInstructions />}
+      <Container>
+        <Box className={classes.search}>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
+          <InputBase
+            placeholder="Search by city..."
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ "aria-label": "search by city" }}
+            value={searchValue}
+            onChange={changeSearchValue}
+          />
+        </Box>
       </Container>
       <ProviderList
         providers={(data && data.providers.edges) || []}
