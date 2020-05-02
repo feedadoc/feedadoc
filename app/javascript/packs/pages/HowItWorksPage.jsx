@@ -14,7 +14,6 @@ import DoctorWithDevice from "../../packs/components/illustrations/DoctorWithDev
 import Volunteer from "../../packs/components/illustrations/Volunteer";
 import Email from "../../packs/components/illustrations/Email";
 import RequestCompleted from "../../packs/components/illustrations/RequestCompleted";
-import Expiration from "../../packs/components/illustrations/Expiration";
 import Disclaimer from "../components/Disclaimer";
 
 const useStyles = makeStyles((theme) => ({
@@ -109,12 +108,12 @@ const HowItWorks = () => {
   let stepOneCustomContent = (
     <>
       <p>
-        for help with meals, child care, pet care, errands and more on Hospital
-        Hero. <b>Share the link</b> to your request on social media so your
-        friends can respond!
+        for help with meals, child care, pet care, errands and more on
+        HospitalHero. <b>Share the link</b> to your request on social media so
+        your friends can respond!
       </p>
       <p>
-        We will also <b>publish your request on Hospital Hero</b> so volunteers
+        We will also <b>publish your request on HospitalHero</b> so volunteers
         in your community can find it. (Don't worry, your contact information
         stays private.)
       </p>
@@ -126,17 +125,15 @@ const HowItWorks = () => {
   );
   const content = {
     stepTwo: [
-      "to a request they see on social media or on Hospital Hero's searchable directory.",
+      "to see who can help. When we find a good match, the volunteer uses a unique link to respond privately.",
       "As a volunteer, your contact information is only shared with a provider when you respond to their request.",
     ],
     stepThree: [
-      "offering to help. They can choose which offers to respond to and coordinate directly with volunteers.",
+      "to optionally share on social media. Sometimes the best person to help may already be in your network!",
     ],
     stepFour: [
-      "healthcare workers can update or remove it at any time using the private link in your original confirmation email.",
-    ],
-    stepFive: [
-      "automatically after 60 days. Care providers will receive an email before this happens with an option to extend the request.",
+      "when volunteers offer to help. They can choose which offers to respond to and coordinate directly with volunteers.",
+      "You can update or remove a request at any time using the private link in your original confirmation email.",
     ],
   };
 
@@ -153,29 +150,8 @@ const HowItWorks = () => {
           >
             How it Works
           </Typography>
-          <Typography
-            component="p"
-            variant="h2"
-            align="center"
-            className={classes.introCopy}
-          >
-            Watch a <b>two-minute video or read more</b> below:
-          </Typography>
         </Box>
       </Container>
-      <Container maxWidth="md" className={classes.videoContainer}>
-        <div className={classes.embedContainer}>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/efbaQ5NPNKk?controls=0&modestbranding=1&rel=0"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </Container>
-
       <Container maxWidth="md">
         <Grid container spacing={10} className={classes.stepContainer}>
           <Hidden xsDown>
@@ -194,7 +170,11 @@ const HowItWorks = () => {
         </Grid>
         <Grid container spacing={10} className={classes.stepContainer}>
           <Grid item xs={12} sm={8}>
-            {renderStep("2", "Volunteers respond", content.stepTwo)}
+            {renderStep(
+              "2",
+              "HospitalHero contacts local volunteers",
+              content.stepTwo
+            )}
           </Grid>
           <Hidden xsDown>
             <Grid item sm={4}>
@@ -211,7 +191,7 @@ const HowItWorks = () => {
           <Grid item xs={12} sm={8}>
             {renderStep(
               "3",
-              "Healthcare workers receive an email",
+              "Healthcare worker receives a link",
               content.stepThree
             )}
           </Grid>
@@ -220,7 +200,7 @@ const HowItWorks = () => {
           <Grid item xs={12} sm={8}>
             {renderStep(
               "4",
-              "Once your request is fulfilled",
+              "Healthcare workers are notified",
               content.stepFour
             )}
           </Grid>
@@ -229,16 +209,6 @@ const HowItWorks = () => {
               <RequestCompleted />
             </Grid>
           </Hidden>
-        </Grid>
-        <Grid container spacing={10} className={classes.stepContainer}>
-          <Hidden xsDown>
-            <Grid item sm={4}>
-              <Expiration />
-            </Grid>
-          </Hidden>
-          <Grid item xs={12} sm={8}>
-            {renderStep("5", "Requests expire", content.stepFive)}
-          </Grid>
         </Grid>
       </Container>
       <Disclaimer />
