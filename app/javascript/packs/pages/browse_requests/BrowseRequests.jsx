@@ -79,7 +79,7 @@ const TOTAL_PROVIDERS = gql`
       last: $last
       before: $before
       filters: { active: true, activeRequests: true, city: $city }
-      orderBy: { direction: ASC, sort: CITY }
+      orderBy: { direction: DESC, sort: ID }
     ) {
       totalCount
       pageInfo {
