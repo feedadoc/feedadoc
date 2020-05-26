@@ -6,6 +6,7 @@ import HelpCallout from "./HelpCallout";
 import About from "./About";
 import Contributors from "./Contributors";
 import Volunteers from "./Volunteers";
+import Press from "./Press";
 
 const Home = () => (
   <>
@@ -14,6 +15,7 @@ const Home = () => (
     <VolunteerCallout />
     <Volunteers />
     <HelpCallout />
+    <Press />
     <About />
     <Contributors />
   </>

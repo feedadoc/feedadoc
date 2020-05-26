@@ -55,6 +55,7 @@ const theme = createMuiTheme({
       paper: "#ffffff",
       dark: "#191847",
       secondary: "#DADADA",
+      lightBlue: "#F1F5F7",
     },
   },
   props: {
