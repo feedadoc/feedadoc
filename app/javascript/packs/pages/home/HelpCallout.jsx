@@ -56,7 +56,7 @@ const HelpCallout = () => {
                 variant="h6"
                 className={classes.helpCalloutText}
               >
-                COVID-19 will overwhelm hospitals with critically-ill patients
+                COVID-19 is straining on our hospitals and clinics
               </Typography>
             </Box>
           </Grid>
@@ -73,8 +73,7 @@ const HelpCallout = () => {
                 variant="h6"
                 className={classes.helpCalloutText}
               >
-                Healthcare workers will be working long hours in brutal
-                conditions
+                Staff are working longer hours in dangerous conditions
               </Typography>
             </Box>
           </Grid>
@@ -92,7 +91,7 @@ const HelpCallout = () => {
                 variant="h6"
                 className={classes.helpCalloutText}
               >
-                We can help them stay healthy and focused on saving lives
+                You can help them stay healthy and focused on saving lives
               </Typography>
             </Box>
           </Grid>

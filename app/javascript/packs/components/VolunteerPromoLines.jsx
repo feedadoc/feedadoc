@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const promoLines = [
-  { titleText: "300+", smallerText: "volunteers" },
+  { titleText: "450+", smallerText: "volunteers" },
   { titleText: "48", smallerText: "states" },
   { titleText: "5", smallerText: "countries" },
 ];
