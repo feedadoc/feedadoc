@@ -5,18 +5,56 @@ import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 
-import Kron4 from "../../images/kron-4.png";
-import Guardian from "../../images/the-guardian.png";
 import TimeOut from "../../images/time-out.png";
-import Eater from "../../images/eater.png";
 import FunCheapSF from "../../images/fun-cheap-sf.png";
+import Kron4 from "../../images/kron-4.png";
+import Forbes from "../../images/forbes.png";
+import ThomasInsights from "../../images/thomas-insights.png";
+import CGTN from "../../images/cgtn.png";
+import TheLily from "../../images/the-lily.png";
+import Guardian from "../../images/the-guardian.png";
+import Eater from "../../images/eater.png";
 
 const press = [
+  {
+    title: "Time Out",
+    imgSrc: TimeOut,
+    url:
+      "https://www.timeout.com/usa/news/you-can-volunteer-to-run-an-errand-for-a-healthcare-worker-using-this-new-online-platform-051520",
+  },
+  {
+    title: "FunCheapSF",
+    imgSrc: FunCheapSF,
+    url:
+      "https://sf.funcheap.com/city-guide/online-platform-healthcare-workers/",
+  },
   {
     title: "KRON4",
     imgSrc: Kron4,
     url:
       "https://www.kron4.com/features/kron4-heroes/sf-residents-launch-online-platform-to-connect-volunteers-with-healthcare-workers-in-need/",
+  },
+  {
+    title: "Forbes",
+    imgSrc: Forbes,
+    url:
+      "https://www.forbes.com/sites/chriscarosa/2020/05/08/1980s-recovery-offers-you-clues-to-covid-comeback/#34d3187c7b8f",
+  },
+  {
+    title: "Thomas Insights",
+    imgSrc: ThomasInsights,
+    url:
+      "https://www.thomasnet.com/insights/nursing-homes-group-homes-for-the-disabled-homeless-shelters-innovate-get-ppe/",
+  },
+  {
+    title: "CGTN America",
+    imgSrc: CGTN,
+    url: "https://www.youtube.com/watch?v=jnLARIS8tlw",
+  },
+  {
+    title: "The Lily",
+    imgSrc: TheLily,
+    url: "https://www.thelily.com/4-ways-you-can-help-essential-workers/",
   },
   {
     title: "The Guardian",
@@ -25,22 +63,10 @@ const press = [
       "https://www.theguardian.com/commentisfree/2020/mar/31/virus-neighbours-covid-19",
   },
   {
-    title: "Time Out",
-    imgSrc: TimeOut,
-    url:
-      "https://www.timeout.com/usa/news/you-can-volunteer-to-run-an-errand-for-a-healthcare-worker-using-this-new-online-platform-051520",
-  },
-  {
     title: "Eater",
     imgSrc: Eater,
     url:
       "https://www.eater.com/2020/3/20/21188046/restaurants-donate-meals-to-health-care-workers-hospitals-fighting-coronavirus",
-  },
-  {
-    title: "FunCheapSF",
-    imgSrc: FunCheapSF,
-    url:
-      "https://sf.funcheap.com/city-guide/online-platform-healthcare-workers/",
   },
 ];
 
@@ -52,6 +78,9 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "20px",
     textAlign: "center",
   },
+  logoIcon: {
+    maxWidth: "300px",
+  },
 }));
 
 const Logo = ({ title, imgSrc, url }) => {
@@ -60,7 +89,7 @@ const Logo = ({ title, imgSrc, url }) => {
   return (
     <>
       <a href={url}>
-        <img src={imgSrc} alt={altText} />
+        <img src={imgSrc} alt={altText} className={classes.logoIcon} />
       </a>
     </>
   );
