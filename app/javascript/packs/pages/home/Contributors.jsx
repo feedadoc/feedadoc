@@ -20,16 +20,16 @@ const Contributors = () => {
         variant="body"
         className={classes.contributorText}
       >
-        We welcome new contributors. Current needs include PR, front-end web
-        development, and community outreach.{" "}
-        <BoldLink
-          color="textPrimary"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSeAXlls9dtfW8Eu6OBvfNT1J8nhOHJ4nC2QrryNlsVogRGsFA/viewform"
-          underline="none"
-        >
-          Apply here to join
-        </BoldLink>
-        .{" "}
+        {/*We welcome new contributors. Current needs include PR, front-end web*/}
+        {/*development, and community outreach.{" "}*/}
+        {/*<BoldLink*/}
+        {/*  color="textPrimary"*/}
+        {/*  href="https://docs.google.com/forms/d/e/1FAIpQLSeAXlls9dtfW8Eu6OBvfNT1J8nhOHJ4nC2QrryNlsVogRGsFA/viewform"*/}
+        {/*  underline="none"*/}
+        {/*>*/}
+        {/*  Apply here to join*/}
+        {/*</BoldLink>*/}
+        {/*.{" "}*/}
       </Typography>
     </Container>
   );

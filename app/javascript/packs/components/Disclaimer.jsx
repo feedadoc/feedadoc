@@ -49,8 +49,7 @@ const Disclaimer = () => {
         align="center"
         className={classes.copy}
       >
-        To report a request that should be removed, click the "Feedback" buttton
-        in the lower right corner or email{" "}
+        To report a request that should be removed, email{" "}
         <b>
           <a className={classes.emailLink} href={`mailto:${SUPPORT_EMAIL}`}>
             {SUPPORT_EMAIL}

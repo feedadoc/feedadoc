@@ -55,20 +55,20 @@ export default function Links({ className }) {
 
   return (
     <Box className={`${classes.root} ${className}`}>
-      <NavLink
-        to="/volunteer"
-        className={classes.navItem}
-        activeClassName={classes.active}
-      >
-        Offer Help
-      </NavLink>
-      <NavLink
-        to="/providers"
-        className={classes.navItem}
-        activeClassName={classes.active}
-      >
-        Request Help
-      </NavLink>
+      {/*<NavLink*/}
+      {/*  to="/volunteer"*/}
+      {/*  className={classes.navItem}*/}
+      {/*  activeClassName={classes.active}*/}
+      {/*>*/}
+      {/*  Offer Help*/}
+      {/*</NavLink>*/}
+      {/*<NavLink*/}
+      {/*  to="/providers"*/}
+      {/*  className={classes.navItem}*/}
+      {/*  activeClassName={classes.active}*/}
+      {/*>*/}
+      {/*  Request Help*/}
+      {/*</NavLink>*/}
       <NavLink
         to="/how-it-works"
         className={classes.navItem}

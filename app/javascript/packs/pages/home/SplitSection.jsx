@@ -98,15 +98,15 @@ const SplitSection = () => {
             Make requests for meals, supplies, or anything else you need. Share
             a link with your friends and family.
           </Typography>
-          <Link to="/providers" className={classes.buttonLink}>
-            <Button
-              className={classes.requestButton}
-              variant="contained"
-              elevation={0}
-            >
-              <div className={classes.buttonText}>Request Help</div>
-            </Button>
-          </Link>
+          {/*<Link to="/providers" className={classes.buttonLink}>*/}
+          {/*  <Button*/}
+          {/*    className={classes.requestButton}*/}
+          {/*    variant="contained"*/}
+          {/*    elevation={0}*/}
+          {/*  >*/}
+          {/*    <div className={classes.buttonText}>Request Help</div>*/}
+          {/*  </Button>*/}
+          {/*</Link>*/}
         </Box>
       </Box>
       <Box bgcolor={"secondary.800"} display="flex">
@@ -129,15 +129,15 @@ const SplitSection = () => {
             Offer your support to local doctors, nurses, and hospital workers.
             You choose who and how to help.
           </Typography>
-          <Link to="/volunteer" className={classes.buttonLink}>
-            <Button
-              className={classes.volunteerButton}
-              variant="contained"
-              elevation={0}
-            >
-              <div className={classes.buttonText}>Volunteer Now</div>
-            </Button>
-          </Link>
+          {/*<Link to="/volunteer" className={classes.buttonLink}>*/}
+          {/*  <Button*/}
+          {/*    className={classes.volunteerButton}*/}
+          {/*    variant="contained"*/}
+          {/*    elevation={0}*/}
+          {/*  >*/}
+          {/*    <div className={classes.buttonText}>Volunteer Now</div>*/}
+          {/*  </Button>*/}
+          {/*</Link>*/}
         </Box>
       </Box>
     </Box>

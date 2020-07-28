@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import { SUPPORT_EMAIL } from "../data/contactEmails";
 
 // prettier-ignore
 const Logo = ({className}) => (
@@ -18,6 +20,14 @@ const Logo = ({className}) => (
 );
 
 const useStyles = makeStyles((theme) => ({
+  unmaintained: {
+    color: "black",
+    margin: "24px 0px",
+    backgroundColor: "#ff9a21",
+  },
+  unmaintainedText: {
+    fontSize: "18px",
+  },
   root: {
     backgroundColor: theme.palette.background.paper,
     transform: "none !important",
@@ -62,6 +72,25 @@ const Header = () => {
   });
   return (
     <AppBar elevation={0} position="static" className={classes.root}>
+      <Box
+        p={2}
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        className={`${classes.unmaintained}`}
+      >
+        <Typography className={classes.unmaintainedText}>
+          Thank you to our amazing volunteers for helping care for America's
+          hospital heroes during the early days of COVID-19. Now that requests
+          from healthcare workers have decreased, we've concluded this project.
+          If you are a nonprofit or healthcare organization interested in
+          adapting the open-source software written for HospitalHero, you can
+          contact us at <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>{" "}
+          or find the{" "}
+          <a href="https://github.com/feedadoc/feedadoc">source on GitHub</a>.
+        </Typography>
+      </Box>
+
       <Box
         p={2}
         display="flex"
