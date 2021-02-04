@@ -1,6 +1,6 @@
 # HospitalHero (previously known as Feed a Doc)
 
-> This project has now ended. Thank you to all our wonderful volunteers who made it possible.
+> This project has now ended. Thank you to all our wonderful volunteers who made it possible. For posterity, there are images of the site as it was at the end of 2020 in [hospitalhero-images/](hospitalhero-images/).
 
 HospitalHero connects healthcare workers (docs, nurses, specialists, support staff) with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance or can provide it!
 
