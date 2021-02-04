@@ -1,6 +1,6 @@
 # HospitalHero (previously known as Feed a Doc)
 
-[![CircleCI](https://circleci.com/gh/feedadoc/feedadoc.svg?style=svg)](https://circleci.com/gh/feedadoc/feedadoc)
+> This project has now ended. Thank you to all our wonderful volunteers who made it possible.
 
 HospitalHero connects healthcare workers (docs, nurses, specialists, support staff) with volunteers who can provide basic needs during the COVID-19 pandemic response. Please share with anyone you know who needs assistance or can provide it!
 
